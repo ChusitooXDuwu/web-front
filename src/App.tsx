@@ -1,8 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.scss';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.scss";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import MainView from "./views/MainView";
+import LandingPage from "./pages/LandingPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainView />}>
+          <Route index element={<Navigate to="/login" />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="home" element={<LandingPage />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+function ReactWelcome() {
   return (
     <div className="App">
       <header className="App-header">
