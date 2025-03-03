@@ -6,6 +6,7 @@ import MainView from "./views/MainView";
 import LandingPage from "./pages/LandingPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import LoginPage from "./pages/LoginPage";
+import BoxCancha from "./pages/box-cancha";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<Navigate to="/login" />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="home" element={<LandingPage />} />
+          <Route path="box-cancha" element={<BoxCancha />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
