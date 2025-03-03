@@ -4,8 +4,8 @@ import "./App.scss";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import MainView from "./views/MainView";
 import LandingPage from "./pages/LandingPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import LoginPage from "./pages/LoginPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
   return (
