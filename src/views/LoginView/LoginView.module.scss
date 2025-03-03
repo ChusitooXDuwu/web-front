@@ -1,0 +1,5 @@
+@use "../../variables" as v;
+.login_background {
+  background-color: v.$sporthub-purple;
+  height: 100vh;
+}
