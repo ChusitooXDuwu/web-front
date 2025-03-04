@@ -9,14 +9,13 @@ import { Link } from "react-router-dom";
 
 function LoginPage() {
   return (
-    <div className={styles.login_container}>
-      <Container>
+      <Container className={styles.login_container}>
         <Col>
           <Row>
-            <h1 className={styles.sporthub_title}>SportHub</h1>
+            <h1 className={`display-1 ${styles.sporthub_title}`}>SportHub</h1>
           </Row>
           <Row>
-            <Card>
+            <Card className={styles.login_card}>
               <Card.Body>
                 <Form>
                   <Form.Group>
@@ -49,7 +48,6 @@ function LoginPage() {
           </Row>
         </Col>
       </Container>
-    </div>
   );
 }
 
