@@ -1,29 +1,41 @@
 @use "../../variables" as v;
 
 .sporthub_title {
-    font-size: 6rem;
-    color: white;
-    text-align: left;
+  color: white;
+  text-align: left;
 }
 
 .signup_card {
-    max-width: max-content;
-    margin: 0 auto;
+  max-width: min(20rem, 90%);
+  margin: 0 auto;
 }
 
 .signin_text {
-    .signin_question {
-        color: v.$sporthub-cream-yellow;
-        padding-right: 1rem;
-    }
-    .signin_link {
-        color: white;
-    }
-    font-weight: 600;
-    width: 100%;
-    text-align: right;
+  .signin_question {
+    color: v.$sporthub-cream-yellow;
+    padding-right: 1rem;
+    text-wrap: nowrap;
+  }
+  .signin_link {
+    color: white;
+    text-wrap: nowrap;
+  }
+  margin-top: 1rem;
+  font-weight: 600;
+  width: 100%;
+  text-align: right;
+}
+
+@media (max-width: 425px) {
+  .sporthub_title {
+    text-align: center;
+  }
+  .signin_text {
+    text-align: center;
+    margin-top: 0px;
+  }
 }
 
 .signup_button {
-    max-width: min-content;
+  max-width: min-content;
 }
