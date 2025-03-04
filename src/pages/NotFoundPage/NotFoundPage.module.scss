@@ -1,28 +1,16 @@
-$sporthub-purple: #60508c;
+@use "../../variables" as v;
 
 .not_found_container {
-    background-color: $sporthub-purple;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-}
-
-.not_found_content {
-    margin: auto;
-    max-width: 90%;
+  margin: auto 2rem;
 }
 
 .not_found_title {
-    color: white;
-    font-family: "Urbanist", sans-serif;
-    font-size: 8rem;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
 .not_found_text {
-    color: white;
-    font-family: "Urbanist", sans-serif;
-    font-size: 2rem;
-    text-align: center;
+  color: white;
+  text-align: center;
+  font-weight: 300;
 }

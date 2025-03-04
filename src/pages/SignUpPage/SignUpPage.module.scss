@@ -1,0 +1,29 @@
+@use "../../variables" as v;
+
+.sporthub_title {
+    font-size: 6rem;
+    color: white;
+    text-align: left;
+}
+
+.signup_card {
+    max-width: max-content;
+    margin: 0 auto;
+}
+
+.signin_text {
+    .signin_question {
+        color: v.$sporthub-cream-yellow;
+        padding-right: 1rem;
+    }
+    .signin_link {
+        color: white;
+    }
+    font-weight: 600;
+    width: 100%;
+    text-align: right;
+}
+
+.signup_button {
+    max-width: min-content;
+}

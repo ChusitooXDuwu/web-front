@@ -44,7 +44,7 @@ function LoginPage() {
           </Row>
           <Row>
             <span className={styles.register_text}>
-              ¿Nuevo en Sporthub? <Link to={"/signin"}>Registrese aquí</Link>
+              ¿Nuevo en Sporthub? <Link to={"/signup"}>Registrese aquí</Link>
             </span>
           </Row>
         </Col>
