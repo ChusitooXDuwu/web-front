@@ -5,9 +5,10 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const navigate = useNavigate();
   return (
     <Container className={styles.login_container}>
       <Col>
@@ -34,7 +35,11 @@ function LoginPage() {
           </Card>
         </Row>
         <Row>
-          <Button className={styles.login_button} variant="primary">
+          <Button
+            className={styles.login_button}
+            variant="primary"
+            onClick={() => navigate("/home")}
+          >
             Login
           </Button>
         </Row>
