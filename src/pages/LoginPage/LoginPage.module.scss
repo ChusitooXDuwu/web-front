@@ -1,0 +1,26 @@
+@use "../../variables" as v;
+
+.login_container {
+  margin: auto;
+}
+.sporthub_title {
+  color: white;
+  text-align: center;
+}
+.login_card {
+  max-width: min(20rem, 90%);
+  margin: 0 auto;
+}
+
+.login_button {
+  margin: 4px auto;
+  max-width: min(20rem, 90%);
+}
+
+.register_text {
+  text-align: center;
+  color: v.$sporthub-cream-yellow;
+  .register_link {
+    color: white;
+  }
+}
