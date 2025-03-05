@@ -1,10 +1,30 @@
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import styles from "./HomePage.module.scss";
+import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
 function HomePage() {
   return (
     <>
       <Container fluid className={styles.main_content_container}>
-        <h1>Home Page</h1>
+        <section>
+          <h1 className={styles.section_header}>Mis próximos partidos</h1>
+          <Row lg={5} md={4} sm={2} xs={1} className="gy-2">
+            {Array.from({ length: 10 }).map((_, index) => (
+              <Col key={index}>
+                <GameCardComponent />
+              </Col>
+            ))}
+          </Row>
+        </section>
+        <section>
+          <h1 className={styles.section_header}>Partidos disponibles</h1>
+          <Row lg={5} md={4} sm={2} xs={1} className="gy-2">
+            {Array.from({ length: 10 }).map((_, index) => (
+              <Col key={index}>
+                <GameCardComponent />
+              </Col>
+            ))}
+          </Row>
+        </section>
       </Container>
     </>
   );
