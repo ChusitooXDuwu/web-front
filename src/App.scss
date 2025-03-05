@@ -13,6 +13,12 @@
   }
 }
 
+
+.nav-left {
+  margin-right: auto; // Pushes the links to the left
+}
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -41,3 +47,20 @@
     transform: rotate(360deg);
   }
 }
+
+
+.custom-outline-btn {
+  color: #ffffff; // White text
+  border: 2px solid #E99E14; // Custom outline color
+  background-color: transparent; // Transparent background
+  padding: 10px 20px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #E99E14; // Fill background on hover
+    color: #000000; // Black text on hover for contrast
+  }
+}
+
+
