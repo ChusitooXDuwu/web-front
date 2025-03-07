@@ -4,6 +4,7 @@ import { Container, Row } from "react-bootstrap";
 import BookingCard from "../../components/BookingCard/BookingCard";
 import BookedEventEntity from "../../entities/BookedEventEntity";
 
+// TODO REPLACE WITH API FETCH
 const mockData: BookedEventEntity = {
   id: "abc",
   startDateTime: new Date(),
