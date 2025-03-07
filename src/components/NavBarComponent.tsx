@@ -1,85 +1,177 @@
+import {
+  Navbar,
+  Container,
+  Nav,
+  NavDropdown,
+  Form,
+  Button,
+  Row,
+  Col,
+} from "react-bootstrap";
 
-import { Navbar, Container, Nav, NavDropdown, Form, Button, Row, Col } from 'react-bootstrap';
+import sportHubLogo from "../icons/sporthublogotext.png";
 
-import sportHubLogo from '../icons/sporthublogotext.png';
-
-import { ReactComponent as CalendarIcon } from '../icons/calendarIcon.svg';
-import { ReactComponent as CourtIcon } from '../icons/courtIcon.svg';
-import { ReactComponent as SportsIcon } from '../icons/sportsIcon.svg';
-import { ReactComponent as JoinIcon } from '../icons/joinIcon.svg';
-import { ReactComponent as ProfileIcon } from '../icons/profileIcon.svg';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-
+import { ReactComponent as CalendarIcon } from "../icons/calendarIcon.svg";
+import { ReactComponent as CourtIcon } from "../icons/courtIcon.svg";
+import { ReactComponent as SportsIcon } from "../icons/sportsIcon.svg";
+import { ReactComponent as JoinIcon } from "../icons/joinIcon.svg";
+import { ReactComponent as ProfileIcon } from "../icons/profileIcon.svg";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 function NavBar() {
-    return (
-      <>
-      
-        <Navbar expand='ls' className="custom-navbar mb-0">
-          <Container fluid>
+  return (
+    <>
+      <Navbar expand="ls" className="custom-navbar mb-0">
+        <Container fluid>
           {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav"> */}
-            <Navbar.Brand href="#home">
-              <img
-                src={sportHubLogo}
-                width="300"
-                height="120"
+          <Navbar.Brand href="#home">
+            <img
+              src={sportHubLogo}
+              width="300"
+              height="120"
+              className="d-inline-block align-top"
+              alt="SportHub logo"
+            />
+          </Navbar.Brand>
+
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Busca Canchas, Deportes o Reservas"
+              className="me-2 flex-grow-1"
+              aria-label="Search"
+              // style={{ height: '50px', fontSize: '1.1rem' , width: '700px'}}
+            />
+            <Button
+              className="custom-outline-btn"
+              size="lg"
+              style={{ height: "50px", color: "#FFFFFF" }}
+            >
+              Buscar
+            </Button>
+          </Form>
+          <Nav.Item>
+            <Col xs={6} md={3} className="text-center mb-2 mb-md-0">
+              <ProfileIcon
+                width="50"
+                height="80"
                 className="d-inline-block align-top"
-                alt="SportHub logo"
+                style={{ fill: "#E99E14" }}
               />
-            </Navbar.Brand>
-              
-              <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Busca Canchas, Deportes o Reservas"
-                  className="me-2 flex-grow-1"
-                  aria-label="Search"
-                  // style={{ height: '50px', fontSize: '1.1rem' , width: '700px'}}
-                />
-                <Button className='custom-outline-btn' size="lg" style={{height: "50px", color: "#FFFFFF"}}>Buscar</Button>
-              </Form>
-              <Nav.Item >
-                <Col xs={6} md={3} className="text-center mb-2 mb-md-0">
-                <ProfileIcon width="50" height="80" className="d-inline-block align-top" style = {{ fill: "#E99E14"}}/>
-                <p className="mb-0 mt-0 fw-bold text-gold" style = {{ color: "#E99E14", fontSize: "18px", fontWeight: "bold", marginBottom: "0", marginTop: "4px" }}>Perfil</p>
-                </Col>
-                </Nav.Item>
-                {/* </Navbar.Collapse>   */}
-          </Container>
-        </Navbar>
-        
-        {/* New Image Row */}
-        <Container fluid className="custom-navbar mb-0">
-          <Row className="justify-content-center align-items-center">
-            <Col xs={6} md={3} className="text-center mb-2 mb-md-0">
-              <a href="#sports" className="text-decoration-none">
-              <CalendarIcon width="60" height="90" className="d-inline-block align-top" style = {{ fill: "#E99E14"}}/>
-                <p className="mb-0 mt-0 fw-bold text-gold" style = {{ color: "#E99E14", fontSize: "18px", fontWeight: "bold", marginBottom: "0", marginTop: "4px" }}>Mis Reservas</p>
-              </a>
+              <p
+                className="mb-0 mt-0 fw-bold text-gold"
+                style={{
+                  color: "#E99E14",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  marginBottom: "0",
+                  marginTop: "4px",
+                }}
+              >
+                Perfil
+              </p>
             </Col>
-            <Col xs={6} md={3} className="text-center mb-2 mb-md-0">
-              <a href="#news" className="text-decoration-none">
-                <CourtIcon width="60" height="90" className="d-inline-block align-top" style = {{ fill: "#E99E14"}}/>
-                <p className="mb-0 mt-0 fw-bold text-gold" style = {{ color: "#E99E14", fontSize: "18px", fontWeight: "bold", marginBottom: "0", marginTop: "4px" }}>Canchas</p>
-              </a>
-            </Col>
-            <Col xs={6} md={3} className="text-center mb-2 mb-md-0">
-              <a href="#events" className="text-decoration-none">
-                <SportsIcon width="60" height="90" className="d-inline-block align-top" style = {{ fill: "#E99E14"}}/>
-                <p className="mb-0 mt-0 fw-bold text-gold" style = {{ color: "#E99E14", fontSize: "18px", fontWeight: "bold", marginBottom: "0", marginTop: "4px" }}>Deportes</p>
-              </a>
-            </Col>
-            <Col xs={6} md={3} className="text-center mb-2 mb-md-0">
-              <a href="#shop" className="text-decoration-none">
-              <JoinIcon width="60" height="90" className="d-inline-block align-top" style = {{ fill: "#E99E14"}}/>
-                <p className="mb-0 mt-0 fw-bold text-gold" style = {{ color: "#E99E14", fontSize: "18px", fontWeight: "bold", marginBottom: "0", marginTop: "4px" }}>Unirse a una Reserva</p>
-              </a>
-            </Col>
-          </Row>
+          </Nav.Item>
+          {/* </Navbar.Collapse>   */}
         </Container>
-      </>
-    );
-  }
-  
-  export default NavBar;
+      </Navbar>
+
+      {/* New Image Row */}
+      <Container fluid className="custom-navbar mb-0">
+        <Row className="justify-content-center align-items-center">
+          <Col xs={6} md={3} className="text-center mb-2 mb-md-0">
+            <a href="#sports" className="text-decoration-none">
+              <CalendarIcon
+                width="60"
+                height="90"
+                className="d-inline-block align-top"
+                style={{ fill: "#E99E14" }}
+              />
+              <p
+                className="mb-0 mt-0 fw-bold text-gold"
+                style={{
+                  color: "#E99E14",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  marginBottom: "0",
+                  marginTop: "4px",
+                }}
+              >
+                Mis Reservas
+              </p>
+            </a>
+          </Col>
+          <Col xs={6} md={3} className="text-center mb-2 mb-md-0">
+            <a href="#news" className="text-decoration-none">
+              <CourtIcon
+                width="60"
+                height="90"
+                className="d-inline-block align-top"
+                style={{ fill: "#E99E14" }}
+              />
+              <p
+                className="mb-0 mt-0 fw-bold text-gold"
+                style={{
+                  color: "#E99E14",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  marginBottom: "0",
+                  marginTop: "4px",
+                }}
+              >
+                Canchas
+              </p>
+            </a>
+          </Col>
+          <Col xs={6} md={3} className="text-center mb-2 mb-md-0">
+            <a href="#events" className="text-decoration-none">
+              <SportsIcon
+                width="60"
+                height="90"
+                className="d-inline-block align-top"
+                style={{ fill: "#E99E14" }}
+              />
+              <p
+                className="mb-0 mt-0 fw-bold text-gold"
+                style={{
+                  color: "#E99E14",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  marginBottom: "0",
+                  marginTop: "4px",
+                }}
+              >
+                Deportes
+              </p>
+            </a>
+          </Col>
+          <Col xs={6} md={3} className="text-center mb-2 mb-md-0">
+            <a href="#shop" className="text-decoration-none">
+              <JoinIcon
+                width="60"
+                height="90"
+                className="d-inline-block align-top"
+                style={{ fill: "#E99E14" }}
+              />
+              <p
+                className="mb-0 mt-0 fw-bold text-gold"
+                style={{
+                  color: "#E99E14",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  marginBottom: "0",
+                  marginTop: "4px",
+                }}
+              >
+                Unirse a una Reserva
+              </p>
+            </a>
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+}
+
+export default NavBar;
