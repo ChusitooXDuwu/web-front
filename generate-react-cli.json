@@ -8,14 +8,14 @@
     "default": {
       "path": "src",
       "withStyle": true,
-      "withTest": true,
+      "withTest": false,
       "withStory": false,
       "withLazy": false
     },
     "component": {
       "path": "src/components",
       "withStyle": true,
-      "withTest": true,
+      "withTest": false,
       "withStory": false,
       "withLazy": false
     },
@@ -29,7 +29,7 @@
     "view": {
       "path": "src/view",
       "withStyle": true,
-      "withTest": true,
+      "withTest": false,
       "withStory": false,
       "withLazy": false
     }
