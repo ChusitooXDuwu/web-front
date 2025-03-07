@@ -24,6 +24,13 @@ body {
   background-color: v.$sporthub-purple;
 }
 
+.main_content_container {
+  background-color: white;
+  margin: 0px 0px;
+  flex-grow: 1;
+  padding-bottom: 2rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

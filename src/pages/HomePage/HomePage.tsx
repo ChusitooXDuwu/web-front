@@ -4,7 +4,7 @@ import GameCardComponent from "../../components/GameCardComponent/GameCardCompon
 function HomePage() {
   return (
     <>
-      <Container fluid className={styles.main_content_container}>
+      <Container fluid className={"main_content_container"}>
         <section>
           <h1 className={styles.section_header}>Mis próximos partidos</h1>
           <Row lg={5} md={4} sm={2} xs={1} className="gy-2">
