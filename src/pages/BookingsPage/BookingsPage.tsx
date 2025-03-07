@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 import styles from "./BookingsPage.module.scss";
-import { Container, Row } from "react-bootstrap";
+import { Breadcrumb, Container, Row } from "react-bootstrap";
 import BookingCard from "../../components/BookingCard/BookingCard";
 import BookedEventEntity from "../../entities/BookedEventEntity";
+import { Link } from "react-router-dom";
 
 // TODO REPLACE WITH API FETCH
 const mockData: BookedEventEntity = {
@@ -14,7 +15,6 @@ const mockData: BookedEventEntity = {
   sportName: "Fúbo",
 };
 
-
 interface BookingsPageProps {}
 
 const BookingsPage: FC<BookingsPageProps> = () => {
@@ -24,7 +24,15 @@ const BookingsPage: FC<BookingsPageProps> = () => {
       fluid
       className={`main_content_container ${styles.main_content}`}
     >
-      <Row className={""}>
+      <Row className={styles.title_row}>
+        <Breadcrumb >
+          <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
+            Inicio
+          </Breadcrumb.Item>
+          <Breadcrumb.Item active linkAs={Link} linkProps={{ to: "/bookings" }}>
+            Reservas
+          </Breadcrumb.Item>
+        </Breadcrumb>
         <h1 className={`display-5 ${styles.page_header}`}>Mis Reservas</h1>
       </Row>
       {bookingArray.map((item, index) => (
