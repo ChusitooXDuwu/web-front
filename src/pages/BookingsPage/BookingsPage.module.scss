@@ -1,1 +1,15 @@
-.BookingsPage {}
+@use "../../variables" as v;
+
+.main_content {
+    background-color: rgb(240, 240, 240);
+}
+
+.page_header {
+    color: v.$sporthub-text-gold;
+    text-align: center;
+    background-color: white;
+}
+
+.card_row {
+    padding: 0px 2rem;
+}

@@ -19,6 +19,7 @@ import CreateFieldPage from "./pages/CreateFieldPage/CreateFieldPage";
 import CreateBookingPage from "./pages/CreateBookingPage/CreateBookingPage";
 import CreateEventPage from "./pages/CreateEventPage/CreateEventPage";
 import FieldDetailPage from "./pages/FieldDetailPage/FieldDetailPage";
+import BookingDetailPage from "./pages/BookingDetailPage/BookingDetailPage";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
           <Route path="bookings/create" element={<CreateBookingPage/>}/>
           <Route path="events/create" element={<CreateEventPage/>}/>
           <Route path="fields/:id" element={<FieldDetailPage/>}/>
-          <Route path="booking/:id" element={<BookingsPage/>}/>
+          <Route path="bookings/:id" element={<BookingDetailPage/>}/>
         </Route>
         <Route path="/" element={<LoginView />}>
           <Route path="login" element={<LoginPage />} />
