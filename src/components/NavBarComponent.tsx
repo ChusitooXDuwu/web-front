@@ -86,7 +86,7 @@ function NavBar() {
       <Container fluid className="custom-navbar mb-0">
         <Row className="justify-content-center align-items-center">
           <Col xs={6} md={3} className="text-center mb-2 mb-md-0">
-            <Link to="/sports">
+            <Link to="/bookings">
               <CalendarIcon
                 width="60"
                 height="90"
