@@ -109,7 +109,6 @@ const CreateFieldForm: FunctionComponent<CreateFieldFormProps> = ({
         <Form.Label>Fotos del establecimiento</Form.Label>
         <Form.Control type="file" multiple />
       </Form.Group>
-      <pre>{JSON.stringify(formData, null, 2)}</pre>
       <div className="d-flex justify-content-center">
         <Button type="submit" className="mt-3">
           Crear Cancha
