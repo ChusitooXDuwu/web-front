@@ -10,12 +10,9 @@ import { Link, useNavigate } from "react-router-dom";
 function LoginPage() {
   const navigate = useNavigate();
   return (
-    <Container className={styles.login_container}>
-      <Col>
-        <Row>
+    <Container fluid className={styles.login_container}>
+        <Col xs="auto" className="d-flex flex-column align-items-center">
           <h1 className={`display-1 ${styles.sporthub_title}`}>SportHub</h1>
-        </Row>
-        <Row>
           <Card className={styles.login_card}>
             <Card.Body>
               <Form>
@@ -33,8 +30,6 @@ function LoginPage() {
               </Form>
             </Card.Body>
           </Card>
-        </Row>
-        <Row>
           <Button
             className={styles.login_button}
             variant="primary"
@@ -42,16 +37,13 @@ function LoginPage() {
           >
             Login
           </Button>
-        </Row>
-        <Row>
           <p className={styles.register_text}>
             ¿Nuevo en Sporthub?{" "}
             <Link className={styles.register_link} to={"/signup"}>
               Registrese aquí
             </Link>
           </p>
-        </Row>
-      </Col>
+        </Col>
     </Container>
   );
 }

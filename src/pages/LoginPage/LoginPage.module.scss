@@ -1,20 +1,23 @@
 @use "../../variables" as v;
 
 .login_container {
-  margin: auto;
+  margin: 0px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .sporthub_title {
   color: white;
   text-align: center;
 }
 .login_card {
-  max-width: min(20rem, 90%);
-  margin: 0 auto;
+  min-width: min(20rem, 90%);
 }
 
 .login_button {
-  margin: 4px auto;
-  max-width: min(20rem, 90%);
+  margin-top: 1rem;
+  min-width: min(20rem, 90%);
 }
 
 .register_text {
