@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import styles from "./HomePage.module.scss";
 import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
 function HomePage() {
@@ -10,7 +10,8 @@ function HomePage() {
           <Row lg={5} md={4} sm={2} xs={1} className="gy-2">
             {Array.from({ length: 10 }).map((_, index) => (
               <Col key={index}>
-                <GameCardComponent />
+                {/* TODO add props for testing component */}
+                {/* <GameCardComponent />  */}
               </Col>
             ))}
           </Row>
@@ -20,7 +21,11 @@ function HomePage() {
           <Row lg={5} md={4} sm={2} xs={1} className="gy-2">
             {Array.from({ length: 10 }).map((_, index) => (
               <Col key={index}>
-                <GameCardComponent />
+                <Card>
+                  <Card.Body>
+                    Monda
+                  </Card.Body>
+                </Card>
               </Col>
             ))}
           </Row>
