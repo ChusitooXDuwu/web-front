@@ -24,7 +24,7 @@ const BookingsPage: FC<BookingsPageProps> = () => {
       fluid
       className={`main_content_container ${styles.main_content}`}
     >
-      <Row className={styles.title_row}>
+      <Row className={`pt-2 ${styles.title_row}`}>
         <Breadcrumb >
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
             Inicio

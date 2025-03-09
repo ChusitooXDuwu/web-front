@@ -38,7 +38,7 @@ const FieldsPage: FC<FieldsPageProps> = () => {
   };
   const FieldsData: Array<FieldEntity> = Array(10).fill(mockFieldEntity);
   return (
-    <div className="main_content_container">
+    <div className="main_content_container pt-2">
       <Container fluid={"md"}>
         <Breadcrumb>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
