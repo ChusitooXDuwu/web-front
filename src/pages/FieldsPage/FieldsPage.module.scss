@@ -1,1 +1,12 @@
-.FieldsPage {}
+.search_col {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.search_form {
+    min-width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

@@ -46,12 +46,12 @@ const FieldsPage: FC<FieldsPageProps> = () => {
           </Breadcrumb.Item>
           <Breadcrumb.Item active>Canchas</Breadcrumb.Item>
         </Breadcrumb>
-        <Row>
+        <Row xs={1} md={2} className="mb-3">
           <Col>
-            <h1>Canchas disponibles</h1>
+            <h1 className={`display-5 sh_gold`}>Canchas disponibles</h1>
           </Col>
-          <Col className="d-flex">
-            <Form className="d-flex align-items-center ms-auto">
+          <Col className={styles.search_col}>
+            <Form className={styles.search_form}>
               <Form.Control
                 type="search"
                 placeholder="Buscar"
@@ -64,7 +64,7 @@ const FieldsPage: FC<FieldsPageProps> = () => {
         </Row>
         <Row lg={3} md={3} sm={2} xs={1} className="gy-3">
           {FieldsData.map((item, index) => (
-            <Col key={item ? item.id : index}>
+            <Col key={index}>
               <FieldCardComponent fieldData={item}/>
             </Col>
           ))}
