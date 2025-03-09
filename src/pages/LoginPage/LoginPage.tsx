@@ -10,10 +10,12 @@ function LoginPage() {
   const navigate = useNavigate();
   return (
     <Container fluid className={styles.login_container}>
-      <Col
-        xs="auto"
-        className={`${styles.login_col}`}
-      >
+      <img
+        src="/assets/basketball-court-full.png"
+        alt="Background"
+        className={styles.background_image}
+      />
+      <Col xs="auto" className={`${styles.login_col}`}>
         <h1 className={`display-1 ${styles.sporthub_title}`}>SportHub</h1>
         <Card className={styles.login_card}>
           <Card.Body>
