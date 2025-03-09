@@ -6,5 +6,5 @@ export default interface BookedEventEntity extends BaseEntity{
   locationName: string;
   address: string;
   sportName: string;
-  imageUrl?: string;
+  imageUrl: string | null;
 }

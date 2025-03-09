@@ -13,6 +13,7 @@ const mockData: BookedEventEntity = {
   locationName: "Futbol 8 la 80",
   address: "AC 80 con autopista norte",
   sportName: "Fúbo",
+  imageUrl: null,
 };
 
 interface BookingsPageProps {}
@@ -25,7 +26,7 @@ const BookingsPage: FC<BookingsPageProps> = () => {
       className={`main_content_container ${styles.main_content}`}
     >
       <Row className={`pt-2 ${styles.title_row}`}>
-        <Breadcrumb >
+        <Breadcrumb>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
             Inicio
           </Breadcrumb.Item>

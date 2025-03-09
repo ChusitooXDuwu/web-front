@@ -27,18 +27,15 @@ const BookingCard: FC<BookingCardProps> = ({ bookedEvent }) => {
     minute: "numeric",
     hour12: true,
   });
+  const imageUrl = bookedEvent.imageUrl || "/assets/stock-bb-court.jpeg";
   return (
     <Card className="px-0">
       <Row className={`g-0`}>
         <Col md={2}>
-          <div
+          <img
+            src={imageUrl}
+            alt="Field"
             className={`img-fluid rounded-start rounded-end ${styles.card_img}`}
-            style={{
-              backgroundColor: "grey",
-              width: "100%",
-              height: "100%",
-              minHeight: "100px",
-            }}
           />
         </Col>
         <Col md={10}>
