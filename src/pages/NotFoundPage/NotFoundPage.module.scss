@@ -1,0 +1,16 @@
+@use "../../variables" as v;
+
+.not_found_container {
+  margin: auto 2rem;
+}
+
+.not_found_title {
+  color: white;
+  text-align: center;
+}
+
+.not_found_text {
+  color: white;
+  text-align: center;
+  font-weight: 300;
+}

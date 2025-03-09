@@ -1,14 +1,41 @@
-@import "bootstrap/scss/bootstrap";
+@use "./variables" as v;
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+
+html,
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  height: 100%;
+  max-width: 100vw;
+  background-color: black;
+  font-family: "Urbanist", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* background-color: #FBD1A2; */
+  background-color: #fffaf3;
+}
+
+#root {
+  display: flex;
+  // Prevents breaking layout when viewport is too small
+  overflow-x: hidden;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: v.$sporthub-purple;
+}
+
+.main_content_container {
+  background-color: white;
+  margin: 0px 0px;
+  flex-grow: 1;
+  padding-bottom: 2rem;
+}
+
+.sh_gold {
+  color: v.$sporthub-text-gold;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
