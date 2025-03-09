@@ -1,6 +1,11 @@
 import { Card, Col, Container, Row } from "react-bootstrap";
 import styles from "./HomePage.module.scss";
 import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
+const mockCard = (
+  <Card>
+    <Card.Body>Monda</Card.Body>
+  </Card>
+);
 function HomePage() {
   return (
     <>
@@ -12,6 +17,7 @@ function HomePage() {
               <Col key={index}>
                 {/* TODO add props for testing component */}
                 {/* <GameCardComponent />  */}
+                {mockCard}
               </Col>
             ))}
           </Row>
@@ -20,13 +26,7 @@ function HomePage() {
           <h1 className={styles.section_header}>Partidos disponibles</h1>
           <Row lg={5} md={4} sm={2} xs={1} className="gy-2">
             {Array.from({ length: 10 }).map((_, index) => (
-              <Col key={index}>
-                <Card>
-                  <Card.Body>
-                    Monda
-                  </Card.Body>
-                </Card>
-              </Col>
+              <Col key={index}>{mockCard}</Col>
             ))}
           </Row>
         </section>
