@@ -4,9 +4,16 @@
   justify-content: flex-end;
 }
 
+.create_col {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .search_form {
-    min-width: max-content;
     display: flex;
+    gap: 16px;
     flex-direction: row;
     align-items: center;
 }
