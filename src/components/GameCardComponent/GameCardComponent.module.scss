@@ -1,3 +1,63 @@
-.game_card {
-    height: 8rem;
+@use "../../variables" as v;
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/variables";
+
+.card_content {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: v.$sporthub-purple;
+  padding: 1rem;
+  border-radius: "0 0 8px 8px";
+}
+
+.card_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card_title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: v.$sporthub-text-gold;
+}
+
+.icon_text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 8px;
+  p {
+    margin-bottom: 0px;
+    margin-left: 4px;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .card_img {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+
+  .card_content {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .event_card {
+    max-width: 20rem;
+  }
+  .card_img {
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+  }
+
+  .card_content {
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+  }
 }

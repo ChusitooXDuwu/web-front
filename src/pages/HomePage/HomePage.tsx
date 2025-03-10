@@ -6,6 +6,7 @@ const mockCard = (
     <Card.Body>Monda</Card.Body>
   </Card>
 );
+
 function HomePage() {
   return (
     <>
@@ -24,9 +25,18 @@ function HomePage() {
         </section>
         <section>
           <h1 className={styles.section_header}>Partidos disponibles</h1>
-          <Row lg={5} md={4} sm={2} xs={1} className="gy-2">
+          <Row lg={3} md={2} sm={2} xs={1} className="gy-2">
             {Array.from({ length: 10 }).map((_, index) => (
-              <Col key={index}>{mockCard}</Col>
+              <Col key={index} className="d-flex justify-content-center">
+                <GameCardComponent
+                  start_time={new Date()}
+                  end_time={new Date()}
+                  current_players={4}
+                  max_players={5}
+                  sport="Baloncesto"
+                  image={null}
+                />
+              </Col>
             ))}
           </Row>
         </section>
