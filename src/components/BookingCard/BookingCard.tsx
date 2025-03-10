@@ -35,7 +35,7 @@ const BookingCard: FC<BookingCardProps> = ({ bookedEvent }) => {
           <img
             src={imageUrl}
             alt="Field"
-            className={`img-fluid rounded-start rounded-end ${styles.card_img}`}
+            className={`img-fluid rounded ${styles.card_img}`}
           />
         </Col>
         <Col md={10}>
