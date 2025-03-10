@@ -51,6 +51,10 @@
 }
 
 @include media-breakpoint-down(md) {
+  .booking_card {
+    max-width: 20rem;
+  }
+
   .card_img {
     border-bottom-left-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
