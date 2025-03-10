@@ -5,6 +5,8 @@ import BookingCard from "../../components/BookingCard/BookingCard";
 import BookedEventEntity from "../../entities/BookedEventEntity";
 import { Link } from "react-router-dom";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+console.log("API URL:", API_BASE_URL);
 // TODO REPLACE WITH API FETCH
 const mockData: BookedEventEntity = {
   id: "abc",
