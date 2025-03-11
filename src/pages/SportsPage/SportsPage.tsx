@@ -8,13 +8,15 @@ import { Link } from "react-router-dom";
 // TODO REPLACE WITH API FETCH
 const mockData: SportEntity = {
   id: "abc",
-  name: "Fútbol"
+  name: "Balocesto",
+  available_fields: 2,
+  available_bookings: 5
 };
 
 interface SportsPageProps {}
 
 const SportsPage: FC<SportsPageProps> = () => {
-  const SportArray: any[] = [1, 1];
+  const SportArray: any[] = [1, 1, 1, 1, 1, 1, 1, 1, 1];
   return (
     <Container
       fluid
@@ -31,17 +33,14 @@ const SportsPage: FC<SportsPageProps> = () => {
         </Breadcrumb>
         <h1 className={`display-5 ${styles.page_header}`}>Deportes</h1>
       </Row>
+
+      <Row lg={3} md={3} sm={2} xs={1} className="gy-3 justify-content-center">
       {SportArray.map((item, index) => (
-        
-        <Row key={index}>
-          <Col>
-          <SportCard sport={mockData} />
+          <Col key={index} className="d-flex justify-content-center">
+            <SportCard sport={mockData} />
           </Col>
-          <Col>
-          <SportCard sport={mockData} />
-          </Col>
-        </Row>
       ))}
+      </Row>
     </Container>
   );
 };

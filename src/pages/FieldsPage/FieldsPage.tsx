@@ -17,10 +17,14 @@ const FieldsPage: FC<FieldsPageProps> = () => {
     {
       id: "1",
       name: "Soccer",
+      available_fields: 2,
+      available_bookings: 5
     },
     {
       id: "2",
       name: "Basketball",
+      available_fields: 2,
+      available_bookings: 2
     },
   ];
 

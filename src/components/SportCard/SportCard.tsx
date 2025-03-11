@@ -1,34 +1,45 @@
 import React, { FC } from "react";
 import styles from "./SportCard.module.scss"; 
-
 import { Card, Col, ListGroup, Row } from "react-bootstrap";
 import SportEntity from "../../entities/SportEntity";
-import { Link } from "react-router-dom";
-import sportHubLogo from "../../icons/sporthublogotext.png";
-
 import { ReactComponent as BasketballIcon } from "../../icons/basketballSVG.svg";
-import { Container } from "react-bootstrap";
 
 interface SportCardProps {
   sport: SportEntity;
 }
 
-
 const SportCard: FC<SportCardProps> = ({ sport }) => {
-  let locale = "en-US";
   return (
-    <Container className="d-flex justify-content-center">
-      <Col xs={12} sm={8} md={6} lg={4}> {/* Controls width */}
-        <Card className={`px-0 ${styles.card}`}>
-        <BasketballIcon
-            width="50"
-            height="80"
-            className={styles.icon}
-            style={{ fill: "#E99E14" }}
+    <Card style={{ width: "18rem", backgroundColor: "#60508C" }}>
+      <Card.Body className={styles.card_body}>
+        <div className="d-flex justify-content-center w-100">
+          <BasketballIcon
+            width="100"
+            height="115"
+            style={{ fill: "#FFFFFF" }}
           />
-        </Card>
-      </Col>
-    </Container>
+        </div>
+        <Card.Title className="d-flex justify-content-center" style={{ color: "#FFFFFF" }}>{sport.name}</Card.Title>
+        <Card.Text className={styles.description}>
+          <ListGroup>
+            <ListGroup.Item style={{ backgroundColor: "#60508C", color: "#FFFFFF", borderColor: "#60508C" }}>
+              <Row>
+                <Col className="d-flex justify-content-center">
+                  <b>{sport.available_fields} Campos disponibles</b>
+                </Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item style={{ backgroundColor: "#60508C", color: "#FFFFFF", borderColor: "#60508C" }}>
+              <Row>
+                <Col className="d-flex justify-content-center">
+                  <b>{sport.available_bookings} Reservas disponibles</b>
+                </Col>
+              </Row>
+            </ListGroup.Item>
+          </ListGroup>
+        </Card.Text>
+      </Card.Body>
+    </Card>
   );
 };
 
