@@ -39,6 +39,11 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => (
         </Breadcrumb.Item>
       </Breadcrumb>
     </Row>
+    <Row lg={3} md={3} sm={2} xs={1} className="gy-3 justify-content-center">
+      <Col className="d-flex justify-content-center">
+        <FieldDetailCardComponent field={mockData} />
+      </Col>
+    </Row>
     
     
 
