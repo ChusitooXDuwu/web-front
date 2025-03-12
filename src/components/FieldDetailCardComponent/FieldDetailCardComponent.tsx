@@ -1,37 +1,96 @@
 import React, { FC } from "react";
-import styles from "./FieldDetailCardComponent.module.scss"; 
-import { Card, Col, Container, ListGroup, Row } from "react-bootstrap";
-
+import styles from "./FieldDetailCardComponent.module.scss";
+import { Button, Col, Row } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
 
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
 interface FieldDetailCardProps {
   field: FieldDetailEntity;
 }
 
-
-const mockData: FieldDetailEntity = {
-  id: "abc",
-  field_name: "Campo de Futbol",
-  field_rating: 4.5,
-  phone_number: "123456789",
-  address: "Calle 123",
-  opening_time: "8:00 - 20:00",
-  image_url: "/assets/stock-bb-court.jpeg"
-};
 const FieldDetailCard: FC<FieldDetailCardProps> = ({ field }) => {
-  return (
+  // Function to render rating stars using plain text
+  const renderRatingStars = () => {
+    const fullStars = Math.floor(field.field_rating);
+    const hasHalfStar = field.field_rating % 1 >= 0.5;
     
-    
-    
-    <Card style={{ width: "18rem", backgroundColor: "#60508C" }}>
-      <Row lg={3} md={3} sm={2} xs={1} className="gy-3 justify-content-left">
-      
-      <Col className="d-flex justify-content-center">
-        
-      </Col>
-    </Row>
+    return (
+      <div className="d-flex align-items-center">
+        {[...Array(fullStars)].map((_, i) => (
+          <span key={i} className={styles.starFull}>★</span>
+        ))}
+        {hasHalfStar && <span className={styles.starFull}>½</span>}
+        {[...Array(5 - fullStars - (hasHalfStar ? 1 : 0))].map((_, i) => (
+          <span key={i} className={styles.starEmpty}>☆</span>
+        ))}
+        <span className={`ms-2 ${styles.ratingText}`}>({field.field_rating}/5)</span>
+      </div>
+    );
+  };
 
-    </Card>
+  return (
+    <div className={styles.container}>
+      <div className={styles.contentWrapper}>
+        <Row className={styles.detailRow}>
+          {/* Left column - Image */}
+          <Col xs={12} md={5} className={styles.imageColumn}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src={field.image_url}
+                alt={field.field_name}
+                className={styles.fieldImage}
+              />
+              <div className={styles.ratingBadge}>
+                {field.field_rating} ★
+              </div>
+            </div>
+          </Col>
+          
+          {/* Right column - Details */}
+          <Col xs={12} md={7} className={styles.detailsColumn}>
+            <h2 className={styles.fieldTitle}>
+              {field.field_name}
+            </h2>
+            
+            {renderRatingStars()}
+            
+            <hr className={styles.divider} />
+            
+            <h4 className={styles.sectionTitle}>Detalles de la cancha</h4>
+            
+            <div className={styles.detailsContainer}>
+              <div className={styles.detailItem}>
+                <span className={styles.detailIcon}>📍</span>
+                <span>{field.address}</span>
+                <span className={styles.mapButtonWrapper}>
+                  <Button className={styles.mapButton}>
+                    Ver en Mapa
+                  </Button>
+                </span>
+              </div>
+              
+              <div className={styles.detailItem}>
+                <span className={styles.detailIcon}>🕒</span>
+                <span>Horarios: {field.opening_time}</span>
+              </div>
+              
+              <div className={styles.detailItem}>
+                <span className={styles.detailIcon}>📞</span>
+                <span>Contacto: {field.phone_number}</span>
+              </div>
+            </div>
+            
+            <hr className={styles.divider} />
+            
+            <div className={styles.actionButtonContainer}>
+              <Button className={styles.bookButton}>
+                Crear una reserva
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      </div>
+    </div>
   );
 };
 

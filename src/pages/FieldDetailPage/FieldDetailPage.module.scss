@@ -1,1 +1,18 @@
-.FieldDetailPage {}
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/variables";
+
+
+.alignedSection {
+    padding: 0 40px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1400px;
+  }
+  
+  // Responsive adjustment
+  @media (max-width: 768px) {
+    .alignedSection {
+      padding: 0 20px;
+    }
+  }
