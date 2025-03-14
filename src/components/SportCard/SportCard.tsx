@@ -3,14 +3,23 @@ import styles from "./SportCard.module.scss";
 import { Card, Col, ListGroup, Row } from "react-bootstrap";
 import SportEntity from "../../entities/SportEntity";
 import { ReactComponent as BasketballIcon } from "../../icons/basketballSVG.svg";
+import { useNavigate } from "react-router-dom";
+
 
 interface SportCardProps {
   sport: SportEntity;
 }
 
+
 const SportCard: FC<SportCardProps> = ({ sport }) => {
+
+  const navigate = useNavigate();
+  const navToFields = () => navigate(`/fields`);
+
+
   return (
-    <Card style={{ width: "18rem", backgroundColor: "#60508C" }}>
+  
+    <Card style={{ width: "18rem", backgroundColor: "#60508C" }} onClick={navToFields} className={`${styles.sport_card}`}>
       <Card.Body className={styles.card_body}>
         <div className="d-flex justify-content-center w-100">
           <BasketballIcon
