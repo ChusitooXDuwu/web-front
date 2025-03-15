@@ -8,9 +8,13 @@ interface FieldDetailCardProps {
   field: FieldDetailEntity;
 }
 
-const FieldDetailCard: FC<FieldDetailCardProps> = ({ field }) => {
+
+
+const FieldDetailCard: FC<FieldDetailCardProps> = ({ field}) => {
   // Function to render rating stars using plain text
   const renderRatingStars = () => {
+    // Determine button text based on isBooking property
+    
     const fullStars = Math.floor(field.field_rating);
     const hasHalfStar = field.field_rating % 1 >= 0.5;
     
@@ -84,7 +88,8 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field }) => {
             
             <div className={styles.actionButtonContainer}>
               <Button className={styles.bookButton}>
-                Crear una reserva
+                
+                {field.isBooking ? "Cancelar Reserva" : "Crear una reserva"}
               </Button>
             </div>
           </Col>

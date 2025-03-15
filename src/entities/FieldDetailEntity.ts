@@ -6,5 +6,6 @@ export default interface FieldDetailEntity {
   address: string;
   opening_time: string;
   image_url: string;
+  isBooking: boolean;
 
 }

@@ -18,7 +18,8 @@ const mockData: FieldDetailEntity = {
   phone_number: "123456789",
   address: "Calle 123",
   opening_time: "8:00 - 20:00",
-  image_url: "/assets/basket_horizontal.jpg"
+  image_url: "/assets/basket_horizontal.jpg",
+  isBooking: false
 };
 
 const mockEvent: EventEntity = {
