@@ -20,8 +20,24 @@ const mockPlayer: UserEntity = {
   phone_number: "123456789",
   image_url: "/assets/basket_horizontal.jpg"
   }
-
-
+  
+const mockEvent: EventEntity = {
+    id: "1",
+    startTime: new Date(),
+    endTime: new Date(),
+    currentPlayers: 4,
+    maxPlayers: 5,
+    sport: { id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 },
+    field: {
+      id: "1",
+      name: "Cancha de baloncesto",
+      address: "Calle 123",
+      city: { id: "1", name: "Medellín" },
+      sports: [{ id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 }],
+      createdById: "1",
+    },
+    image: null,
+  };
 
 const mockData: FieldDetailEntity = {
   id: "abc",
@@ -31,7 +47,8 @@ const mockData: FieldDetailEntity = {
   address: "Calle 123",
   opening_time: "8:00 - 20:00",
   image_url: "/assets/basket_horizontal.jpg",
-  isBooking: true
+  isBooking: true,
+  field_type: "booking"
 };
 
 interface BookingDetailPageProps {}
@@ -61,7 +78,7 @@ const BookingDetailPage: FC<BookingDetailPageProps> = () => {
     </Row>
     <Row className="justify-content-center">
         <div className={styles.alignedSection} >
-          <h2 className={styles.participantTitle}>Participantes:</h2>
+        <h2 className={styles.participantTitle}>Participantes ({mockEvent.currentPlayers}/{mockEvent.maxPlayers}):</h2>
           <Col lg={3} md={2} sm={2} xs={1}>
           {bookingArray.map((item, index) => (
             

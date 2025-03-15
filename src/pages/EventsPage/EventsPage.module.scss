@@ -1,1 +1,19 @@
-.EventsPage {}
+.search_col {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  
+  .create_col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .search_form {
+      display: flex;
+      gap: 16px;
+      flex-direction: row;
+      align-items: center;
+  }

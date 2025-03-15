@@ -89,7 +89,14 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field}) => {
             <div className={styles.actionButtonContainer}>
               <Button className={styles.bookButton}>
                 
-                {field.isBooking ? "Cancelar Reserva" : "Crear una reserva"}
+                
+                {/* si field_type es field poner "Crear una reserva", si es booking "cancelar reserva" y si es "event" unirse a la reserva 
+                */}
+                {field.field_type === "field" && "Crear una reserva"}
+                {field.field_type === "booking" && "Cancelar reserva"}
+                {field.field_type === "event" && "Unirse a la reserva"}
+
+                
               </Button>
             </div>
           </Col>
