@@ -1,10 +1,12 @@
+import { useQuery } from "@tanstack/react-query";
+import { FC } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import BookingCard from "../../components/BookingCard/BookingCard";
 import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
-import { BookedEventEntity, EventEntity } from "../../entities/Entities";
+import { EventEntity } from "../../entities/Entities";
+import { getMyBookings } from "../../services/BookingsService/BookingsService";
 import styles from "./HomePage.module.scss";
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
 
 interface noDataCardProps {
   dataName: string;
@@ -47,19 +49,12 @@ const HomePage: FC<HomePageProps> = () => {
     },
     image: null,
   };
-  const mockUpcomingEvent: BookedEventEntity = {
-    startDateTime: new Date(),
-    endDateTime: new Date(),
-    locationName: "Tejo la embajada",
-    address: "7 de agosto",
-    sportName: "Tejo",
-    imageUrl: null,
-    id: "xd",
-  };
-  let upcomingEvents = Array(1).fill(mockUpcomingEvent);
+  const { isSuccess, data } = useQuery({
+    queryKey: ["bookings"],
+    queryFn: getMyBookings,
+  });
+  const upcomingEvents = isSuccess ? data.data : [];
   let suggestedEvents = Array(10).fill(mockEvent);
-  // upcomingEvents = [];
-  // suggestedEvents = [];
   const renderSuggestedEvents = suggestedEvents.map((event, index) => (
     <Col key={index} className="d-flex justify-content-center">
       <GameCardComponent event={event} />
@@ -67,7 +62,7 @@ const HomePage: FC<HomePageProps> = () => {
   ));
   const renderUpcomingEvents = upcomingEvents.map((event, index) => (
     <Col key={index} className="d-flex justify-content-center">
-      <BookingCard bookedEvent={event} />
+      <BookingCard bookedEvent={event!} />
     </Col>
   ));
   return (
