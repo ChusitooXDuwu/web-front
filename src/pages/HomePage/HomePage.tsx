@@ -66,7 +66,7 @@ const HomePage: FC<HomePageProps> = () => {
     </Col>
   ));
   const renderUpcomingEvents = upcomingEvents.map((event, index) => (
-    <Col key={index}>
+    <Col key={index} className="d-flex justify-content-center">
       <BookingCard bookedEvent={event} />
     </Col>
   ));

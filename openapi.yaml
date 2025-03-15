@@ -1,0 +1,280 @@
+openapi: 3.0.3
+info:
+  title: SportHub API
+  description: API for SportHub
+  contact:
+    email: d.trivino@uniandes.edu.co
+  version: 1.0.0
+
+tags:
+  - name: Users
+  - name: Bookings
+  - name: Sports
+  - name: Fields
+
+paths:
+  # Users
+  /profile:
+    get:
+      tags:
+        - Users
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/GeneralResponse"
+                  - properties:
+                      data:
+                        $ref: "#/components/schemas/User"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+  # Bookings
+  /bookings:
+    get:
+      tags:
+        - Bookings
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/GeneralResponse"
+                  - properties:
+                      data:
+                        $ref: "#/components/schemas/BookingList"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+    post:
+      tags:
+        - Bookings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/GeneralResponse"
+                - properties:
+                    data:
+                      $ref: "#/components/schemas/BaseBooking"
+      responses:
+        201:
+          description: created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Booking"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+  /bookings/{bookingId}:
+    get:
+      tags:
+        - Bookings
+      parameters:
+        - name: bookingId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: id of the booking to get
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/GeneralResponse"
+                  - properties:
+                      data:
+                        $ref: "#/components/schemas/Booking"
+    delete:
+      tags:
+        - Bookings
+      parameters:
+        - name: bookingId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: id of the booking to delete
+      responses:
+        200:
+          $ref: "#/components/responses/SuccessfulDelete"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        404:
+          $ref: "#/components/responses/NotFound"
+# COMPONENTS
+components:
+  schemas:
+    # General schemas
+    Error:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+        data:
+          type: object
+      required:
+        - code
+        - message
+        - data
+    GeneralResponse:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+        data:
+          type: object
+    # Base schemas
+    BaseEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    # Booking schemas
+    BaseBooking:
+      type: object
+      properties:
+        startDateTime:
+          type: string
+          format: date-time
+        endDateTime:
+          type: string
+          format: date-time
+        locationName:
+          type: string
+          example: "Cancha futbol 8"
+        address:
+          type: string
+          example: "Calle 123 # 45-67"
+        sportName:
+          type: string
+          example: "Futbol"
+        imageUrl:
+          type: string
+          example: "https://www.mockimage.com"
+    Booking:
+      allOf:
+        - $ref: "#/components/schemas/BaseEntity"
+        - $ref: "#/components/schemas/BaseBooking"
+    BookingList:
+      type: array
+      items:
+        $ref: "#/components/schemas/Booking"
+
+    # Field schemas
+    BaseField:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        city:
+          type: string
+        address:
+          type: string
+        createdById:
+          type: string
+          format: uuid
+    Field:
+      allOf:
+        - $ref: "#/components/schemas/BaseEntity"
+        - $ref: "#/components/schemas/BaseField"
+    # Sport schemas
+    BaseSport:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Futbol"
+    Sport:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/BaseEntity"
+        - $ref: "#/components/schemas/BaseSport"
+    SportList:
+      type: array
+      items:
+        $ref: "#/components/schemas/Sport"
+    # City Schemas
+    BaseCity:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Bogota"
+    City:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/BaseEntity"
+        - $ref: "#/components/schemas/BaseCity"
+    CityList:
+      type: array
+      items:
+        $ref: "#/components/schemas/City"
+    # User schemas
+    BaseUser:
+      type: object
+      properties:
+        name:
+          type: string
+          example: juan
+        email:
+          type: string
+          example: juan@email.com
+        password:
+          type: string
+          example: "123456"
+    User:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/BaseEntity"
+        - $ref: "#/components/schemas/BaseUser"
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    BadRequest:
+      description: The request body has incorrect data
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    SuccessfulDelete:
+      description: The resource was deleted successfully
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"

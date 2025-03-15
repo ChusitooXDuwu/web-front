@@ -29,7 +29,7 @@ const BookingCard: FC<BookingCardProps> = ({ bookedEvent }) => {
   });
   const imageUrl = bookedEvent.imageUrl || "/assets/stock-bb-court.jpeg";
   return (
-    <Card className="px-0">
+    <Card className={`${styles.booking_card} px-0`}>
       <Row className={`g-0`}>
         <Col md={2}>
           <img

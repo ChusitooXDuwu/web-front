@@ -1,31 +1,24 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styles from "./BookingsPage.module.scss";
 import { Breadcrumb, Container, Row } from "react-bootstrap";
 import BookingCard from "../../components/BookingCard/BookingCard";
-import BookedEventEntity from "../../entities/BookedEventEntity";
 import { Link } from "react-router-dom";
-
-// TODO REPLACE WITH API FETCH
-const mockData: BookedEventEntity = {
-  id: "abc",
-  startDateTime: new Date(),
-  endDateTime: new Date(),
-  locationName: "Futbol 8 la 80",
-  address: "AC 80 con autopista norte",
-  sportName: "Fúbo",
-  imageUrl: null,
-};
+import { useQuery } from "@tanstack/react-query";
+import { getMyBookings } from "../../services/BookingsService/BookingsService";
 
 interface BookingsPageProps {}
 
 const BookingsPage: FC<BookingsPageProps> = () => {
-  const bookingArray: any[] = [1, 1, 1, 1, 1];
+  const { isSuccess, data } = useQuery({
+    queryKey: ["bookings"],
+    queryFn: getMyBookings,
+  });
   return (
     <Container
       fluid
       className={`main_content_container ${styles.main_content}`}
     >
-      <Row className={`pt-2 ${styles.title_row}`}>
+      <Row className={`pt-2 mb-2 ${styles.title_row}`}>
         <Breadcrumb>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
             Inicio
@@ -36,11 +29,15 @@ const BookingsPage: FC<BookingsPageProps> = () => {
         </Breadcrumb>
         <h1 className={`display-5 ${styles.page_header}`}>Mis Reservas</h1>
       </Row>
-      {bookingArray.map((item, index) => (
-        <Row key={index} className={`mb-2 ${styles.card_row}`}>
-          <BookingCard bookedEvent={mockData} />
-        </Row>
-      ))}
+      {isSuccess &&
+        data.data.map((item, index) => (
+          <Row
+            key={index}
+            className={`d-flex flex-col justify-content-center mb-2 ${styles.card_row}`}
+          >
+            <BookingCard bookedEvent={item!} />
+          </Row>
+        ))}
     </Container>
   );
 };
