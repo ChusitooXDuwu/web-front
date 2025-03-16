@@ -2,6 +2,7 @@ import React, { ChangeEvent, FunctionComponent, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { SportEntity, CityEntity } from "../../../entities/Entities";
 import styles from "./CreateFieldFrom.module.scss";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface CreateFieldFormData {
   name: string;
@@ -20,6 +21,7 @@ const CreateFieldForm: FunctionComponent<CreateFieldFormProps> = ({
   cities,
   sports,
 }) => {
+  const { formatMessage } = useIntl();
   const [formData, setFormData] = useState<CreateFieldFormData>({
     name: "",
     cityId: "",
@@ -51,18 +53,24 @@ const CreateFieldForm: FunctionComponent<CreateFieldFormProps> = ({
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label>Nombre</Form.Label>
+        <Form.Label>
+          <FormattedMessage id="field.form.label.name" />
+        </Form.Label>
         <Form.Control
           name="name"
           onChange={handleChange}
-          placeholder="Ingrese el nombre del establecimiento"
+          placeholder={formatMessage({ id: "field.form.placeholder.name" })}
           required
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label>Ciudad</Form.Label>
+        <Form.Label>
+          <FormattedMessage id="field.form.label.city" />
+        </Form.Label>
         <Form.Select name="cityId" onChange={handleChange} required>
-          <option value={""}>Seleccione una opción</option>
+          <option value={""}>
+            <FormattedMessage id="field.form.choice" />
+          </option>
           {cities.map((item, index) => (
             <option key={index} value={item.id}>
               {item.name}
@@ -71,27 +79,33 @@ const CreateFieldForm: FunctionComponent<CreateFieldFormProps> = ({
         </Form.Select>
       </Form.Group>
       <Form.Group>
-        <Form.Label>Dirección</Form.Label>
+        <Form.Label>
+          <FormattedMessage id="field.form.label.address" />
+        </Form.Label>
         <Form.Control
           name="address"
           onChange={handleChange}
-          placeholder="Ingrese la dirección"
+          placeholder={formatMessage({ id: "field.form.placeholder.address" })}
           required
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label>Precio</Form.Label>
+        <Form.Label>
+          <FormattedMessage id="field.form.label.price" />{" "}
+        </Form.Label>
         <Form.Control
           name="price"
           type="number"
           min={0}
           onChange={handleChange}
-          placeholder="Ingrese el precio"
+          placeholder={formatMessage({ id: "field.form.placeholder.price" })}
           required
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label>Deportes</Form.Label>
+        <Form.Label>
+          <FormattedMessage id="field.form.label.sports" />
+        </Form.Label>
         <Row>
           {sports.map((item, index) => (
             <Col key={index} className={styles.check_col}>
@@ -106,12 +120,14 @@ const CreateFieldForm: FunctionComponent<CreateFieldFormProps> = ({
         </Row>
       </Form.Group>
       <Form.Group>
-        <Form.Label>Fotos del establecimiento</Form.Label>
+        <Form.Label>
+          <FormattedMessage id="field.form.label.photos" />
+        </Form.Label>
         <Form.Control type="file" multiple />
       </Form.Group>
       <div className="d-flex justify-content-center">
         <Button type="submit" className="mt-3">
-          Crear Cancha
+          <FormattedMessage id="field.form.submit"/>
         </Button>
       </div>
     </Form>

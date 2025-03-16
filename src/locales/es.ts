@@ -12,6 +12,7 @@ const en: { [key: string]: string } = {
   "pages.home": "Inicio",
   "pages.bookings": "Reservas",
   "pages.fields": "Canchas",
+  "pages.fields.create": "Crear Cancha",
   //Forms
   "form.placeholder.name": "Ingrese su nombre",
   "form.placeholder.email": "Ingrese su correo",
@@ -34,8 +35,20 @@ const en: { [key: string]: string } = {
   // Fields
   "fields.title": "Canchas disponibles",
   "fields.createButton": "Crear cancha",
-  "fields.dataNotFound":
-    "No se encontraron datos para la búsqueda ' {value} '",
+  "fields.dataNotFound": "No se encontraron datos para la búsqueda ' {value} '",
+  // Create Field
+  "fields.create.title": "Crear una nueva cancha",
+  "field.form.label.name": "Nombre",
+  "field.form.placeholder.name": "Ingrese el nombre del establecimiento",
+  "field.form.label.city": "Ciudad",
+  "field.form.choice": "Seleccione una opción",
+  "field.form.label.address": "Dirección",
+  "field.form.placeholder.address": "Ingrese la dirección",
+  "field.form.label.price": "Precio",
+  "field.form.placeholder.price": "Ingrese el precio",
+  "field.form.label.sports": "Deportes",
+  "field.form.label.photos": "Fotos del establecimiento",
+  "field.form.submit": "Crear Cancha",
 };
 
 export default en;

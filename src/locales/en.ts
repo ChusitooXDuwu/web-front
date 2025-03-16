@@ -12,6 +12,7 @@ const es: { [key: string]: string } = {
   "pages.home": "Home",
   "pages.bookings": "Bookings",
   "pages.fields": "Fields",
+  "pages.fields.create": "Create field",
   //Forms
   "form.placeholder.name": "Enter your name",
   "form.placeholder.email": "Enter your email",
@@ -34,8 +35,20 @@ const es: { [key: string]: string } = {
   // Fields
   "fields.title": "Available fields",
   "fields.createButton": "Create field",
-  "fields.dataNotFound":
-    "No data was found for search value ' {value} '",
+  "fields.dataNotFound": "No data was found for search value ' {value} '",
+  // Create Field
+  "fields.create.title": "Create a new field",
+  "field.form.label.name": "Name",
+  "field.form.placeholder.name": "Enter the name of the field",
+  "field.form.label.city": "City",
+  "field.form.choice": "Select an option",
+  "field.form.label.address": "Address",
+  "field.form.placeholder.address": "Enter your address",
+  "field.form.label.price": "Price",
+  "field.form.placeholder.price": "Enter the price",
+  "field.form.label.sports": "Sports",
+  "field.form.label.photos": "Field photos",
+  "field.form.submit": "Create Field",
 };
 
 export default es;
