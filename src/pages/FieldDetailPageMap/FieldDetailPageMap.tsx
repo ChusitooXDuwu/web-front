@@ -39,9 +39,9 @@ function FieldDetailPageMap() {
             Canchas
             </Breadcrumb.Item>
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/fields/${mockData.id}` }}>
-            Canchas
+            {mockData.field_name}
             </Breadcrumb.Item>
-            <Breadcrumb.Item active>{`Map of ${mockData.field_name}`}</Breadcrumb.Item>
+            <Breadcrumb.Item active>{`Mapa de  ${mockData.field_name}`}</Breadcrumb.Item>
         </Breadcrumb>
         </Row>
         <Container fluid className="main_content_container pt-2 d-flex">
