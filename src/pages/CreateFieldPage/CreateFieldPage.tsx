@@ -4,9 +4,9 @@ import { Breadcrumb, Card, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CreateFieldForm from "./CreateFieldForm/CreateFieldForm";
 import { FormattedMessage } from "react-intl";
-import SportEntity from "../../entities/SportEntity";
 import { useQuery } from "@tanstack/react-query";
 import getCities from "../../services/CitiesService/CitiesService";
+import getSports from "../../services/SportsService/SportsService";
 
 interface CreateFieldPageProps {}
 
@@ -16,16 +16,10 @@ const CreateFieldPage: FC<CreateFieldPageProps> = () => {
     queryFn: getCities,
   });
 
-  const mockSports: SportEntity[] = [
-    { id: "1", name: "Fútbol", availableFields: 2, availableBookings: 5 },
-    { id: "2", name: "Baloncesto", availableFields: 2, availableBookings: 2 },
-    { id: "3", name: "Tenis", availableFields: 3, availableBookings: 5 },
-    { id: "4", name: "Voleibol", availableFields: 1, availableBookings: 3 },
-    { id: "5", name: "Padel 🏳️‍🌈", availableFields: 6, availableBookings: 8 },
-    { id: "6", name: "Squash", availableFields: 6, availableBookings: 8 },
-    { id: "7", name: "Futbol-5", availableFields: 6, availableBookings: 8 },
-    { id: "8", name: "Patinaje", availableFields: 6, availableBookings: 8 },
-  ];
+  const { data: sportsData } = useQuery({
+    queryKey: ["sports"],
+    queryFn: getSports,
+  });
   return (
     <Container fluid className={`main_content_container`}>
       <Row>
@@ -48,7 +42,7 @@ const CreateFieldPage: FC<CreateFieldPageProps> = () => {
           </Card.Header>
           <Card.Body>
             <CreateFieldForm
-              sports={mockSports}
+              sports={sportsData? sportsData.data: []}
               cities={citiesData ? citiesData.data : []}
             />
           </Card.Body>
