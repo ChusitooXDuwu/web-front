@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import { Link, useNavigate } from "react-router-dom";
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface LoginInfo {
   email: string;
@@ -14,6 +15,7 @@ interface LoginInfo {
 
 function LoginPage() {
   const navigate = useNavigate();
+  const intl = useIntl();
   const [loginData, setLoginData] = useState<LoginInfo>({
     email: "",
     password: "",
@@ -30,6 +32,9 @@ function LoginPage() {
     navigate("/home");
   };
 
+  const emailPlaceholder = intl.formatMessage({ id: "emailPlaceholder" });
+  const passPlaceholder = intl.formatMessage({ id: "passwordPlaceholder" });
+
   return (
     <Container fluid className={styles.login_container}>
       <img
@@ -43,23 +48,27 @@ function LoginPage() {
           <Card className={styles.login_card}>
             <Card.Body>
               <Form.Group>
-                <Form.Label>Email</Form.Label>
+                <Form.Label>
+                  <FormattedMessage id="email" />
+                </Form.Label>
                 <Form.Control
                   name="email"
                   required
                   onChange={handleChange}
                   type="email"
-                  placeholder="Ingrese su correo"
+                  placeholder={emailPlaceholder}
                 />
               </Form.Group>
               <Form.Group>
-                <Form.Label>Password</Form.Label>
+                <Form.Label>
+                  <FormattedMessage id="password" />
+                </Form.Label>
                 <Form.Control
                   name="password"
                   required
                   onChange={handleChange}
                   type="password"
-                  placeholder="Ingrese su contraseña"
+                  placeholder={passPlaceholder}
                 />
               </Form.Group>
             </Card.Body>
@@ -69,13 +78,13 @@ function LoginPage() {
             className={styles.login_button}
             variant="primary"
           >
-            Login
+            <FormattedMessage id="login"/>
           </Button>
         </Form>
         <p className={styles.register_text}>
-          ¿Nuevo en Sporthub?{" "}
+          <FormattedMessage id="newInSporthub"/> {" "}
           <Link className={styles.register_link} to={"/signup"}>
-            Registrese aquí
+            <FormattedMessage id="registerHere" />
           </Link>
         </p>
       </Col>
