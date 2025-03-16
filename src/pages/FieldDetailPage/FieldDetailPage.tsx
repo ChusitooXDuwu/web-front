@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
 import BookingCard from "../../components/BookingCard/BookingCard";
 import GameCardComponent from '../../components/GameCardComponent/GameCardComponents';
-import { EventEntity } from '../../entities/Entities';
+import { EventInterface } from '../../entities/Entities';
 
 // TODO REPLACE WITH API FETCH
 
@@ -23,19 +23,19 @@ const mockData: FieldDetailEntity = {
   field_type: "field"
 };
 
-const mockEvent: EventEntity = {
+const mockEvent: EventInterface = {
     id: "1",
     startTime: new Date(),
     endTime: new Date(),
     currentPlayers: 4,
     maxPlayers: 5,
-    sport: { id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 },
+    sport: { id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 },
     field: {
       id: "1",
       name: "Cancha de baloncesto",
       address: "Calle 123",
       city: { id: "1", name: "Medellín" },
-      sports: [{ id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 }],
+      sports: [{ id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 }],
       createdById: "1",
     },
     image: null,

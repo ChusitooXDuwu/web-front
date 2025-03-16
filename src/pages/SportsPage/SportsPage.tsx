@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 const mockData: SportEntity = {
   id: "abc",
   name: "Balocesto",
-  available_fields: 2,
-  available_bookings: 5
+  availableFields: 2,
+  availableBookings: 5
 };
 
 interface SportsPageProps {}

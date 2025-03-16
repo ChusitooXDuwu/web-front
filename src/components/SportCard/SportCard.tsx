@@ -34,14 +34,14 @@ const SportCard: FC<SportCardProps> = ({ sport }) => {
             <ListGroup.Item style={{ backgroundColor: "#60508C", color: "#FFFFFF", borderColor: "#60508C" }}>
               <Row>
                 <Col className="d-flex justify-content-center">
-                  <b>{sport.available_fields} Campos disponibles</b>
+                  <b>{sport.availableFields} Campos disponibles</b>
                 </Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item style={{ backgroundColor: "#60508C", color: "#FFFFFF", borderColor: "#60508C" }}>
               <Row>
                 <Col className="d-flex justify-content-center">
-                  <b>{sport.available_bookings} Reservas disponibles</b>
+                  <b>{sport.availableBookings} Reservas disponibles</b>
                 </Col>
               </Row>
             </ListGroup.Item>

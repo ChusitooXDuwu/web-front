@@ -4,11 +4,11 @@ import Row from "react-bootstrap/Row";
 import { FC, useState } from "react";
 import { Card } from "react-bootstrap";
 import styles from "./GameCardComponent.module.scss";
-import { EventEntity } from "../../entities/Entities";
+import { EventInterface } from "../../entities/Entities";
 import { useNavigate } from "react-router-dom";
 
 interface GameCardComponentProps {
-  event: EventEntity;
+  event: EventInterface;
 }
 
 const GameCardComponent: FC<GameCardComponentProps> = ({ event }) => {

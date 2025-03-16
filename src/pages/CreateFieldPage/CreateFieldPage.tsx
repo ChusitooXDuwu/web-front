@@ -4,6 +4,7 @@ import { Breadcrumb, Card, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CreateFieldForm from "./CreateFieldForm/CreateFieldForm";
 import { FormattedMessage } from "react-intl";
+import SportEntity from "../../entities/SportEntity";
 
 interface CreateFieldPageProps {}
 
@@ -16,15 +17,15 @@ const CreateFieldPage: FC<CreateFieldPageProps> = () => {
     { id: "5", name: "Bucaramanga" },
   ];
 
-  const mockSports = [
-    { id: "1", name: "Fútbol", available_fields: 2, available_bookings: 5 },
-    { id: "2", name: "Baloncesto", available_fields: 2, available_bookings: 2 },
-    { id: "3", name: "Tenis", available_fields: 3, available_bookings: 5 },
-    { id: "4", name: "Voleibol", available_fields: 1, available_bookings: 3 },
-    { id: "5", name: "Padel 🏳️‍🌈", available_fields: 6, available_bookings: 8},
-    { id: "6", name: "Squash", available_fields: 6, available_bookings: 8},
-    { id: "7", name: "Futbol-5", available_fields: 6, available_bookings: 8},
-    { id: "8", name: "Patinaje", available_fields: 6, available_bookings: 8},
+  const mockSports: SportEntity[] = [
+    { id: "1", name: "Fútbol", availableFields: 2, availableBookings: 5 },
+    { id: "2", name: "Baloncesto", availableFields: 2, availableBookings: 2 },
+    { id: "3", name: "Tenis", availableFields: 3, availableBookings: 5 },
+    { id: "4", name: "Voleibol", availableFields: 1, availableBookings: 3 },
+    { id: "5", name: "Padel 🏳️‍🌈", availableFields: 6, availableBookings: 8},
+    { id: "6", name: "Squash", availableFields: 6, availableBookings: 8},
+    { id: "7", name: "Futbol-5", availableFields: 6, availableBookings: 8},
+    { id: "8", name: "Patinaje", availableFields: 6, availableBookings: 8},
   ];
   return (
     <Container fluid className={`main_content_container`}>
