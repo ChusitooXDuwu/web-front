@@ -18,6 +18,11 @@ const en: { [key: string]: string } = {
   "form.label.password": "Contraseña",
   "form.label.phone": "Telefono",
   "form.label.birthdate": "Fecha de nacimiento",
+  // Home
+  "home.title.upcoming": "Mis próximos partidos",
+  "home.title.available": "Partidos disponibles",
+  "home.link.bookings": "Ver todas",
+  "home.link.totalBookings": "Tiene un total de {bookings} reservas",
 };
 
 export default en;

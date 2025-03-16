@@ -18,6 +18,11 @@ const es: { [key: string]: string } = {
   "form.label.password": "Password",
   "form.label.phone": "Phone",
   "form.label.birthdate": "Birth date",
+  // Home
+  "home.title.upcoming": "My upcoming events",
+  "home.title.available": "Available events",
+  "home.link.bookings": "See all",
+  "home.link.totalBookings": "You have a total of {bookings} bookings",
 };
 
 export default es;

@@ -8,6 +8,7 @@ import { EventEntity } from "../../entities/Entities";
 import { getMyBookings } from "../../services/BookingsService/BookingsService";
 import styles from "./HomePage.module.scss";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 interface noDataCardProps {
   dataName: string;
@@ -95,15 +96,22 @@ const HomePage: FC<HomePageProps> = () => {
     <Container fluid className={"main_content_container"}>
       <Container fluid={"md"}>
         <section>
-          <h1 className={styles.section_header}>Mis próximos partidos</h1>
+          <h1 className={styles.section_header}>
+            <FormattedMessage id="home.title.upcoming" />
+          </h1>
           <Row xs={1} className="gy-2 text-center">
             {upcomingEvents.length > 0 ? (
               <>
                 <RenderUpcomingEvents />
                 {upcomingEvents.length > topUpcomingEvents.length && (
                   <p>
-                    Tiene un total de {upcomingEvents.length} reservas{" "}
-                    <Link to={"/bookings"}>Ver todas</Link>{" "}
+                    <FormattedMessage
+                      id="home.link.totalBookings"
+                      values={{ bookings: upcomingEvents.length }}
+                    />{" "}
+                    <Link to={"/bookings"}>
+                      <FormattedMessage id="home.link.bookings" />
+                    </Link>{" "}
                   </p>
                 )}
               </>
@@ -117,7 +125,9 @@ const HomePage: FC<HomePageProps> = () => {
           </Row>
         </section>
         <section>
-          <h1 className={styles.section_header}>Partidos disponibles</h1>
+          <h1 className={styles.section_header}>
+            <FormattedMessage id="home.title.available" />
+          </h1>
           {suggestedEvents.length > 0 ? (
             <Row lg={3} md={2} sm={2} xs={1} className="gy-2">
               <RenderSuggestedEvents />
