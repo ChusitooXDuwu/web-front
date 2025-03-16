@@ -8,6 +8,7 @@ import GameCardComponent from "../../components/GameCardComponent/GameCardCompon
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
 import FieldMapCardComponent from "../../components/FieldMapCardComponent/FieldMapCardComponent";
 import { Breadcrumb, Button, Col, Container, Form, Row } from "react-bootstrap";
+import CustomMap from "../../components/MapComponent/MapComponent";
 
 const mockCity: CityEntity = {
     id: "1",
@@ -76,8 +77,8 @@ function FieldDetailPageMap() {
                 <Col md={4} className={`${styles.left_col}`}>
                     <FieldMapCardComponent field={mockData} />
                 </Col>
-                <Col md={8}>
-                    <h1>Map goes here :)</h1>
+                <Col md={8} className={styles.right_col}>
+                    <CustomMap></CustomMap>
                 </Col>
             </Row>
         </Container>

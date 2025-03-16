@@ -1,0 +1,13 @@
+.map_container {
+    height: 600px;
+    width: 80%;
+    border: 4px solid black;
+  }
+
+.map_container1 {
+  width: 100%; /* Ensures full width */
+  height: 400px; /* Set a fixed or responsive height */
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+}

@@ -12,3 +12,11 @@
     background-color: white;
     max-width: fluid;
 }
+
+.right_col {
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 100%; /* Ensures the container takes full height */
+    flex-direction: column;
+    display: flex;
+  }

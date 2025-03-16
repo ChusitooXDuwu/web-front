@@ -23,6 +23,7 @@ import BookingDetailPage from "./pages/BookingDetailPage/BookingDetailPage";
 import EventDetailPage from "./pages/EventDetailPage/EventDetailPage";
 import FieldDetailPageMap from "./pages/FieldDetailPageMap/FieldDetailPageMap";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import CustomMap from "./components/MapComponent/MapComponent";
 
 const queryClient = new QueryClient();
 
