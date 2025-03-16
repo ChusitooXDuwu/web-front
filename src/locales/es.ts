@@ -8,6 +8,10 @@ const en: { [key: string]: string } = {
   newInSporthub: "¿Nuevo en Sporthub?",
   registerHere: "Registrese Aquí",
   areYouAMember: "¿Eres miembro de sporthub?",
+  //Pages
+  "pages.home": "Inicio",
+  "pages.bookings": "Reservas",
+  //Forms
   "form.placeholder.name": "Ingrese su nombre",
   "form.placeholder.email": "Ingrese su correo",
   "form.placeholder.password": "Ingrese su contraseña",
@@ -23,6 +27,8 @@ const en: { [key: string]: string } = {
   "home.title.available": "Partidos disponibles",
   "home.link.bookings": "Ver todas",
   "home.link.totalBookings": "Tiene un total de {bookings} reservas",
+  // Bookings
+  "bookings.title": "Mis Reservas",
 };
 
 export default en;

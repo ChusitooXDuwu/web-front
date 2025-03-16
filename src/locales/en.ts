@@ -8,6 +8,10 @@ const es: { [key: string]: string } = {
   newInSporthub: "New to sporthub?",
   registerHere: "Register Here",
   areYouAMember: "Are you a sporthub member?",
+  //Pages
+  "pages.home": "Home",
+  "pages.bookings": "Bookings",
+  //Forms
   "form.placeholder.name": "Enter your name",
   "form.placeholder.email": "Enter your email",
   "form.placeholder.password": "Enter your password",
@@ -23,6 +27,8 @@ const es: { [key: string]: string } = {
   "home.title.available": "Available events",
   "home.link.bookings": "See all",
   "home.link.totalBookings": "You have a total of {bookings} bookings",
+  // Bookings
+  "bookings.title": "My Bookings",
 };
 
 export default es;
