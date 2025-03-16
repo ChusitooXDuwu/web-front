@@ -16,14 +16,14 @@ const CreateFieldPage: FC<CreateFieldPageProps> = () => {
   ];
 
   const mockSports = [
-    { id: "1", name: "Fútbol" },
-    { id: "2", name: "Baloncesto" },
-    { id: "3", name: "Tenis" },
-    { id: "4", name: "Voleibol" },
-    { id: "5", name: "Padel 🏳️‍🌈" },
-    { id: "6", name: "Squash" },
-    { id: "7", name: "Futbol-5" },
-    { id: "8", name: "Patinaje" },
+    { id: "1", name: "Fútbol", available_fields: 2, available_bookings: 5 },
+    { id: "2", name: "Baloncesto", available_fields: 2, available_bookings: 2 },
+    { id: "3", name: "Tenis", available_fields: 3, available_bookings: 5 },
+    { id: "4", name: "Voleibol", available_fields: 1, available_bookings: 3 },
+    { id: "5", name: "Padel 🏳️‍🌈", available_fields: 6, available_bookings: 8},
+    { id: "6", name: "Squash", available_fields: 6, available_bookings: 8},
+    { id: "7", name: "Futbol-5", available_fields: 6, available_bookings: 8},
+    { id: "8", name: "Patinaje", available_fields: 6, available_bookings: 8},
   ];
   return (
     <Container fluid className={`main_content_container`}>
