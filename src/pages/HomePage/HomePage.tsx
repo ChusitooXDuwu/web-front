@@ -75,8 +75,8 @@ const HomePage: FC<HomePageProps> = () => {
     : [];
   let suggestedEvents = Array(10).fill(mockEvent);
   // debug
-  upcomingEvents = [];
-  suggestedEvents = []
+  // upcomingEvents = [];
+  // suggestedEvents = []
   // debug
   const topUpcomingEvents = upcomingEvents.slice(0, 3);
   const RenderSuggestedEvents = () => (

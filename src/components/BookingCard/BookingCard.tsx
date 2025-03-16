@@ -19,12 +19,12 @@ const BookingCard: FC<BookingCardProps> = ({ bookedEvent }) => {
     month: "long",
   });
   const startDayOfMonth = bookedEvent.startDateTime.getDate();
-  const startTime = bookedEvent.startDateTime.toLocaleTimeString("en-US", {
+  const startTime = bookedEvent.startDateTime.toLocaleTimeString(locale, {
     hour: "numeric",
     minute: "numeric",
     hour12: true,
   });
-  const endTime = bookedEvent.endDateTime.toLocaleTimeString("en-US", {
+  const endTime = bookedEvent.endDateTime.toLocaleTimeString(locale, {
     hour: "numeric",
     minute: "numeric",
     hour12: true,
