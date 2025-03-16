@@ -41,14 +41,19 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
 
   return (
     <Container fluid className={"px-md-5 py-2"}>
-      <Row>
+      <img
+              src="/assets/basketball-court-full.png"
+              alt="Background"
+              className={styles.background_image}
+            />
+      <Row className={styles.signup_row}>
         <Col>
           <h1 className={`display-1 ${styles.sporthub_title}`}>Sporthub</h1>
         </Col>
         <Col>
           <p className={styles.signin_text}>
             <span className={styles.signin_question}>
-              ¿Eres miembro de sporthub?
+              ¿Eres miembro de sporthub?{" "}
             </span>
             <Link to={"/login"} className={styles.signin_link}>
               Inicia sesión
@@ -56,7 +61,7 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
           </p>
         </Col>
       </Row>
-      <Row>
+      <Row className={styles.signup_row}>
         <Card className={styles.signup_card}>
           <Card.Body>
             <Form onSubmit={handleSubmit}>

@@ -26,6 +26,11 @@
   text-align: right;
 }
 
+.signup_row {
+  position: relative;
+  z-index: 1;
+}
+
 @media (max-width: 425px) {
   .sporthub_title {
     text-align: center;
@@ -38,4 +43,17 @@
 
 .signup_button {
   max-width: min-content;
+}
+
+
+.background_image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px) brightness(50%); /* Adjust the filter as needed */
+  z-index: 0; /* Ensure the image is behind other content */
+  image-rendering: smooth; /* Works in some browsers */
 }

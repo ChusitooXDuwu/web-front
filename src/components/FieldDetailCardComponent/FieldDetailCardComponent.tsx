@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import styles from "./FieldDetailCardComponent.module.scss";
 import { Button, Col, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
+import { useNavigate } from "react-router-dom";
 
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
 interface FieldDetailCardProps {
@@ -12,6 +13,7 @@ interface FieldDetailCardProps {
 
 const FieldDetailCard: FC<FieldDetailCardProps> = ({ field}) => {
   // Function to render rating stars using plain text
+  const navigate = useNavigate();
   const renderRatingStars = () => {
     // Determine button text based on isBooking property
     
@@ -67,7 +69,8 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field}) => {
                 <span className={styles.detailIcon}>📍</span>
                 <span>{field.address}</span>
                 <span className={styles.mapButtonWrapper}>
-                  <Button className={styles.mapButton}>
+                  <Button className={styles.mapButton} 
+                  onClick={() => navigate(`/fields/map/${field.id}`)}>
                     Ver en Mapa
                   </Button>
                 </span>
