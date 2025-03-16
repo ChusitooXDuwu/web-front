@@ -32,6 +32,10 @@ const en: { [key: string]: string } = {
   "home.link.totalBookings": "Tiene un total de {bookings} reservas",
   // Bookings
   "bookings.title": "Mis Reservas",
+  // Booking detail
+  "booking.untilTime": "Hasta las {time}",
+  "booking.place": "Lugar",
+  "booking.seeDetail": "Ver detalle",
   // Fields
   "fields.title": "Canchas disponibles",
   "fields.createButton": "Crear cancha",

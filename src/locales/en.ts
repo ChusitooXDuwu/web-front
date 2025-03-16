@@ -32,6 +32,10 @@ const es: { [key: string]: string } = {
   "home.link.totalBookings": "You have a total of {bookings} bookings",
   // Bookings
   "bookings.title": "My Bookings",
+  // Booking detail
+  "booking.untilTime": "Until {time}",
+  "booking.place": "Location",
+  "booking.seeDetail": "See detail",
   // Fields
   "fields.title": "Available fields",
   "fields.createButton": "Create field",
