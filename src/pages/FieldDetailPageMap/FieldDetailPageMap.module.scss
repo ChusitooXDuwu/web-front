@@ -1,0 +1,14 @@
+.main_row {
+    flex-grow: 1;
+}
+
+.left_col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; //applied to the main direction, in this case vertical!
+}
+
+.title_row {
+    background-color: white;
+    max-width: fluid;
+}
