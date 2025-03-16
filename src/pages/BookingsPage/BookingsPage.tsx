@@ -5,6 +5,7 @@ import BookingCard from "../../components/BookingCard/BookingCard";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getMyBookings } from "../../services/BookingsService/BookingsService";
+import { FormattedMessage } from "react-intl";
 
 interface BookingsPageProps {}
 
@@ -21,13 +22,15 @@ const BookingsPage: FC<BookingsPageProps> = () => {
       <Row className={`pt-2 mb-2 ${styles.title_row}`}>
         <Breadcrumb>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
-            Inicio
+            <FormattedMessage id="pages.home" />
           </Breadcrumb.Item>
           <Breadcrumb.Item active linkAs={Link} linkProps={{ to: "/bookings" }}>
-            Reservas
+            <FormattedMessage id="pages.bookings" />
           </Breadcrumb.Item>
         </Breadcrumb>
-        <h1 className={`display-5 ${styles.page_header}`}>Mis Reservas</h1>
+        <h1 className={`display-5 ${styles.page_header}`}>
+          <FormattedMessage id="bookings.title" />
+        </h1>
       </Row>
       {isSuccess &&
         data.data.map((item, index) => (

@@ -1,0 +1,63 @@
+const es: { [key: string]: string } = {
+  email: "Email",
+  emailPlaceholder: "Enter your email",
+  password: "Password",
+  passwordPlaceholder: "Enter your password",
+  login: "Log In",
+  signup: "Sign Up",
+  newInSporthub: "New to sporthub?",
+  registerHere: "Register Here",
+  areYouAMember: "Are you a sporthub member?",
+  //Pages
+  "pages.home": "Home",
+  "pages.bookings": "Bookings",
+  "pages.fields": "Fields",
+  "pages.fields.create": "Create field",
+  //Forms
+  "form.placeholder.name": "Enter your name",
+  "form.placeholder.email": "Enter your email",
+  "form.placeholder.password": "Enter your password",
+  "form.placeholder.phone": "Enter your phone",
+  "form.placeholder.birthdate": "Enter your birthdate",
+  "form.placeholder.search": "Search",
+  "form.label.name": "Name",
+  "form.label.email": "Email",
+  "form.label.password": "Password",
+  "form.label.phone": "Phone",
+  "form.label.birthdate": "Birth date",
+  // Home
+  "home.title.upcoming": "My upcoming events",
+  "home.title.available": "Available events",
+  "home.link.bookings": "See all",
+  "home.link.totalBookings": "You have a total of {bookings} bookings",
+  "home.noData": "No {dataName} were found. Try to ",
+  "home.data.upcomingEvents": "upcoming events",
+  "home.prompt.addEvent": "book an event",
+  "home.data.availableEvents": "available events",
+  "home.prompt.searchEvent": "search an event",
+  // Bookings
+  "bookings.title": "My Bookings",
+  // Booking detail
+  "booking.untilTime": "Until {time}",
+  "booking.place": "Location",
+  "booking.seeDetail": "See detail",
+  // Fields
+  "fields.title": "Available fields",
+  "fields.createButton": "Create field",
+  "fields.dataNotFound": "No data was found for search value ' {value} '",
+  // Create Field
+  "fields.create.title": "Create a new field",
+  "field.form.label.name": "Name",
+  "field.form.placeholder.name": "Enter the name of the field",
+  "field.form.label.city": "City",
+  "field.form.choice": "Select an option",
+  "field.form.label.address": "Address",
+  "field.form.placeholder.address": "Enter your address",
+  "field.form.label.price": "Price",
+  "field.form.placeholder.price": "Enter the price",
+  "field.form.label.sports": "Sports",
+  "field.form.label.photos": "Field photos",
+  "field.form.submit": "Create Field",
+};
+
+export default es;

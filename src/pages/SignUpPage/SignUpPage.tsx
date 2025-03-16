@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/esm/Card";
 import Form from "react-bootstrap/esm/Form";
 import Button from "react-bootstrap/esm/Button";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface SignUpData {
   name: string;
@@ -20,6 +21,7 @@ interface SignUpPageProps {}
 
 const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
   const navigate = useNavigate();
+  const intl = useIntl();
   const [signUpData, setSignUpData] = useState<SignUpData>({
     name: "",
     email: "",
@@ -38,6 +40,10 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
     console.log("Form submitted", signUpData);
     navigate("/login");
   };
+  const namePh = intl.formatMessage({ id: "form.placeholder.name" });
+  const emailPh = intl.formatMessage({ id: "form.placeholder.email" });
+  const passwordPh = intl.formatMessage({ id: "form.placeholder.password" });
+  const phonePh = intl.formatMessage({ id: "form.placeholder.phone" });
 
   return (
     <Container fluid className={"px-md-5 py-2"}>
@@ -53,10 +59,10 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
         <Col>
           <p className={styles.signin_text}>
             <span className={styles.signin_question}>
-              ¿Eres miembro de sporthub?{" "}
+              <FormattedMessage id="areYouAMember" />
             </span>
             <Link to={"/login"} className={styles.signin_link}>
-              Inicia sesión
+              <FormattedMessage id="login" />
             </Link>
           </p>
         </Col>
@@ -66,47 +72,57 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
           <Card.Body>
             <Form onSubmit={handleSubmit}>
               <Form.Group>
-                <Form.Label>Nombre</Form.Label>
+                <Form.Label>
+                  <FormattedMessage id="form.label.name" />
+                </Form.Label>
                 <Form.Control
                   required
                   name="name"
                   onChange={handleChange}
                   type="text"
-                  placeholder="Ingrese su nombre"
+                  placeholder={namePh}
                 />
               </Form.Group>
               <Form.Group>
-                <Form.Label>Correo</Form.Label>
+                <Form.Label>
+                  <FormattedMessage id="form.label.email" />
+                </Form.Label>
                 <Form.Control
                   required
                   name="email"
                   onChange={handleChange}
                   type="email"
-                  placeholder="Ingrese su correo"
+                  placeholder={emailPh}
                 />
               </Form.Group>
               <Form.Group>
-                <Form.Label>Contraseña</Form.Label>
+                <Form.Label>
+                  <FormattedMessage id="form.label.password" />
+                </Form.Label>
                 <Form.Control
                   required
                   name="password"
                   onChange={handleChange}
                   type="password"
-                  placeholder="Ingrese su contraseña"
+                  placeholder={passwordPh}
                 />
               </Form.Group>
               <Form.Group>
-                <Form.Label>Teléfono</Form.Label>
+                <Form.Label>
+                <FormattedMessage id="form.label.phone"/>
+                </Form.Label>
                 <Form.Control
                   required
                   name="phone"
                   onChange={handleChange}
                   type="tel"
-                  placeholder="Ingrese su teléfono"
+                  placeholder={phonePh}
                 />
               </Form.Group>
               <Form.Group>
-                <Form.Label>Fecha de Nacimiento</Form.Label>
+                <Form.Label>
+                <FormattedMessage id="form.label.birthdate"/>
+                </Form.Label>
                 <Form.Control
                   required
                   name="birthDate"
@@ -117,7 +133,7 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
               <br />
               <Row>
                 <Button type="submit" className={styles.submit_button}>
-                  Crear Cuenta
+                  <FormattedMessage id="signup" />
                 </Button>
               </Row>
             </Form>

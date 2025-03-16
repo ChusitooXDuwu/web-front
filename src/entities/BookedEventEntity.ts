@@ -24,7 +24,8 @@ export default class BookedEventEntity implements BaseEntity {
       );
     } catch (error) {
       console.log(error);
-      return null;
+      throw new Error("Invalid api data");
+      
     }
   }
 }

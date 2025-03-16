@@ -3,6 +3,7 @@ import styles from "./CreateFieldPage.module.scss";
 import { Breadcrumb, Card, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CreateFieldForm from "./CreateFieldForm/CreateFieldForm";
+import { FormattedMessage } from "react-intl";
 
 interface CreateFieldPageProps {}
 
@@ -30,17 +31,21 @@ const CreateFieldPage: FC<CreateFieldPageProps> = () => {
       <Row>
         <Breadcrumb>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
-            Inicio
+            <FormattedMessage id="pages.home"/>
           </Breadcrumb.Item>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/fields" }}>
-            Canchas
+            <FormattedMessage id="pages.fields"/>
           </Breadcrumb.Item>
-          <Breadcrumb.Item active>Crear Cancha</Breadcrumb.Item>
+          <Breadcrumb.Item active>
+            <FormattedMessage id="pages.fields.create"/>
+          </Breadcrumb.Item>
         </Breadcrumb>
       </Row>
       <Row className="justify-content-center px-3">
         <Card className={styles.form_card}>
-          <Card.Header>Crear una nueva Cancha</Card.Header>
+          <Card.Header>
+            <FormattedMessage id="fields.create.title"/>
+          </Card.Header>
           <Card.Body>
             <CreateFieldForm sports={mockSports} cities={mockCities} />
           </Card.Body>
