@@ -4,10 +4,12 @@ import { Breadcrumb, Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { CityEntity, FieldEntity, SportEntity } from "../../entities/Entities";
 import FieldCardComponent from "./FieldCardComponent/FieldCardComponent";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface FieldsPageProps {}
 
 const FieldsPage: FC<FieldsPageProps> = () => {
+  const { formatMessage } = useIntl();
   const mockCity: CityEntity = {
     id: "1",
     name: "Mock City",
@@ -18,13 +20,13 @@ const FieldsPage: FC<FieldsPageProps> = () => {
       id: "1",
       name: "Soccer",
       available_fields: 2,
-      available_bookings: 5
+      available_bookings: 5,
     },
     {
       id: "2",
       name: "Basketball",
       available_fields: 2,
-      available_bookings: 2
+      available_bookings: 2,
     },
   ];
 
@@ -39,8 +41,8 @@ const FieldsPage: FC<FieldsPageProps> = () => {
   // Fetch data
   let fieldsData: Array<FieldEntity> = Array(10).fill(mockFieldEntity);
   fieldsData = fieldsData.map((item, index) => {
-    return {...item, "name": item.name + " " + index.toString()}
-  })
+    return { ...item, name: item.name + " " + index.toString() };
+  });
   // Hooks
   const navigate = useNavigate();
   const [filteredFieldsData, setFilteredFieldsData] = useState<FieldEntity[]>(
@@ -77,17 +79,21 @@ const FieldsPage: FC<FieldsPageProps> = () => {
       <Container fluid={"md"}>
         <Breadcrumb>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
-            Inicio
+            <FormattedMessage id="pages.home" />
           </Breadcrumb.Item>
-          <Breadcrumb.Item active>Canchas</Breadcrumb.Item>
+          <Breadcrumb.Item active>
+            <FormattedMessage id="pages.fields" />
+          </Breadcrumb.Item>
         </Breadcrumb>
         <Row className="mb-3 gy-2">
           <Col>
-            <h1 className={`display-5 sh_gold`}>Canchas disponibles</h1>
+            <h1 className={`display-5 sh_gold`}>
+              <FormattedMessage id="fields.title" />
+            </h1>
           </Col>
           <Col md="auto" className={styles.create_col}>
             <Button onClick={() => navigate("/fields/create")}>
-              Crear Cancha
+              <FormattedMessage id="fields.createButton" />
             </Button>
           </Col>
           <Col md="auto" className={styles.search_col}>
@@ -95,11 +101,11 @@ const FieldsPage: FC<FieldsPageProps> = () => {
               <Form.Control
                 onChange={handleSearchChange}
                 type="search"
-                placeholder="Buscar"
+                placeholder={formatMessage({ id: "form.placeholder.search" })}
                 aria-label="Search"
               />
               <Button type="submit" variant="outline-success">
-                Search
+                <FormattedMessage id="form.placeholder.search" />
               </Button>
             </Form>
           </Col>
@@ -112,7 +118,12 @@ const FieldsPage: FC<FieldsPageProps> = () => {
           ))}
         </Row>
         {filteredFieldsData.length === 0 && (
-          <p>No se encontraron datos para la búsqueda "{currentSearchValue}"</p>
+          <p>
+            <FormattedMessage
+              id="fields.dataNotFound"
+              values={{ value: currentSearchValue }}
+            />
+          </p>
         )}
       </Container>
     </div>
