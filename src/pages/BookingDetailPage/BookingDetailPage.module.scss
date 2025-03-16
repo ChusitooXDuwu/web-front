@@ -4,44 +4,96 @@
 
 
 .alignedSection {
-    padding: 0 40px;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1400px;
-  }
-  
-  // Responsive adjustment
-  @media (max-width: 768px) {
-    .alignedSection {
-      padding: 0 20px;
-    }
-  }
+  padding: 0 40px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1400px;
+}
 
-  .participantRow {
-    margin-bottom: 12px; /* Space between participants */
-    align-items: center; /* Vertically center the icon and text */
-    padding-left: 20px; /* Space between icon and text */
+// Responsive adjustment
+@media (max-width: 768px) {
+  .alignedSection {
+    padding: 0 20px;
   }
-  
-  .iconContainer {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-  }
-  
-  .participantName {
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-    //color text
-    color: #E99E14;
-  }
+}
 
-  .participantTitle {
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-    //color text
-    color: #E99E14;
-    padding-bottom: 10px;
+.participantRow {
+  margin-bottom: 12px;
+  /* Space between participants */
+  align-items: center;
+  /* Vertically center the icon and text */
+  padding-left: 20px;
+  /* Space between icon and text */
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.participantName {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  //color text
+  color: #E99E14;
+}
+
+.participantTitle {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  //color text
+  color: #E99E14;
+  padding-bottom: 10px;
+}
+
+.priceText {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.selectText {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.priceImage {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  /* Changes cursor to a hand when hovering */
+  transition: transform 0.2s ease-in-out;
+  /* Smooth hover effect */
+
+  &:hover {
+    transform: scale(1.1);
+    /* Slightly enlarges image on hover */
   }
+}
+
+.priceColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.checkbox {
+  transform: scale(1.5);
+  /* Increases checkbox size */
+  font-size: 1.3rem;
+  /* Increases label text size */
+  margin-bottom: 15px;
+}

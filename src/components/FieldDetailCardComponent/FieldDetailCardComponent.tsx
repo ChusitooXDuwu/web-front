@@ -8,9 +8,10 @@ import FieldDetailEntity from "../../entities/FieldDetailEntity";
 
 interface FieldDetailCardProps {
   field: FieldDetailEntity;
+  price: Number;
 }
 
-const FieldDetailCard: FC<FieldDetailCardProps> = ({ field }) => {
+const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
   const navigate = useNavigate();
 
   // State for comment form visibility and input value
@@ -26,6 +27,7 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field }) => {
   const handleOccupied = () => {
     setOccupied("Ocupada 🥲");
   };
+
 
   // Function to handle comment submission
   const handleSubmitComment = () => {
@@ -78,6 +80,11 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field }) => {
               <div className={styles.detailItem}>
                 <span className={styles.detailIcon}>✅</span>
                 <span>¿Cancha ocupada?: {occupied}</span>
+              </div>
+
+              <div className={styles.detailItem}>
+                <span className={styles.detailIcon}>💸</span>
+                <span>{`Precio: ${price}`}</span>
               </div>
             </div>
 
