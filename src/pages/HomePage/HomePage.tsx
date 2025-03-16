@@ -120,7 +120,7 @@ const HomePage: FC<HomePageProps> = () => {
           <h1 className={styles.section_header}>Partidos disponibles</h1>
           {suggestedEvents.length > 0 ? (
             <Row lg={3} md={2} sm={2} xs={1} className="gy-2">
-              {<RenderSuggestedEvents />}
+              <RenderSuggestedEvents />
             </Row>
           ) : (
             <Row>
