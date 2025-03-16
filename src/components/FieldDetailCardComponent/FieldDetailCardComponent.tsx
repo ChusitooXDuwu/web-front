@@ -16,10 +16,15 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field }) => {
   // State for comment form visibility and input value
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [comment, setComment] = useState("");
+  const [occupied, setOccupied] = useState("No Ocupada 😀");
 
   // Function to toggle comment form
   const handleAddCommentClick = () => {
     setShowCommentForm(!showCommentForm);
+  };
+
+  const handleOccupied = () => {
+    setOccupied("Ocupada 🥲");
   };
 
   // Function to handle comment submission
@@ -69,12 +74,17 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field }) => {
                 <span className={styles.detailIcon}>📞</span>
                 <span>Contacto: {field.phone_number}</span>
               </div>
+
+              <div className={styles.detailItem}>
+                <span className={styles.detailIcon}>✅</span>
+                <span>¿Cancha ocupada?: {occupied}</span>
+              </div>
             </div>
 
             <hr className={styles.divider} />
 
             <div className={styles.actionButtonContainer}>
-              <Button className={styles.bookButton}>
+              <Button className={styles.bookButton} onClick={handleOccupied}>
                 {field.field_type === "field" && "Crear una reserva"}
                 {field.field_type === "booking" && "Cancelar reserva"}
                 {field.field_type === "event" && "Unirse a la reserva"}
