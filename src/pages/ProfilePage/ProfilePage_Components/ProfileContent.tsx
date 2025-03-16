@@ -8,33 +8,16 @@ import AboutMe from "./AboutMe";
 import FriendsList from "./FriendsList";
 import FavoriteCourts from "./FavouriteCourts";
 import SportsList from "./SportLists";
-import NotificationsPage from "../../NotificationsPage/NotificationsPage";
-import HistoryPage from "../../HistoryPage/HistoryPage";
-import StatisticsPage from "../../StatisticsPage/StatisticsPage";
+import { useProfile } from "../../../contexts/ProfileContext";
 
-interface ProfileContentProps {
-    page: string;
-    profile: {
-      name: string;
-      description: string;
-      imageUrl: string;
-      since: string;
-    };
-    info: {
-      friends: string[];
-      favoriteCourts: string[];
-      sports: string[];
-    };
-  }
-  
-  const ProfileContent: FC<ProfileContentProps> = ({ page, profile, info }) => {
-    switch (page) {
-      case "profile":
+const ProfileContent = () => {
+    
+        const { profile } = useProfile(); // Acceder a los datos del perfil
         return (
           <>
             <Row className={styles.profile_content}>
               <Col xs={12} md={4}>
-                <ProfileCard name={profile.name} imageUrl={profile.imageUrl} />
+                <ProfileCard name={profile.name} imageUrl={profile.image_url} />
               </Col>
               <Col xs={12} md={8} className="w-full">
                 <AboutMe text={profile.description} since={profile.since} />
@@ -42,26 +25,19 @@ interface ProfileContentProps {
             </Row>
             <Row className={styles.profile_content}>
               <Col xs={12} md={4}>
-                <FriendsList friends={info.friends} />
+                <FriendsList friends={profile.friends} />
               </Col>
               <Col xs={12} md={4}>
-                <FavoriteCourts courts={info.favoriteCourts} />
+                <FavoriteCourts courts={profile.favoriteCourts} />
               </Col>
               <Col xs={12} md={4}>
-                <SportsList sports={info.sports} />
+                <SportsList sports={profile.sports} />
               </Col>
             </Row>
           </>
         );
-      case "notifications":
-        return <NotificationsPage />;
-      case "history":
-        return <HistoryPage />;
-      case "statistics":
-        return <StatisticsPage />;
-      default:
-        return <p>Página no encontrada</p>;
-    }
+   
+   
   };
 
   export default ProfileContent;

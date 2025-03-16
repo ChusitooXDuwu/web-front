@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-intl": "^6.8.9",
     "react-scripts": "5.0.1",
+    "recharts": "^2.15.1",
     "sass": "^1.85.1",
     "web-vitals": "^2.1.4",
     "workbox-background-sync": "^6.5.4",

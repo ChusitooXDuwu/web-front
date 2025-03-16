@@ -9,7 +9,7 @@ interface SidebarProps {
 }
 interface ProfileCardProps {
   name: string;
-  imageUrl: string;
+  imageUrl: string |null;
 }
 const Sidebar: React.FC<SidebarProps> = ({ items,isOwner,profile }) => {
   return (

@@ -5,14 +5,14 @@ export const getSidebarItems = (isOwner: boolean, page: string) => {
        
       const baseItems = [{ label: "Historial Partidos", path: `${profileBasePath}/history`, id:"history" }];
     ;
-  
+    console.log(page,"pagina")
     // Elementos que solo aparecen si es el dueño del perfil
     const ownerItems = isOwner
       ? [
           { label: "Mi Perfil", path: "/profile" , id:"profile"},
           { label: "Notificaciones",  path: `${profileBasePath}/notifications`, id:"notifications"},
           { label: "Mis estadísticas",  path: `${profileBasePath}/statistics`,id:"statistics"},
-          { label: "Mis grupos", path: "/groups",id:"groups" },
+         
         ]
       : [{ label: "Estadísticas", path: `${profileBasePath}/statistics`, id:"statistics"}, { label: "Perfil", path: "/profile", id:"profile" },];
   

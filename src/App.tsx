@@ -31,7 +31,8 @@ import {
   defaultLocale,
   getMessages,
 } from "./contexts/LocaleContext";
-
+import { ProfileProvider } from "./contexts/ProfileContext";
+import ProfileContent from "./pages/ProfilePage/ProfilePage_Components/ProfileContent";
 const queryClient = new QueryClient();
 interface LocaleData {
   locale: SupportedLocale;
@@ -54,40 +55,42 @@ function App() {
         locale={localeData.locale}
         messages={localeData.messages}
       >
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<MainView />}>
-                <Route index element={<Navigate to="/login" />} />
-                <Route path="home" element={<HomePage />} />
-                <Route path="bookings" element={<BookingsPage />} />
-                <Route path="fields" element={<FieldsPage />} />
-                <Route path="sports" element={<SportsPage />} />
-                <Route path="events" element={<EventsPage />} />
-                <Route path="profile/*" >
-                    <Route index element={<ProfilePage isOwner={true} />} />
-                    <Route path="history" element={<HistoryPage />} />
-                    <Route path="notifications" element={<NotificationsPage />} />
-                    <Route path="statistics" element={<StatisticsPage />} />            
+        <ProfileProvider>
+          <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<MainView />}>
+                  <Route index element={<Navigate to="/login" />} />
+                  <Route path="home" element={<HomePage />} />
+                  <Route path="bookings" element={<BookingsPage />} />
+                  <Route path="fields" element={<FieldsPage />} />
+                  <Route path="sports" element={<SportsPage />} />
+                  <Route path="events" element={<EventsPage />} />
+                  <Route path="profile/*" element={<ProfilePage isOwner={true} />} >
+                      <Route index element={<ProfileContent/>} />
+                      <Route path="history" element={<HistoryPage />} />
+                      <Route path="notifications" element={<NotificationsPage />} />
+                      <Route path="statistics" element={<StatisticsPage />} />            
+                  </Route>
+                  <Route path="groups" element={<GroupsPage />} />
+                  <Route path="fields/create" element={<CreateFieldPage />} />
+                  <Route path="bookings/create" element={<CreateBookingPage />} />
+                  <Route path="events/:id" element={<EventDetailPage />} />
+                  <Route path="events/create" element={<CreateEventPage />} />
+                  <Route path="fields/:id" element={<FieldDetailPage />} />
+                  <Route path="fields/map/:id" element={<FieldDetailPageMap />} />
+                  <Route path="bookings/:id" element={<BookingDetailPage />} />
                 </Route>
-                <Route path="groups" element={<GroupsPage />} />
-                <Route path="fields/create" element={<CreateFieldPage />} />
-                <Route path="bookings/create" element={<CreateBookingPage />} />
-                <Route path="events/:id" element={<EventDetailPage />} />
-                <Route path="events/create" element={<CreateEventPage />} />
-                <Route path="fields/:id" element={<FieldDetailPage />} />
-                <Route path="fields/map/:id" element={<FieldDetailPageMap />} />
-                <Route path="bookings/:id" element={<BookingDetailPage />} />
-              </Route>
-              <Route path="/" element={<LoginView />}>
-                <Route path="login" element={<LoginPage />} />
-                <Route path="signup" element={<SignUpPage />} />
-                <Route path="landing" element={<LandingPage />} />
-              </Route>
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </BrowserRouter>
-        </QueryClientProvider>
+                <Route path="/" element={<LoginView />}>
+                  <Route path="login" element={<LoginPage />} />
+                  <Route path="signup" element={<SignUpPage />} />
+                  <Route path="landing" element={<LandingPage />} />
+                </Route>
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </BrowserRouter>
+          </QueryClientProvider>
+         </ProfileProvider>
       </IntlProvider>
     </LocaleContext.Provider>
   );
