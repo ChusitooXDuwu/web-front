@@ -58,6 +58,14 @@ const en: { [key: string]: string } = {
   "field.form.label.sports": "Deportes",
   "field.form.label.photos": "Fotos del establecimiento",
   "field.form.submit": "Crear Cancha",
+  // Navbar component
+  "navbar.bookings": "Mis Reservas",
+  "navbar.fields": "Canchas",
+  "navbar.sports": "Deportes",
+  "navbar.events": "Eventos",
+  "navbar.profile": "Perfil",
+  "navbar.searchButton": "Buscar",
+  "navbar.searchPlaceholder": "Busca Canchas, Deportes o Reservas",
 };
 
 export default en;

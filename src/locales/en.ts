@@ -58,6 +58,14 @@ const es: { [key: string]: string } = {
   "field.form.label.sports": "Sports",
   "field.form.label.photos": "Field photos",
   "field.form.submit": "Create Field",
+  // Navbar component
+  "navbar.bookings": "My Bookings",
+  "navbar.fields": "Fields",
+  "navbar.sports": "Sports",
+  "navbar.events": "Events",
+  "navbar.profile": "Profile",
+  "navbar.searchButton": "Search",
+  "navbar.searchPlaceholder": "Search Fields, Sports or Bookings",
 };
 
 export default es;

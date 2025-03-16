@@ -18,10 +18,18 @@ import { ReactComponent as SportsIcon } from "../icons/sportsIcon.svg";
 import { ReactComponent as JoinIcon } from "../icons/joinIcon.svg";
 import { ReactComponent as ProfileIcon } from "../icons/profileIcon.svg";
 import { Link } from "react-router-dom";
+import { useContext } from 'react';
+
+import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
+import { LocaleContext } from '../contexts/LocaleContext';
 
 function NavBar() {
   // State to control the offcanvas visibility
+  const { locale } = useContext(LocaleContext);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const intl = useIntl();
+  const { formatMessage } = intl;
 
   // Functions to open and close the offcanvas
   const handleClose = () => setShowOffcanvas(false);
@@ -69,7 +77,8 @@ function NavBar() {
                           fontWeight: "bold",
                         }}
                       >
-                        Perfil
+                        <FormattedMessage id="navbar.profile" />
+                        
                       </p>
                     </div>
                   </Nav.Item>
@@ -98,7 +107,7 @@ function NavBar() {
               <Form className="d-flex">
                 <Form.Control
                   type="search"
-                  placeholder="Buscar..."
+                  placeholder={formatMessage({id: "navbar.searchPlaceholder"})}
                   className="me-1"
                   aria-label="Search"
                   style={{ height: '40px' }}
@@ -107,7 +116,10 @@ function NavBar() {
                   className="custom-outline-btn"
                   style={{ height: "40px", color: "#FFFFFF", padding: '0 10px' }}
                 >
-                  <span className="d-none d-sm-inline">Buscar</span>
+                  <span className="d-none d-sm-inline">
+                    
+                    <FormattedMessage id="navbar.searchButton" />
+                  </span>
                   <span className="d-inline d-sm-none">🔍</span>
                 </Button>
               </Form>
@@ -128,7 +140,7 @@ function NavBar() {
               <Form className="d-flex flex-grow-1 mx-4">
                 <Form.Control
                   type="search"
-                  placeholder="Busca Canchas, Deportes o Reservas"
+                  placeholder={formatMessage({id: "navbar.searchPlaceholder"})}
                   className="me-2 flex-grow-1"
                   aria-label="Search"
                   style={{ height: '40px' }}
@@ -137,7 +149,7 @@ function NavBar() {
                   className="custom-outline-btn"
                   style={{ height: "40px", color: "#FFFFFF" }}
                 >
-                  Buscar
+                    <FormattedMessage id="navbar.searchButton" />
                 </Button>
               </Form>
             </Col>
@@ -161,7 +173,7 @@ function NavBar() {
                         fontWeight: "bold",
                       }}
                     >
-                      Perfil
+                      <FormattedMessage id="navbar.profile" />
                     </p>
                   </div>
                 </Nav.Item>
@@ -191,7 +203,7 @@ function NavBar() {
                       style={{ fill: "#E99E14" }}
                     />
                     <span className="ms-3 fw-bold" style={{ color: "#E99E14" }}>
-                      Mis Reservas
+                      <FormattedMessage id="navbar.bookings" />
                     </span>
                   </div>
                 </Link>
@@ -203,7 +215,7 @@ function NavBar() {
                       style={{ fill: "#E99E14" }}
                     />
                     <span className="ms-3 fw-bold" style={{ color: "#E99E14" }}>
-                      Canchas
+                        <FormattedMessage id="navbar.fields" />
                     </span>
                   </div>
                 </Link>
@@ -215,7 +227,7 @@ function NavBar() {
                       style={{ fill: "#E99E14" }}
                     />
                     <span className="ms-3 fw-bold" style={{ color: "#E99E14" }}>
-                      Deportes
+                        <FormattedMessage id="navbar.sports" />
                     </span>
                   </div>
                 </Link>
@@ -227,7 +239,7 @@ function NavBar() {
                       style={{ fill: "#E99E14" }}
                     />
                     <span className="ms-3 fw-bold" style={{ color: "#E99E14" }}>
-                      Eventos
+                        <FormattedMessage id="navbar.events" />
                     </span>
                   </div>
                 </Link>
@@ -256,7 +268,7 @@ function NavBar() {
                   fontWeight: "bold",
                 }}
               >
-                Mis Reservas
+                <FormattedMessage id="navbar.bookings" />
               </p>
             </Link>
           </Col>
@@ -276,7 +288,7 @@ function NavBar() {
                   fontWeight: "bold",
                 }}
               >
-                Canchas
+                <FormattedMessage id="navbar.fields" />
               </p>
             </Link>
           </Col>
@@ -296,7 +308,7 @@ function NavBar() {
                   fontWeight: "bold",
                 }}
               >
-                Deportes
+                <FormattedMessage id="navbar.sports" />
               </p>
             </Link>
           </Col>
@@ -316,7 +328,7 @@ function NavBar() {
                   fontWeight: "bold",
                 }}
               >
-                Eventos
+                <FormattedMessage id="navbar.events" />
               </p>
             </Link>
           </Col>
