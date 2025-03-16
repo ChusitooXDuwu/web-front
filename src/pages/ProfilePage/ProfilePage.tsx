@@ -38,7 +38,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ isOwner }) => {
       <Row>
         {/* Texto a emplasar*/}
         <Col md={9} style={{ backgroundColor: "white" }}>
-          <Outlet/>
+          <Outlet></Outlet>
         </Col> 
            {/* Texto a emplasar*/}
         <Col md={3} className="overflow-y:auto">
