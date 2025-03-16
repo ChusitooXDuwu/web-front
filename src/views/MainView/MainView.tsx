@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBarComponent";
 export default function MainView() {
   return (
     <>
-      <NavBar />
+      <NavBar/>
       <Outlet></Outlet>
     </>
   );

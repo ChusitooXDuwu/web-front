@@ -322,7 +322,7 @@ function NavBar() {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 }
 
