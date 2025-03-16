@@ -1,0 +1,67 @@
+{
+  "message": "success",
+  "data": {
+    "sports": [
+      {
+        "id": "8e336c17-b8c9-4264-872f-cf88bc3d2fae",
+        "name": "soccer",
+        "availableFields": 18,
+        "availableBookings": 48
+      },
+      {
+        "id": "25218e07-eb70-4d41-9c7e-fb21cc64ef43",
+        "name": "basketball",
+        "availableFields": 40,
+        "availableBookings": 42
+      },
+      {
+        "id": "bc88cabc-f01e-4cf5-ac4f-5c2cfdb4e517",
+        "name": "football",
+        "availableFields": 43,
+        "availableBookings": 68
+      },
+      {
+        "id": "b0e0d1ca-dc87-4e73-8aae-03afdb64b278",
+        "name": "tennis",
+        "availableFields": 87,
+        "availableBookings": 62
+      },
+      {
+        "id": "401b6db8-33b3-4a99-b9ff-7788a46eb61a",
+        "name": "volleyball",
+        "availableFields": 9,
+        "availableBookings": 31
+      },
+      {
+        "id": "66b5b654-c85a-4e96-8577-49323df73070",
+        "name": "swimming",
+        "availableFields": 29,
+        "availableBookings": 75
+      },
+      {
+        "id": "72c401a7-49d9-4b2b-93f5-cdfcd68908c7",
+        "name": "padel",
+        "availableFields": 70,
+        "availableBookings": 7
+      },
+      {
+        "id": "75af110c-4ca9-478f-ad5b-9fb2cb7e1de6",
+        "name": "polo",
+        "availableFields": 59,
+        "availableBookings": 6
+      },
+      {
+        "id": "7d130c17-a693-4137-a239-bd693f29d89d",
+        "name": "cricket",
+        "availableFields": 12,
+        "availableBookings": 33
+      },
+      {
+        "id": "358c2751-5164-4198-b327-760b69611a57",
+        "name": "spinning",
+        "availableFields": 97,
+        "availableBookings": 7
+      }
+    ]
+  }
+}

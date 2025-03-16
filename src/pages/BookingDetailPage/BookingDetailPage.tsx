@@ -1,12 +1,10 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import styles from './BookingDetailPage.module.scss';
-import { Breadcrumb, Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Breadcrumb, Container, Row, Col, Form } from "react-bootstrap";
 import FieldDetailCardComponent from "../../components/FieldDetailCardComponent/FieldDetailCardComponent";
 import { Link } from "react-router-dom";
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
-import BookingCard from "../../components/BookingCard/BookingCard";
-import GameCardComponent from '../../components/GameCardComponent/GameCardComponents';
-import { EventEntity } from '../../entities/Entities';
+import { EventInterface } from '../../entities/Entities';
 import UserEntity from '../../entities/UserEntity';
 import { ReactComponent as ProfileIcon } from "../../icons/profileIcon.svg";
 
@@ -19,25 +17,25 @@ const mockPlayer: UserEntity = {
   favorite_sports: "Baloncesto",
   phone_number: "123456789",
   image_url: "/assets/basket_horizontal.jpg"
-}
-
-const mockEvent: EventEntity = {
-  id: "1",
-  startTime: new Date(),
-  endTime: new Date(),
-  currentPlayers: 4,
-  maxPlayers: 5,
-  sport: { id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 },
-  field: {
+  }
+  
+const mockEvent: EventInterface = {
     id: "1",
-    name: "Cancha de baloncesto",
-    address: "Calle 123",
-    city: { id: "1", name: "Medellín" },
-    sports: [{ id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 }],
-    createdById: "1",
-  },
-  image: null,
-};
+    startTime: new Date(),
+    endTime: new Date(),
+    currentPlayers: 4,
+    maxPlayers: 5,
+    sport: { id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 },
+    field: {
+      id: "1",
+      name: "Cancha de baloncesto",
+      address: "Calle 123",
+      city: { id: "1", name: "Medellín" },
+      sports: [{ id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 }],
+      createdById: "1",
+    },
+    image: null,
+  };
 
 const mockData: FieldDetailEntity = {
   id: "abc",

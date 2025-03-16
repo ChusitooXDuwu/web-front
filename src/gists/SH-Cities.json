@@ -1,0 +1,47 @@
+{
+  "message": "success",
+  "data": {
+    "cities": [
+      {
+        "id": "9cdd8cb2-64d9-4465-bb30-058a1ebd403f",
+        "name": "Bogotá"
+      },
+      {
+        "id": "452c5b62-2f75-46b3-a244-b80b28ac8d74",
+        "name": "Medellín"
+      },
+      {
+        "id": "b3e64cac-6e7c-4130-895c-9c83a1639fa2",
+        "name": "Cali"
+      },
+      {
+        "id": "69b31d9f-957f-49a2-a05b-aa3235bd5cf0",
+        "name": "Barranquilla"
+      },
+      {
+        "id": "546c1082-92f2-47c6-bdf8-5685052dff46",
+        "name": "Cartagena"
+      },
+      {
+        "id": "36f8e8e3-55ba-4082-9195-70d40b1bbc57",
+        "name": "Bucaramanga"
+      },
+      {
+        "id": "f27cfd72-aa49-4240-8a41-f0c5582ba786",
+        "name": "Santa Marta"
+      },
+      {
+        "id": "dbd66471-1ec3-4107-8fa6-feda56533cc4",
+        "name": "Manizales"
+      },
+      {
+        "id": "8f09050f-c9b4-467b-ab2d-9991340d3c5e",
+        "name": "Pereira"
+      },
+      {
+        "id": "47622264-3d73-41d1-b195-91b00f582731",
+        "name": "Cúcuta"
+      }
+    ]
+  }
+}

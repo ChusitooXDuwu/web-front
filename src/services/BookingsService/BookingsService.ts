@@ -5,7 +5,7 @@ import axios from "axios";
 
 const mockGetBookingsUrl =
   "https://gist.githubusercontent.com/Danielfts/15f50c854c3b902a4c81792583e88876/raw/371ea66f4b33502b16a524c67b440157239f3dd0/SH-BookedEvents.json";
-const getBookingsUrl = baseUrl ? `${baseUrl}/bookings` : mockGetBookingsUrl;
+const getBookingsUrl = baseUrl ? `${baseUrl}/events` : mockGetBookingsUrl;
 
 async function getMyBookings() {
   const response = await axios.get<ResponseEntity<Array<any>>>(getBookingsUrl);

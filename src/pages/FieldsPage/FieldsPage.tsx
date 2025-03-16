@@ -1,59 +1,42 @@
-import React, { ChangeEvent, FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useEffect, useState } from "react";
 import styles from "./FieldsPage.module.scss";
 import { Breadcrumb, Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { CityEntity, FieldEntity, SportEntity } from "../../entities/Entities";
+import { FieldEntity } from "../../entities/Entities";
 import FieldCardComponent from "./FieldCardComponent/FieldCardComponent";
 import { FormattedMessage, useIntl } from "react-intl";
+import { useQuery } from "@tanstack/react-query";
+import getFields from "../../services/FieldsService/FieldsService";
 
 interface FieldsPageProps {}
 
 const FieldsPage: FC<FieldsPageProps> = () => {
   const { formatMessage } = useIntl();
-  const mockCity: CityEntity = {
-    id: "1",
-    name: "Mock City",
-  };
-
-  const mockSports: SportEntity[] = [
-    {
-      id: "1",
-      name: "Soccer",
-      available_fields: 2,
-      available_bookings: 5,
-    },
-    {
-      id: "2",
-      name: "Basketball",
-      available_fields: 2,
-      available_bookings: 2,
-    },
-  ];
-
-  const mockFieldEntity: FieldEntity = {
-    id: "1",
-    name: "Mock Field",
-    city: mockCity,
-    address: "123 Mock Street",
-    sports: mockSports,
-    createdById: "user123",
-  };
+  const navigate = useNavigate();
   // Fetch data
-  let fieldsData: Array<FieldEntity> = Array(10).fill(mockFieldEntity);
-  fieldsData = fieldsData.map((item, index) => {
-    return { ...item, name: item.name + " " + index.toString() };
+  const { isSuccess, data: fieldsData } = useQuery({
+    queryKey: ["fields"],
+    queryFn: getFields,
   });
   // Hooks
-  const navigate = useNavigate();
   const [filteredFieldsData, setFilteredFieldsData] = useState<FieldEntity[]>(
-    fieldsData.slice()
+    []
   );
+  useEffect(() => {
+    if (isSuccess) {
+      const { data } = fieldsData;
+      setFilteredFieldsData(data.slice());
+    }
+  }, [fieldsData, isSuccess]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [currentSearchValue, setCurrentSearchValue] = useState<string>("");
 
   const filterData = () => {
+    if (!isSuccess) {
+      return;
+    }
     setFilteredFieldsData(
-      fieldsData.filter((item) => {
+      fieldsData.data.filter((item) => {
         const name = item.name;
         const address = item.address;
         const normalizedSearchValue = searchValue.toLowerCase();
