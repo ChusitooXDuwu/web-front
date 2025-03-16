@@ -66,7 +66,7 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
     </Row>
     <Row lg={3} md={3} sm={2} xs={1} className="gy-3 justify-content-center">
       
-        <FieldDetailCardComponent field={mockData} />
+        <FieldDetailCardComponent field={mockData} price ={4} />
         
     </Row>
     <Row className="justify-content-center">

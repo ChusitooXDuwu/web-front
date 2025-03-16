@@ -22,6 +22,7 @@ import FieldDetailPage from "./pages/FieldDetailPage/FieldDetailPage";
 import BookingDetailPage from "./pages/BookingDetailPage/BookingDetailPage";
 import EventDetailPage from "./pages/EventDetailPage/EventDetailPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import FieldDetailPageMap from "./pages/FieldDetailPageMap/FieldDetailPageMap";
 import { useState } from "react";
 import { IntlProvider } from "react-intl";
 import {
@@ -73,6 +74,7 @@ function App() {
                 <Route path="events/:id" element={<EventDetailPage />} />
                 <Route path="events/create" element={<CreateEventPage />} />
                 <Route path="fields/:id" element={<FieldDetailPage />} />
+                <Route path="fields/map/:id" element={<FieldDetailPageMap />} />
                 <Route path="bookings/:id" element={<BookingDetailPage />} />
               </Route>
               <Route path="/" element={<LoginView />}>
@@ -88,5 +90,4 @@ function App() {
     </LocaleContext.Provider>
   );
 }
-
 export default App;
