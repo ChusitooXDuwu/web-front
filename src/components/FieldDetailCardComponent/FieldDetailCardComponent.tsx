@@ -65,6 +65,11 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
               <div className={styles.detailItem}>
                 <span className={styles.detailIcon}>📍</span>
                 <span>{field.address}</span>
+                <span className={styles.mapButtonWrapper}>
+                  <Button className={styles.mapButton}  onClick={() => navigate(`/fields/map/${field.id}`)}>
+                    Ver en Mapa
+                  </Button>
+                </span>
               </div>
 
               <div className={styles.detailItem}>
