@@ -10,34 +10,6 @@ import FieldMapCardComponent from "../../components/FieldMapCardComponent/FieldM
 import { Breadcrumb, Button, Col, Container, Form, Row } from "react-bootstrap";
 import CustomMap from "../../components/MapComponent/MapComponent";
 
-const mockCity: CityEntity = {
-    id: "1",
-    name: "Mock City",
-};
-
-const mockSports: SportEntity[] = [
-    {
-        id: "1",
-        name: "Soccer",
-        available_fields: 2,
-        available_bookings: 5
-    },
-    {
-        id: "2",
-        name: "Basketball",
-        available_fields: 2,
-        available_bookings: 2
-    },
-];
-
-const mockFieldEntity: FieldEntity = {
-    id: "1",
-    name: "Mock Field",
-    city: mockCity,
-    address: "123 Mock Street",
-    sports: mockSports,
-    createdById: "user123",
-};
 
 const mockData: FieldDetailEntity = {
   id: "abc",
@@ -66,10 +38,10 @@ function FieldDetailPageMap() {
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/fields" }}>
             Canchas
             </Breadcrumb.Item>
-            <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/fields/${mockFieldEntity.id}` }}>
+            <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/fields/${mockData.id}` }}>
             Canchas
             </Breadcrumb.Item>
-            <Breadcrumb.Item active>{`Map of ${mockFieldEntity.name}`}</Breadcrumb.Item>
+            <Breadcrumb.Item active>{`Map of ${mockData.field_name}`}</Breadcrumb.Item>
         </Breadcrumb>
         </Row>
         <Container fluid className="main_content_container pt-2 d-flex">
