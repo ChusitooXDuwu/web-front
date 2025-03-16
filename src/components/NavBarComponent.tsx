@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
-    <>
+    <div>
       <Navbar expand="ls" className="custom-navbar mb-0">
         <Container fluid>
           {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -175,7 +175,7 @@ function NavBar() {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 }
 

@@ -32,10 +32,12 @@ function App() {
           <Route path="fields" element={<FieldsPage/>}/>
           <Route path="sports" element={<SportsPage/>}/>
           <Route path="events" element={<EventsPage/>}/>
-          <Route path="profile" element={<ProfilePage/>}/>
-          <Route path="notifications" element={<NotificationsPage/>}/>
-          <Route path="history" element={<HistoryPage/>}/>
-          <Route path="statistics" element={<StatisticsPage/>}/>
+          <Route path="profile/*" >
+              <Route index element={<ProfilePage isOwner={true} />} />
+              <Route path="history" element={<HistoryPage />} />
+              <Route path="notifications" element={<NotificationsPage />} />
+              <Route path="statistics" element={<StatisticsPage />} />            
+          </Route>
           <Route path="groups" element={<GroupsPage/>}/>
           <Route path="fields/create" element={<CreateFieldPage/>}/>
           <Route path="bookings/create" element={<CreateBookingPage/>}/>

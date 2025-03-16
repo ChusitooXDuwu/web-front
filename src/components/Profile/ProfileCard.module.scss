@@ -1,0 +1,16 @@
+@use "../../variables" as v;
+.name{
+    color: v.$sporthub-text-gold;
+    font-size:30px; // Quita el subrayado
+    padding: 10px ;
+    }
+
+    @media (min-width: 768px) {
+        .profile-container {
+          flex-direction: row;
+          gap: 16px; /* Espacio entre imagen y texto */
+          font-size:20px; // Quita el subrayado
+          padding: 10px ;
+      
+        }
+      }    

@@ -1,0 +1,33 @@
+@use "../../_variables" as v;
+
+.sidebar {
+  background-color: v.$sporthub-purple;
+  //width: 250px;
+  height:cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+
+.sidebar_item {
+    color: white; // Texto blanco
+    font-size: 24px;
+    text-decoration: none; // Quita el subrayado
+    transition: color 0.3s ease;
+    padding: 10px 0;
+  }
+
+.sidebar_item:hover{ 
+      color: v.$sporthub-text-gold; // Cambia de color en hover
+    }
+.session{
+    color: v.$sporthub-text-gold;
+    font-size:30px;
+    transition: color 0.3s ease;
+    text-decoration: none; // Quita el subrayado
+  
+  }
+.session:hover {
+      color: v.$sporthub-cream-yellow}
