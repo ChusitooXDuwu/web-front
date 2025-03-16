@@ -1,0 +1,1525 @@
+{
+  "message": "success",
+  "data": {
+    "fields": [
+      {
+        "id": "96a285ef-27f5-459a-8c01-a9735683c7aa",
+        "name": "Stadium A",
+        "city": {
+          "id": "7e9c8bf1-a9cb-4c2a-b819-a45bc620810a",
+          "name": "Caoxi"
+        },
+        "address": "Suite 38",
+        "cratedById": "f9c598f4-fb19-428c-a24e-cd7cb0fe4857",
+        "sports": [
+          {
+            "id": "ef873905-6b3e-4dfa-9887-21fa9621a181",
+            "name": "soccer",
+            "availableFields": 78,
+            "availableBookings": 40
+          },
+          {
+            "id": "92f59c69-6cd8-4396-9f45-6ba2f68fc7b0",
+            "name": "basketball",
+            "availableFields": 52,
+            "availableBookings": 26
+          },
+          {
+            "id": "b2650b03-5614-438b-a606-e66f56724856",
+            "name": "football",
+            "availableFields": 27,
+            "availableBookings": 84
+          }
+        ]
+      },
+      {
+        "id": "61104ae2-94db-4975-adaf-7d5a7f15035d",
+        "name": "Arena B",
+        "city": {
+          "id": "7b053f53-0ee5-4c22-ace5-5ae6a5deb36c",
+          "name": "Caracal"
+        },
+        "address": "Room 1320",
+        "cratedById": "18d25868-0fd1-4595-a9be-b368f09a22aa",
+        "sports": [
+          {
+            "id": "1a5475df-a858-44e2-a35e-d309d8de9184",
+            "name": "soccer",
+            "availableFields": 40,
+            "availableBookings": 25
+          }
+        ]
+      },
+      {
+        "id": "c88a756f-6652-424f-8446-7eb51a9c594c",
+        "name": "Field C",
+        "city": {
+          "id": "add42099-64e7-4749-8fbd-56c28d1aab50",
+          "name": "Dalazi"
+        },
+        "address": "Room 716",
+        "cratedById": "34d17fd6-b5e6-4db5-8c8a-358b9240f58a",
+        "sports": [
+          {
+            "id": "38d2cff6-3f97-4868-9c3b-2c5daf25be85",
+            "name": "soccer",
+            "availableFields": 42,
+            "availableBookings": 30
+          },
+          {
+            "id": "5736fcc0-8242-453d-855f-d5e650780563",
+            "name": "basketball",
+            "availableFields": 43,
+            "availableBookings": 41
+          },
+          {
+            "id": "d0f62003-a714-45df-957f-1a4b214802d5",
+            "name": "football",
+            "availableFields": 69,
+            "availableBookings": 86
+          },
+          {
+            "id": "31f540fd-3682-4194-97fd-45456be720e0",
+            "name": "tennis",
+            "availableFields": 47,
+            "availableBookings": 95
+          },
+          {
+            "id": "edb30713-5f52-4954-b6be-c659be320ff8",
+            "name": "volleyball",
+            "availableFields": 49,
+            "availableBookings": 29
+          }
+        ]
+      },
+      {
+        "id": "5afb8348-c717-48c4-9e7d-c7de3abc41fd",
+        "name": "Coliseum D",
+        "city": {
+          "id": "6e671108-2fbe-419d-9244-1fda99567a6d",
+          "name": "Bukuru"
+        },
+        "address": "3rd Floor",
+        "cratedById": "f18a0755-8c0e-4c9e-9469-eba7418338a2",
+        "sports": [
+          {
+            "id": "908db73c-5d55-4845-92cb-1bc1578f66da",
+            "name": "soccer",
+            "availableFields": 22,
+            "availableBookings": 37
+          },
+          {
+            "id": "72eb9314-ceaa-4a7b-9d6c-17b18cb6e938",
+            "name": "basketball",
+            "availableFields": 13,
+            "availableBookings": 32
+          },
+          {
+            "id": "a4ce8f9e-5538-4feb-be96-98fe63258315",
+            "name": "football",
+            "availableFields": 74,
+            "availableBookings": 36
+          }
+        ]
+      },
+      {
+        "id": "800ae7d7-1cfd-4d74-b54e-b8676105a8df",
+        "name": "Park E",
+        "city": {
+          "id": "04aa03e5-30ea-4a3f-b1ab-cd75063a6e27",
+          "name": "Jaworzyna Śląska"
+        },
+        "address": "15th Floor",
+        "cratedById": "9d2463b9-b750-474b-a476-c533590a0c75",
+        "sports": [
+          {
+            "id": "cb2de841-857d-4e34-83f8-ba11bfd1ce48",
+            "name": "soccer",
+            "availableFields": 99,
+            "availableBookings": 7
+          }
+        ]
+      },
+      {
+        "id": "6785ff54-aa6f-4045-a10d-b2be5bae8248",
+        "name": "Center F",
+        "city": {
+          "id": "3eb715c9-2786-4607-9041-2db421ef602e",
+          "name": "Mesiméri"
+        },
+        "address": "Apt 1443",
+        "cratedById": "41ce833e-8646-484c-92e0-7a374894c00a",
+        "sports": [
+          {
+            "id": "98d223df-9cb9-47c0-828e-e2afbe540417",
+            "name": "soccer",
+            "availableFields": 64,
+            "availableBookings": 21
+          },
+          {
+            "id": "2d31c1c2-2112-4e5c-bf73-596b21c3a190",
+            "name": "basketball",
+            "availableFields": 98,
+            "availableBookings": 19
+          },
+          {
+            "id": "fa2acd47-f1d7-4a90-b95e-f4fc4c71bf0e",
+            "name": "football",
+            "availableFields": 20,
+            "availableBookings": 11
+          },
+          {
+            "id": "351b307a-697f-4ebe-af94-98f3c598b769",
+            "name": "tennis",
+            "availableFields": 76,
+            "availableBookings": 40
+          }
+        ]
+      },
+      {
+        "id": "6474596b-a2a9-4f38-a06f-0f710072e13f",
+        "name": "Dome G",
+        "city": {
+          "id": "b880dbd0-fb09-444e-b2b2-edda104dbb33",
+          "name": "Saeul"
+        },
+        "address": "1st Floor",
+        "cratedById": "3a1f55d4-2f46-4033-a7b8-55a5453488c5",
+        "sports": [
+          {
+            "id": "cc863ce7-793d-4c68-a280-dfccd85cbd3b",
+            "name": "soccer",
+            "availableFields": 36,
+            "availableBookings": 92
+          },
+          {
+            "id": "11d80619-9890-4441-9625-0288830d0a34",
+            "name": "basketball",
+            "availableFields": 11,
+            "availableBookings": 39
+          },
+          {
+            "id": "c5c95371-5f87-4571-8a7c-7104559d3217",
+            "name": "football",
+            "availableFields": 29,
+            "availableBookings": 94
+          }
+        ]
+      },
+      {
+        "id": "86d941b8-da37-4a5d-a65a-9a43aff3104c",
+        "name": "Court H",
+        "city": {
+          "id": "d3298186-d5a5-469c-91a6-f52316708ef0",
+          "name": "Fornos"
+        },
+        "address": "11th Floor",
+        "cratedById": "2ad86bc7-01f0-4b87-9fe5-02a95e17b8ec",
+        "sports": [
+          {
+            "id": "d7197373-965b-4ea4-a88b-7e94f389fc3c",
+            "name": "soccer",
+            "availableFields": 76,
+            "availableBookings": 5
+          },
+          {
+            "id": "ef958fe4-2db4-47d8-a827-168ea1a662ce",
+            "name": "basketball",
+            "availableFields": 11,
+            "availableBookings": 94
+          }
+        ]
+      },
+      {
+        "id": "1b4e0cb0-65f4-4b02-a5e5-8f4bfdc60638",
+        "name": "Track I",
+        "city": {
+          "id": "41e6fb28-388e-4e59-acd0-3dab6d679fbf",
+          "name": "Tengah"
+        },
+        "address": "Apt 1779",
+        "cratedById": "c74c0aab-332d-42d3-acb2-3ca98a13330a",
+        "sports": [
+          {
+            "id": "eb9381a9-6ded-48c3-a7f6-852c0fd0f79c",
+            "name": "soccer",
+            "availableFields": 95,
+            "availableBookings": 24
+          }
+        ]
+      },
+      {
+        "id": "cd82b631-7b61-4a63-9f12-f6f96f2487c7",
+        "name": "Arena J",
+        "city": {
+          "id": "39736a49-3ffc-409e-b62f-6f67ccb730f8",
+          "name": "Jiangcun"
+        },
+        "address": "Room 1835",
+        "cratedById": "b49121d6-d93b-4991-9c27-6fde8e2bf21a",
+        "sports": [
+          {
+            "id": "be455c12-ca92-4b77-949f-489a31216f1d",
+            "name": "soccer",
+            "availableFields": 21,
+            "availableBookings": 44
+          },
+          {
+            "id": "94abd2c5-d4d5-4e50-8b3f-1314f1c4deea",
+            "name": "basketball",
+            "availableFields": 36,
+            "availableBookings": 3
+          },
+          {
+            "id": "1b7332c0-7bc1-4e87-b9d6-24a4d57f8adf",
+            "name": "football",
+            "availableFields": 23,
+            "availableBookings": 83
+          },
+          {
+            "id": "cbef2c5a-4a50-44dd-9729-3a47a2db15e6",
+            "name": "tennis",
+            "availableFields": 26,
+            "availableBookings": 45
+          }
+        ]
+      },
+      {
+        "id": "d7345cfb-ee3c-495e-93b5-f02f5e5a3bd4",
+        "name": "Stadium A",
+        "city": {
+          "id": "e9d69cf3-f717-4fee-8e0d-7f54bb13f67e",
+          "name": "Tapayan"
+        },
+        "address": "Apt 336",
+        "cratedById": "6ba9141e-da60-4be2-a0f4-209ab3465847",
+        "sports": [
+          {
+            "id": "dc89b428-407f-4e9c-acb4-a5b4f9346001",
+            "name": "soccer",
+            "availableFields": 41,
+            "availableBookings": 22
+          }
+        ]
+      },
+      {
+        "id": "1bf6fadd-553b-4d3d-b1aa-42b677d6b220",
+        "name": "Arena B",
+        "city": {
+          "id": "ed07267e-59a4-41c5-9680-d1e047751954",
+          "name": "Jimaguayú"
+        },
+        "address": "Apt 134",
+        "cratedById": "3ef6977f-f401-413a-809f-5480107fcdf1",
+        "sports": [
+          {
+            "id": "ba212b3f-5abd-460d-bc78-c2c5c1608d31",
+            "name": "soccer",
+            "availableFields": 14,
+            "availableBookings": 56
+          },
+          {
+            "id": "ea1aab85-951a-4e61-be01-1dc6af7f480c",
+            "name": "basketball",
+            "availableFields": 68,
+            "availableBookings": 58
+          },
+          {
+            "id": "cf902da7-2eb2-4fb2-ac32-8d87c2b4cd9d",
+            "name": "football",
+            "availableFields": 60,
+            "availableBookings": 56
+          },
+          {
+            "id": "04e691c2-828e-454c-aa57-82dc905f4f26",
+            "name": "tennis",
+            "availableFields": 52,
+            "availableBookings": 46
+          }
+        ]
+      },
+      {
+        "id": "55a60b6c-4627-4291-9de6-4c050fb1979f",
+        "name": "Field C",
+        "city": {
+          "id": "6db6f56e-adb5-4b3f-bbcf-04389560846c",
+          "name": "Puerto Plata"
+        },
+        "address": "PO Box 32495",
+        "cratedById": "7e1b29ff-1693-4ede-aa60-066b8e0e7e94",
+        "sports": [
+          {
+            "id": "43122e36-8b7a-428a-93f0-51ffb7c761c1",
+            "name": "soccer",
+            "availableFields": 91,
+            "availableBookings": 61
+          },
+          {
+            "id": "aeebaa33-a7ba-478d-9545-1363d120e6ea",
+            "name": "basketball",
+            "availableFields": 72,
+            "availableBookings": 3
+          },
+          {
+            "id": "9b12f4ca-817b-49a6-8899-ded40b2a5a9d",
+            "name": "football",
+            "availableFields": 80,
+            "availableBookings": 25
+          }
+        ]
+      },
+      {
+        "id": "43cd865d-cc90-4d3c-b082-c750a516180f",
+        "name": "Coliseum D",
+        "city": {
+          "id": "a7e72736-856d-454f-8f3b-7c2947d0bbc1",
+          "name": "Nova Petrópolis"
+        },
+        "address": "Room 1455",
+        "cratedById": "582fbe41-2b4d-4138-b411-3980bc7db3cb",
+        "sports": [
+          {
+            "id": "416cf728-e26c-4196-964d-48291b9a82b1",
+            "name": "soccer",
+            "availableFields": 11,
+            "availableBookings": 26
+          }
+        ]
+      },
+      {
+        "id": "a16c02c6-e408-4804-90d8-1eb7c277d345",
+        "name": "Park E",
+        "city": {
+          "id": "c2cf20a1-8f86-438b-b53b-2b741529fa0f",
+          "name": "Anta"
+        },
+        "address": "Apt 1798",
+        "cratedById": "d6f18653-069c-4bcb-9395-8ae188022203",
+        "sports": [
+          {
+            "id": "be35cc0c-3a3f-4463-897c-efa46a239979",
+            "name": "soccer",
+            "availableFields": 93,
+            "availableBookings": 40
+          },
+          {
+            "id": "3072a7df-6f00-4e41-b925-899a91ce864c",
+            "name": "basketball",
+            "availableFields": 2,
+            "availableBookings": 52
+          },
+          {
+            "id": "3b98b611-f7fa-4b9c-a8d6-18dba3f053bb",
+            "name": "football",
+            "availableFields": 30,
+            "availableBookings": 8
+          },
+          {
+            "id": "1f268c0c-4d1d-40c2-94d8-386982d4125a",
+            "name": "tennis",
+            "availableFields": 15,
+            "availableBookings": 30
+          },
+          {
+            "id": "5616058c-f7b2-4026-b9ac-0ce6a571881d",
+            "name": "volleyball",
+            "availableFields": 76,
+            "availableBookings": 43
+          }
+        ]
+      },
+      {
+        "id": "8c62b43e-8d5d-4251-a06f-605a9672a75f",
+        "name": "Center F",
+        "city": {
+          "id": "6b24b965-491b-47e9-96f1-c0b8b7a7d59b",
+          "name": "Vizal San Pablo"
+        },
+        "address": "Room 1528",
+        "cratedById": "c413ae8d-0845-4d18-97c3-1ee1673c2d50",
+        "sports": [
+          {
+            "id": "5e3266bc-1ba3-45d4-9953-f3e5fdf73322",
+            "name": "soccer",
+            "availableFields": 49,
+            "availableBookings": 64
+          },
+          {
+            "id": "83fdf18c-4be3-4239-8151-f693ee9921ee",
+            "name": "basketball",
+            "availableFields": 88,
+            "availableBookings": 64
+          },
+          {
+            "id": "ec6c87b3-923b-4c9a-a3df-78c442c9754c",
+            "name": "football",
+            "availableFields": 28,
+            "availableBookings": 77
+          }
+        ]
+      },
+      {
+        "id": "585a9481-e59a-4bb0-97c4-46eca219d8bb",
+        "name": "Dome G",
+        "city": {
+          "id": "9217d7fe-d16a-4378-98cd-9a70f8721cb5",
+          "name": "Mandala"
+        },
+        "address": "PO Box 42502",
+        "cratedById": "56d2a4f5-acb1-4680-9ff8-7371f63636bf",
+        "sports": [
+          {
+            "id": "9d257276-9979-4240-9da0-df262bdec0dd",
+            "name": "soccer",
+            "availableFields": 49,
+            "availableBookings": 68
+          },
+          {
+            "id": "149cd476-8578-49c1-96cd-3c7ee6e21bdb",
+            "name": "basketball",
+            "availableFields": 85,
+            "availableBookings": 62
+          },
+          {
+            "id": "4e289ed3-77dc-407e-97b5-6a415d585051",
+            "name": "football",
+            "availableFields": 71,
+            "availableBookings": 75
+          },
+          {
+            "id": "1a731e2a-79ef-479f-841a-8abc76ff941d",
+            "name": "tennis",
+            "availableFields": 22,
+            "availableBookings": 19
+          },
+          {
+            "id": "1aa23d16-13c4-4189-91fe-39f29ce9f145",
+            "name": "volleyball",
+            "availableFields": 21,
+            "availableBookings": 25
+          }
+        ]
+      },
+      {
+        "id": "e40775ff-fd3d-4549-aaf8-a06d5b522559",
+        "name": "Court H",
+        "city": {
+          "id": "a0815c84-e743-4c8c-a472-19f0f0edf015",
+          "name": "Angostura"
+        },
+        "address": "PO Box 5150",
+        "cratedById": "ff3d443c-ba3c-4d43-8df9-68c3b7dd5d98",
+        "sports": [
+          {
+            "id": "b56c3ee2-553e-4518-bf08-c8b52eaae857",
+            "name": "soccer",
+            "availableFields": 74,
+            "availableBookings": 75
+          },
+          {
+            "id": "537c9305-8dd8-4bc2-b29d-7005cbc0244d",
+            "name": "basketball",
+            "availableFields": 94,
+            "availableBookings": 27
+          },
+          {
+            "id": "cc90add1-a79f-41e6-a09a-b9a463999975",
+            "name": "football",
+            "availableFields": 10,
+            "availableBookings": 79
+          }
+        ]
+      },
+      {
+        "id": "7643a001-86ed-4a2e-927d-5cb2f628549e",
+        "name": "Track I",
+        "city": {
+          "id": "74a90be3-eb45-47b3-ab67-5caed67ec706",
+          "name": "Newport News"
+        },
+        "address": "20th Floor",
+        "cratedById": "09be0541-0408-4a38-b35d-8fb1924ad70e",
+        "sports": [
+          {
+            "id": "79424d2e-1a07-44b6-b8d0-73f9b0a5ad96",
+            "name": "soccer",
+            "availableFields": 7,
+            "availableBookings": 65
+          },
+          {
+            "id": "2abc637e-e2e5-44d8-a4c6-18a4eaaa5dab",
+            "name": "basketball",
+            "availableFields": 73,
+            "availableBookings": 12
+          },
+          {
+            "id": "00c10a0e-0fe0-4f34-86c6-277faab11d25",
+            "name": "football",
+            "availableFields": 50,
+            "availableBookings": 43
+          }
+        ]
+      },
+      {
+        "id": "02716323-5096-4455-8de4-e35e9a5e5242",
+        "name": "Arena J",
+        "city": {
+          "id": "d4c3b3e6-fdde-469e-88cb-6474ef97c8ca",
+          "name": "Laimuda"
+        },
+        "address": "Suite 48",
+        "cratedById": "41395498-3e4d-4ebf-a4e3-3b88085b5b0d",
+        "sports": [
+          {
+            "id": "91ff7ae2-8c11-4ae2-b3d2-7cb28ff747b8",
+            "name": "soccer",
+            "availableFields": 96,
+            "availableBookings": 1
+          }
+        ]
+      },
+      {
+        "id": "110bc288-e89c-4d47-9f41-5f402a982683",
+        "name": "Stadium A",
+        "city": {
+          "id": "fa646673-9b56-4e9c-acde-c003024a3286",
+          "name": "Daxing"
+        },
+        "address": "12th Floor",
+        "cratedById": "828a48e3-c444-4193-8b69-798821f8364d",
+        "sports": [
+          {
+            "id": "b18e5f7f-67d6-40e6-983e-4fc9ec38f370",
+            "name": "soccer",
+            "availableFields": 38,
+            "availableBookings": 39
+          },
+          {
+            "id": "2d038486-c9af-4ca8-8a23-f228ee798ba4",
+            "name": "basketball",
+            "availableFields": 83,
+            "availableBookings": 26
+          },
+          {
+            "id": "42e6ac70-cdca-4643-9a6f-26d8f38e4546",
+            "name": "football",
+            "availableFields": 92,
+            "availableBookings": 4
+          },
+          {
+            "id": "a3fe78a0-7213-49f0-9eb5-9919a9df7f06",
+            "name": "tennis",
+            "availableFields": 66,
+            "availableBookings": 18
+          },
+          {
+            "id": "c24c2eb4-e9d1-4fea-8d14-b036dce9bcf3",
+            "name": "volleyball",
+            "availableFields": 80,
+            "availableBookings": 57
+          }
+        ]
+      },
+      {
+        "id": "53a36741-9b26-4f01-9d32-059c6c58351a",
+        "name": "Arena B",
+        "city": {
+          "id": "785357da-5f98-454e-a6d6-88a8663a7d87",
+          "name": "Žagarė"
+        },
+        "address": "Apt 1068",
+        "cratedById": "7806ffa1-de32-4742-aaf9-dc3c65e28680",
+        "sports": [
+          {
+            "id": "02b751c0-828d-4173-9043-aa973e8689b3",
+            "name": "soccer",
+            "availableFields": 75,
+            "availableBookings": 48
+          },
+          {
+            "id": "11347b8a-a605-411a-9571-ff0688936092",
+            "name": "basketball",
+            "availableFields": 21,
+            "availableBookings": 14
+          },
+          {
+            "id": "bcf9c938-25ef-4f20-8472-c60b7e0a9437",
+            "name": "football",
+            "availableFields": 84,
+            "availableBookings": 15
+          },
+          {
+            "id": "c2bce6a0-2dfb-4ec3-ae3c-cb4637c051bc",
+            "name": "tennis",
+            "availableFields": 97,
+            "availableBookings": 62
+          },
+          {
+            "id": "ad36b84c-6e55-4cdf-a581-662db040df80",
+            "name": "volleyball",
+            "availableFields": 12,
+            "availableBookings": 5
+          }
+        ]
+      },
+      {
+        "id": "24cf42c5-1437-4fda-9967-d6a1822bf556",
+        "name": "Field C",
+        "city": {
+          "id": "da74f4fe-7fc4-4702-bad2-049fadf01697",
+          "name": "Shuangpengxi"
+        },
+        "address": "Room 817",
+        "cratedById": "fbfd2206-0de1-481e-9c61-7432227d8c6f",
+        "sports": [
+          {
+            "id": "ed2e7ee7-18db-428a-ae35-9f792b8d9442",
+            "name": "soccer",
+            "availableFields": 29,
+            "availableBookings": 82
+          }
+        ]
+      },
+      {
+        "id": "ff67ff08-8778-4b27-88a1-587180d2126a",
+        "name": "Coliseum D",
+        "city": {
+          "id": "f597b4dd-ee53-4454-898d-9ccfa171ea55",
+          "name": "Ambilobe"
+        },
+        "address": "Room 262",
+        "cratedById": "d6fb3222-d2b3-4f51-9f1a-1b766d67654b",
+        "sports": [
+          {
+            "id": "4c9db59b-23e5-4ee7-82dc-206e36691e76",
+            "name": "soccer",
+            "availableFields": 13,
+            "availableBookings": 12
+          },
+          {
+            "id": "233a3d5e-2610-4ef9-862f-2ec4744e7ac8",
+            "name": "basketball",
+            "availableFields": 46,
+            "availableBookings": 65
+          },
+          {
+            "id": "b1d078b1-ff18-4087-a878-c1b10676a3c0",
+            "name": "football",
+            "availableFields": 35,
+            "availableBookings": 26
+          },
+          {
+            "id": "0016cdee-4460-4635-b13a-30e237e98721",
+            "name": "tennis",
+            "availableFields": 11,
+            "availableBookings": 75
+          }
+        ]
+      },
+      {
+        "id": "3ae7933b-6b91-4fa5-b075-bf37ea8685a7",
+        "name": "Park E",
+        "city": {
+          "id": "3749e5bd-3b05-47c4-a6aa-0e5f4e3cfc59",
+          "name": "Abaza"
+        },
+        "address": "Apt 387",
+        "cratedById": "4e344f4e-6c02-41c9-8208-3eb00e655370",
+        "sports": [
+          {
+            "id": "d6c0eaa2-2fbf-4282-a65a-90e61a934118",
+            "name": "soccer",
+            "availableFields": 75,
+            "availableBookings": 9
+          },
+          {
+            "id": "380f72d5-bc02-4c2c-9ab9-018eab688167",
+            "name": "basketball",
+            "availableFields": 16,
+            "availableBookings": 73
+          },
+          {
+            "id": "242f4ca8-abe2-47f0-aa72-2fd6a6addbec",
+            "name": "football",
+            "availableFields": 1,
+            "availableBookings": 91
+          }
+        ]
+      },
+      {
+        "id": "2b1f38a2-0cc0-4ef7-8609-148cc97b4058",
+        "name": "Center F",
+        "city": {
+          "id": "b1da1d19-2818-437c-9845-a48f385ec4cf",
+          "name": "Muroran"
+        },
+        "address": "PO Box 14913",
+        "cratedById": "093a0f8c-f263-4b12-b43b-3aad67392f0e",
+        "sports": [
+          {
+            "id": "d55b5b12-8832-4478-a672-370f616cdcd2",
+            "name": "soccer",
+            "availableFields": 58,
+            "availableBookings": 57
+          }
+        ]
+      },
+      {
+        "id": "e8a96b84-26bd-4b36-b704-9faa783ce935",
+        "name": "Dome G",
+        "city": {
+          "id": "ad34926b-be01-430e-a218-bc0d9f4e86be",
+          "name": "Cerro de Pasco"
+        },
+        "address": "Room 230",
+        "cratedById": "48b2ff69-113d-4f53-bb5a-608f751c328e",
+        "sports": [
+          {
+            "id": "7860d565-0b9f-4ca8-8a44-9eed55ff312a",
+            "name": "soccer",
+            "availableFields": 47,
+            "availableBookings": 1
+          },
+          {
+            "id": "68c656d3-f59c-44b9-8cb4-075025969345",
+            "name": "basketball",
+            "availableFields": 28,
+            "availableBookings": 11
+          },
+          {
+            "id": "8e067292-6218-46eb-9f1e-e3e02e74ebed",
+            "name": "football",
+            "availableFields": 61,
+            "availableBookings": 100
+          }
+        ]
+      },
+      {
+        "id": "a63e7723-bb63-4199-b9d2-180352ac9c2b",
+        "name": "Court H",
+        "city": {
+          "id": "9005d810-bc6b-47d9-9395-d60405641011",
+          "name": "Barbacena"
+        },
+        "address": "Suite 58",
+        "cratedById": "99bf80fa-9eb7-4471-a97e-0324d4160cae",
+        "sports": [
+          {
+            "id": "f227ecd1-8cc8-433a-be91-7ca32846fa06",
+            "name": "soccer",
+            "availableFields": 87,
+            "availableBookings": 22
+          },
+          {
+            "id": "331a15f7-4bde-4ddd-ada9-ed324457b6ee",
+            "name": "basketball",
+            "availableFields": 80,
+            "availableBookings": 25
+          },
+          {
+            "id": "1f0e2171-c735-4587-824a-a6bb32041193",
+            "name": "football",
+            "availableFields": 36,
+            "availableBookings": 55
+          },
+          {
+            "id": "91f69d8d-f8f2-46ce-8dba-68573f5b284a",
+            "name": "tennis",
+            "availableFields": 67,
+            "availableBookings": 99
+          }
+        ]
+      },
+      {
+        "id": "c15002af-abaf-4391-8580-bfdf3ca84f89",
+        "name": "Track I",
+        "city": {
+          "id": "2d28de16-ed51-4d26-b7eb-405095224110",
+          "name": "Rudna Mała"
+        },
+        "address": "PO Box 26409",
+        "cratedById": "fb0a7d05-14c8-4b3e-b6d3-7258156770e1",
+        "sports": [
+          {
+            "id": "315b1edd-caf4-4d34-81e7-3b19b12f78a5",
+            "name": "soccer",
+            "availableFields": 24,
+            "availableBookings": 86
+          },
+          {
+            "id": "f075838c-736b-47db-a84b-23aadd9967e9",
+            "name": "basketball",
+            "availableFields": 52,
+            "availableBookings": 88
+          }
+        ]
+      },
+      {
+        "id": "d86e9b6e-f72a-42c9-9c9f-05ec9a7c5112",
+        "name": "Arena J",
+        "city": {
+          "id": "e18e672c-5a94-45eb-aa0d-8d83c6c1d636",
+          "name": "Banepa"
+        },
+        "address": "PO Box 74042",
+        "cratedById": "bbb10dff-f66c-4f3d-9487-8cd774384ef1",
+        "sports": [
+          {
+            "id": "f07d5947-f915-4bd7-9e5c-09f97ad4459a",
+            "name": "soccer",
+            "availableFields": 96,
+            "availableBookings": 74
+          }
+        ]
+      },
+      {
+        "id": "4ca8de2f-3859-4963-8726-bd122218dcc8",
+        "name": "Stadium A",
+        "city": {
+          "id": "7246b5d1-c110-4e4c-9f33-c359e670aee4",
+          "name": "Prata"
+        },
+        "address": "Room 1913",
+        "cratedById": "abdc722c-7f73-45b9-bb13-e3418e7a36ed",
+        "sports": [
+          {
+            "id": "724fde14-1964-4dc1-b61c-46cb6b0ddb5d",
+            "name": "soccer",
+            "availableFields": 39,
+            "availableBookings": 92
+          },
+          {
+            "id": "98ed648e-0ea9-4ed5-b5c5-2a59483cba42",
+            "name": "basketball",
+            "availableFields": 4,
+            "availableBookings": 100
+          },
+          {
+            "id": "05f1f759-e983-438c-8048-5fe5b321b0b8",
+            "name": "football",
+            "availableFields": 1,
+            "availableBookings": 68
+          },
+          {
+            "id": "c21b174d-bbd7-4f06-a894-ea8fe3a11cff",
+            "name": "tennis",
+            "availableFields": 12,
+            "availableBookings": 36
+          },
+          {
+            "id": "6a5333f0-ed7b-4b03-83d7-d0896e271519",
+            "name": "volleyball",
+            "availableFields": 38,
+            "availableBookings": 32
+          }
+        ]
+      },
+      {
+        "id": "d7b2baf8-c31e-4824-9c02-1b5cc0a0f838",
+        "name": "Arena B",
+        "city": {
+          "id": "a1defcc0-48e4-4ca7-bf87-40946a6ea85f",
+          "name": "El Mirador"
+        },
+        "address": "14th Floor",
+        "cratedById": "2b34d5e8-fc82-4d84-9a16-814df6736a02",
+        "sports": [
+          {
+            "id": "02ddcb8a-00de-485e-80e4-7d7fdaaa592e",
+            "name": "soccer",
+            "availableFields": 83,
+            "availableBookings": 92
+          },
+          {
+            "id": "f14795ec-7780-4aab-bb2b-0548622a6d0d",
+            "name": "basketball",
+            "availableFields": 16,
+            "availableBookings": 1
+          }
+        ]
+      },
+      {
+        "id": "5201b834-6785-4c68-b23a-9ae451c98296",
+        "name": "Field C",
+        "city": {
+          "id": "4d4a1dba-ea92-4ff3-affb-84624ce8eec7",
+          "name": "Castelo"
+        },
+        "address": "Room 1377",
+        "cratedById": "147ae46e-87f2-4a77-b549-6573f1d1119c",
+        "sports": [
+          {
+            "id": "dff42e5f-71c1-4d17-879f-47532891536a",
+            "name": "soccer",
+            "availableFields": 35,
+            "availableBookings": 77
+          },
+          {
+            "id": "4d25e0c1-ee52-42c8-866c-88ba9b2beea9",
+            "name": "basketball",
+            "availableFields": 42,
+            "availableBookings": 64
+          },
+          {
+            "id": "723c7ed6-6b39-4ab8-9789-ba605351c973",
+            "name": "football",
+            "availableFields": 12,
+            "availableBookings": 69
+          }
+        ]
+      },
+      {
+        "id": "87c28c7c-af38-4da6-86e6-862daacc776e",
+        "name": "Coliseum D",
+        "city": {
+          "id": "1c0333bc-937a-49bc-a448-ff96c8acf58c",
+          "name": "Yeshan"
+        },
+        "address": "18th Floor",
+        "cratedById": "e03c0a96-6ef3-46c8-a17c-0557114fe566",
+        "sports": [
+          {
+            "id": "7df53e20-db04-47de-8c13-b857d38f7835",
+            "name": "soccer",
+            "availableFields": 67,
+            "availableBookings": 64
+          },
+          {
+            "id": "1bb7e39a-86da-4810-a7a1-ed0636e27eb3",
+            "name": "basketball",
+            "availableFields": 3,
+            "availableBookings": 72
+          },
+          {
+            "id": "05f64413-c525-4e27-9e30-87a4c5537d7d",
+            "name": "football",
+            "availableFields": 44,
+            "availableBookings": 95
+          },
+          {
+            "id": "bb0c9d64-9b26-4ebf-950c-62b97d353c9d",
+            "name": "tennis",
+            "availableFields": 15,
+            "availableBookings": 64
+          },
+          {
+            "id": "2781a731-df4a-417e-9d07-f4ef6cc9052a",
+            "name": "volleyball",
+            "availableFields": 19,
+            "availableBookings": 95
+          }
+        ]
+      },
+      {
+        "id": "47391a2b-37db-4e0a-8024-51fc4d37dcbe",
+        "name": "Park E",
+        "city": {
+          "id": "cdce822e-a95c-4bfc-9594-113b422c8505",
+          "name": "Shijing"
+        },
+        "address": "11th Floor",
+        "cratedById": "3593ef96-202c-41f6-acd8-2ec9ccf055f0",
+        "sports": [
+          {
+            "id": "77fdb7b6-a1c7-4cc5-b221-da6ab877634d",
+            "name": "soccer",
+            "availableFields": 85,
+            "availableBookings": 29
+          },
+          {
+            "id": "fdafcec2-a398-47c6-82ef-23bcbc122147",
+            "name": "basketball",
+            "availableFields": 93,
+            "availableBookings": 79
+          },
+          {
+            "id": "a5626a5a-a671-4c9c-828c-86817e4f7e21",
+            "name": "football",
+            "availableFields": 42,
+            "availableBookings": 23
+          },
+          {
+            "id": "00069395-3b7c-489f-9cc6-2ac3f9f6acf9",
+            "name": "tennis",
+            "availableFields": 12,
+            "availableBookings": 93
+          },
+          {
+            "id": "045fbb98-fac5-42b4-be19-9e26978a9029",
+            "name": "volleyball",
+            "availableFields": 66,
+            "availableBookings": 86
+          }
+        ]
+      },
+      {
+        "id": "4df9e80b-4dd1-4f70-a9ea-45315a308192",
+        "name": "Center F",
+        "city": {
+          "id": "d6b4a4d1-ab05-4bb5-ba4c-59f368578b0c",
+          "name": "Pedro Leopoldo"
+        },
+        "address": "18th Floor",
+        "cratedById": "5deb608e-d1f2-471c-b13a-271e0e65d814",
+        "sports": [
+          {
+            "id": "d9faf63c-1ff8-4391-bed9-655ee2ae7f54",
+            "name": "soccer",
+            "availableFields": 67,
+            "availableBookings": 95
+          },
+          {
+            "id": "2e98420f-8240-4fc8-aa68-5e242daa5d50",
+            "name": "basketball",
+            "availableFields": 93,
+            "availableBookings": 1
+          },
+          {
+            "id": "ce5045ac-a89d-48bd-a051-4062251e03f4",
+            "name": "football",
+            "availableFields": 94,
+            "availableBookings": 64
+          },
+          {
+            "id": "c857b84a-ee93-4ce9-912a-f85e36f5dfed",
+            "name": "tennis",
+            "availableFields": 72,
+            "availableBookings": 98
+          }
+        ]
+      },
+      {
+        "id": "b9cef024-9cfa-4b19-9e33-da28d65ad1ff",
+        "name": "Dome G",
+        "city": {
+          "id": "e2896223-ede0-4da4-8e85-52e142cf1227",
+          "name": "Dabbūrīya"
+        },
+        "address": "PO Box 96128",
+        "cratedById": "98bfbe15-6a1b-4c47-af3c-30eebe28404a",
+        "sports": [
+          {
+            "id": "85c2b4b2-fd6b-4ddb-8b77-677957dd80bf",
+            "name": "soccer",
+            "availableFields": 93,
+            "availableBookings": 78
+          },
+          {
+            "id": "9e0fdb56-a176-452e-a902-58e5620b86dd",
+            "name": "basketball",
+            "availableFields": 39,
+            "availableBookings": 91
+          },
+          {
+            "id": "3906d270-3a26-4ff3-97e3-64ebc4d5585b",
+            "name": "football",
+            "availableFields": 35,
+            "availableBookings": 95
+          },
+          {
+            "id": "b3615478-7a48-4396-b194-d7c2caf13ebc",
+            "name": "tennis",
+            "availableFields": 36,
+            "availableBookings": 58
+          },
+          {
+            "id": "e266d8f8-3839-4ae4-b6f7-6f7540d05d39",
+            "name": "volleyball",
+            "availableFields": 81,
+            "availableBookings": 85
+          }
+        ]
+      },
+      {
+        "id": "3815e23a-710e-4fba-80ad-964fb33284c3",
+        "name": "Court H",
+        "city": {
+          "id": "61832132-003a-44f0-a2cc-7c0a9184f227",
+          "name": "Xinhua"
+        },
+        "address": "11th Floor",
+        "cratedById": "13bee5f3-e6c0-40c9-9aaa-4d54f2690fbf",
+        "sports": [
+          {
+            "id": "f32a70a5-f26f-4eed-8ad4-076d10276555",
+            "name": "soccer",
+            "availableFields": 52,
+            "availableBookings": 34
+          },
+          {
+            "id": "795addf7-9639-45cd-ae7a-2bf00311a866",
+            "name": "basketball",
+            "availableFields": 68,
+            "availableBookings": 71
+          },
+          {
+            "id": "f0eb2797-8406-4426-adcc-0bf2fdc810ee",
+            "name": "football",
+            "availableFields": 81,
+            "availableBookings": 65
+          },
+          {
+            "id": "29768d61-bd7c-4d55-a4dc-f4e62ac05ad3",
+            "name": "tennis",
+            "availableFields": 98,
+            "availableBookings": 52
+          }
+        ]
+      },
+      {
+        "id": "b1e87dfb-4d66-469a-b6ca-0d6f0d171a5d",
+        "name": "Track I",
+        "city": {
+          "id": "b881b500-5060-4d13-b4d8-eca0f8819de6",
+          "name": "Iowa City"
+        },
+        "address": "PO Box 4647",
+        "cratedById": "28a067b8-80b1-4c17-add3-37302616bd86",
+        "sports": [
+          {
+            "id": "d5fd3222-fdd6-471f-8012-044514601730",
+            "name": "soccer",
+            "availableFields": 42,
+            "availableBookings": 19
+          },
+          {
+            "id": "73f34214-0b17-4264-a861-168627174bd9",
+            "name": "basketball",
+            "availableFields": 84,
+            "availableBookings": 52
+          }
+        ]
+      },
+      {
+        "id": "86879909-66fe-4de9-a6da-0bf4aa67b328",
+        "name": "Arena J",
+        "city": {
+          "id": "6c60788e-0484-4f81-98a6-0e88a487b124",
+          "name": "Kirkop"
+        },
+        "address": "Room 811",
+        "cratedById": "4985fbe3-9251-463a-a087-5f0d8b598a04",
+        "sports": [
+          {
+            "id": "6bde0033-153a-4cd1-9a7e-02bc5f9bbc25",
+            "name": "soccer",
+            "availableFields": 16,
+            "availableBookings": 5
+          },
+          {
+            "id": "aa0819c4-84ef-4110-814c-8e30f36f9092",
+            "name": "basketball",
+            "availableFields": 50,
+            "availableBookings": 94
+          },
+          {
+            "id": "1f44671d-8cb8-40a2-89d6-a58fdb01757d",
+            "name": "football",
+            "availableFields": 52,
+            "availableBookings": 66
+          },
+          {
+            "id": "bd6b91fa-2602-47d6-bfd8-e30f7873ecf3",
+            "name": "tennis",
+            "availableFields": 43,
+            "availableBookings": 83
+          },
+          {
+            "id": "736a37f6-ca94-48bb-9d40-630847796d4b",
+            "name": "volleyball",
+            "availableFields": 83,
+            "availableBookings": 20
+          }
+        ]
+      },
+      {
+        "id": "86859c7a-5588-4304-9901-bd229cf0192f",
+        "name": "Stadium A",
+        "city": {
+          "id": "ffe78f3b-7e0e-4e74-bab3-5d5470d5741e",
+          "name": "Şuwayr"
+        },
+        "address": "PO Box 84912",
+        "cratedById": "f5557b49-3972-40be-8f99-4a8ca9eb5a1d",
+        "sports": [
+          {
+            "id": "a0910ee2-9c2c-44e8-94c3-c8dca331d2d6",
+            "name": "soccer",
+            "availableFields": 33,
+            "availableBookings": 5
+          },
+          {
+            "id": "dd24f5de-5227-4c93-8e10-b039557f8a32",
+            "name": "basketball",
+            "availableFields": 19,
+            "availableBookings": 47
+          },
+          {
+            "id": "536d7b96-52c8-4dc1-b08a-f74a9fe3ccc4",
+            "name": "football",
+            "availableFields": 61,
+            "availableBookings": 98
+          }
+        ]
+      },
+      {
+        "id": "a7abe457-1787-4499-8b81-9a807f9658bd",
+        "name": "Arena B",
+        "city": {
+          "id": "2d08b686-82d6-4aff-9dca-b5de0c038ab3",
+          "name": "Madan"
+        },
+        "address": "PO Box 73305",
+        "cratedById": "5ec14562-bc45-4a08-8859-000901efbdc4",
+        "sports": [
+          {
+            "id": "ebf9dc5b-b5da-46fc-9ae5-c407f5c856e8",
+            "name": "soccer",
+            "availableFields": 99,
+            "availableBookings": 41
+          },
+          {
+            "id": "6850908e-767f-4243-a3c4-52069ff9b696",
+            "name": "basketball",
+            "availableFields": 62,
+            "availableBookings": 83
+          },
+          {
+            "id": "5ea8a455-95d1-4992-9c4a-30934bf328aa",
+            "name": "football",
+            "availableFields": 80,
+            "availableBookings": 28
+          },
+          {
+            "id": "acb27927-fe25-49f8-beae-2018ce9545b9",
+            "name": "tennis",
+            "availableFields": 3,
+            "availableBookings": 96
+          }
+        ]
+      },
+      {
+        "id": "09c06a23-119c-488d-a7ba-7b665a5ca8ef",
+        "name": "Field C",
+        "city": {
+          "id": "980fff68-835e-44e6-9699-471838deec3c",
+          "name": "Belford Roxo"
+        },
+        "address": "PO Box 83773",
+        "cratedById": "14001d94-705c-46db-909e-3613aa5b28e1",
+        "sports": [
+          {
+            "id": "a19b2bf9-8a6c-4f63-9fbe-46c889d472f8",
+            "name": "soccer",
+            "availableFields": 7,
+            "availableBookings": 60
+          },
+          {
+            "id": "f59a87d3-4217-495e-8720-d13db0caeecf",
+            "name": "basketball",
+            "availableFields": 44,
+            "availableBookings": 14
+          }
+        ]
+      },
+      {
+        "id": "4b4642ae-1ffd-40b5-8be7-5916c8657510",
+        "name": "Coliseum D",
+        "city": {
+          "id": "bff9badf-8a23-41bc-a33e-c7495d2aa637",
+          "name": "Muroran"
+        },
+        "address": "Suite 56",
+        "cratedById": "88a43eb0-98c2-4494-8559-7b2410d11b3a",
+        "sports": [
+          {
+            "id": "5c801602-cee4-4f42-9889-74e33c59a21a",
+            "name": "soccer",
+            "availableFields": 4,
+            "availableBookings": 57
+          }
+        ]
+      },
+      {
+        "id": "8dd11188-f27c-4b18-8930-0f41411644df",
+        "name": "Park E",
+        "city": {
+          "id": "a4dd5a9a-0252-46f1-9700-db9da0e7e72a",
+          "name": "Wieniawa"
+        },
+        "address": "Apt 725",
+        "cratedById": "c20f7e54-2c77-4c82-b06f-ee935f05cd7a",
+        "sports": [
+          {
+            "id": "0875bdab-042a-48cb-9a18-e626c537d555",
+            "name": "soccer",
+            "availableFields": 20,
+            "availableBookings": 16
+          },
+          {
+            "id": "34b64859-7cd1-4030-b8d8-4553e24bcf5a",
+            "name": "basketball",
+            "availableFields": 42,
+            "availableBookings": 36
+          },
+          {
+            "id": "ebec998a-8891-4ce3-99a9-85ac3f89fd73",
+            "name": "football",
+            "availableFields": 12,
+            "availableBookings": 15
+          },
+          {
+            "id": "de225454-9822-44a8-9a73-26c4cc5a971f",
+            "name": "tennis",
+            "availableFields": 6,
+            "availableBookings": 93
+          },
+          {
+            "id": "13204a79-55c7-495f-a267-98e87f589c5c",
+            "name": "volleyball",
+            "availableFields": 64,
+            "availableBookings": 60
+          }
+        ]
+      },
+      {
+        "id": "16d577f5-a53d-4f07-a2c5-0473e2201c80",
+        "name": "Center F",
+        "city": {
+          "id": "3002e161-c3b6-499c-8471-1abf02136873",
+          "name": "Sanlidian"
+        },
+        "address": "6th Floor",
+        "cratedById": "6cb89ec3-7200-4e64-b8aa-a0ffc3127658",
+        "sports": [
+          {
+            "id": "0eb8cbd1-4298-4c0b-9d42-9ff264fc69eb",
+            "name": "soccer",
+            "availableFields": 14,
+            "availableBookings": 18
+          },
+          {
+            "id": "4bbc89b3-711f-4788-b7d6-1619ba3826b4",
+            "name": "basketball",
+            "availableFields": 5,
+            "availableBookings": 43
+          },
+          {
+            "id": "20fd1e84-0132-4129-a9fc-d23e92356fd2",
+            "name": "football",
+            "availableFields": 66,
+            "availableBookings": 89
+          }
+        ]
+      },
+      {
+        "id": "0cd373f9-e3fb-4770-970a-a691abea8fdb",
+        "name": "Dome G",
+        "city": {
+          "id": "3cbc8e12-fa02-494a-bb2d-5478fd6d7559",
+          "name": "Masis"
+        },
+        "address": "PO Box 77284",
+        "cratedById": "02af5444-bf73-4c03-ad6a-1bbd6b63a95e",
+        "sports": [
+          {
+            "id": "23d1eda0-7b9c-4da4-b0b2-2d542852bac2",
+            "name": "soccer",
+            "availableFields": 9,
+            "availableBookings": 25
+          }
+        ]
+      },
+      {
+        "id": "ffeafb76-d288-4dcd-836c-824af76450ea",
+        "name": "Court H",
+        "city": {
+          "id": "100c3e04-8c3b-4a8b-8573-5e1e50d15354",
+          "name": "Qianjin"
+        },
+        "address": "2nd Floor",
+        "cratedById": "8836665e-5259-4c8f-8aa0-0be6d3573497",
+        "sports": [
+          {
+            "id": "c64e07a3-fb2d-4f38-8bf2-5f27088bb458",
+            "name": "soccer",
+            "availableFields": 14,
+            "availableBookings": 44
+          },
+          {
+            "id": "ed155231-f721-4278-baf8-15a035a309bf",
+            "name": "basketball",
+            "availableFields": 81,
+            "availableBookings": 27
+          },
+          {
+            "id": "fdaceac5-5383-4f33-a130-97451c469981",
+            "name": "football",
+            "availableFields": 76,
+            "availableBookings": 60
+          }
+        ]
+      },
+      {
+        "id": "0550b108-d6ee-49cd-b3ed-4e2fe6286837",
+        "name": "Track I",
+        "city": {
+          "id": "2bd146a1-2724-47d3-a4be-d8705641351a",
+          "name": "La Mesa"
+        },
+        "address": "Room 1360",
+        "cratedById": "81431fce-548e-4e8a-a3a1-af7348a38aca",
+        "sports": [
+          {
+            "id": "7e3a9868-7e1e-4b0d-bb7e-8d23dbd1d097",
+            "name": "soccer",
+            "availableFields": 23,
+            "availableBookings": 98
+          },
+          {
+            "id": "9a981b9c-1984-4359-bec8-cab66ee70f84",
+            "name": "basketball",
+            "availableFields": 52,
+            "availableBookings": 97
+          },
+          {
+            "id": "ba506ad1-7662-475f-8817-316d2aa7b499",
+            "name": "football",
+            "availableFields": 28,
+            "availableBookings": 28
+          },
+          {
+            "id": "01cdfac5-c107-40d5-b25a-e94f09ca2739",
+            "name": "tennis",
+            "availableFields": 16,
+            "availableBookings": 61
+          },
+          {
+            "id": "46cc4c11-f534-44af-8b8d-89b5fd3bec83",
+            "name": "volleyball",
+            "availableFields": 83,
+            "availableBookings": 12
+          }
+        ]
+      },
+      {
+        "id": "2a79c254-de7a-4d2a-b276-f3eb99bb90a6",
+        "name": "Arena J",
+        "city": {
+          "id": "d9354aac-8003-42bf-880a-5970bee72743",
+          "name": "Tawen Aobao"
+        },
+        "address": "Suite 45",
+        "cratedById": "22dea1b6-74e4-4070-b1dc-73351b47c552",
+        "sports": [
+          {
+            "id": "aa037a0a-7dc2-4c49-84be-06136b47cc93",
+            "name": "soccer",
+            "availableFields": 87,
+            "availableBookings": 55
+          }
+        ]
+      }
+    ]
+  }
+}
