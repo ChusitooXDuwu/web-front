@@ -7,6 +7,7 @@ import GameCardComponent from "../../components/GameCardComponent/GameCardCompon
 import { EventEntity } from "../../entities/Entities";
 import { getMyBookings } from "../../services/BookingsService/BookingsService";
 import styles from "./HomePage.module.scss";
+import { Link } from "react-router-dom";
 
 interface noDataCardProps {
   dataName: string;
@@ -38,13 +39,25 @@ const HomePage: FC<HomePageProps> = () => {
     endTime: new Date(),
     currentPlayers: 4,
     maxPlayers: 5,
-    sport: { id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 },
+    sport: {
+      id: "1",
+      name: "Baloncesto",
+      available_fields: 2,
+      available_bookings: 5,
+    },
     field: {
       id: "1",
       name: "Cancha de baloncesto",
       address: "Calle 123",
       city: { id: "1", name: "Medellín" },
-      sports: [{ id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 }],
+      sports: [
+        {
+          id: "1",
+          name: "Baloncesto",
+          available_fields: 2,
+          available_bookings: 5,
+        },
+      ],
       createdById: "1",
     },
     image: null,
@@ -53,26 +66,47 @@ const HomePage: FC<HomePageProps> = () => {
     queryKey: ["bookings"],
     queryFn: getMyBookings,
   });
-  const upcomingEvents = isSuccess ? data.data : [];
+  const upcomingEvents = isSuccess
+    ? data.data.sort((a, b) => {
+        return a.startDateTime.getTime() - b.startDateTime.getTime();
+      })
+    : [];
+  const topUpcomingEvents = upcomingEvents.slice(0, 3);
   let suggestedEvents = Array(10).fill(mockEvent);
-  const renderSuggestedEvents = suggestedEvents.map((event, index) => (
-    <Col key={index} className="d-flex justify-content-center">
-      <GameCardComponent event={event} />
-    </Col>
-  ));
-  const renderUpcomingEvents = upcomingEvents.map((event, index) => (
-    <Col key={index} className="d-flex justify-content-center">
-      <BookingCard bookedEvent={event!} />
-    </Col>
-  ));
+  const RenderSuggestedEvents = () => (
+    <>
+      {suggestedEvents.map((event, index) => (
+        <Col key={index} className="d-flex justify-content-center">
+          <GameCardComponent event={event} />
+        </Col>
+      ))}
+    </>
+  );
+  const RenderUpcomingEvents = () => (
+    <>
+      {topUpcomingEvents.map((event, index) => (
+        <Col key={index} className="d-flex justify-content-center">
+          <BookingCard bookedEvent={event!} />
+        </Col>
+      ))}
+    </>
+  );
   return (
     <Container fluid className={"main_content_container"}>
       <Container fluid={"md"}>
         <section>
           <h1 className={styles.section_header}>Mis próximos partidos</h1>
-          <Row xs={1} className="gy-2">
+          <Row xs={1} className="gy-2 text-center">
             {upcomingEvents.length > 0 ? (
-              renderUpcomingEvents
+              <>
+                <RenderUpcomingEvents />
+                {upcomingEvents.length > topUpcomingEvents.length && (
+                  <p>
+                    Tiene un total de {upcomingEvents.length} reservas{" "}
+                    <Link to={"/bookings"}>Ver todas</Link>{" "}
+                  </p>
+                )}
+              </>
             ) : (
               <NoDataCard
                 dataName="partidos próximos"
@@ -86,7 +120,7 @@ const HomePage: FC<HomePageProps> = () => {
           <h1 className={styles.section_header}>Partidos disponibles</h1>
           {suggestedEvents.length > 0 ? (
             <Row lg={3} md={2} sm={2} xs={1} className="gy-2">
-              {renderSuggestedEvents}
+              {<RenderSuggestedEvents />}
             </Row>
           ) : (
             <Row>

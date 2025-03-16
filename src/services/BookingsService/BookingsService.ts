@@ -8,13 +8,21 @@ const mockGetBookingsUrl =
 const getBookingsUrl = baseUrl ? `${baseUrl}/bookings` : mockGetBookingsUrl;
 
 async function getMyBookings() {
-  const response = await axios.get<ResponseEntity<Array<any>>>(
-    getBookingsUrl
-  );
-  const data = response.data.data["bookings"].map((item) => BookedEventEntity.fromApi(item));
+  const response = await axios.get<ResponseEntity<Array<any>>>(getBookingsUrl);
+  const data = response.data.data["bookings"].map((item) => {
+    try {
+      return BookedEventEntity.fromApi(item);
+    } catch (error) {
+      return null;
+    }
+  });
+  const nullFilter = (
+    item: BookedEventEntity | null
+  ): item is BookedEventEntity => item != null;
+  const filteredData: BookedEventEntity[] = data.filter(nullFilter);
   const message = response.data.message;
   return {
-    data,
+    data: filteredData,
     message,
   };
 }
