@@ -30,6 +30,11 @@ const en: { [key: string]: string } = {
   "home.title.available": "Partidos disponibles",
   "home.link.bookings": "Ver todas",
   "home.link.totalBookings": "Tiene un total de {bookings} reservas",
+  "home.noData": "No se encontraron {dataName}. Intenta ",
+  "home.data.upcomingEvents": "partidos próximos",
+  "home.prompt.addEvent": "agregar un partido",
+  "home.data.availableEvents": "partidos disponibles",
+  "home.prompt.searchEvent": "buscar un partido",
   // Bookings
   "bookings.title": "Mis Reservas",
   // Booking detail

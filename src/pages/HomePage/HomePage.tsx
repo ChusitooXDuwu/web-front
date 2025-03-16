@@ -8,7 +8,7 @@ import { EventEntity } from "../../entities/Entities";
 import { getMyBookings } from "../../services/BookingsService/BookingsService";
 import styles from "./HomePage.module.scss";
 import { Link } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface noDataCardProps {
   dataName: string;
@@ -22,7 +22,7 @@ const NoDataCard: FC<noDataCardProps> = ({ dataName, actionPrompt, link }) => {
   return (
     <Card>
       <Card.Body className="text-center">
-        No se encontraron {dataName}. Intenta{" "}
+        <FormattedMessage id="home.noData" values={{ dataName }} />
         <Button variant="outline-primary" size="sm" onClick={navToLink}>
           {actionPrompt}
         </Button>{" "}
@@ -34,6 +34,7 @@ const NoDataCard: FC<noDataCardProps> = ({ dataName, actionPrompt, link }) => {
 interface HomePageProps {}
 
 const HomePage: FC<HomePageProps> = () => {
+  const { formatMessage } = useIntl();
   const mockEvent: EventEntity = {
     id: "1",
     startTime: new Date(),
@@ -67,13 +68,17 @@ const HomePage: FC<HomePageProps> = () => {
     queryKey: ["bookings"],
     queryFn: getMyBookings,
   });
-  const upcomingEvents = isSuccess
+  let upcomingEvents = isSuccess
     ? data.data.sort((a, b) => {
         return a.startDateTime.getTime() - b.startDateTime.getTime();
       })
     : [];
-  const topUpcomingEvents = upcomingEvents.slice(0, 3);
   let suggestedEvents = Array(10).fill(mockEvent);
+  // debug
+  upcomingEvents = [];
+  suggestedEvents = []
+  // debug
+  const topUpcomingEvents = upcomingEvents.slice(0, 3);
   const RenderSuggestedEvents = () => (
     <>
       {suggestedEvents.map((event, index) => (
@@ -117,8 +122,8 @@ const HomePage: FC<HomePageProps> = () => {
               </>
             ) : (
               <NoDataCard
-                dataName="partidos próximos"
-                actionPrompt="agregar un partido"
+                dataName={formatMessage({ id: "home.data.upcomingEvents" })}
+                actionPrompt={formatMessage({ id: "home.prompt.addEvent" })}
                 link="/events"
               />
             )}
@@ -135,8 +140,8 @@ const HomePage: FC<HomePageProps> = () => {
           ) : (
             <Row>
               <NoDataCard
-                dataName="partidos disponibles"
-                actionPrompt="buscar un partido"
+                dataName={formatMessage({ id: "home.data.availableEvents" })}
+                actionPrompt={formatMessage({ id: "home.prompt.searchEvent" })}
                 link="/events"
               />
             </Row>

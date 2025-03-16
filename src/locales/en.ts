@@ -30,6 +30,11 @@ const es: { [key: string]: string } = {
   "home.title.available": "Available events",
   "home.link.bookings": "See all",
   "home.link.totalBookings": "You have a total of {bookings} bookings",
+  "home.noData": "No {dataName} were found. Try to ",
+  "home.data.upcomingEvents": "upcoming events",
+  "home.prompt.addEvent": "book an event",
+  "home.data.availableEvents": "available events",
+  "home.prompt.searchEvent": "search an event",
   // Bookings
   "bookings.title": "My Bookings",
   // Booking detail
