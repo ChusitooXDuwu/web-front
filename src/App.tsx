@@ -22,42 +22,70 @@ import FieldDetailPage from "./pages/FieldDetailPage/FieldDetailPage";
 import BookingDetailPage from "./pages/BookingDetailPage/BookingDetailPage";
 import EventDetailPage from "./pages/EventDetailPage/EventDetailPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from "react";
+import { IntlProvider } from "react-intl";
+import {
+  LocaleContext,
+  SupportedLocale,
+  defaultLocale,
+  getMessages,
+} from "./contexts/LocaleContext";
 
 const queryClient = new QueryClient();
+interface LocaleData {
+  locale: SupportedLocale;
+  messages: { [key: string]: string };
+}
 
 function App() {
+  const [localeData, setLocaleData] = useState<LocaleData>({
+    locale: defaultLocale,
+    messages: getMessages(defaultLocale),
+  });
+  const changeLocale = (newLocale: SupportedLocale) => {
+    console.log(`Trying to change locale to: ${newLocale}`);
+    setLocaleData({ locale: newLocale, messages: getMessages(newLocale) });
+  };
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MainView />}>
-            <Route index element={<Navigate to="/login" />} />
-            <Route path="home" element={<HomePage />} />
-            <Route path="bookings" element={<BookingsPage />} />
-            <Route path="fields" element={<FieldsPage />} />
-            <Route path="sports" element={<SportsPage />} />
-            <Route path="events" element={<EventsPage />} />
-            <Route path="profile" element={<ProfilePage />} />
-            <Route path="notifications" element={<NotificationsPage />} />
-            <Route path="history" element={<HistoryPage />} />
-            <Route path="statistics" element={<StatisticsPage />} />
-            <Route path="groups" element={<GroupsPage />} />
-            <Route path="fields/create" element={<CreateFieldPage />} />
-            <Route path="bookings/create" element={<CreateBookingPage />} />
-            <Route path="events/:id" element={<EventDetailPage />} />
-            <Route path="events/create" element={<CreateEventPage />} />
-            <Route path="fields/:id" element={<FieldDetailPage />} />
-            <Route path="bookings/:id" element={<BookingDetailPage />} />
-          </Route>
-          <Route path="/" element={<LoginView />}>
-            <Route path="login" element={<LoginPage />} />
-            <Route path="signup" element={<SignUpPage />} />
-            <Route path="landing" element={<LandingPage />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <LocaleContext.Provider value={{ locale: localeData.locale, changeLocale }}>
+      <IntlProvider
+        defaultLocale={defaultLocale}
+        locale={localeData.locale}
+        messages={localeData.messages}
+      >
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<MainView />}>
+                <Route index element={<Navigate to="/login" />} />
+                <Route path="home" element={<HomePage />} />
+                <Route path="bookings" element={<BookingsPage />} />
+                <Route path="fields" element={<FieldsPage />} />
+                <Route path="sports" element={<SportsPage />} />
+                <Route path="events" element={<EventsPage />} />
+                <Route path="profile" element={<ProfilePage />} />
+                <Route path="notifications" element={<NotificationsPage />} />
+                <Route path="history" element={<HistoryPage />} />
+                <Route path="statistics" element={<StatisticsPage />} />
+                <Route path="groups" element={<GroupsPage />} />
+                <Route path="fields/create" element={<CreateFieldPage />} />
+                <Route path="bookings/create" element={<CreateBookingPage />} />
+                <Route path="events/:id" element={<EventDetailPage />} />
+                <Route path="events/create" element={<CreateEventPage />} />
+                <Route path="fields/:id" element={<FieldDetailPage />} />
+                <Route path="bookings/:id" element={<BookingDetailPage />} />
+              </Route>
+              <Route path="/" element={<LoginView />}>
+                <Route path="login" element={<LoginPage />} />
+                <Route path="signup" element={<SignUpPage />} />
+                <Route path="landing" element={<LandingPage />} />
+              </Route>
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </BrowserRouter>
+        </QueryClientProvider>
+      </IntlProvider>
+    </LocaleContext.Provider>
   );
 }
 
