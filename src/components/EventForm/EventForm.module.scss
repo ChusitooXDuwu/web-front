@@ -1,34 +1,34 @@
 // General form styling
-form {
-  background-color: #60508c; // Form background color
-  padding: 20px;
-  border-radius: 10px;
-}
+// form {
+//   background-color: #60508c; // Form background color
+//   padding: 20px;
+//   border-radius: 10px;
+// }
 
-// Label styling
-label {
-  color: #E99E14 !important; // Labels in gold
-  font-weight: bold;
-}
+// // Label styling
+// label {
+//   color: #E99E14 !important; // Labels in gold
+//   font-weight: bold;
+// }
 
-// Input, select, and textarea styling
-input,
-select,
-textarea {
-  background-color: beige !important; // Inputs in beige
-  border: 1px solid #a67c00; // Slight gold border
-  color: black; // Text color for readability
-  padding: 8px;
-  border-radius: 5px;
-}
+// // Input, select, and textarea styling
+// input,
+// select,
+// textarea {
+//   background-color: beige !important; // Inputs in beige
+//   border: 1px solid #a67c00; // Slight gold border
+//   color: black; // Text color for readability
+//   padding: 8px;
+//   border-radius: 5px;
+// }
 
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: gold;
-  box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-}
+// input:focus,
+// select:focus,
+// textarea:focus {
+//   outline: none;
+//   border-color: gold;
+//   box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+// }
 
 // Checkbox styling
 .check_col {
@@ -40,13 +40,13 @@ textarea:focus {
 }
 
 // Button styling
-button {
-  background-color: gold !important;
-  border: none;
-  color: purple !important;
-  font-weight: bold;
-}
+// button {
+//   background-color: gold !important;
+//   border: none;
+//   color: purple !important;
+//   font-weight: bold;
+// }
 
-button:hover {
-  background-color: darkgoldenrod !important;
-}
+// button:hover {
+//   background-color: darkgoldenrod !important;
+// }
