@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
 import BookingCard from "../../components/BookingCard/BookingCard";
 import GameCardComponent from '../../components/GameCardComponent/GameCardComponents';
-import { EventInterface } from '../../entities/Entities';
+import { EventInterface } from '../../entities/EventEntity';
 
 // TODO REPLACE WITH API FETCH
 

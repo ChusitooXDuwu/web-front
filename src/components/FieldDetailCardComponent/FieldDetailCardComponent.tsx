@@ -25,6 +25,7 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
   };
 
   const handleOccupied = () => {
+    navigate("/events/create");
     setOccupied("Ocupada 🥲");
   };
 
