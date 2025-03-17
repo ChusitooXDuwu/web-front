@@ -4,6 +4,11 @@ import { Button, Col, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import { useNavigate } from "react-router-dom";
 
+import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
+import { LocaleContext } from '../../contexts/LocaleContext';
+import { useContext } from 'react';
+
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
 interface FieldDetailCardProps {
   field: FieldDetailEntity;
@@ -59,7 +64,7 @@ const FieldMapCardComponent: FC<FieldDetailCardProps> = ({ field }) => {
             <h2 className={styles.fieldTitle}>{field.field_name}</h2>
             {renderRatingStars()}
             <hr className={styles.divider} />
-            <h4 className={styles.sectionTitle}>Detalles de la cancha</h4>
+            <h4 className={styles.sectionTitle}><FormattedMessage id = "fieldDetailCard.details"/></h4>
             <div className={styles.detailsContainer}>
               <div className={styles.detailItem}>
                 <span className={styles.detailIcon}>📍</span>
@@ -68,20 +73,20 @@ const FieldMapCardComponent: FC<FieldDetailCardProps> = ({ field }) => {
 
               <div className={styles.detailItem}>
                 <span className={styles.detailIcon}>🕒</span>
-                <span>Horarios: {field.opening_time}</span>
+                <span><FormattedMessage id = "fieldDetailCard.details.openingHours"/> {field.opening_time}</span>
               </div>
 
               <div className={styles.detailItem}>
                 <span className={styles.detailIcon}>📞</span>
-                <span>Contacto: {field.phone_number}</span>
+                <span><FormattedMessage id = "fieldDetailCard.details.contact"/> {field.phone_number}</span>
               </div>
             </div>
             <hr className={styles.divider} />
             <div className={styles.actionButtonContainer}>
               <Button className={styles.bookButton}>
-                {field.field_type === "field" && "Crear una reserva"}
-                {field.field_type === "booking" && "Cancelar reserva"}
-                {field.field_type === "event" && "Unirse a la reserva"}
+                {field.field_type === "field" && <FormattedMessage id = "fieldDetailButtons.book"/>}
+                {field.field_type === "booking" && <FormattedMessage id = "fieldDetailButtons.cancel"/>}
+                {field.field_type === "event" && <FormattedMessage id = "fieldDetailButtons.join"/>}
               </Button>
             </div>
           </Col>

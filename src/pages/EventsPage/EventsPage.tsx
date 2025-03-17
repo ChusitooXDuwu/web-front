@@ -6,6 +6,12 @@ import { CityEntity, EventInterface, FieldEntity, SportEntity } from "../../enti
 
 import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
 
+import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
+import { LocaleContext } from '../../contexts/LocaleContext';
+
+import { useContext } from 'react';
+
 interface EventsPageProps {}
 
 const EventsPage: FC<EventsPageProps> = () => {
@@ -96,9 +102,11 @@ const EventsPage: FC<EventsPageProps> = () => {
       <Container fluid={"md"}>
         <Breadcrumb>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
-            Inicio
+            <FormattedMessage id="pages.home" />
           </Breadcrumb.Item>
-          <Breadcrumb.Item active>Eventos</Breadcrumb.Item>
+          <Breadcrumb.Item active>
+          <FormattedMessage id="pages.events" />
+          </Breadcrumb.Item>
         </Breadcrumb>
         <Row className="mb-3 gy-2">
           <Col>

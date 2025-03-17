@@ -1,11 +1,15 @@
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { FC, useState } from "react";
+import { FC, useState, useContext } from "react";
 import { Card } from "react-bootstrap";
 import styles from "./GameCardComponent.module.scss";
 import { EventInterface } from "../../entities/Entities";
 import { useNavigate } from "react-router-dom";
+
+import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
+import { LocaleContext } from '../../contexts/LocaleContext';
 
 interface GameCardComponentProps {
   event: EventInterface;
@@ -13,6 +17,11 @@ interface GameCardComponentProps {
 
 const GameCardComponent: FC<GameCardComponentProps> = ({ event }) => {
   // Hooks
+  const { locale } = useContext(LocaleContext);
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const intl = useIntl();
+  const { formatMessage } = intl;
+
   const navigate = useNavigate();
   const navToDetail = () => navigate(`/events/${event.id}`);
 
@@ -20,8 +29,8 @@ const GameCardComponent: FC<GameCardComponentProps> = ({ event }) => {
 
   const renderCupos = () => {
     return cupos === 0
-      ? "¡Sé el primero en inscribirte!"
-      : `Cupos: ${cupos}/${event.maxPlayers}`;
+      ? intl.formatMessage({ id: "game.first" })
+      : `${intl.formatMessage({ id: "game.first" })}: ${cupos}/${event.maxPlayers}`;
   };
 
   const handleCupos = () => {
@@ -70,7 +79,7 @@ const GameCardComponent: FC<GameCardComponentProps> = ({ event }) => {
             <div className={styles.icon_text}>
               <i className="bi bi-calendar-event"></i>
               <p>
-                <strong>Fecha:</strong> {event.startTime.toDateString()}
+                <strong><FormattedMessage id="game.fecha"/></strong> {event.startTime.toDateString()}
               </p>
             </div>
 
@@ -78,7 +87,7 @@ const GameCardComponent: FC<GameCardComponentProps> = ({ event }) => {
             <div className={styles.icon_text}>
               <i className="bi bi-alarm"></i>
               <p>
-                <strong>Hora:</strong>{" "}
+                <strong><FormattedMessage id="game.time"/></strong>{" "}
                 {event.startTime.toLocaleTimeString([], {
                   hour: "2-digit",
                   minute: "2-digit",
@@ -114,7 +123,7 @@ const GameCardComponent: FC<GameCardComponentProps> = ({ event }) => {
             disabled={cupos >= event.maxPlayers}
             className="w-100 text-dark mt-2"
           >
-            {cupos >= event.maxPlayers ? "Partido Lleno" : "Inscribirme"}
+            {cupos >= event.maxPlayers ? intl.formatMessage({ id: "game.lleno" }) : intl.formatMessage({ id: "game.sub" })}
           </Button>
         </Col>
       </Row>
