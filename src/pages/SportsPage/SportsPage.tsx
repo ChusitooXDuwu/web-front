@@ -17,8 +17,8 @@ const mockData: SportEntity = {
   id: "abc",
 
   name: "Basketball",
-  available_fields: 2,
-  available_bookings: 5
+  availableFields: 2,
+  availableBookings: 5
 
 };
 

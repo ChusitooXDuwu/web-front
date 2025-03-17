@@ -45,7 +45,7 @@ const SportCard: FC<SportCardProps> = ({ sport }) => {
               <Row>
                 <Col className="d-flex justify-content-center">
 
-                  <b>{sport.available_fields} <FormattedMessage id="sportCard.availableFields"/></b>
+                  <b>{sport.availableFields} <FormattedMessage id="sportCard.availableFields"/></b>
 
                 </Col>
               </Row>
@@ -54,7 +54,7 @@ const SportCard: FC<SportCardProps> = ({ sport }) => {
               <Row>
                 <Col className="d-flex justify-content-center">
 
-                  <b>{sport.available_bookings} <FormattedMessage id="sportCard.availableBookings"/></b>
+                  <b>{sport.availableBookings} <FormattedMessage id="sportCard.availableBookings"/></b>
 
                 </Col>
               </Row>

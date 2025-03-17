@@ -18,8 +18,8 @@ export interface EventType {
   sport: {
     id: string;
     name: string;
-    available_fields: number;
-    available_bookings: number;
+    availableFields: number;
+    availableBookings: number;
   };
   field: {
     id: string;
@@ -32,8 +32,8 @@ export interface EventType {
     sports: Array<{
       id: string;
       name: string;
-      available_fields: number;
-      available_bookings: number;
+      availableFields: number;
+      availableBookings: number;
     }>;
     createdById: string;
   };
@@ -127,13 +127,13 @@ async function getFieldEvents(fieldId: string) {
       endTime: new Date(new Date().getTime() + 2 * 60 * 60 * 1000), // 2 horas después
       currentPlayers: 4,
       maxPlayers: 5,
-      sport: { id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 },
+      sport: { id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 },
       field: {
         id: fieldId,
         name: "Cancha de baloncesto",
         address: "Calle 123",
         city: { id: "1", name: "Medellín" },
-        sports: [{ id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 }],
+        sports: [{ id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 }],
         createdById: "1",
       },
       image: null,
@@ -144,13 +144,13 @@ async function getFieldEvents(fieldId: string) {
       endTime: new Date(new Date().getTime() + 5 * 60 * 60 * 1000), // 5 horas después
       currentPlayers: 2,
       maxPlayers: 6,
-      sport: { id: "2", name: "Fútbol", available_fields: 3, available_bookings: 7 },
+      sport: { id: "2", name: "Fútbol", availableFields: 3, availableBookings: 7 },
       field: {
         id: fieldId,
         name: "Campo de fútbol",
         address: "Carrera 45",
         city: { id: "1", name: "Medellín" },
-        sports: [{ id: "2", name: "Fútbol", available_fields: 3, available_bookings: 7 }],
+        sports: [{ id: "2", name: "Fútbol", availableFields: 3, availableBookings: 7 }],
         createdById: "1",
       },
       image: null,

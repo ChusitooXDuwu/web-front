@@ -38,7 +38,7 @@ const mockEvent: EventType = {
   endTime: new Date(),
   currentPlayers: 4,
   maxPlayers: 5,
-  sport: { id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 },
+  sport: { id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 },
   field: {
       id: "1",
       name: "Cancha de baloncesto",

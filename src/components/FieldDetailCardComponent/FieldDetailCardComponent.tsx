@@ -41,7 +41,7 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
   // Function to handle comment submission
   const handleSubmitComment = () => {
     console.log("Submitted comment:", comment);
-    alert("Comentario enviado: " + comment);
+    alert(intl.formatMessage({id: "fieldDetailCard.commentForm.writeComment"}));
     setComment(""); // Clear input after submission
     setShowCommentForm(false); // Hide form after submission
   };

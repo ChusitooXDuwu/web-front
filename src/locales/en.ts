@@ -92,8 +92,19 @@ const es: { [key: string]: string } = {
   // Cancel&CommentsButton
   "cancelAndCommentsButton.cancel": "Cancel",
   "cancelAndCommentsButton.addComment": "Add comment",
+  "fieldDetailCard.commentForm.writeComment": "Add your comment",
+  "fieldDetailCard.commentForm.sendComment": "Upload",
+  "alert.comment": "Your comment was uploaded",
   // MapView
   "mapView.mapfrom": "Map from",
+
+  //GameCardComponent
+  "game.first": "Be the first to reserve",
+  "game.cupos": "Spots",
+  "game.fecha": "Date: ",
+  "game.time": "Time: ",
+  "game.lleno": "Full Game",
+  "game.sub": "Subscribe",
 
 
 

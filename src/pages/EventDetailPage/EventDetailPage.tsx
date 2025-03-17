@@ -39,13 +39,13 @@ const mockEvent: EventType = {
   endTime: new Date(),
   currentPlayers: 4,
   maxPlayers: 5,
-  sport: { id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 },
+  sport: { id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 },
   field: {
     id: "3", // ID del Complejo Deportivo El Salitre (type: event) en nuestro Gist
     name: "Cancha de baloncesto",
     address: "Calle 123",
     city: { id: "1", name: "Medellín" },
-    sports: [{ id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 }],
+    sports: [{ id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 }],
     createdById: "1",
   },
   image: null,
