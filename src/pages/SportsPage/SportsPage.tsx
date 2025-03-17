@@ -15,9 +15,11 @@ import { useContext } from 'react';
 // TODO REPLACE WITH API FETCH
 const mockData: SportEntity = {
   id: "abc",
+
   name: "Basketball",
   available_fields: 2,
   available_bookings: 5
+
 };
 
 interface SportsPageProps {}

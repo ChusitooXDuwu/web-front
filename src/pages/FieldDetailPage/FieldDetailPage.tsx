@@ -5,11 +5,15 @@ import { Breadcrumb, Container, Row, Col, Spinner, Alert } from "react-bootstrap
 import FieldDetailCardComponent from "../../components/FieldDetailCardComponent/FieldDetailCardComponent";
 import { Link } from "react-router-dom";
 import GameCardComponent from '../../components/GameCardComponent/GameCardComponents';
+
 import { FormattedMessage } from 'react-intl';
 import { useIntl } from 'react-intl';
 import { LocaleContext } from '../../contexts/LocaleContext';
 import { useQuery } from '@tanstack/react-query';
 import { getFieldDetails, getFieldPrice, getFieldEvents, EventType } from '../../services/FieldsServices/FieldsService';
+
+import { EventInterface } from '../../entities/Entities';
+
 
 interface FieldDetailPageProps {}
 
@@ -20,6 +24,7 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
   
   const params = useParams();
   const location = useLocation();
+
 
   console.log('ALL PARAMS:', params);
   console.log('Params type:', typeof params);
@@ -47,6 +52,9 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
   console.log('- Path:', location.pathname);
   console.log('- Extracted fieldId:', fieldId);
   console.log('- Using ID:', actualId);
+
+
+
 
   const { locale } = useContext(LocaleContext);
   const intl = useIntl();

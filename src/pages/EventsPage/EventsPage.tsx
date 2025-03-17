@@ -1,11 +1,10 @@
-import React, { ChangeEvent, FC, FormEvent, useState } from "react";
-import styles from "./EventsPage.module.scss";
-import { Breadcrumb, Button, Col, Container, Form, Row } from "react-bootstrap";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
+// import styles from "./EventsPage.module.scss";
+import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { CityEntity, FieldEntity, SportEntity } from "../../entities/Entities";
+import { CityEntity, EventInterface, FieldEntity, SportEntity } from "../../entities/Entities";
 
 import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
-import { EventEntity } from "../../entities/Entities";
 
 import { FormattedMessage } from 'react-intl';
 import { useIntl } from 'react-intl';
@@ -25,14 +24,14 @@ const EventsPage: FC<EventsPageProps> = () => {
     {
       id: "1",
       name: "Soccer",
-      available_fields: 2,
-      available_bookings: 5
+      availableFields: 2,
+      availableBookings: 5
     },
     {
       id: "2",
       name: "Basketball",
-      available_fields: 2,
-      available_bookings: 2
+      availableFields: 2,
+      availableBookings: 2
     },
   ];
 
@@ -45,19 +44,19 @@ const EventsPage: FC<EventsPageProps> = () => {
     createdById: "user123",
   };
 
-  const mockEvent: EventEntity = {
+  const mockEvent: EventInterface = {
       id: "1",
       startTime: new Date(),
       endTime: new Date(),
       currentPlayers: 4,
       maxPlayers: 5,
-      sport: { id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 },
+      sport: { id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 },
       field: {
         id: "1",
         name: "Cancha de baloncesto",
         address: "Calle 123",
         city: { id: "1", name: "Medellín" },
-        sports: [{ id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 }],
+        sports: [{ id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 }],
         createdById: "1",
       },
       image: null,

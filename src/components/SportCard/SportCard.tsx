@@ -44,14 +44,18 @@ const SportCard: FC<SportCardProps> = ({ sport }) => {
             <ListGroup.Item style={{ backgroundColor: "#60508C", color: "#FFFFFF", borderColor: "#60508C" }}>
               <Row>
                 <Col className="d-flex justify-content-center">
+
                   <b>{sport.available_fields} <FormattedMessage id="sportCard.availableFields"/></b>
+
                 </Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item style={{ backgroundColor: "#60508C", color: "#FFFFFF", borderColor: "#60508C" }}>
               <Row>
                 <Col className="d-flex justify-content-center">
+
                   <b>{sport.available_bookings} <FormattedMessage id="sportCard.availableBookings"/></b>
+
                 </Col>
               </Row>
             </ListGroup.Item>

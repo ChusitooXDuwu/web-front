@@ -4,11 +4,11 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import BookingCard from "../../components/BookingCard/BookingCard";
 import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
-import { EventEntity } from "../../entities/Entities";
 import { getMyBookings } from "../../services/BookingsService/BookingsService";
 import styles from "./HomePage.module.scss";
 import { Link } from "react-router-dom";
 import { FormattedMessage, useIntl } from "react-intl";
+import { getAvailableEvents } from "../../services/EventsService/EventsService";
 
 interface noDataCardProps {
   dataName: string;
@@ -35,35 +35,7 @@ interface HomePageProps {}
 
 const HomePage: FC<HomePageProps> = () => {
   const { formatMessage } = useIntl();
-  const mockEvent: EventEntity = {
-    id: "1",
-    startTime: new Date(),
-    endTime: new Date(),
-    currentPlayers: 4,
-    maxPlayers: 5,
-    sport: {
-      id: "1",
-      name: "Baloncesto",
-      available_fields: 2,
-      available_bookings: 5,
-    },
-    field: {
-      id: "1",
-      name: "Cancha de baloncesto",
-      address: "Calle 123",
-      city: { id: "1", name: "Medellín" },
-      sports: [
-        {
-          id: "1",
-          name: "Baloncesto",
-          available_fields: 2,
-          available_bookings: 5,
-        },
-      ],
-      createdById: "1",
-    },
-    image: null,
-  };
+
   const { isSuccess, data } = useQuery({
     queryKey: ["bookings"],
     queryFn: getMyBookings,
@@ -73,7 +45,10 @@ const HomePage: FC<HomePageProps> = () => {
         return a.startDateTime.getTime() - b.startDateTime.getTime();
       })
     : [];
-  let suggestedEvents = Array(10).fill(mockEvent);
+  const {isSuccess: eventsSuccess, data: eventsData} = useQuery({
+    queryKey: ["events"],
+    queryFn: getAvailableEvents,
+  });
   // debug
   // upcomingEvents = [];
   // suggestedEvents = []
@@ -81,7 +56,7 @@ const HomePage: FC<HomePageProps> = () => {
   const topUpcomingEvents = upcomingEvents.slice(0, 3);
   const RenderSuggestedEvents = () => (
     <>
-      {suggestedEvents.map((event, index) => (
+      {eventsData!.data.map((event, index) => (
         <Col key={index} className="d-flex justify-content-center">
           <GameCardComponent event={event} />
         </Col>
@@ -133,7 +108,7 @@ const HomePage: FC<HomePageProps> = () => {
           <h1 className={styles.section_header}>
             <FormattedMessage id="home.title.available" />
           </h1>
-          {suggestedEvents.length > 0 ? (
+          {eventsSuccess ? (
             <Row lg={3} md={2} sm={2} xs={1} className="gy-2">
               <RenderSuggestedEvents />
             </Row>

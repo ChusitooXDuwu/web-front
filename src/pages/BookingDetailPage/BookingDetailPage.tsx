@@ -1,3 +1,4 @@
+
 import React, { FC, useState, useContext } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import styles from './BookingDetailPage.module.scss';
@@ -8,6 +9,9 @@ import FieldDetailEntity from "../../entities/FieldDetailEntity";
 import BookingCard from "../../components/BookingCard/BookingCard";
 import GameCardComponent from '../../components/GameCardComponent/GameCardComponents';
 import { EventType } from '../../services/FieldsServices/FieldsService';
+
+import { EventInterface } from '../../entities/Entities';
+
 import UserEntity from '../../entities/UserEntity';
 import { ReactComponent as ProfileIcon } from "../../icons/profileIcon.svg";
 import { useQuery } from '@tanstack/react-query';
@@ -36,15 +40,15 @@ const mockEvent: EventType = {
   maxPlayers: 5,
   sport: { id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 },
   field: {
-    id: "1",
-    name: "Cancha de baloncesto",
-    address: "Calle 123",
-    city: { id: "1", name: "Medellín" },
-    sports: [{ id: "1", name: "Baloncesto", available_fields: 2, available_bookings: 5 }],
-    createdById: "1",
-  },
-  image: null,
-};
+      id: "1",
+      name: "Cancha de baloncesto",
+      address: "Calle 123",
+      city: { id: "1", name: "Medellín" },
+      sports: [{ id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 }],
+      createdById: "1",
+    },
+    image: null,
+  };
 
 interface BookingDetailPageProps { }
 

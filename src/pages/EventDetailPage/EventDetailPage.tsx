@@ -5,7 +5,13 @@ import { Breadcrumb, Container, Row, Col, Spinner, Alert } from "react-bootstrap
 import FieldDetailCardComponent from "../../components/FieldDetailCardComponent/FieldDetailCardComponent";
 import { Link } from "react-router-dom";
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
+
 import { EventType } from '../../services/FieldsServices/FieldsService';
+
+import BookingCard from "../../components/BookingCard/BookingCard";
+import GameCardComponent from '../../components/GameCardComponent/GameCardComponents';
+import { EventInterface } from '../../entities/Entities';
+
 import { ReactComponent as ProfileIcon } from "../../icons/profileIcon.svg";
 import UserEntity from '../../entities/UserEntity';
 import { useQuery } from '@tanstack/react-query';
@@ -26,6 +32,7 @@ const mockPlayer: UserEntity = {
   image_url: "/assets/basket_horizontal.jpg"
 };
 
+
 const mockEvent: EventType = {
   id: "1",
   startTime: new Date(),
@@ -43,6 +50,7 @@ const mockEvent: EventType = {
   },
   image: null,
 };
+
 
 interface EventDetailPageProps {}
 
