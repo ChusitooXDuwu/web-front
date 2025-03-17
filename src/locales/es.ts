@@ -65,7 +65,7 @@ const en: { [key: string]: string } = {
    "profile.sidebar.history":"Historial Partidos",
    "profile.sidebar.logout":"Cerrar Sesión",
    "profile.sidebar.goback": "Volver",
-   "profile.sidebar.myprofile":"Mi pefil",
+   "profile.sidebar.myprofile":"Mi perfil",
    "profile.sidebar.profile":"Perfil",
    //Profile Content Sport Lists
    "profile.content.sportList":"Mis Deportes",
@@ -88,7 +88,7 @@ const en: { [key: string]: string } = {
   "profile.history.Players":"Jugadores",
   //Profile Statistics
   "profile.statistics":"Estadisticas Generales",
-  "profile.statistics.total":"Total Partidos Judados",
+  "profile.statistics.total":"Total Partidos Jugados",
   "profile.statistics.court":"Canchas más populares",
   "profile.statistics.player":"Ha jugado más con ",
   "profile.statistics.loading":"Cargando Estadisticas",
