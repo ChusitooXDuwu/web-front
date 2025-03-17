@@ -1,6 +1,7 @@
 import styles from "./ProfileInfo.module.scss";
 import {Image} from "react-bootstrap";
 import icon from "../../../icons/User.svg";
+import { FormattedMessage} from "react-intl";
 interface FriendsListProps {
     friends: string[];
   }
@@ -8,7 +9,7 @@ interface FriendsListProps {
   const FriendsList: React.FC<FriendsListProps> = ({ friends }) => {
     return (
       <div>
-        <h3 className={`text-lg font-semibold ${styles.tittle}`}>Mis amigos:</h3>
+        <h3 className={`text-lg font-semibold ${styles.tittle}`}> <FormattedMessage id="profile.content.friendList.friends" />:</h3>
         <ul className="list-none">
           {friends.map((friend, index) => (
             <li key={index} className="flex items-center space-x-2">
@@ -18,7 +19,7 @@ interface FriendsListProps {
           ))}
         </ul>
         <button className={styles.button}>
-          Agregar Amigo
+        <FormattedMessage id="profile.content.friendList.addfriends" />
         </button>
       </div>
     );

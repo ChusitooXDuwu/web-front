@@ -2,7 +2,7 @@
 import styles from './NotificationsPage.module.scss';
 import React, { FC, useState } from "react";
 import { NotificationEntity } from "../../entities/NotificationEntity";
-
+import { FormattedMessage } from "react-intl";
 const NotificationsPage: FC = () => {
   const [notifications, setNotifications] = useState<NotificationEntity[]>([
     {
@@ -27,7 +27,7 @@ const NotificationsPage: FC = () => {
 
   return (
     <div className={styles.notificationsPage}>
-      <h2 className={styles.text_t}>Notificaciones</h2>
+      <h2 className={styles.text_t}><FormattedMessage id="profile.notifications"/></h2>
       <div className={styles.notificationsContainer}>
         {notifications.length > 0 ? (
           notifications.map((notification) => (
@@ -37,7 +37,7 @@ const NotificationsPage: FC = () => {
             </div>
           ))
         ) : (
-          <p>No hay notificaciones.</p>
+          <p><FormattedMessage id="profile.notifications.none"/></p>
         )}
       </div>
     </div>

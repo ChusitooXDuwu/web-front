@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./SideBar.module.scss";
 import ProfileCard from "./ProfileCard";
+
+import { FormattedMessage, useIntl } from "react-intl";
 interface SidebarProps {
   items: { label: string; path: string }[];
   isOwner: boolean;
@@ -12,6 +14,7 @@ interface ProfileCardProps {
   imageUrl: string |null;
 }
 const Sidebar: React.FC<SidebarProps> = ({ items,isOwner,profile }) => {
+  const { formatMessage } = useIntl();
   return (
 
     <div className={styles.sidebar}>
@@ -23,7 +26,7 @@ const Sidebar: React.FC<SidebarProps> = ({ items,isOwner,profile }) => {
 
       ))}
         <Link  to={"/home"} className={styles.session}>
-         {isOwner ? ("Cerrar Sesión"):("Volver")} 
+         {isOwner ? (formatMessage({id:"profile.sidebar.logout"})):(formatMessage({id:"profile.sidebar.goback"}))} 
         </Link>
 
     </div>

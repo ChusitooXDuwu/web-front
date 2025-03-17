@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import style from "./StatisticsPage.module.scss";
-
+import { FormattedMessage } from "react-intl";
 import { ReactComponent as StatisticsIcon } from "../../icons/statistics.svg";
 
 interface StatisticsData {
@@ -44,22 +44,22 @@ const StatisticsPage: React.FC = () => {
       });
   }, []);
 
-  if (loading) return <p>Cargando estadísticas...</p>;
+  if (loading) return <p><FormattedMessage id="profile.statistics.loading"/>...</p>;
  
 
   return (
     <div className={style.statisticsContainer}>
       <h2 className={style.title}>
         <StatisticsIcon className={style.image} style={{ fill: "#E99E14" }} fill={"#E99E14"}/>
-        Estadísticas Generales
+        <FormattedMessage id="profile.statistics"/>
         </h2>
       <div className={style.section}>
-        <h3 className={style.subtitle}>Total de partidas jugadas: {stats?.totalGames ?? "Cargando..."}</h3>
+        <h3 className={style.subtitle}><FormattedMessage id="profile.statistics.total"/>: {stats?.totalGames ?? "Cargando..."}</h3>
       </div>
 
       <div className={style.chartsContainer}>
         <div className={style.chartBox}>
-          <h3 className={style.chartTitle}>Cancha más popular</h3>
+          <h3 className={style.chartTitle}><FormattedMessage id="profile.statistics.court"/></h3>
           <PieChart width={300} height={300}>
             <Pie
               data={stats?.courts || []}
@@ -79,7 +79,7 @@ const StatisticsPage: React.FC = () => {
         </div>
 
         <div className={style.chartBox}>
-          <h3 className={style.chartTitle}>Jugadores más activos</h3>
+          <h3 className={style.chartTitle}><FormattedMessage id="profile.statistics.player"/></h3>
           <PieChart width={300} height={300}>
             <Pie
               data={stats?.players || []}

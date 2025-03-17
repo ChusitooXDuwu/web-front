@@ -58,6 +58,39 @@ const es: { [key: string]: string } = {
   "field.form.label.sports": "Sports",
   "field.form.label.photos": "Field photos",
   "field.form.submit": "Create Field",
+  //Profile sideBar
+  "profile.sidebar.notification":"Notifications",
+  "profile.sidebar.stats.mine":"My Stats",
+  "profile.sidebar.stats.not.mine":"Stats",
+  "profile.sidebar.history":"Match History",
+  "profile.sidebar.logout":"Log Out",
+  "profile.sidebar.goback": "Go back",
+  "profile.sidebar.myprofile":"My profile",
+  "profile.sidebar.profile":"Profile",
+  //Profile Content Sport Lists
+  "profile.content.sportList":"My Sports",
+  "profile.content.friendList.friends":"My Friends",
+  "profile.content.friendList.addfriends":"Add friend",
+  //Profile Content favoriteCourts
+  "profile.content.favoriteCourts":"My favourte Courts",
+  //Profile Content aboutme
+  "profile.content.aboutme":"About me",
+  "profile.content.aboutme.since":"Player Since",
+  //Profile Notification
+  "profile.notifications":"Notifications",
+  "profile.notifications.none":"There are no notifications",
+  // Profile History
+  "profile.history":"Events History",
+  "profile.history.in":"in",
+  "profile.history.location":"Location",
+  "profile.history.date":"Date",
+  "profile.history.Players":"Players",
+  //Profile Statistics
+  "profile.statistics":"General Stats",
+  "profile.statistics.total":"Total matchs played",
+  "profile.statistics.court":"Most Popular Courts",
+  "profile.statistics.player":"Most played with",
+  "profile.statistics.loading":"loading stats",
 };
 
 export default es;

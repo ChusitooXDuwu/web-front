@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './HistoryPage.module.scss';
 import {EventInterface } from "../../entities/Entities";
-
+import { FormattedMessage } from 'react-intl';
 interface HistoryPageProps {}
 
 
@@ -63,15 +63,15 @@ const mockEvents: EventInterface[] = [
 
 const HistoryPage: FC<HistoryPageProps> = () => (
   <div className={styles.HistoryPage}>
-    <h2 className={styles.text_t}>Historial de Eventos</h2>
+    <h2 className={styles.text_t}><FormattedMessage id="profile.history"/></h2>
     <div className={styles.scrollContainer}>
       <ul className={styles.eventList}>
         {mockEvents.map(event => (
           <li key={event.id} className={styles.eventCard}>
-            <h3>{event.sport.name} en {event.field.name}</h3>
-            <p><strong>Ubicación:</strong> {event.field.address}, {event.field.city.name}</p>
-            <p><strong>Fecha:</strong> {event.startTime.toLocaleDateString()} - {event.endTime.toLocaleTimeString()}</p>
-            <p><strong>Jugadores:</strong> {event.currentPlayers}/{event.maxPlayers}</p>
+            <h3>{event.sport.name} <FormattedMessage id="profile.history.in"/> {event.field.name}</h3>
+            <p><strong><FormattedMessage id="profile.history.location"/>:</strong> {event.field.address}, {event.field.city.name}</p>
+            <p><strong><FormattedMessage id="profile.history.date"/>:</strong> {event.startTime.toLocaleDateString()} - {event.endTime.toLocaleTimeString()}</p>
+            <p><strong><FormattedMessage id="profile.history.Players"/>:</strong> {event.currentPlayers}/{event.maxPlayers}</p>
           </li>
         ))}
       </ul>

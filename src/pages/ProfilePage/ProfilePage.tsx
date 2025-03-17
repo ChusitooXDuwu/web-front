@@ -1,9 +1,10 @@
 import React, { FC ,useState,useEffect } from 'react';
 import { useLocation , Outlet} from "react-router-dom";
 import SideBar from '../../components/Profile/SideBar';
-import { getSidebarItems } from '../../components/Profile/getSidebarItems';
+import { GetSidebarItems } from '../../components/Profile/getSidebarItems';
 import {Container,Col,Row} from "react-bootstrap";
 import { useProfile } from "../../contexts/ProfileContext";
+import { useIntl } from "react-intl";
 
 interface ProfilePageProps {
   isOwner: boolean;
@@ -11,15 +12,16 @@ interface ProfilePageProps {
 
 const ProfilePage: FC<ProfilePageProps> = ({ isOwner }) => {
   const location = useLocation();
-  const { profile } = useProfile(); 
+  const { profile } = useProfile();
+  const { formatMessage } = useIntl(); 
   const [page, setPage] = useState(location.pathname.split("/").pop() || "profile");
-  const [sidebarItems, setSidebarItems] = useState(() => getSidebarItems(isOwner, page));
+  const [sidebarItems, setSidebarItems] = useState(() =>(GetSidebarItems(isOwner, page,formatMessage )));
 
   useEffect(() => {
     const currentPage = location.pathname.split("/").pop() || "profile";
     setPage(currentPage);
-    setSidebarItems(getSidebarItems(isOwner, currentPage));
-  },  [location.pathname, isOwner]);
+    setSidebarItems(GetSidebarItems(isOwner, currentPage,formatMessage ));
+  },  [location.pathname, isOwner,formatMessage ]);
 
   return (
 

@@ -58,6 +58,41 @@ const en: { [key: string]: string } = {
   "field.form.label.sports": "Deportes",
   "field.form.label.photos": "Fotos del establecimiento",
   "field.form.submit": "Crear Cancha",
+   //Profile sideBar
+   "profile.sidebar.notification":"Notificaciones",
+   "profile.sidebar.stats.mine":"Mis Estadísticas",
+   "profile.sidebar.stats.not.mine":"Estadísticas",
+   "profile.sidebar.history":"Historial Partidos",
+   "profile.sidebar.logout":"Cerrar Sesión",
+   "profile.sidebar.goback": "Volver",
+   "profile.sidebar.myprofile":"Mi pefil",
+   "profile.sidebar.profile":"Perfil",
+   //Profile Content Sport Lists
+   "profile.content.sportList":"Mis Deportes",
+   //Profile Content My friends
+   "profile.content.friendList.friends":"Mis Amigos",
+   "profile.content.friendList.addfriends":"Agregar Amigo",
+  //Profile Content favoriteCourts
+  "profile.content.favoriteCourts":"Mis Canchas Favoritas",
+  //Profile Content aboutme
+  "profile.content.aboutme":"Sobre mí",
+  "profile.content.aboutme.since":"Jugador desde",
+  //Profile Notification
+  "profile.notifications":"Notificaciones",
+  "profile.notifications.none":"No hay notificaciones.",
+  // Profile History
+  "profile.history":"Historial de Eventos",
+  "profile.history.in":"en",
+  "profile.history.location":"Ubicación",
+  "profile.history.date":"Fecha",
+  "profile.history.Players":"Jugadores",
+  //Profile Statistics
+  "profile.statistics":"Estadisticas Generales",
+  "profile.statistics.total":"Total Partidos Judados",
+  "profile.statistics.court":"Canchas más populares",
+  "profile.statistics.player":"Ha jugado más con ",
+  "profile.statistics.loading":"Cargando Estadisticas",
+  
 };
 
 export default en;

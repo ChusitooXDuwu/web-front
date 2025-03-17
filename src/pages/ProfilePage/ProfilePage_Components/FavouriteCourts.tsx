@@ -1,7 +1,7 @@
 import styles from "./ProfileInfo.module.scss";
 import {Image} from "react-bootstrap";
 import {ReactComponent as Icon} from "../../../icons/courtIcon.svg";
-
+import { FormattedMessage } from "react-intl";
 interface FavoriteCourtsProps {
     courts: string[];
   }
@@ -9,7 +9,7 @@ interface FavoriteCourtsProps {
   const FavoriteCourts: React.FC<FavoriteCourtsProps> = ({ courts }) => {
     return (
       <div>
-        <h3 className={ `text-lg font-semibold text-yellow-600 ${styles.tittle}`} >Mis Canchas Favoritas:</h3>
+        <h3 className={ `text-lg font-semibold text-yellow-600 ${styles.tittle}`} ><FormattedMessage id= "profile.content.favoriteCourts"/>:</h3>
         <ul>
           {courts.map((court, index) => (
             <li key={index} className="flex items-center space-x-2">
