@@ -13,6 +13,8 @@ const es: { [key: string]: string } = {
   "pages.bookings": "Bookings",
   "pages.fields": "Fields",
   "pages.fields.create": "Create field",
+  "pages.sports": "Sports",
+  "pages.events": "Events",
   //Forms
   "form.placeholder.name": "Enter your name",
   "form.placeholder.email": "Enter your email",
@@ -58,6 +60,44 @@ const es: { [key: string]: string } = {
   "field.form.label.sports": "Sports",
   "field.form.label.photos": "Field photos",
   "field.form.submit": "Create Field",
+  // Navbar component
+  "navbar.bookings": "My Bookings",
+  "navbar.fields": "Fields",
+  "navbar.sports": "Sports",
+  "navbar.events": "Events",
+  "navbar.profile": "Profile",
+  "navbar.searchButton": "Search",
+  "navbar.searchPlaceholder": "Search Fields, Sports or Bookings",
+  // SportCard
+  "sportCard.availableFields": "Available fields",
+  "sportCard.availableBookings": "Available bookings",
+  // SportsPage
+  "sportsPage.title": "Sports",
+  // eventDetailsPage
+  "eventDetailPage.participants": "Participants",
+  // FieldDetailCard
+  "fieldDetailCard.setOccupied.notOccupied": "Not occupied 😀",
+  "fieldDetailCard.setOccupied.Occupied": "Occupied 🥲",
+  "fieldDetailCard.details": "Field details",
+  "fieldDetailCard.details.seeInMap": "See in map",
+  "fieldDetailCard.details.openingHours": "Opening hours:",
+  "fieldDetailCard.details.contact": "Contact:",
+  "fieldDetailCard.details.isOcuppiedQuestion": "Is field occupied?:",
+  "fieldDetailCard.details.price": "Price:",
+  "fieldDetailCard.details.availableBookings": "Available bookings in this field:",
+  // fieldDetailButtons
+  "fieldDetailButtons.book": "Create a booking",
+  "fieldDetailButtons.cancel": "Cancel booking",
+  "fieldDetailButtons.join": "Join booking",
+  // Cancel&CommentsButton
+  "cancelAndCommentsButton.cancel": "Cancel",
+  "cancelAndCommentsButton.addComment": "Add comment",
+  // MapView
+  "mapView.mapfrom": "Map from",
+
+
+
+  
 };
 
 export default es;

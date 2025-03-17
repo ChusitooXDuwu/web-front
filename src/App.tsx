@@ -76,6 +76,7 @@ function App() {
                 <Route path="fields/:id" element={<FieldDetailPage />} />
                 <Route path="fields/map/:id" element={<FieldDetailPageMap />} />
                 <Route path="bookings/:id" element={<BookingDetailPage />} />
+                
               </Route>
               <Route path="/" element={<LoginView />}>
                 <Route path="login" element={<LoginPage />} />

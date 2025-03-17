@@ -13,6 +13,8 @@ const en: { [key: string]: string } = {
   "pages.bookings": "Reservas",
   "pages.fields": "Canchas",
   "pages.fields.create": "Crear Cancha",
+  "pages.sports": "Deportes",
+  "pages.events": "Eventos",
   //Forms
   "form.placeholder.name": "Ingrese su nombre",
   "form.placeholder.email": "Ingrese su correo",
@@ -58,6 +60,41 @@ const en: { [key: string]: string } = {
   "field.form.label.sports": "Deportes",
   "field.form.label.photos": "Fotos del establecimiento",
   "field.form.submit": "Crear Cancha",
+  // Navbar component
+  "navbar.bookings": "Mis Reservas",
+  "navbar.fields": "Canchas",
+  "navbar.sports": "Deportes",
+  "navbar.events": "Eventos",
+  "navbar.profile": "Perfil",
+  "navbar.searchButton": "Buscar",
+  "navbar.searchPlaceholder": "Busca Canchas, Deportes o Reservas",
+  // SportCard
+  "sportCard.availableFields": "Campos disponibles",
+  "sportCard.availableBookings": "Reservas disponibles",
+  // SportsPage
+  "sportsPage.title": "Deportes",
+  // DetailsPage
+  "eventDetailPage.participants": "Participantes",
+  // FieldDetailCard
+  "fieldDetailCard.setOccupied.notOccupied": "No ocupada 😀",
+  "fieldDetailCard.setOccupied.Occupied": "Ocupada 🥲",
+  "fieldDetailCard.details": "Detalles de la cancha",
+  "fieldDetailCard.details.seeInMap": "Ver en mapa",
+  "fieldDetailCard.details.openingHours": "Horarios:",
+  "fieldDetailCard.details.contact": "Contacto:",
+  "fieldDetailCard.details.isOcuppiedQuestion": "¿Cancha ocupada?:",
+  "fieldDetailCard.details.price": "Precio:",
+  "fieldDetailCard.details.availableBookings": "Partidos disponibles en esta cancha:",
+  // fieldDetailButtons
+  "fieldDetailButtons.book": "Crear una reserva",
+  "fieldDetailButtons.cancel": "Cancelar reserva",
+  "fieldDetailButtons.join": "Unirse a la reserva",
+  // Cancel&CommentsButton
+  "cancelAndCommentsButton.cancel": "Cancelar",
+  "cancelAndCommentsButton.addComment": "Agregar comentario",
+  // MapView
+  "mapView.mapfrom": "Mapa de",
+
 };
 
 export default en;
