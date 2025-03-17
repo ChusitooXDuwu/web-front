@@ -13,6 +13,8 @@ const es: { [key: string]: string } = {
   "pages.bookings": "Bookings",
   "pages.fields": "Fields",
   "pages.fields.create": "Create field",
+  "pages.sports": "Sports",
+  "pages.events": "Events",
   //Forms
   "form.placeholder.name": "Enter your name",
   "form.placeholder.email": "Enter your email",
@@ -91,6 +93,68 @@ const es: { [key: string]: string } = {
   "profile.statistics.court":"Most Popular Courts",
   "profile.statistics.player":"Most played with",
   "profile.statistics.loading":"loading stats",
+  // Navbar component
+  "navbar.bookings": "My Bookings",
+  "navbar.fields": "Fields",
+  "navbar.sports": "Sports",
+  "navbar.events": "Events",
+  "navbar.profile": "Profile",
+  "navbar.searchButton": "Search",
+  "navbar.searchPlaceholder": "Search Fields, Sports or Bookings",
+  // SportCard
+  "sportCard.availableFields": "Available fields",
+  "sportCard.availableBookings": "Available bookings",
+  // SportsPage
+  "sportsPage.title": "Sports",
+  // eventDetailsPage
+  "eventDetailPage.participants": "Participants",
+  // FieldDetailCard
+  "fieldDetailCard.setOccupied.notOccupied": "Not occupied 😀",
+  "fieldDetailCard.setOccupied.Occupied": "Occupied 🥲",
+  "fieldDetailCard.details": "Field details",
+  "fieldDetailCard.details.seeInMap": "See in map",
+  "fieldDetailCard.details.openingHours": "Opening hours:",
+  "fieldDetailCard.details.contact": "Contact:",
+  "fieldDetailCard.details.isOcuppiedQuestion": "Is field occupied?:",
+  "fieldDetailCard.details.price": "Price:",
+  "fieldDetailCard.details.availableBookings": "Available bookings in this field:",
+  // fieldDetailButtons
+  "fieldDetailButtons.book": "Create a booking",
+  "fieldDetailButtons.cancel": "Cancel booking",
+  "fieldDetailButtons.join": "Join booking",
+  // Cancel&CommentsButton
+  "cancelAndCommentsButton.cancel": "Cancel",
+  "cancelAndCommentsButton.addComment": "Add comment",
+  "fieldDetailCard.commentForm.writeComment": "Add your comment",
+  "fieldDetailCard.commentForm.sendComment": "Upload",
+  "alert.comment": "Your comment was uploaded",
+  // MapView
+  "mapView.mapfrom": "Map from",
+
+  //GameCardComponent
+  "game.first": "Be the first to reserve",
+  "game.cupos": "Spots",
+  "game.fecha": "Date: ",
+  "game.time": "Time: ",
+  "game.lleno": "Full Game",
+  "game.sub": "Subscribe",
+
+  //EventForm
+  "event.alert": "Booking created",
+  "event.form.label.fecha" : "Select date and time for the booking",
+  "event.form.label.cantidadJugadores" : "Select amount of players for the booking",
+  "event.form.submit": "Book",
+
+  //FieldsFilter
+  "field.soccer": "Soccer",
+  "field.basket": "Basketball",
+  "field.tennis": "Tennis",
+  "field.volley": "Volleyball",
+  "field.todos": "All Sports",
+
+
+
+  
 };
 
 export default es;

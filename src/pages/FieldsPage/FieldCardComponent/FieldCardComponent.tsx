@@ -15,7 +15,7 @@ const FieldCardComponent: FunctionComponent<FieldCardComponentProps> = ({
   return (
     <Card
       className={`text-white ${styles.field_card}`}
-      onClick={() => navigate(`/fields/${fieldData.id}`)}
+      onClick={() => navigate(`/fields/2`)}
     >
       <Card.Body className={`${styles.card_body}`}>
         <Card.Title>{fieldData.name}</Card.Title>

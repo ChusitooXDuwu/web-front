@@ -13,50 +13,61 @@ interface FieldsPageProps {}
 const FieldsPage: FC<FieldsPageProps> = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
+
   // Fetch data
   const { isSuccess, data: fieldsData } = useQuery({
     queryKey: ["fields"],
     queryFn: getFields,
   });
+
   // Hooks
-  const [filteredFieldsData, setFilteredFieldsData] = useState<FieldEntity[]>(
-    []
-  );
+  const [filteredFieldsData, setFilteredFieldsData] = useState<FieldEntity[]>([]);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [currentSearchValue, setCurrentSearchValue] = useState<string>("");
+  const [selectedSport, setSelectedSport] = useState<string>("");
+
   useEffect(() => {
     if (isSuccess) {
       const { data } = fieldsData;
       setFilteredFieldsData(data.slice());
     }
   }, [fieldsData, isSuccess]);
-  const [searchValue, setSearchValue] = useState<string>("");
-  const [currentSearchValue, setCurrentSearchValue] = useState<string>("");
 
   const filterData = () => {
-    if (!isSuccess) {
-      return;
-    }
+    if (!isSuccess) return;
+
     setFilteredFieldsData(
       fieldsData.data.filter((item) => {
         const name = item.name;
         const address = item.address;
         const normalizedSearchValue = searchValue.toLowerCase();
         const concatenatedField = `${name} ${address}`.toLowerCase();
-        return concatenatedField.includes(normalizedSearchValue);
+
+        const matchesSearch = concatenatedField.includes(normalizedSearchValue);
+        const matchesSport = selectedSport
+          ? item.sports.some((sport) => sport.name.toLowerCase() === selectedSport.toLowerCase())
+          : true;
+
+        return matchesSearch && matchesSport;
       })
     );
   };
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setSearchValue(value);
+    setSearchValue(e.target.value);
   };
+
   const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCurrentSearchValue(searchValue);
-    console.log("Search Updated: ", currentSearchValue);
     filterData();
-    console.log(filteredFieldsData);
   };
+
+  const handleSportChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedSport(e.target.value);
+    filterData();
+  };
+
   return (
     <div className="main_content_container pt-2">
       <Container fluid={"md"}>
@@ -73,6 +84,15 @@ const FieldsPage: FC<FieldsPageProps> = () => {
             <h1 className={`display-5 sh_gold`}>
               <FormattedMessage id="fields.title" />
             </h1>
+          </Col>
+          <Col md="auto" className={styles.create_col}>
+            <Form.Select onChange={handleSportChange} value={selectedSport}>
+              <option value=""><FormattedMessage id="field.todos"/></option>
+              <option value="soccer"><FormattedMessage id="field.soccer"/></option>
+              <option value="basketball"><FormattedMessage id="field.basketball"/></option>
+              <option value="tennis"><FormattedMessage id="field.tennis"/></option>
+              <option value="volleyball"><FormattedMessage id="field.volley"/></option>
+            </Form.Select>
           </Col>
           <Col md="auto" className={styles.create_col}>
             <Button onClick={() => navigate("/fields/create")}>

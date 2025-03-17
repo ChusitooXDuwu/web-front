@@ -13,6 +13,8 @@ const en: { [key: string]: string } = {
   "pages.bookings": "Reservas",
   "pages.fields": "Canchas",
   "pages.fields.create": "Crear Cancha",
+  "pages.sports": "Deportes",
+  "pages.events": "Eventos",
   //Forms
   "form.placeholder.name": "Ingrese su nombre",
   "form.placeholder.email": "Ingrese su correo",
@@ -93,6 +95,66 @@ const en: { [key: string]: string } = {
   "profile.statistics.player":"Ha jugado más con ",
   "profile.statistics.loading":"Cargando Estadisticas",
   
+  // Navbar component
+  "navbar.bookings": "Mis Reservas",
+  "navbar.fields": "Canchas",
+  "navbar.sports": "Deportes",
+  "navbar.events": "Eventos",
+  "navbar.profile": "Perfil",
+  "navbar.searchButton": "Buscar",
+  "navbar.searchPlaceholder": "Busca Canchas, Deportes o Reservas",
+  // SportCard
+  "sportCard.availableFields": "Campos disponibles",
+  "sportCard.availableBookings": "Reservas disponibles",
+  // SportsPage
+  "sportsPage.title": "Deportes",
+  // DetailsPage
+  "eventDetailPage.participants": "Participantes",
+  // FieldDetailCard
+  "fieldDetailCard.setOccupied.notOccupied": "No ocupada 😀",
+  "fieldDetailCard.setOccupied.Occupied": "Ocupada 🥲",
+  "fieldDetailCard.details": "Detalles de la cancha",
+  "fieldDetailCard.details.seeInMap": "Ver en mapa",
+  "fieldDetailCard.details.openingHours": "Horarios:",
+  "fieldDetailCard.details.contact": "Contacto:",
+  "fieldDetailCard.details.isOcuppiedQuestion": "¿Cancha ocupada?:",
+  "fieldDetailCard.details.price": "Precio:",
+  "fieldDetailCard.details.availableBookings": "Partidos disponibles en esta cancha:",
+  // fieldDetailButtons
+  "fieldDetailButtons.book": "Crear una reserva",
+  "fieldDetailButtons.cancel": "Cancelar reserva",
+  "fieldDetailButtons.join": "Unirse a la reserva",
+  // Cancel&CommentsButton
+  "cancelAndCommentsButton.cancel": "Cancelar",
+  "cancelAndCommentsButton.addComment": "Agregar comentario",
+  "fieldDetailCard.commentForm.writeComment": "Deja tu comentario",
+  "fieldDetailCard.commentForm.sendComment": "Subir",
+  "alert.comment": "Tu comentario fue subido",
+  // MapView
+  "mapView.mapfrom": "Mapa de",
+
+  //GameCardComponent
+  "game.first": "Sé el primero en inscribirte",
+  "game.cupos": "Cupos",
+  "game.fecha": "Fecha: ",
+  "game.time": "Hora: ",
+  "game.lleno": "Partido Lleno",
+  "game.sub": "Inscribirme",
+
+  //EventForm
+  "event.alert": "Reserva creada",
+  "event.form.label.fecha" : "Seleccione fecha y hora de la reserva",
+  "event.form.label.cantidadJugadores" : "Seleccione la cantidad de jugadores",
+  "event.form.submit": "Reservar",
+
+  //FieldsFilter
+  "field.soccer": "Futbol",
+  "field.basket": "Baloncesto",
+  "field.tennis": "Tenis",
+  "field.volley": "Voleibol",
+  "field.todos": "Todos",
+
+
 };
 
 export default en;
