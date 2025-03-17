@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useContext } from "react";
 import styles from "./FieldDetailCardComponent.module.scss";
 import { Button, Col, Row, Form } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
@@ -9,8 +9,6 @@ import FieldDetailEntity from "../../entities/FieldDetailEntity";
 import { FormattedMessage } from 'react-intl';
 import { useIntl } from 'react-intl';
 import { LocaleContext } from '../../contexts/LocaleContext';
-import { useContext } from 'react';
-
 
 interface FieldDetailCardProps {
   field: FieldDetailEntity;
@@ -21,20 +19,15 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
   const navigate = useNavigate();
 
   const { locale } = useContext(LocaleContext);
-    const [showOffcanvas, setShowOffcanvas] = useState(false);
-    const intl = useIntl();
-    const { formatMessage } = intl;
-  
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const intl = useIntl();
+  const { formatMessage } = intl;
 
   // State for comment form visibility and input value
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [comment, setComment] = useState("");
-  // const [occupied, setOccupied] = useState("No Ocupada 😀");
-
   
   const [occupied, setOccupied] = useState(intl.formatMessage({ id: "fieldDetailCard.setOccupied.notOccupied" })); 
-
-
 
   // Function to toggle comment form
   const handleAddCommentClick = () => {
@@ -44,7 +37,6 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
   const handleOccupied = () => {
     setOccupied(intl.formatMessage({ id: "fieldDetailCard.setOccupied.Occupied" }));
   };
-
 
   // Function to handle comment submission
   const handleSubmitComment = () => {
@@ -76,38 +68,38 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
 
             <hr className={styles.divider} />
 
-            <h4 className={styles.sectionTitle}><FormattedMessage id = "fieldDetailCard.details"/></h4>
+            <h4 className={styles.sectionTitle}><FormattedMessage id="fieldDetailCard.details"/></h4>
 
             <div className={styles.detailsContainer}>
               <div className={styles.detailItem}>
                 <span className={styles.detailIcon}>📍</span>
                 <span>{field.address}</span>
                 <span className={styles.mapButtonWrapper}>
-                  <Button className={styles.mapButton}  onClick={() => navigate(`/fields/map/${field.id}`)}>
-                    <FormattedMessage id = "fieldDetailCard.details.seeInMap"/>
+                  <Button className={styles.mapButton} onClick={() => navigate(`/fields/map/${field.id}`)}>
+                    <FormattedMessage id="fieldDetailCard.details.seeInMap"/>
                   </Button>
                 </span>
               </div>
 
               <div className={styles.detailItem}>
                 <span className={styles.detailIcon}>🕒</span>
-                <span><FormattedMessage id = "fieldDetailCard.details.openingHours"/> {field.opening_time}</span>
+                <span><FormattedMessage id="fieldDetailCard.details.openingHours"/> {field.opening_time}</span>
               </div>
 
               <div className={styles.detailItem}>
                 <span className={styles.detailIcon}>📞</span>
                 <span>
-                  <FormattedMessage id = "fieldDetailCard.details.contact"/> {field.phone_number}</span>
+                  <FormattedMessage id="fieldDetailCard.details.contact"/> {field.phone_number}</span>
               </div>
 
               <div className={styles.detailItem}>
                 <span className={styles.detailIcon}>✅</span>
-                <span><FormattedMessage id = "fieldDetailCard.details.isOcuppiedQuestion"/>  {occupied}</span>
+                <span><FormattedMessage id="fieldDetailCard.details.isOcuppiedQuestion"/> {occupied}</span>
               </div>
 
               <div className={styles.detailItem}>
                 <span className={styles.detailIcon}>💸</span>
-                <span><FormattedMessage id = "fieldDetailCard.details.price"/> {` ${price}`}</span>
+                <span><FormattedMessage id="fieldDetailCard.details.price"/> {` ${price}`}</span>
               </div>
             </div>
 
@@ -115,10 +107,9 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
 
             <div className={styles.actionButtonContainer}>
               <Button className={styles.bookButton} onClick={handleOccupied}>
-                {field.field_type === "field" && <FormattedMessage id = "fieldDetailButtons.book"/>}
-                {field.field_type === "booking" && <FormattedMessage id = "fieldDetailButtons.cancel"/>}
-                {field.field_type === "event" && <FormattedMessage id = "fieldDetailButtons.join"/>}
-                
+                {field.field_type === "field" && <FormattedMessage id="fieldDetailButtons.book"/>}
+                {field.field_type === "booking" && <FormattedMessage id="fieldDetailButtons.cancel"/>}
+                {field.field_type === "event" && <FormattedMessage id="fieldDetailButtons.join"/>}
               </Button>
 
               {/* Button to show/hide comment form */}
@@ -126,7 +117,7 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
                 className={styles.commentButton}
                 onClick={handleAddCommentClick}
               >
-                {showCommentForm ? <FormattedMessage id = "cancelAndCommentsButton.cancel"/> : <FormattedMessage id = "cancelAndCommentsButton.addComment"/>}
+                {showCommentForm ? <FormattedMessage id="cancelAndCommentsButton.cancel"/> : <FormattedMessage id="cancelAndCommentsButton.addComment"/>}
               </Button>
             </div>
 
@@ -134,7 +125,7 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
             {showCommentForm && (
               <div className={styles.commentForm}>
                 <Form.Group controlId="commentText">
-                  <Form.Label>Escribe tu comentario:</Form.Label>
+                  <Form.Label><FormattedMessage id="fieldDetailCard.commentForm.writeComment"/></Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={3}
@@ -146,7 +137,7 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
                   className={styles.submitCommentButton}
                   onClick={handleSubmitComment}
                 >
-                  Enviar comentario
+                  <FormattedMessage id="fieldDetailCard.commentForm.sendComment"/>
                 </Button>
               </div>
             )}
