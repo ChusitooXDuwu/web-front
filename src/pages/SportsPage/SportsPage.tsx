@@ -5,6 +5,13 @@ import SportCard from "../../components/SportCard/SportCard";
 import SportEntity from "../../entities/SportEntity";
 import { Link } from "react-router-dom";
 
+import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
+import { LocaleContext } from '../../contexts/LocaleContext';
+import { useState } from 'react';
+import { useContext } from 'react';
+
+
 // TODO REPLACE WITH API FETCH
 const mockData: SportEntity = {
   id: "abc",
@@ -17,6 +24,10 @@ interface SportsPageProps {}
 
 const SportsPage: FC<SportsPageProps> = () => {
   const SportArray: any[] = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+  const { locale } = useContext(LocaleContext);
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const intl = useIntl();
+  const { formatMessage } = intl;
   return (
     <Container
       fluid
@@ -25,13 +36,13 @@ const SportsPage: FC<SportsPageProps> = () => {
       <Row className={`pt-2 ${styles.title_row}`}>
         <Breadcrumb>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
-            Inicio
+            <FormattedMessage id="pages.home" />
           </Breadcrumb.Item>
           <Breadcrumb.Item active linkAs={Link} linkProps={{ to: "/Sports" }}>
-            Deportes
+            <FormattedMessage id="pages.sports" />
           </Breadcrumb.Item>
         </Breadcrumb>
-        <h1 className={`display-5 ${styles.page_header}`}>Deportes</h1>
+        <h1 className={`display-5 ${styles.page_header}`}>  <FormattedMessage id="sportsPage.title"/>  </h1>
       </Row>
 
       <Row lg={3} md={3} sm={2} xs={1} className="gy-3 justify-content-center">

@@ -9,6 +9,9 @@ import FieldDetailEntity from "../../entities/FieldDetailEntity";
 import FieldMapCardComponent from "../../components/FieldMapCardComponent/FieldMapCardComponent";
 import { Breadcrumb, Button, Col, Container, Form, Row } from "react-bootstrap";
 import CustomMap from "../../components/MapComponent/MapComponent";
+import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
+import { LocaleContext } from '../../contexts/LocaleContext';
 
 
 const mockData: FieldDetailEntity = {
@@ -33,15 +36,15 @@ function FieldDetailPageMap() {
         <Row className={`${styles.title_row} pt-2 `} md={12}>
         <Breadcrumb>
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
-            Inicio
+            <FormattedMessage id="pages.home" />
             </Breadcrumb.Item>
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/fields" }}>
-            Canchas
+            <FormattedMessage id="pages.fields" />
             </Breadcrumb.Item>
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/fields/${mockData.id}` }}>
             {mockData.field_name}
             </Breadcrumb.Item>
-            <Breadcrumb.Item active>{`Mapa de  ${mockData.field_name}`}</Breadcrumb.Item>
+            <Breadcrumb.Item active> <FormattedMessage id="mapView.mapfrom" />  {`${mockData.field_name}`}</Breadcrumb.Item>
         </Breadcrumb>
         </Row>
         <Container fluid className="main_content_container pt-2 d-flex">

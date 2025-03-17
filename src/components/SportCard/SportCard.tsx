@@ -4,6 +4,12 @@ import { Card, Col, ListGroup, Row } from "react-bootstrap";
 import SportEntity from "../../entities/SportEntity";
 import { ReactComponent as BasketballIcon } from "../../icons/basketballSVG.svg";
 import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+
+import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
+import { LocaleContext } from '../../contexts/LocaleContext';
+import { useState } from 'react';
 
 
 interface SportCardProps {
@@ -15,7 +21,11 @@ const SportCard: FC<SportCardProps> = ({ sport }) => {
 
   const navigate = useNavigate();
   const navToFields = () => navigate(`/fields`);
-
+  const { locale } = useContext(LocaleContext);
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const intl = useIntl();
+  const { formatMessage } = intl;
+  
 
   return (
   
@@ -34,14 +44,14 @@ const SportCard: FC<SportCardProps> = ({ sport }) => {
             <ListGroup.Item style={{ backgroundColor: "#60508C", color: "#FFFFFF", borderColor: "#60508C" }}>
               <Row>
                 <Col className="d-flex justify-content-center">
-                  <b>{sport.available_fields} Campos disponibles</b>
+                  <b>{sport.available_fields} <FormattedMessage id="sportCard.availableFields"/></b>
                 </Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item style={{ backgroundColor: "#60508C", color: "#FFFFFF", borderColor: "#60508C" }}>
               <Row>
                 <Col className="d-flex justify-content-center">
-                  <b>{sport.available_bookings} Reservas disponibles</b>
+                  <b>{sport.available_bookings} <FormattedMessage id="sportCard.availableBookings"/></b>
                 </Col>
               </Row>
             </ListGroup.Item>

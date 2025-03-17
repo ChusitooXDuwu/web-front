@@ -8,6 +8,12 @@ import BookingCard from "../../components/BookingCard/BookingCard";
 import GameCardComponent from '../../components/GameCardComponent/GameCardComponents';
 import { EventEntity } from '../../entities/Entities';
 
+
+import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
+import { LocaleContext } from '../../contexts/LocaleContext';
+
+
 // TODO REPLACE WITH API FETCH
 
 
@@ -56,10 +62,10 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
     <Row className={`pt-2 ${styles.title_row}`}>
       <Breadcrumb>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
-          Inicio
+          <FormattedMessage id="pages.home" />
         </Breadcrumb.Item>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/fields" }}>
-          Canchas
+          <FormattedMessage id="pages.fields" />
         </Breadcrumb.Item>
         <Breadcrumb.Item active>{mockData.field_name}</Breadcrumb.Item>
       </Breadcrumb>
@@ -71,7 +77,7 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
     </Row>
     <Row className="justify-content-center">
         <div className={styles.alignedSection} >
-          <h2>Partidos disponibles en esta cancha:</h2>
+          <h2><FormattedMessage id="fieldDetailCard.details.availableBookings" /></h2>
           <Row lg={3} md={2} sm={2} xs={1} className="gy-2">
           {bookingArray.map((item, index) => (
             

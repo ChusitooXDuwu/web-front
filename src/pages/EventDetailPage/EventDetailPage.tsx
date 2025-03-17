@@ -10,6 +10,12 @@ import { EventEntity } from '../../entities/Entities';
 import { ReactComponent as ProfileIcon } from "../../icons/profileIcon.svg";
 import UserEntity from '../../entities/UserEntity';
 
+import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
+import { LocaleContext } from '../../contexts/LocaleContext';
+import { useState } from 'react';
+import { useContext } from 'react';
+
 const mockPlayer: UserEntity = { 
   id: "1",
   name: "Juan",
@@ -63,10 +69,10 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
     <Row className={`pt-2 ${styles.title_row}`}>
       <Breadcrumb>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
-          Inicio
+          <FormattedMessage id="pages.home" />
         </Breadcrumb.Item>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/events" }}>
-          Eventos
+            <FormattedMessage id="pages.events" />
         </Breadcrumb.Item>
         <Breadcrumb.Item active>{mockData.field_name}</Breadcrumb.Item>
       </Breadcrumb>
@@ -78,7 +84,7 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
     </Row>
     <Row className="justify-content-center">
         <div className={styles.alignedSection} >
-          <h2 className={styles.participantTitle}>Participantes ({mockEvent.currentPlayers}/{mockEvent.maxPlayers}):</h2>
+          <h2 className={styles.participantTitle}> <FormattedMessage id="eventDetailPage.participants"/>({mockEvent.currentPlayers}/{mockEvent.maxPlayers}):</h2>
           <Col lg={3} md={2} sm={2} xs={1}>
           {bookingArray.map((item, index) => (
             
