@@ -11,24 +11,23 @@ interface SidebarProps {
 }
 interface ProfileCardProps {
   name: string;
-  imageUrl: string |null;
+  imageUrl: string | null;
 }
-const Sidebar: React.FC<SidebarProps> = ({ items,isOwner,profile }) => {
+const Sidebar: React.FC<SidebarProps> = ({ items, isOwner, profile }) => {
   const { formatMessage } = useIntl();
   return (
-
     <div className={styles.sidebar}>
       <ProfileCard {...profile} />
       {items.map((item, index) => (
         <Link key={index} to={item.path} className={styles.sidebar_item}>
           {item.label}
         </Link>
-
       ))}
-        <Link  to={"/home"} className={styles.session}>
-         {isOwner ? (formatMessage({id:"profile.sidebar.logout"})):(formatMessage({id:"profile.sidebar.goback"}))} 
-        </Link>
-
+      <Link to={"/login"} className={styles.session}>
+        {isOwner
+          ? formatMessage({ id: "profile.sidebar.logout" })
+          : formatMessage({ id: "profile.sidebar.goback" })}
+      </Link>
     </div>
   );
 };
