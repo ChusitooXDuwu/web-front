@@ -106,6 +106,20 @@ const en: { [key: string]: string } = {
   "game.lleno": "Partido Lleno",
   "game.sub": "Inscribirme",
 
+  //EventForm
+  "event.alert": "Reserva creada",
+  "event.form.label.fecha" : "Seleccione fecha y hora de la reserva",
+  "event.form.label.cantidadJugadores" : "Seleccione la cantidad de jugadores",
+  "event.form.submit": "Reservar",
+
+  //FieldsFilter
+  "field.soccer": "Futbol",
+  "field.basket": "Baloncesto",
+  "field.tennis": "Tenis",
+  "field.volley": "Voleibol",
+  "field.todos": "Todos",
+
+
 };
 
 export default en;

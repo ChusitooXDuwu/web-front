@@ -87,12 +87,11 @@ const FieldsPage: FC<FieldsPageProps> = () => {
           </Col>
           <Col md="auto" className={styles.create_col}>
             <Form.Select onChange={handleSportChange} value={selectedSport}>
-              <option value="">All Sports</option>
-              <option value="soccer">Soccer</option>
-              <option value="basketball">Basketball</option>
-              <option value="football">Football</option>
-              <option value="tennis">Tennis</option>
-              <option value="volleyball">Volleyball</option>
+              <option value=""><FormattedMessage id="field.todos"/></option>
+              <option value="soccer"><FormattedMessage id="field.soccer"/></option>
+              <option value="basketball"><FormattedMessage id="field.basketball"/></option>
+              <option value="tennis"><FormattedMessage id="field.tennis"/></option>
+              <option value="volleyball"><FormattedMessage id="field.volley"/></option>
             </Form.Select>
           </Col>
           <Col md="auto" className={styles.create_col}>

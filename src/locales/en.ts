@@ -106,6 +106,19 @@ const es: { [key: string]: string } = {
   "game.lleno": "Full Game",
   "game.sub": "Subscribe",
 
+  //EventForm
+  "event.alert": "Booking created",
+  "event.form.label.fecha" : "Select date and time for the booking",
+  "event.form.label.cantidadJugadores" : "Select amount of players for the booking",
+  "event.form.submit": "Book",
+
+  //FieldsFilter
+  "field.soccer": "Soccer",
+  "field.basket": "Basketball",
+  "field.tennis": "Tennis",
+  "field.volley": "Volleyball",
+  "field.todos": "All Sports",
+
 
 
   

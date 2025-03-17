@@ -1,9 +1,11 @@
-import React, { ChangeEvent, FunctionComponent, useState } from "react";
+import React, { ChangeEvent, FunctionComponent, useState, useContext } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import  SportEntity from "../../entities/SportEntity";
 import CityEntity from "../../entities/CityEntity";
 import styles from "./EventForm.module.scss";
 import { FormattedMessage, useIntl } from "react-intl";
+
+import { LocaleContext } from '../../contexts/LocaleContext';
 
 interface CreateFieldFormData {
   name: string;
@@ -49,8 +51,13 @@ const CreateEventForm: FunctionComponent<CreateFieldFormProps> = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Reserva creada!");
+    alert(intl.formatMessage({ id: "event.alert" }));
   };
+
+    const { locale } = useContext(LocaleContext);
+    const [showOffcanvas, setShowOffcanvas] = useState(false);
+    const intl = useIntl();
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>

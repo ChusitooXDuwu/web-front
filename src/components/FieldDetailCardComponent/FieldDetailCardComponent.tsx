@@ -36,6 +36,7 @@ const FieldDetailCard: FC<FieldDetailCardProps> = ({ field, price }) => {
 
   const handleOccupied = () => {
     setOccupied(intl.formatMessage({ id: "fieldDetailCard.setOccupied.Occupied" }));
+    navigate("/events/create");
   };
 
   // Function to handle comment submission
