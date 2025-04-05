@@ -104,7 +104,7 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
               <FormattedMessage id="pages.events" defaultMessage="Eventos" />
             </Breadcrumb.Item>
             <Breadcrumb.Item active>
-              <FormattedMessage id="eventDetailPage.loading" defaultMessage="Cargando..." />
+              <FormattedMessage id="bookingDetailPage.loading" defaultMessage="Cargando..." />
             </Breadcrumb.Item>
           </Breadcrumb>
         </Row>
@@ -112,7 +112,7 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
           <Col className="text-center">
             <Spinner animation="border" role="status" variant="primary">
               <span className="visually-hidden">
-                <FormattedMessage id="eventDetailPage.loading" defaultMessage="Cargando..." />
+                <FormattedMessage id="bookingDetailPage.loading" defaultMessage="Cargando..." />
               </span>
             </Spinner>
             <p className="mt-3">

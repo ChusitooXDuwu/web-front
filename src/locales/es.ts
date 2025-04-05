@@ -43,10 +43,13 @@ const en: { [key: string]: string } = {
   "booking.untilTime": "Hasta las {time}",
   "booking.place": "Lugar",
   "booking.seeDetail": "Ver detalle",
+  "bookingDetailPage.loading": "Cargando ...",
+  "bookingDetailPage.loading.details": "Cargando detalles de la reserva...",
   // Fields
   "fields.title": "Canchas disponibles",
   "fields.createButton": "Crear cancha",
   "fields.dataNotFound": "No se encontraron datos para la búsqueda ' {value} '",
+  "fieldDetailPageMap.loading.details": "Cargando mapa del campo...",
   // Create Field
   "fields.create.title": "Crear una nueva cancha",
   "field.form.label.name": "Nombre",
@@ -110,6 +113,7 @@ const en: { [key: string]: string } = {
   "sportsPage.title": "Deportes",
   // DetailsPage
   "eventDetailPage.participants": "Participantes",
+  "eventDetailPage.loading.details": "Cargando detalles de la reserva...",
   // FieldDetailCard
   "fieldDetailCard.setOccupied.notOccupied": "No ocupada 😀",
   "fieldDetailCard.setOccupied.Occupied": "Ocupada 🥲",
@@ -120,6 +124,9 @@ const en: { [key: string]: string } = {
   "fieldDetailCard.details.isOcuppiedQuestion": "¿Cancha ocupada?:",
   "fieldDetailCard.details.price": "Precio:",
   "fieldDetailCard.details.availableBookings": "Partidos disponibles en esta cancha:",
+  "fieldDetailPage.loading.details": "Cargando detalles del campo...",
+  "fieldDetailPage.price": "Precio: $",
+  "fieldDetailPage.divide": "Dividir precio entre jugadores",
   // fieldDetailButtons
   "fieldDetailButtons.book": "Crear una reserva",
   "fieldDetailButtons.cancel": "Cancelar reserva",
@@ -132,7 +139,6 @@ const en: { [key: string]: string } = {
   "alert.comment": "Tu comentario fue subido",
   // MapView
   "mapView.mapfrom": "Mapa de",
-
   //GameCardComponent
   "game.first": "Sé el primero en inscribirte",
   "game.cupos": "Cupos",
@@ -153,7 +159,6 @@ const en: { [key: string]: string } = {
   "field.tennis": "Tenis",
   "field.volley": "Voleibol",
   "field.todos": "Todos",
-
 
 };
 

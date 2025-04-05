@@ -56,7 +56,7 @@ const FieldDetailPageMap: FC = () => {
           <Col className="text-center">
             <Spinner animation="border" role="status" variant="primary">
               <span className="visually-hidden">
-                <FormattedMessage id="fieldDetailPageMap.loading" defaultMessage="Cargando..." />
+                <FormattedMessage id="bookingDetailPage.loading" defaultMessage="Cargando..." />
               </span>
             </Spinner>
             <p className="mt-3">

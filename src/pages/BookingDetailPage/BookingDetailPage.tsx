@@ -263,7 +263,7 @@ const BookingDetailPage: FC<BookingDetailPageProps> = () => {
           </Form.Group>
 
           {/* Display Calculated Price */}
-          <h3 className={styles.priceText}>Precio: ${priceToShow}</h3>
+          <h3 className={styles.priceText}><FormattedMessage id="pages.price" defaultMessage="Precio: $"/>{priceToShow}</h3>
           <h3 className={styles.selectText}>Selecciona cómo deseas pagar</h3>
 
           {/* Image Below Price */}
