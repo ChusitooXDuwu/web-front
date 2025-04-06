@@ -127,6 +127,7 @@ const en: { [key: string]: string } = {
   "fieldDetailPage.loading.details": "Cargando detalles del campo...",
   "fieldDetailPage.price": "Precio: $",
   "fieldDetailPage.divide": "Dividir precio entre jugadores",
+  "fieldDetailPage.payment" : "Selecciona cómo deseas pagar",
   // fieldDetailButtons
   "fieldDetailButtons.book": "Crear una reserva",
   "fieldDetailButtons.cancel": "Cancelar reserva",

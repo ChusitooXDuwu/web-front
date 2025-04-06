@@ -125,6 +125,7 @@ const es: { [key: string]: string } = {
   "fieldDetailPage.loading.details": "Loading field details... ",
   "fieldDetailPage.price": "Price: $",
   "fieldDetailPage.divide": "Divide payment amongst participants",
+  "fieldDetailPage.payment" : "Choose your payment method",
   // fieldDetailButtons
   "fieldDetailButtons.book": "Create a booking",
   "fieldDetailButtons.cancel": "Cancel booking",
