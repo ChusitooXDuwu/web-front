@@ -126,11 +126,19 @@ const EventsPage: FC<EventsPageProps> = () => {
             <h1 className={`display-5 sh_gold`}><FormattedMessage id="pages.events" /></h1>
           </Col>
         </Row>
+        {eventsSuccess ? ( 
         <Row lg={3} md={3} sm={2} xs={1} className="gy-3">
           {filteredFieldsData.map((item, index) => (
               <RenderSuggestedEvents />
           ))}
         </Row>
+        ) : <Row lg={3} md={3} sm={2} xs={1} className="gy-3">
+        {filteredFieldsData.map((item, index) => (
+          <Col key={index}>
+            <GameCardComponent event={mockEvent} />
+          </Col>
+        ))}
+      </Row>}
         {filteredFieldsData.length === 0 && (
           <p>No se encontraron datos para la búsqueda "{currentSearchValue}"</p>
         )}
