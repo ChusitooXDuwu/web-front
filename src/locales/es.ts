@@ -114,6 +114,7 @@ const en: { [key: string]: string } = {
   // DetailsPage
   "eventDetailPage.participants": "Participantes",
   "eventDetailPage.loading.details": "Cargando detalles de la reserva...",
+  "eventDetailPage.events": "Eventos disponibles",
   // FieldDetailCard
   "fieldDetailCard.setOccupied.notOccupied": "No ocupada 😀",
   "fieldDetailCard.setOccupied.Occupied": "Ocupada 🥲",
@@ -160,6 +161,7 @@ const en: { [key: string]: string } = {
   "field.tennis": "Tenis",
   "field.volley": "Voleibol",
   "field.todos": "Todos",
+  "pages.eventsall": "Eventos disponibles"
 
 };
 

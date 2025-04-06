@@ -8,10 +8,6 @@ import FieldDetailEntity from "../../entities/FieldDetailEntity";
 
 import { EventType } from '../../services/FieldsServices/FieldsService';
 
-import BookingCard from "../../components/BookingCard/BookingCard";
-import GameCardComponent from '../../components/GameCardComponent/GameCardComponents';
-import { EventInterface } from '../../entities/Entities';
-
 import { ReactComponent as ProfileIcon } from "../../icons/profileIcon.svg";
 import UserEntity from '../../entities/UserEntity';
 import { useQuery } from '@tanstack/react-query';

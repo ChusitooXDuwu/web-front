@@ -7,7 +7,6 @@ import FieldDetailCardComponent from "../../components/FieldDetailCardComponent/
 import { Link } from "react-router-dom";
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
 import BookingCard from "../../components/BookingCard/BookingCard";
-import GameCardComponent from '../../components/GameCardComponent/GameCardComponents';
 import { EventType } from '../../services/FieldsServices/FieldsService';
 
 import { EventInterface } from '../../entities/Entities';

@@ -3,7 +3,6 @@ import FieldEntity from "../../entities/FieldEntity";
 import CityEntity from "../../entities/CityEntity";
 import SportEntity from "../../entities/SportEntity";
 import { Link } from "react-router-dom";
-import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
 import FieldMapCardComponent from "../../components/FieldMapCardComponent/FieldMapCardComponent";
 import { Breadcrumb, Button, Col, Container, Form, Row } from "react-bootstrap";

@@ -112,6 +112,7 @@ const es: { [key: string]: string } = {
   // eventDetailsPage
   "eventDetailPage.participants": "Participants",
   "eventDetailPage.loading.details": "Loading event details... ",
+  "eventDetailPage.events": "All available events",
   // FieldDetailCard
   "fieldDetailCard.setOccupied.notOccupied": "Not occupied 😀",
   "fieldDetailCard.setOccupied.Occupied": "Occupied 🥲",
@@ -162,6 +163,7 @@ const es: { [key: string]: string } = {
 
   //PaymentMethotd
   "pages.price": "Price: $",
+  "pages.eventsall": "All available events"
 
 
 

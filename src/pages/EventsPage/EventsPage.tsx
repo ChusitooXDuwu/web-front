@@ -3,9 +3,9 @@ import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { CityEntity, EventInterface, FieldEntity, SportEntity } from "../../entities/Entities";
-
+import { useQuery } from "@tanstack/react-query";
 import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
-
+import { getAvailableEvents } from "../../services/EventsService/EventsService";
 import { FormattedMessage } from 'react-intl';
 import { useIntl } from 'react-intl';
 import { LocaleContext } from '../../contexts/LocaleContext';
@@ -97,6 +97,19 @@ const EventsPage: FC<EventsPageProps> = () => {
     filterData();
     console.log(filteredFieldsData);
   };
+  const {isSuccess: eventsSuccess, data: eventsData} = useQuery({
+      queryKey: ["events"],
+      queryFn: getAvailableEvents,
+    });
+  const RenderSuggestedEvents = () => (
+    <>
+      {eventsData!.data.map((event, index) => (
+        <Col key={index} className="d-flex justify-content-center">
+          <GameCardComponent event={event} />
+        </Col>
+      ))}
+    </>
+  );
   return (
     <div className="main_content_container pt-2">
       <Container fluid={"md"}>
@@ -110,14 +123,12 @@ const EventsPage: FC<EventsPageProps> = () => {
         </Breadcrumb>
         <Row className="mb-3 gy-2">
           <Col>
-            <h1 className={`display-5 sh_gold`}>Eventos disponibles</h1>
+            <h1 className={`display-5 sh_gold`}><FormattedMessage id="pages.events" /></h1>
           </Col>
         </Row>
         <Row lg={3} md={3} sm={2} xs={1} className="gy-3">
           {filteredFieldsData.map((item, index) => (
-            <Col key={index}>
-              <GameCardComponent event={mockEvent} />
-            </Col>
+              <RenderSuggestedEvents />
           ))}
         </Row>
         {filteredFieldsData.length === 0 && (
