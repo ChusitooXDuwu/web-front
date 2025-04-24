@@ -8,6 +8,7 @@ import { FormattedMessage } from "react-intl";
 
 interface BookingCardProps {
   bookedEvent: BookedEventEntity;
+  
 }
 
 const BookingCard: FC<BookingCardProps> = ({ bookedEvent }) => {
