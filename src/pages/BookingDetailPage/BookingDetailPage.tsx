@@ -23,13 +23,19 @@ import { LocaleContext } from '../../contexts/LocaleContext';
 
 // Datos mockeados para los jugadores y eventos (estos podrían venir de otra API)
 const mockPlayer: UserEntity = {
-  id: "1",
-  name: "Juan",
-  email: "j.name@uniandes.edu.co",
-  gender: "Masculino",
-  favoriteSports: "Baloncesto",
-  phoneNumber: "123456789",
-  imageUrl: "/assets/basket_horizontal.jpg"
+    id: "1",
+    givenName: "Juan",
+    email: "j.name@uniandes.edu.co",
+    gender: "Masculino",
+    favoriteSports: "Baloncesto",
+    phoneNumber: "123456789",
+    imageUrl: "/assets/basket_horizontal.jpg",
+    lastName: '',
+    description: '',
+    since: '',
+    favoriteCourts: [],
+    sports: [],
+    friends: []
 }
 
 const mockEvent: EventType = {
