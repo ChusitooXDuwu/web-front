@@ -17,7 +17,7 @@ const ProfileContent = () => {
           <>
             <Row className={styles.profile_content}>
               <Col xs={12} md={4}>
-                <ProfileCard name={profile.name} imageUrl={profile.image_url} />
+                <ProfileCard name={profile.name} imageUrl={profile.imageUrl} />
               </Col>
               <Col xs={12} md={8} className="w-full">
                 <AboutMe text={profile.description} since={profile.since} />

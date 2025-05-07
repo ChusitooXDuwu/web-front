@@ -33,7 +33,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ isOwner }) => {
         </Col> 
            {/* Texto a emplasar*/}
         <Col md={3} className="overflow-y:auto">
-          <SideBar items={sidebarItems} isOwner={isOwner} profile={{name: profile.name, imageUrl: profile.image_url}} />
+          <SideBar items={sidebarItems} isOwner={isOwner} profile={{name: profile.name, imageUrl: profile.imageUrl}} />
         </Col>  
       </Row>
     </Container>

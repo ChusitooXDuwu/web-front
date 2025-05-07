@@ -27,9 +27,9 @@ const mockPlayer: UserEntity = {
   name: "Juan",
   email: "j.name@uniandes.edu.co",
   gender: "Masculino",
-  favorite_sports: "Baloncesto",
-  phone_number: "123456789",
-  image_url: "/assets/basket_horizontal.jpg"
+  favoriteSports: "Baloncesto",
+  phoneNumber: "123456789",
+  imageUrl: "/assets/basket_horizontal.jpg"
 }
 
 const mockEvent: EventType = {
