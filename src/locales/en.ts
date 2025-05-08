@@ -1,4 +1,6 @@
-const es: { [key: string]: string } = {
+import { Translations } from "../types/Translations";
+
+const es: Translations = {
   email: "Email",
   emailPlaceholder: "Enter your email",
   password: "Password",
@@ -61,38 +63,38 @@ const es: { [key: string]: string } = {
   "field.form.label.photos": "Field photos",
   "field.form.submit": "Create Field",
   //Profile sideBar
-  "profile.sidebar.notification":"Notifications",
-  "profile.sidebar.stats.mine":"My Stats",
-  "profile.sidebar.stats.not.mine":"Stats",
-  "profile.sidebar.history":"Match History",
-  "profile.sidebar.logout":"Log Out",
+  "profile.sidebar.notification": "Notifications",
+  "profile.sidebar.stats.mine": "My Stats",
+  "profile.sidebar.stats.not.mine": "Stats",
+  "profile.sidebar.history": "Match History",
+  "profile.sidebar.logout": "Log Out",
   "profile.sidebar.goback": "Go back",
-  "profile.sidebar.myprofile":"My profile",
-  "profile.sidebar.profile":"Profile",
+  "profile.sidebar.myprofile": "My profile",
+  "profile.sidebar.profile": "Profile",
   //Profile Content Sport Lists
-  "profile.content.sportList":"My Sports",
-  "profile.content.friendList.friends":"My Friends",
-  "profile.content.friendList.addfriends":"Add friend",
+  "profile.content.sportList": "My Sports",
+  "profile.content.friendList.friends": "My Friends",
+  "profile.content.friendList.addfriends": "Add friend",
   //Profile Content favoriteCourts
-  "profile.content.favoriteCourts":"My favourte Courts",
+  "profile.content.favoriteCourts": "My favourite Courts",
   //Profile Content aboutme
-  "profile.content.aboutme":"About me",
-  "profile.content.aboutme.since":"Player Since",
+  "profile.content.aboutme": "About me",
+  "profile.content.aboutme.since": "Player Since",
   //Profile Notification
-  "profile.notifications":"Notifications",
-  "profile.notifications.none":"There are no notifications",
+  "profile.notifications": "Notifications",
+  "profile.notifications.none": "There are no notifications",
   // Profile History
-  "profile.history":"Events History",
-  "profile.history.in":"in",
-  "profile.history.location":"Location",
-  "profile.history.date":"Date",
-  "profile.history.Players":"Players",
+  "profile.history": "Events History",
+  "profile.history.in": "in",
+  "profile.history.location": "Location",
+  "profile.history.date": "Date",
+  "profile.history.Players": "Players",
   //Profile Statistics
-  "profile.statistics":"General Stats",
-  "profile.statistics.total":"Total matchs played",
-  "profile.statistics.court":"Most Popular Courts",
-  "profile.statistics.player":"Most played with",
-  "profile.statistics.loading":"loading stats",
+  "profile.statistics": "General Stats",
+  "profile.statistics.total": "Total matches played",
+  "profile.statistics.court": "Most Popular Courts",
+  "profile.statistics.player": "Most played with",
+  "profile.statistics.loading": "loading stats",
   // Navbar component
   "navbar.bookings": "My Bookings",
   "navbar.fields": "Fields",
@@ -117,7 +119,8 @@ const es: { [key: string]: string } = {
   "fieldDetailCard.details.contact": "Contact:",
   "fieldDetailCard.details.isOcuppiedQuestion": "Is field occupied?:",
   "fieldDetailCard.details.price": "Price:",
-  "fieldDetailCard.details.availableBookings": "Available bookings in this field:",
+  "fieldDetailCard.details.availableBookings":
+    "Available bookings in this field:",
   // fieldDetailButtons
   "fieldDetailButtons.book": "Create a booking",
   "fieldDetailButtons.cancel": "Cancel booking",
@@ -141,8 +144,9 @@ const es: { [key: string]: string } = {
 
   //EventForm
   "event.alert": "Booking created",
-  "event.form.label.fecha" : "Select date and time for the booking",
-  "event.form.label.cantidadJugadores" : "Select amount of players for the booking",
+  "event.form.label.fecha": "Select date and time for the booking",
+  "event.form.label.cantidadJugadores":
+    "Select amount of players for the booking",
   "event.form.submit": "Book",
 
   //FieldsFilter
@@ -151,10 +155,17 @@ const es: { [key: string]: string } = {
   "field.tennis": "Tennis",
   "field.volley": "Volleyball",
   "field.todos": "All Sports",
-
-
-
-  
+  "form.placeholder.givenName": "Enter your given name",
+  "form.placeholder.lastName": "Enter your last name",
+  "form.placeholder.description": "Enter a description",
+  "form.label.givenName": "Given Name",
+  "form.label.lastName": "Last Name",
+  "form.label.gender": "Gender",
+  "form.label.isOwner": "Are you the owner of a field?",
+  "form.label.description": "Description",
+  "form.gender.male": "Male",
+  "form.gender.female": "Female",
+  "form.gender.other": "Other",
 };
 
 export default es;

@@ -1,4 +1,6 @@
-const en: { [key: string]: string } = {
+import { Translations } from "../types/Translations";
+
+const en: Translations = {
   email: "Correo Electrónico",
   emailPlaceholder: "Ingrese su correo electrónico",
   password: "Contraseña",
@@ -6,27 +8,38 @@ const en: { [key: string]: string } = {
   login: "Ingresar",
   signup: "Registrarse",
   newInSporthub: "¿Nuevo en Sporthub?",
-  registerHere: "Registrese Aquí",
-  areYouAMember: "¿Eres miembro de sporthub?",
-  //Pages
+  registerHere: "Regístrese Aquí",
+  areYouAMember: "¿Eres miembro de Sporthub?",
+  // Pages
   "pages.home": "Inicio",
   "pages.bookings": "Reservas",
   "pages.fields": "Canchas",
   "pages.fields.create": "Crear Cancha",
   "pages.sports": "Deportes",
   "pages.events": "Eventos",
-  //Forms
+  // Forms
   "form.placeholder.name": "Ingrese su nombre",
   "form.placeholder.email": "Ingrese su correo",
   "form.placeholder.password": "Ingrese su contraseña",
-  "form.placeholder.phone": "Ingrese su telefono",
+  "form.placeholder.phone": "Ingrese su teléfono",
   "form.placeholder.birthdate": "Ingrese su fecha de nacimiento",
   "form.placeholder.search": "Buscar",
+  "form.placeholder.givenName": "Ingrese su primer nombre",
+  "form.placeholder.lastName": "Ingrese su apellido",
+  "form.placeholder.description": "Ingrese una descripción",
   "form.label.name": "Nombre",
   "form.label.email": "Correo",
   "form.label.password": "Contraseña",
-  "form.label.phone": "Telefono",
+  "form.label.phone": "Teléfono",
   "form.label.birthdate": "Fecha de nacimiento",
+  "form.label.givenName": "Primer Nombre",
+  "form.label.lastName": "Apellido",
+  "form.label.gender": "Género",
+  "form.label.isOwner": "¿Es propietario?",
+  "form.label.description": "Descripción",
+  "form.gender.male": "Masculino",
+  "form.gender.female": "Femenino",
+  "form.gender.other": "Otro",
   // Home
   "home.title.upcoming": "Mis próximos partidos",
   "home.title.available": "Partidos disponibles",
@@ -60,41 +73,40 @@ const en: { [key: string]: string } = {
   "field.form.label.sports": "Deportes",
   "field.form.label.photos": "Fotos del establecimiento",
   "field.form.submit": "Crear Cancha",
-   //Profile sideBar
-   "profile.sidebar.notification":"Notificaciones",
-   "profile.sidebar.stats.mine":"Mis Estadísticas",
-   "profile.sidebar.stats.not.mine":"Estadísticas",
-   "profile.sidebar.history":"Historial Partidos",
-   "profile.sidebar.logout":"Cerrar Sesión",
-   "profile.sidebar.goback": "Volver",
-   "profile.sidebar.myprofile":"Mi perfil",
-   "profile.sidebar.profile":"Perfil",
-   //Profile Content Sport Lists
-   "profile.content.sportList":"Mis Deportes",
-   //Profile Content My friends
-   "profile.content.friendList.friends":"Mis Amigos",
-   "profile.content.friendList.addfriends":"Agregar Amigo",
-  //Profile Content favoriteCourts
-  "profile.content.favoriteCourts":"Mis Canchas Favoritas",
-  //Profile Content aboutme
-  "profile.content.aboutme":"Sobre mí",
-  "profile.content.aboutme.since":"Jugador desde",
-  //Profile Notification
-  "profile.notifications":"Notificaciones",
-  "profile.notifications.none":"No hay notificaciones.",
+  // Profile sideBar
+  "profile.sidebar.notification": "Notificaciones",
+  "profile.sidebar.stats.mine": "Mis Estadísticas",
+  "profile.sidebar.stats.not.mine": "Estadísticas",
+  "profile.sidebar.history": "Historial Partidos",
+  "profile.sidebar.logout": "Cerrar Sesión",
+  "profile.sidebar.goback": "Volver",
+  "profile.sidebar.myprofile": "Mi perfil",
+  "profile.sidebar.profile": "Perfil",
+  // Profile Content Sport Lists
+  "profile.content.sportList": "Mis Deportes",
+  // Profile Content My friends
+  "profile.content.friendList.friends": "Mis Amigos",
+  "profile.content.friendList.addfriends": "Agregar Amigo",
+  // Profile Content favoriteCourts
+  "profile.content.favoriteCourts": "Mis Canchas Favoritas",
+  // Profile Content aboutme
+  "profile.content.aboutme": "Sobre mí",
+  "profile.content.aboutme.since": "Jugador desde",
+  // Profile Notification
+  "profile.notifications": "Notificaciones",
+  "profile.notifications.none": "No hay notificaciones.",
   // Profile History
-  "profile.history":"Historial de Eventos",
-  "profile.history.in":"en",
-  "profile.history.location":"Ubicación",
-  "profile.history.date":"Fecha",
-  "profile.history.Players":"Jugadores",
-  //Profile Statistics
-  "profile.statistics":"Estadisticas Generales",
-  "profile.statistics.total":"Total Partidos Jugados",
-  "profile.statistics.court":"Canchas más populares",
-  "profile.statistics.player":"Ha jugado más con ",
-  "profile.statistics.loading":"Cargando Estadisticas",
-  
+  "profile.history": "Historial de Eventos",
+  "profile.history.in": "en",
+  "profile.history.location": "Ubicación",
+  "profile.history.date": "Fecha",
+  "profile.history.Players": "Jugadores",
+  // Profile Statistics
+  "profile.statistics": "Estadísticas Generales",
+  "profile.statistics.total": "Total Partidos Jugados",
+  "profile.statistics.court": "Canchas más populares",
+  "profile.statistics.player": "Ha jugado más con ",
+  "profile.statistics.loading": "Cargando Estadísticas",
   // Navbar component
   "navbar.bookings": "Mis Reservas",
   "navbar.fields": "Canchas",
@@ -119,7 +131,8 @@ const en: { [key: string]: string } = {
   "fieldDetailCard.details.contact": "Contacto:",
   "fieldDetailCard.details.isOcuppiedQuestion": "¿Cancha ocupada?:",
   "fieldDetailCard.details.price": "Precio:",
-  "fieldDetailCard.details.availableBookings": "Partidos disponibles en esta cancha:",
+  "fieldDetailCard.details.availableBookings":
+    "Partidos disponibles en esta cancha:",
   // fieldDetailButtons
   "fieldDetailButtons.book": "Crear una reserva",
   "fieldDetailButtons.cancel": "Cancelar reserva",
@@ -132,29 +145,24 @@ const en: { [key: string]: string } = {
   "alert.comment": "Tu comentario fue subido",
   // MapView
   "mapView.mapfrom": "Mapa de",
-
-  //GameCardComponent
+  // GameCardComponent
   "game.first": "Sé el primero en inscribirte",
   "game.cupos": "Cupos",
   "game.fecha": "Fecha: ",
   "game.time": "Hora: ",
   "game.lleno": "Partido Lleno",
   "game.sub": "Inscribirme",
-
-  //EventForm
+  // EventForm
   "event.alert": "Reserva creada",
-  "event.form.label.fecha" : "Seleccione fecha y hora de la reserva",
-  "event.form.label.cantidadJugadores" : "Seleccione la cantidad de jugadores",
+  "event.form.label.fecha": "Seleccione fecha y hora de la reserva",
+  "event.form.label.cantidadJugadores": "Seleccione la cantidad de jugadores",
   "event.form.submit": "Reservar",
-
-  //FieldsFilter
-  "field.soccer": "Futbol",
+  // FieldsFilter
+  "field.soccer": "Fútbol",
   "field.basket": "Baloncesto",
   "field.tennis": "Tenis",
   "field.volley": "Voleibol",
   "field.todos": "Todos",
-
-
 };
 
 export default en;

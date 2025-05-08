@@ -33,10 +33,11 @@ import {
 } from "./contexts/LocaleContext";
 import { ProfileProvider } from "./contexts/ProfileContext";
 import ProfileContent from "./pages/ProfilePage/ProfilePage_Components/ProfileContent";
+import { Translations } from "./types/Translations";
 const queryClient = new QueryClient();
 interface LocaleData {
   locale: SupportedLocale;
-  messages: { [key: string]: string };
+  messages: Translations;
 }
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
       <IntlProvider
         defaultLocale={defaultLocale}
         locale={localeData.locale}
-        messages={localeData.messages}
+        messages={{ ...localeData.messages }}
       >
         <ProfileProvider>
           <QueryClientProvider client={queryClient}>
@@ -66,19 +67,31 @@ function App() {
                   <Route path="fields" element={<FieldsPage />} />
                   <Route path="sports" element={<SportsPage />} />
                   <Route path="events" element={<EventsPage />} />
-                  <Route path="profile/*" element={<ProfilePage isOwner={true} />} >
-                      <Route index element={<ProfileContent/>} />
-                      <Route path="history" element={<HistoryPage />} />
-                      <Route path="notifications" element={<NotificationsPage />} />
-                      <Route path="statistics" element={<StatisticsPage />} />            
+                  <Route
+                    path="profile/*"
+                    element={<ProfilePage isOwner={true} />}
+                  >
+                    <Route index element={<ProfileContent />} />
+                    <Route path="history" element={<HistoryPage />} />
+                    <Route
+                      path="notifications"
+                      element={<NotificationsPage />}
+                    />
+                    <Route path="statistics" element={<StatisticsPage />} />
                   </Route>
                   <Route path="groups" element={<GroupsPage />} />
                   <Route path="fields/create" element={<CreateFieldPage />} />
-                  <Route path="bookings/create" element={<CreateBookingPage />} />
+                  <Route
+                    path="bookings/create"
+                    element={<CreateBookingPage />}
+                  />
                   <Route path="events/:id" element={<EventDetailPage />} />
                   <Route path="events/create" element={<CreateEventPage />} />
                   <Route path="fields/:id" element={<FieldDetailPage />} />
-                  <Route path="fields/map/:id" element={<FieldDetailPageMap />} />
+                  <Route
+                    path="fields/map/:id"
+                    element={<FieldDetailPageMap />}
+                  />
                   <Route path="bookings/:id" element={<BookingDetailPage />} />
                 </Route>
                 <Route path="/" element={<LoginView />}>
@@ -90,7 +103,7 @@ function App() {
               </Routes>
             </BrowserRouter>
           </QueryClientProvider>
-         </ProfileProvider>
+        </ProfileProvider>
       </IntlProvider>
     </LocaleContext.Provider>
   );
