@@ -1,5 +1,5 @@
 import BookedEventEntity from "../../entities/BookedEventEntity";
-import ResponseEntity from "../ResponseEntity";
+import OldResponseEntity from "../ResponseEntity";
 import baseUrl from "../Config";
 import axios from "axios";
 
@@ -8,7 +8,9 @@ const mockGetBookingsUrl =
 const getBookingsUrl = baseUrl ? `${baseUrl}/events` : mockGetBookingsUrl;
 
 async function getMyBookings() {
-  const response = await axios.get<ResponseEntity<Array<any>>>(getBookingsUrl);
+  const response = await axios.get<OldResponseEntity<Array<any>>>(
+    getBookingsUrl
+  );
   const data = response.data.data["bookings"].map((item) => {
     try {
       return BookedEventEntity.fromApi(item);

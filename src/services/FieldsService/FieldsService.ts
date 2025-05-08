@@ -1,4 +1,4 @@
-import ResponseEntity from "../ResponseEntity";
+import OldResponseEntity from "../ResponseEntity";
 import baseUrl from "../Config";
 import axios from "axios";
 import FieldEntity from "../../entities/FieldEntity";
@@ -8,7 +8,7 @@ const mockGetFieldsUrl =
 const getFieldsUrl = baseUrl ? `${baseUrl}/cities` : mockGetFieldsUrl;
 
 async function getFields() {
-  const response = await axios.get<ResponseEntity<Array<FieldEntity>>>(
+  const response = await axios.get<OldResponseEntity<Array<FieldEntity>>>(
     getFieldsUrl
   );
   const data = response.data.data["fields"];

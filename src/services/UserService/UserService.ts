@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import UserEntity from "../../entities/user/UserEntity";
-import ResponseEntity from "../ResponseEntity";
+import { ResponseEntity } from "../ResponseEntity";
 import API_BASE_URL from "../Config";
 import { CreateUserDto } from "../../entities/user/UserCreateEntity";
 
@@ -10,10 +10,10 @@ async function createUser(
   const url = `${API_BASE_URL}/users`;
   const response = await axios.post<
     ResponseEntity<UserEntity>,
-    any,
+    AxiosResponse<ResponseEntity<UserEntity>>,
     CreateUserDto
   >(url, userData);
-  const data = response.data.data["user"];
+  const data = response.data.data;
   const message = response.data.message;
   return {
     data,

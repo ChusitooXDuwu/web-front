@@ -1,4 +1,4 @@
-import ResponseEntity from "../ResponseEntity";
+import OldResponseEntity from "../ResponseEntity";
 import baseUrl from "../Config";
 import axios from "axios";
 import EventEntity from "../../entities/EventEntity";
@@ -8,19 +8,17 @@ const mockGetEventsUrl =
 const getEventsUrl = baseUrl ? `${baseUrl}/bookings` : mockGetEventsUrl;
 
 async function getAvailableEvents() {
-  const response = await axios.get<ResponseEntity<Array<any>>>(
-    getEventsUrl
-  );
+  const response = await axios.get<OldResponseEntity<Array<any>>>(getEventsUrl);
   const data = response.data.data["events"];
   const processedData = data.flatMap((item) => {
     let result: EventEntity | [];
     try {
-      result = EventEntity.fromApi(item)
+      result = EventEntity.fromApi(item);
     } catch (error) {
-      result = []
-    } 
+      result = [];
+    }
     return result;
-  })
+  });
   const message = response.data.message;
   return {
     data: processedData,

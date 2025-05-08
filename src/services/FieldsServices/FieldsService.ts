@@ -1,5 +1,5 @@
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
-import ResponseEntity from "../ResponseEntity";
+import OldResponseEntity from "../ResponseEntity";
 import baseUrl from "../Config";
 import axios from "axios";
 
@@ -42,34 +42,34 @@ export interface EventType {
 
 // Función para obtener detalles de un campo específico por ID
 async function getFieldDetails(fieldId: string) {
-  console.log('Fetching field details for ID:', fieldId);
+  console.log("Fetching field details for ID:", fieldId);
   try {
-    const response = await axios.get<ResponseEntity<any>>(getFieldsUrl);
-    console.log('API response received:', response.data);
-    
+    const response = await axios.get<OldResponseEntity<any>>(getFieldsUrl);
+    console.log("API response received:", response.data);
+
     const fields = response.data.data["fields"];
-    
+
     // Buscar el campo específico por ID
     const fieldData = fields.find((field: any) => field.id === fieldId);
-    console.log('Found field data:', fieldData);
-    
+    console.log("Found field data:", fieldData);
+
     if (!fieldData) {
       throw new Error(`Field with id ${fieldId} not found`);
     }
-    
+
     try {
       const fieldEntity = FieldDetailEntity.fromApi(fieldData);
-      console.log('Field entity created:', fieldEntity);
+      console.log("Field entity created:", fieldEntity);
       return {
         data: fieldEntity,
-        message: response.data.message
+        message: response.data.message,
       };
     } catch (error) {
-      console.error('Error creating field entity:', error);
+      console.error("Error creating field entity:", error);
       throw new Error("Invalid field data");
     }
   } catch (error) {
-    console.error('Error in getFieldDetails:', error);
+    console.error("Error in getFieldDetails:", error);
     throw error;
   }
 }
@@ -77,12 +77,14 @@ async function getFieldDetails(fieldId: string) {
 // Función para obtener todos los campos
 async function getAllFields() {
   try {
-    const response = await axios.get<ResponseEntity<Array<any>>>(getFieldsUrl);
+    const response = await axios.get<OldResponseEntity<Array<any>>>(
+      getFieldsUrl
+    );
     const data = response.data.data["fields"].map((item) => {
       try {
         return FieldDetailEntity.fromApi(item);
       } catch (error) {
-        console.error('Error parsing field item:', error);
+        console.error("Error parsing field item:", error);
         return null;
       }
     });
@@ -96,7 +98,7 @@ async function getAllFields() {
       message,
     };
   } catch (error) {
-    console.error('Error in getAllFields:', error);
+    console.error("Error in getAllFields:", error);
     throw error;
   }
 }
@@ -106,14 +108,14 @@ async function getFieldPrice(fieldId: string) {
   // Para nuestro mock, usaremos un mapa fijo de precios según el ID
   const prices: { [key: string]: number } = {
     "1": 150000, // 150,000 COP
-    "2": 85000,  // 85,000 COP
+    "2": 85000, // 85,000 COP
     "3": 200000, // 200,000 COP
     // Agregar más precios según sea necesario
   };
-  
+
   return {
     data: prices[fieldId] || 0,
-    message: "success"
+    message: "success",
   };
 }
 
@@ -127,13 +129,25 @@ async function getFieldEvents(fieldId: string) {
       endTime: new Date(new Date().getTime() + 2 * 60 * 60 * 1000), // 2 horas después
       currentPlayers: 4,
       maxPlayers: 5,
-      sport: { id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 },
+      sport: {
+        id: "1",
+        name: "Baloncesto",
+        availableFields: 2,
+        availableBookings: 5,
+      },
       field: {
         id: fieldId,
         name: "Cancha de baloncesto",
         address: "Calle 123",
         city: { id: "1", name: "Medellín" },
-        sports: [{ id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 }],
+        sports: [
+          {
+            id: "1",
+            name: "Baloncesto",
+            availableFields: 2,
+            availableBookings: 5,
+          },
+        ],
         createdById: "1",
       },
       image: null,
@@ -144,22 +158,29 @@ async function getFieldEvents(fieldId: string) {
       endTime: new Date(new Date().getTime() + 5 * 60 * 60 * 1000), // 5 horas después
       currentPlayers: 2,
       maxPlayers: 6,
-      sport: { id: "2", name: "Fútbol", availableFields: 3, availableBookings: 7 },
+      sport: {
+        id: "2",
+        name: "Fútbol",
+        availableFields: 3,
+        availableBookings: 7,
+      },
       field: {
         id: fieldId,
         name: "Campo de fútbol",
         address: "Carrera 45",
         city: { id: "1", name: "Medellín" },
-        sports: [{ id: "2", name: "Fútbol", availableFields: 3, availableBookings: 7 }],
+        sports: [
+          { id: "2", name: "Fútbol", availableFields: 3, availableBookings: 7 },
+        ],
         createdById: "1",
       },
       image: null,
-    }
+    },
   ];
-  
+
   return {
     data: events,
-    message: "success"
+    message: "success",
   };
 }
 
