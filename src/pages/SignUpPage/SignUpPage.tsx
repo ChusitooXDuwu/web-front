@@ -1,4 +1,11 @@
-import { ChangeEvent, FormEvent, FunctionComponent, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  FunctionComponent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styles from "./SignUpPage.module.scss";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
@@ -8,12 +15,12 @@ import Card from "react-bootstrap/esm/Card";
 import Form from "react-bootstrap/esm/Form";
 import Button from "react-bootstrap/esm/Button";
 import { FormattedMessage, useIntl } from "react-intl";
+import Gender from "../../entities/user/GenderEnum";
+import createUser from "../../services/UserService/UserService";
+import { useMutation } from "@tanstack/react-query";
+import { CreateUserDto } from "../../entities/user/UserCreateEntity";
 
 // Define the Gender enum to match backend
-enum Gender {
-  MALE = "MALE",
-  FEMALE = "FEMALE",
-}
 
 interface SignUpData {
   givenName: string;
@@ -35,6 +42,8 @@ interface SignUpPageProps {}
 const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
   const navigate = useNavigate();
   const intl = useIntl();
+
+  const formRef = useRef<HTMLFormElement>(null);
   const [signUpData, setSignUpData] = useState<SignUpData>({
     givenName: "",
     lastName: "",
@@ -49,6 +58,8 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
     favoriteFieldsIds: [],
     friendsIds: [],
   });
+
+  const [formIsValid, setFormIsValid] = useState(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -65,11 +76,44 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
     }
   };
 
+  const createUserMutation = useMutation({
+    mutationFn: (newUser: CreateUserDto) => createUser(newUser),
+    onSuccess: () => {
+      console.log("User created successfully");
+      navigate("/login");
+    },
+    onError: (error) => {
+      console.error("Error creating user:", error);
+    },
+  });
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+      return;
+    }
+
+    const newUser: CreateUserDto = {
+      ...signUpData,
+      gender: signUpData.gender!,
+    };
+
     console.log("Form submitted", signUpData);
-    navigate("/login");
+    createUserMutation.mutate(newUser);
   };
+
+  useEffect(() => {
+    const checkFormValidity = () => {
+      if (formRef.current) {
+        const isValid = formRef.current.checkValidity();
+        setFormIsValid(isValid);
+      }
+    };
+    checkFormValidity();
+  }, [signUpData]);
 
   const givenNamePh = intl.formatMessage({ id: "form.placeholder.givenName" });
   const lastNamePh = intl.formatMessage({ id: "form.placeholder.lastName" });
@@ -105,37 +149,31 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
       <Row className={styles.signup_row}>
         <Card className={styles.signup_card}>
           <Card.Body>
-            <Form onSubmit={handleSubmit}>
-              <Row>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>
-                      <FormattedMessage id="form.label.givenName" />
-                    </Form.Label>
-                    <Form.Control
-                      required
-                      name="givenName"
-                      onChange={handleChange}
-                      type="text"
-                      placeholder={givenNamePh}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>
-                      <FormattedMessage id="form.label.lastName" />
-                    </Form.Label>
-                    <Form.Control
-                      required
-                      name="lastName"
-                      onChange={handleChange}
-                      type="text"
-                      placeholder={lastNamePh}
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
+            <Form onSubmit={handleSubmit} ref={formRef}>
+              <Form.Group className="mb-3">
+                <Form.Label>
+                  <FormattedMessage id="form.label.givenName" />
+                </Form.Label>
+                <Form.Control
+                  required
+                  name="givenName"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder={givenNamePh}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>
+                  <FormattedMessage id="form.label.lastName" />
+                </Form.Label>
+                <Form.Control
+                  required
+                  name="lastName"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder={lastNamePh}
+                />
+              </Form.Group>
 
               <Form.Group className="mb-3">
                 <Form.Label>
@@ -159,6 +197,7 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
                   name="password"
                   onChange={handleChange}
                   type="password"
+                  minLength={8} // Set minimum password length
                   placeholder={passwordPh}
                 />
               </Form.Group>
@@ -172,6 +211,7 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
                   name="phoneNumber"
                   onChange={handleChange}
                   type="tel"
+                  pattern="[0-9]{10}"
                   placeholder={phonePh}
                 />
               </Form.Group>
@@ -231,7 +271,11 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
 
               <br />
               <Row>
-                <Button type="submit" className={styles.submit_button}>
+                <Button
+                  type="submit"
+                  className={styles.submit_button}
+                  disabled={!formIsValid}
+                >
                   <FormattedMessage id="signup" />
                 </Button>
               </Row>

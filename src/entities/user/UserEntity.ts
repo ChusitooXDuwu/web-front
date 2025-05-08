@@ -1,4 +1,4 @@
-import BaseEntity from "./BaseEntity";
+import BaseEntity from "../BaseEntity";
 
 export default interface UserEntity extends BaseEntity {
   // Plain attributes
