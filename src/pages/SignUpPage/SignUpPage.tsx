@@ -9,12 +9,25 @@ import Form from "react-bootstrap/esm/Form";
 import Button from "react-bootstrap/esm/Button";
 import { FormattedMessage, useIntl } from "react-intl";
 
+// Define the Gender enum to match backend
+enum Gender {
+  MALE = "MALE",
+  FEMALE = "FEMALE",
+}
+
 interface SignUpData {
-  name: string;
+  givenName: string;
+  lastName: string;
   email: string;
   password: string;
-  phone: string;
+  phoneNumber: string;
   birthDate: Date;
+  gender: Gender | null;
+  isOwner: boolean;
+  description: string;
+  favoriteSportsIds: string[];
+  favoriteFieldsIds: string[];
+  friendsIds: string[];
 }
 
 interface SignUpPageProps {}
@@ -23,16 +36,33 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
   const navigate = useNavigate();
   const intl = useIntl();
   const [signUpData, setSignUpData] = useState<SignUpData>({
-    name: "",
+    givenName: "",
+    lastName: "",
     email: "",
     password: "",
-    phone: "",
+    phoneNumber: "",
     birthDate: new Date(),
+    gender: null,
+    isOwner: false,
+    description: "",
+    favoriteSportsIds: [],
+    favoriteFieldsIds: [],
+    friendsIds: [],
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setSignUpData({ ...signUpData, [name]: value });
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value, type } = e.target as HTMLInputElement;
+
+    if (type === "checkbox") {
+      setSignUpData({
+        ...signUpData,
+        [name]: (e.target as HTMLInputElement).checked,
+      });
+    } else {
+      setSignUpData({ ...signUpData, [name]: value });
+    }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -40,18 +70,23 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
     console.log("Form submitted", signUpData);
     navigate("/login");
   };
-  const namePh = intl.formatMessage({ id: "form.placeholder.name" });
+
+  const givenNamePh = intl.formatMessage({ id: "form.placeholder.givenName" });
+  const lastNamePh = intl.formatMessage({ id: "form.placeholder.lastName" });
   const emailPh = intl.formatMessage({ id: "form.placeholder.email" });
   const passwordPh = intl.formatMessage({ id: "form.placeholder.password" });
   const phonePh = intl.formatMessage({ id: "form.placeholder.phone" });
+  const descriptionPh = intl.formatMessage({
+    id: "form.placeholder.description",
+  });
 
   return (
     <Container fluid className={"px-md-5 py-2"}>
       <img
-              src="/assets/basketball-court-full.png"
-              alt="Background"
-              className={styles.background_image}
-            />
+        src="/assets/basketball-court-full.png"
+        alt="Background"
+        className={styles.background_image}
+      />
       <Row className={styles.signup_row}>
         <Col>
           <h1 className={`display-1 ${styles.sporthub_title}`}>Sporthub</h1>
@@ -71,19 +106,38 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
         <Card className={styles.signup_card}>
           <Card.Body>
             <Form onSubmit={handleSubmit}>
-              <Form.Group>
-                <Form.Label>
-                  <FormattedMessage id="form.label.name" />
-                </Form.Label>
-                <Form.Control
-                  required
-                  name="name"
-                  onChange={handleChange}
-                  type="text"
-                  placeholder={namePh}
-                />
-              </Form.Group>
-              <Form.Group>
+              <Row>
+                <Col md={6}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>
+                      <FormattedMessage id="form.label.givenName" />
+                    </Form.Label>
+                    <Form.Control
+                      required
+                      name="givenName"
+                      onChange={handleChange}
+                      type="text"
+                      placeholder={givenNamePh}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={6}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>
+                      <FormattedMessage id="form.label.lastName" />
+                    </Form.Label>
+                    <Form.Control
+                      required
+                      name="lastName"
+                      onChange={handleChange}
+                      type="text"
+                      placeholder={lastNamePh}
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+
+              <Form.Group className="mb-3">
                 <Form.Label>
                   <FormattedMessage id="form.label.email" />
                 </Form.Label>
@@ -95,7 +149,8 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
                   placeholder={emailPh}
                 />
               </Form.Group>
-              <Form.Group>
+
+              <Form.Group className="mb-3">
                 <Form.Label>
                   <FormattedMessage id="form.label.password" />
                 </Form.Label>
@@ -107,21 +162,23 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
                   placeholder={passwordPh}
                 />
               </Form.Group>
-              <Form.Group>
+
+              <Form.Group className="mb-3">
                 <Form.Label>
-                <FormattedMessage id="form.label.phone"/>
+                  <FormattedMessage id="form.label.phone" />
                 </Form.Label>
                 <Form.Control
                   required
-                  name="phone"
+                  name="phoneNumber"
                   onChange={handleChange}
                   type="tel"
                   placeholder={phonePh}
                 />
               </Form.Group>
-              <Form.Group>
+
+              <Form.Group className="mb-3">
                 <Form.Label>
-                <FormattedMessage id="form.label.birthdate"/>
+                  <FormattedMessage id="form.label.birthdate" />
                 </Form.Label>
                 <Form.Control
                   required
@@ -130,6 +187,48 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
                   type="date"
                 />
               </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>
+                  <FormattedMessage id="form.label.gender" />
+                </Form.Label>
+                <Form.Select
+                  required
+                  name="gender"
+                  onChange={handleChange}
+                  value={signUpData.gender || ""}
+                >
+                  <option value={Gender.MALE}>
+                    <FormattedMessage id="form.gender.male" />
+                  </option>
+                  <option value={Gender.FEMALE}>
+                    <FormattedMessage id="form.gender.female" />
+                  </option>
+                </Form.Select>
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Check
+                  type="checkbox"
+                  name="isOwner"
+                  onChange={handleChange}
+                  label={intl.formatMessage({ id: "form.label.isOwner" })}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>
+                  <FormattedMessage id="form.label.description" />
+                </Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  name="description"
+                  onChange={handleChange}
+                  placeholder={descriptionPh}
+                />
+              </Form.Group>
+
               <br />
               <Row>
                 <Button type="submit" className={styles.submit_button}>
