@@ -1,11 +1,18 @@
 import BaseEntity from "./BaseEntity";
 
-export default interface UserEntity extends BaseEntity{
-  name: string;
+export default interface UserEntity extends BaseEntity {
+  // Plain attributes
+  givenName: string;
+  lastName: string;
   email: string;
   gender: string;
-  favorite_sports: string;
-  phone_number: string;
-  image_url: string | null;
-  
+  favoriteSports: string;
+  phoneNumber: string;
+  imageUrl: string | null;
+  description: string;
+  since: string;
+  favoriteCourts: string[];
+  sports: string[];
+  // Relationships
+  friends: UserEntity[];
 }

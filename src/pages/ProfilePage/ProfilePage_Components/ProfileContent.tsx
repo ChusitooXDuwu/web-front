@@ -17,7 +17,7 @@ const ProfileContent = () => {
           <>
             <Row className={styles.profile_content}>
               <Col xs={12} md={4}>
-                <ProfileCard name={profile.name} imageUrl={profile.image_url} />
+                <ProfileCard name={profile.givenName} imageUrl={profile.imageUrl} />
               </Col>
               <Col xs={12} md={8} className="w-full">
                 <AboutMe text={profile.description} since={profile.since} />
@@ -25,7 +25,9 @@ const ProfileContent = () => {
             </Row>
             <Row className={styles.profile_content}>
               <Col xs={12} md={4}>
-                <FriendsList friends={profile.friends} />
+                <FriendsList friends={profile.friends.map((friend) => {
+                  return friend.givenName
+                })} />
               </Col>
               <Col xs={12} md={4}>
                 <FavoriteCourts courts={profile.favoriteCourts} />
