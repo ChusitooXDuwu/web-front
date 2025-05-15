@@ -31,3 +31,10 @@
   }
 .session:hover {
       color: v.$sporthub-cream-yellow}
+
+.disabled {
+  color: gray;
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.6;
+}

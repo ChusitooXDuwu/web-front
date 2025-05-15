@@ -18,7 +18,7 @@ interface SportCardProps {
 
 
 const SportCard: FC<SportCardProps> = ({ sport }) => {
-
+  
   const navigate = useNavigate();
   const navToFields = () => navigate(`/fields`);
   const { locale } = useContext(LocaleContext);

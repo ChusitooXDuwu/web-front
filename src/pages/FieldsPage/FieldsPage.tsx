@@ -29,7 +29,8 @@ const FieldsPage: FC<FieldsPageProps> = () => {
   useEffect(() => {
     if (isSuccess) {
       const { data } = fieldsData;
-      setFilteredFieldsData(data.slice());
+      console.log(`fields ${data}`)
+      setFilteredFieldsData(data);
     }
   }, [fieldsData, isSuccess]);
 

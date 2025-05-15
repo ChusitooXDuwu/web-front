@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import styles from './SportsPage.module.scss';
 import { Breadcrumb, Container, Row, Col} from "react-bootstrap";
 import SportCard from "../../components/SportCard/SportCard";
@@ -10,12 +10,12 @@ import { useIntl } from 'react-intl';
 import { LocaleContext } from '../../contexts/LocaleContext';
 import { useState } from 'react';
 import { useContext } from 'react';
+import getSports from '../../services/SportsService/SportsService';
 
 
 // TODO REPLACE WITH API FETCH
 const mockData: SportEntity = {
   id: "abc",
-
   name: "Basketball",
   availableFields: 2,
   availableBookings: 5
@@ -25,10 +25,23 @@ const mockData: SportEntity = {
 interface SportsPageProps {}
 
 const SportsPage: FC<SportsPageProps> = () => {
-  const SportArray: any[] = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+  const [sports, setSports] = useState<SportEntity[]>([]);
   const { locale } = useContext(LocaleContext);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const intl = useIntl();
+
+  useEffect(()=>{
+    async function fetchSports(){
+      try {
+        const {data} = await getSports();
+        setSports(data)
+      }catch(error){
+        console.error("Error fetching sports",error);
+      }
+    }
+    fetchSports()
+  },[]);
+
   const { formatMessage } = intl;
   return (
     <Container
@@ -48,9 +61,9 @@ const SportsPage: FC<SportsPageProps> = () => {
       </Row>
 
       <Row lg={3} md={3} sm={2} xs={1} className="gy-3 justify-content-center">
-      {SportArray.map((item, index) => (
+      {sports.map((item, index) => (
           <Col key={index} className="d-flex justify-content-center">
-            <SportCard sport={mockData} />
+            <SportCard sport={item} />
           </Col>
       ))}
       </Row>
