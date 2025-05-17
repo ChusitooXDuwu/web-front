@@ -24,20 +24,63 @@
 .info {
   background-color: #e3f2fd;
   border-left: 5px solid #2196f3;
+  button {
+      background-color: #7c878f;
+      color: white;
+      border-color: #a71d2a;
+    }
 }
 
 .warning {
   background-color: #fff3cd;
   border-left: 5px solid #ffc107;
+  button {
+      background-color: #a0997f;
+      color: white;
+      border-color: #a71d2a;
+    }
 }
 
 .error {
   background-color: #f8d7da;
   border-left: 5px solid #dc3545;
+  button {
+      background-color: #524748;
+      color: white;
+      border-color: #a71d2a;
+    }
 }
 
 .success {
   background-color: #d4edda;
   border-left: 5px solid #28a745;
+  button {
+      background-color: #6ed887;
+      color: white;
+      border-color: #a71d2a;
+    }
 }
 
+
+.button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: #f0ad4e; /* un tono naranja para destacar */
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #ec971f;
+}
+.read_label {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+  margin-top: 5px;
+  display: inline-block;
+  padding: 8px 16px;
+}

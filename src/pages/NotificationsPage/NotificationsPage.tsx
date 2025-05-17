@@ -3,77 +3,59 @@ import styles from './NotificationsPage.module.scss';
 import React, { FC, useState,useEffect,useContext } from "react";
 import Spinner from 'react-bootstrap/Spinner';
 import { LocaleContext } from "../../contexts/LocaleContext";
-
+import NotificationEntity from '../../entities/NotificationEntity';
 import { FormattedMessage } from "react-intl";
-export interface NotificationEntity {
-  id: string;
-  type: "info" | "warning" | "success" | "error";
-  message: string;
-  timestamp: Date;
-}
-const fallbackNotifications: NotificationEntity[] = [
-  {
-    id: "1",
-    type: "info",
-    message: "Tu reserva ha sido confirmada.",
-    timestamp: new Date(),
-  },
-  {
-    id: "2",
-    type: "warning",
-    message: "Tu suscripción está por vencer.",
-    timestamp: new Date(),
-  },
-  {
-    id: "3",
-    type: "success",
-    message: "Tu inscripción está lista.",
-    timestamp: new Date(),
-  },
-];
+import { markAllUserAsRead,markAsReadOne,getAllNotificationUser } from '../../services/NotificationService/NotificationService';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/es';
+import 'dayjs/locale/en';
+dayjs.extend(relativeTime);
 
-const NotificationsPage: FC = () => {
+
+
+const defaultId = "71d9df0d-5da4-4b9d-b5da-2ff323c403b8";
+
+const NotificationsPage:FC<{userId?:string}>= ({userId}) => {
+  const id = userId? userId:defaultId; 
   const { locale } = useContext(LocaleContext);
+  useEffect(() => {
+    dayjs.locale(locale || 'es'); // cambia el idioma dinámicamente
+  }, [locale]);
   const [notifications, setNotifications] = useState<NotificationEntity[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const response = await fetch("https://my.api.mockaroo.com/notifications_sport_hub.json?key=d49a1240");
-        if (!response.ok) throw new Error("Error al obtener datos");
-        const data = await response.json();
-        
-        
-        const formattedData = data.map((item: any) => ({
-          id: item.id,
-          type: item.type,
-          message: item.message,
-          timestamp: new Date(item.timeStamp).toLocaleTimeString(locale, {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: undefined,  // Evita mostrar la hora
-            minute: undefined,
-            second: undefined,
-            hour12: undefined, // Evita AM/PM en algunos casos
-          }),
-        }));
-        
-
-        setNotifications(formattedData);
+        const {data} = await getAllNotificationUser(id);
+        setNotifications(data);
       } catch (error) {
-        console.error("Error cargando notificaciones:", error);
-        setNotifications(fallbackNotifications);
+        console.error("Error cargando notificaciones:");
       } finally {
         setLoading(false);
       }
     };
-
     fetchNotifications();
   }, []);
   return (
     <div className={styles.notificationsPage}>
       <h2 className={styles.text_t}><FormattedMessage id="profile.notifications"/></h2>
+      {notifications.length > 0 && (
+        <button
+              className={styles.button}
+              onClick={async () => {
+                try {
+                  await markAllUserAsRead(id);
+                  setNotifications(prev =>
+                    prev.map(n => ({ ...n, isRead: true }))
+                  );
+                } catch (error) {
+                  console.error("Error al marcar todas como leídas:", error);
+                }
+              }}>
+              Marcar todas como leídas
+        </button>
+      )}
       <div className={styles.notificationsContainer}>
       {loading ? (
           <>
@@ -89,10 +71,31 @@ const NotificationsPage: FC = () => {
         ) : notifications.length > 0 ? (
           notifications.map((notification) => (
             <div key={notification.id} className={`${styles.notification} ${styles[notification.type]}`}>
-              <p>{notification.message}</p>
-              <span>{notification.timestamp.toLocaleString()}</span>
+              <p>{notification.content}</p>
+              <span>{notification.createdAt? dayjs(notification.createdAt).fromNow(): ""}</span>
+            {!notification.isRead? (
+                <button
+                      className={styles.button}
+                      onClick={async () => {
+                        try {
+                          await markAsReadOne(notification.id);
+                          setNotifications(prev =>
+                            prev.map(n =>
+                              n.id === notification.id ? { ...n, isRead: true } : n
+                            )
+                          );
+                        } catch (error) {
+                          console.error("Error al marcar como leída:", error);
+                        }
+                      }}>
+                      Marcar como leída
+                    </button>
+              ):
+              <span className={styles.read_label}>Leída</span>}
             </div>
+
           ))
+          
         ) : (
           <p>
             <FormattedMessage id="profile.notifications.none" />
