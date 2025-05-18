@@ -324,9 +324,11 @@ const BookingDetailPage: FC<BookingDetailPageProps> = () => {
           className={`${styles.priceColumn} d-flex flex-column align-items-center justify-content-center px-4`}
         >
           <Form.Group controlId="splitPriceCheckbox" className="text-center">
+            <Form.Label className={styles.label_esp}>
+              <FormattedMessage id="fieldDetailPage.divide" />
+            </Form.Label>
             <Form.Check
               type="checkbox"
-              label="Dividir precio entre jugadores"
               checked={isSplit}
               onChange={() => setIsSplit(!isSplit)}
               className={styles.checkbox}
@@ -334,8 +336,19 @@ const BookingDetailPage: FC<BookingDetailPageProps> = () => {
           </Form.Group>
 
           {/* Display Calculated Price */}
-          <h3 className={styles.priceText}>Precio: ${priceToShow}</h3>
-          <h3 className={styles.selectText}>Selecciona cómo deseas pagar</h3>
+          <h3 className={styles.priceText}>
+            <FormattedMessage
+              id="fieldDetailPage.price"
+              defaultMessage="Precio: $"
+            />
+            {priceToShow}
+          </h3>
+          <h3 className={styles.selectText}>
+            <FormattedMessage
+              id="fieldDetailPage.payment"
+              defaultMessage="Selecciona cómo deseas pagar"
+            />
+          </h3>
 
           {/* Image Below Price */}
           <div className={styles.imageWrapper}>

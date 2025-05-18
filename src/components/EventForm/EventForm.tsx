@@ -59,9 +59,9 @@ const CreateEventForm: FunctionComponent<CreateFieldFormProps> = ({
     const intl = useIntl();
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className={styles.form_esp}>
       <Form.Group>
-        <Form.Label>
+        <Form.Label className={styles.label_esp}>
           <FormattedMessage id="event.form.label.fecha" />
         </Form.Label>
         <Form.Control
@@ -75,7 +75,7 @@ const CreateEventForm: FunctionComponent<CreateFieldFormProps> = ({
         <Form.Label>
           <FormattedMessage id="field.form.label.sports" />
         </Form.Label>
-        <Row>
+        <Row style={{color: "white"}}>
           {sports.map((item, index) => (
             <Col key={index} className={styles.check_col}>
               <Form.Check
@@ -100,7 +100,7 @@ const CreateEventForm: FunctionComponent<CreateFieldFormProps> = ({
         />
       </Form.Group>
       <div className="d-flex justify-content-center">
-        <Button type="submit" className="mt-3">
+        <Button type="submit" className={styles.button_esp}>
           <FormattedMessage id="event.form.submit"/>
         </Button>
       </div>

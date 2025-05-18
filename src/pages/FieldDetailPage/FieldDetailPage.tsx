@@ -137,15 +137,16 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
               <FormattedMessage id="pages.fields" defaultMessage="Campos" />
             </Breadcrumb.Item>
             <Breadcrumb.Item active>
-              <FormattedMessage id="fieldDetailPage.loading" defaultMessage="Cargando..." />
+              <FormattedMessage id="bookingDetailPage.loading" defaultMessage="Cargando..." />
             </Breadcrumb.Item>
           </Breadcrumb>
         </Row>
+        
         <Row className="justify-content-center my-5">
           <Col className="text-center">
             <Spinner animation="border" role="status" variant="primary">
               <span className="visually-hidden">
-                <FormattedMessage id="fieldDetailPage.loading" defaultMessage="Cargando..." />
+                <FormattedMessage id="bookingDetailPage.loading" defaultMessage="Cargando..." />
               </span>
             </Spinner>
             <p className="mt-3">

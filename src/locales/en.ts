@@ -45,10 +45,13 @@ const es: Translations = {
   "booking.untilTime": "Until {time}",
   "booking.place": "Location",
   "booking.seeDetail": "See detail",
+  "bookingDetailPage.loading": "Loading ...",
+  "bookingDetailPage.loading.details": "Loading booking details...",
   // Fields
   "fields.title": "Available fields",
   "fields.createButton": "Create field",
   "fields.dataNotFound": "No data was found for search value ' {value} '",
+  "fieldDetailPageMap.loading.details": "Loading map of the field...",
   // Create Field
   "fields.create.title": "Create a new field",
   "field.form.label.name": "Name",
@@ -110,6 +113,8 @@ const es: Translations = {
   "sportsPage.title": "Sports",
   // eventDetailsPage
   "eventDetailPage.participants": "Participants",
+  "eventDetailPage.loading.details": "Loading event details... ",
+  "eventDetailPage.events": "All available events",
   // FieldDetailCard
   "fieldDetailCard.setOccupied.notOccupied": "Not occupied 😀",
   "fieldDetailCard.setOccupied.Occupied": "Occupied 🥲",
@@ -121,6 +126,11 @@ const es: Translations = {
   "fieldDetailCard.details.price": "Price:",
   "fieldDetailCard.details.availableBookings":
     "Available bookings in this field:",
+
+  "fieldDetailPage.loading.details": "Loading field details... ",
+  "fieldDetailPage.price": "Price: $",
+  "fieldDetailPage.divide": "Divide payment amongst participants",
+  "fieldDetailPage.payment": "Choose your payment method",
   // fieldDetailButtons
   "fieldDetailButtons.book": "Create a booking",
   "fieldDetailButtons.cancel": "Cancel booking",
@@ -166,6 +176,10 @@ const es: Translations = {
   "form.gender.male": "Male",
   "form.gender.female": "Female",
   "form.gender.other": "Other",
+
+  //PaymentMethotd
+  "pages.price": "Price: $",
+  "pages.eventsall": "All available events",
 };
 
 export default es;

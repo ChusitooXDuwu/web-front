@@ -61,6 +61,11 @@ export interface Translations {
   "booking.place": string;
   "booking.seeDetail": string;
 
+  // Booking detail
+  "bookingDetailPage.loading": string;
+  "bookingDetailPage.loading.details": string;
+  "fieldDetailPageMap.loading.details": string;
+
   // Fields
   "fields.title": string;
   "fields.createButton": string;
@@ -122,6 +127,12 @@ export interface Translations {
 
   // Events
   "eventDetailPage.participants": string;
+  "eventDetailPage.loading.details": string;
+  "eventDetailPage.events": string;
+  "fieldDetailPage.loading.details": string;
+  "fieldDetailPage.price": string;
+  "fieldDetailPage.divide": string;
+  "fieldDetailPage.payment": string;
 
   // Field Details
   "fieldDetailCard.setOccupied.notOccupied": string;
@@ -165,4 +176,8 @@ export interface Translations {
   "field.tennis": string;
   "field.volley": string;
   "field.todos": string;
+
+  // Payments
+  "pages.price": string;
+  "pages.eventsall": string;
 }
