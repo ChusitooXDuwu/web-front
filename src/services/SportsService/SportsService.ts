@@ -4,11 +4,11 @@ import axios from "axios";
 import SportEntity from "../../entities/SportEntity";
 const getSportsbaseUrl = "http://localhost:3000";
 const getSportsUrl = baseUrl
-  ? `${baseUrl}/sports`
-  : `${getSportsbaseUrl}/sports`;
+  ? `${baseUrl}/sport`
+  : `${getSportsbaseUrl}/sport`;
 
 async function getSports() {
-  const getSportsUrlCount = getSportsUrl + "counts";
+  const getSportsUrlCount = getSportsUrl + "/counts";
   const response = await axios.get<ResponseEntity<Array<SportEntity>>>(
     getSportsUrlCount
   );
