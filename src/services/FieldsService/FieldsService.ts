@@ -1,7 +1,7 @@
 // src/services/FieldsService/FieldsService.ts
 import axios from "axios";
 // TODO: Use response entity
-import ResponseEntity from "../ResponseEntity";
+import { ResponseEntity } from "../ResponseEntity";
 import baseUrl from "../Config";
 import { FieldEntity } from "../../entities/Entities";
 
@@ -18,12 +18,14 @@ export interface CreateFieldFormData {
   price?: number;
 }
 
-async function getFields() {
+async function getFields(): Promise<{ data: FieldEntity[]; message: string }> {
   try {
-    const response = await axios.get<FieldEntity[]>(fieldsEndpoint);
+    const response = await axios.get<ResponseEntity<FieldEntity[]>>(
+      fieldsEndpoint
+    );
     return {
-      data: response.data,
-      message: "success",
+      data: response.data.data,
+      message: response.data.message,
     };
   } catch (error) {
     console.error("Error fetching fields:", error);

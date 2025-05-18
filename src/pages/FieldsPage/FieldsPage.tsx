@@ -21,7 +21,9 @@ const FieldsPage: FC<FieldsPageProps> = () => {
   });
 
   // Hooks
-  const [filteredFieldsData, setFilteredFieldsData] = useState<FieldEntity[]>([]);
+  const [filteredFieldsData, setFilteredFieldsData] = useState<FieldEntity[]>(
+    []
+  );
   const [searchValue, setSearchValue] = useState<string>("");
   const [currentSearchValue, setCurrentSearchValue] = useState<string>("");
   const [selectedSport, setSelectedSport] = useState<string>("");
@@ -29,7 +31,7 @@ const FieldsPage: FC<FieldsPageProps> = () => {
   useEffect(() => {
     if (isSuccess) {
       const { data } = fieldsData;
-      console.log(`fields ${data}`)
+      console.log(`fields ${JSON.stringify(data)}`);
       setFilteredFieldsData(data);
     }
   }, [fieldsData, isSuccess]);
@@ -46,7 +48,10 @@ const FieldsPage: FC<FieldsPageProps> = () => {
 
         const matchesSearch = concatenatedField.includes(normalizedSearchValue);
         const matchesSport = selectedSport
-          ? item.sports.some((sport) => sport.name.toLowerCase() === selectedSport.toLowerCase())
+          ? item.sports.some(
+              (sport) =>
+                sport.name.toLowerCase() === selectedSport.toLowerCase()
+            )
           : true;
 
         return matchesSearch && matchesSport;
@@ -88,11 +93,21 @@ const FieldsPage: FC<FieldsPageProps> = () => {
           </Col>
           <Col md="auto" className={styles.create_col}>
             <Form.Select onChange={handleSportChange} value={selectedSport}>
-              <option value=""><FormattedMessage id="field.todos"/></option>
-              <option value="soccer"><FormattedMessage id="field.soccer"/></option>
-              <option value="basketball"><FormattedMessage id="field.basketball"/></option>
-              <option value="tennis"><FormattedMessage id="field.tennis"/></option>
-              <option value="volleyball"><FormattedMessage id="field.volley"/></option>
+              <option value="">
+                <FormattedMessage id="field.todos" />
+              </option>
+              <option value="soccer">
+                <FormattedMessage id="field.soccer" />
+              </option>
+              <option value="basketball">
+                <FormattedMessage id="field.basketball" />
+              </option>
+              <option value="tennis">
+                <FormattedMessage id="field.tennis" />
+              </option>
+              <option value="volleyball">
+                <FormattedMessage id="field.volley" />
+              </option>
             </Form.Select>
           </Col>
           <Col md="auto" className={styles.create_col}>
