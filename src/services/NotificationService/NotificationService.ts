@@ -10,7 +10,6 @@ const getNotifiactionUrl = baseUrl
 
 async function getAllNotificationUser(userId: string) {
   const getNotificationUrlAll = getNotifiactionUrl + `/user/${userId}`;
-  console.log("ASDASD");
   console.log(getNotificationUrlAll);
   const response = await axios.get<ResponseEntity<Array<NotificationEntity>>>(
     getNotificationUrlAll
