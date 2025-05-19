@@ -55,9 +55,14 @@ const FriendsModal: FunctionComponent<FriendsModalProps> = ({
         </Form.Group>
         {isSuccess &&
           data.data.map((item) => (
-            <p>
-              {item.givenName} {item.lastName}
-            </p>
+            <div className="d-flex gap-4 justify-content-between my-2">
+              <p>
+                {item.givenName} {item.lastName}
+              </p>
+              <Button>
+                <i className="bi bi-plus"></i>
+              </Button>
+            </div>
           ))}
       </Modal.Body>
       <Modal.Footer>
