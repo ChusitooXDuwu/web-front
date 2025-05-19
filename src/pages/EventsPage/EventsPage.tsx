@@ -11,6 +11,7 @@ import { useIntl } from 'react-intl';
 import { LocaleContext } from '../../contexts/LocaleContext';
 
 import { useContext } from 'react';
+import { EventEntityDto } from "../../entities/EventEntity";
 
 interface EventsPageProps {}
 
@@ -37,34 +38,32 @@ const EventsPage: FC<EventsPageProps> = () => {
 
   const mockFieldEntity: FieldEntity = {
     id: "1",
-    name: "Mock Field",
-    city: mockCity,
-    address: "123 Mock Street",
+    fieldName: "Mock Field",
+    cityName: "mockCity",
     sports: mockSports,
     createdById: "user123",
   };
 
-  const mockEvent: EventInterface = {
+  const mockEvent: EventEntityDto = {
       id: "1",
-      startTime: new Date(),
-      endTime: new Date(),
-      currentPlayers: 4,
-      maxPlayers: 5,
-      sport: { id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 },
+      eventStartDateTime: new Date(),
+      eventEndDateTime: new Date(),
+      currentParticipants: 4,
+      maxParticipants: 5,
+      sport: { id: "1", name: "Baloncesto"},
       field: {
         id: "1",
-        name: "Cancha de baloncesto",
-        address: "Calle 123",
-        city: { id: "1", name: "Medellín" },
-        sports: [{ id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 }],
-        createdById: "1",
+        fieldName: "Mock Field",
+        cityName: "mockCity",
+        sports: mockSports,
+        createdById: "user123",
       },
       image: null,
     };
   // Fetch data
   let fieldsData: Array<FieldEntity> = Array(10).fill(mockFieldEntity);
   fieldsData = fieldsData.map((item, index) => {
-    return {...item, "name": item.name + " " + index.toString()}
+    return {...item, "name": item.fieldName + " " + index.toString()}
   })
   // Hooks
   const navigate = useNavigate();
@@ -77,11 +76,8 @@ const EventsPage: FC<EventsPageProps> = () => {
   const filterData = () => {
     setFilteredFieldsData(
       fieldsData.filter((item) => {
-        const name = item.name;
-        const address = item.address;
+        const name = item.fieldName;
         const normalizedSearchValue = searchValue.toLowerCase();
-        const concatenatedField = `${name} ${address}`.toLowerCase();
-        return concatenatedField.includes(normalizedSearchValue);
       })
     );
   };

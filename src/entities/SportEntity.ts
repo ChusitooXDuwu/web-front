@@ -1,4 +1,4 @@
-import BaseEntity from "./BaseEntity";
+import BaseEntity, { BaseEntityDto } from "./BaseEntity";
 import SportInterface from "./SportInterface";
 
 export default class Sport implements SportInterface {
@@ -21,4 +21,8 @@ export default class Sport implements SportInterface {
       data.availableBookings
     );
   }
+}
+
+export class SportEntityDto extends BaseEntityDto {
+  name!: string;
 }

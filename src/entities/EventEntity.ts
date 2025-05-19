@@ -1,7 +1,10 @@
-import BaseEntity from "./BaseEntity";
+import  { BaseEntityDto } from "./BaseEntity";
 import FieldEntity from "./FieldEntity";
-import SportEntity from "./SportEntity";
+import SportEntity, { SportEntityDto } from "./SportEntity";
 import EventInterface from "./EventInterface";
+import { Type } from "class-transformer";
+import { UserEntityDto } from "./user/UserEntity";
+
 
 export default class Event implements EventInterface {
     constructor(
@@ -36,4 +39,25 @@ export default class Event implements EventInterface {
             throw new Error("Invalid API Data");
         }
     }
+}
+
+export class EventEntityDto extends BaseEntityDto{
+
+  @Type(() => Date)
+  eventStartDateTime!: Date;
+  
+  @Type(() => Date)
+  eventEndDateTime!: Date;
+
+  maxParticipants!: number;
+
+  currentParticipants!: number;
+  
+  image?: string | null;
+
+  field?: FieldEntity;
+
+  participants?: UserEntityDto[];
+
+  sport?: SportEntityDto;
 }
