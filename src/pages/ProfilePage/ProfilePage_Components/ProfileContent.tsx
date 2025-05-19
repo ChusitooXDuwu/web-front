@@ -8,10 +8,15 @@ import FriendsList from "./FriendsList";
 import FavoriteCourts from "./FavouriteCourts";
 import SportsList from "./SportLists";
 import { useProfile } from "../../../contexts/ProfileContext";
+import { useOutletContext } from "react-router-dom";
+
+interface ProfileOutletContext {
+  handleShow: () => void;
+}
 
 const ProfileContent = () => {
   const { profile } = useProfile(); // Acceder a los datos del perfil
-
+  const { handleShow } = useOutletContext<ProfileOutletContext>();
   // Check if profile is null
   if (!profile) {
     return (
@@ -42,6 +47,7 @@ const ProfileContent = () => {
       <Row className={(styles.profile_content, "ps-4")}>
         <Col xs={12} md={4}>
           <FriendsList
+            handleShowFriendsModal={handleShow}
             friends={(profile.friends || []).map((friend) => {
               return friend.givenName;
             })}
