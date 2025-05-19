@@ -1,17 +1,7 @@
 import BaseEntity from "./BaseEntity";
 import FieldEntity from "./FieldEntity";
 import SportEntity from "./SportEntity";
-
-export interface EventInterface extends BaseEntity {
-  startTime: Date;
-  endTime: Date;
-  currentPlayers: number;
-  maxPlayers: number;
-  sport: SportEntity;
-  field: FieldEntity;
-  image: string | null;
-}
-
+import EventInterface from "./EventInterface";
 export default class Event implements EventInterface {
   constructor(
     public id: string,
@@ -24,7 +14,7 @@ export default class Event implements EventInterface {
     public sport: SportEntity,
     public field: FieldEntity,
     public image: string | null
-  ) {}
+  ) { }
 
   static fromApi(data: any): Event {
     try {

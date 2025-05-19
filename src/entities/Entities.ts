@@ -3,7 +3,8 @@ import BookedEventEntity from "./BookedEventEntity";
 import SportEntity from "./SportEntity";
 import CityEntity from "./CityEntity";
 import FieldEntity from "./FieldEntity";
-import EventEntity, { EventInterface } from "./EventEntity";
+import EventEntity from "./EventEntity";
+import EventInterface from "./EventInterface";
 import ProfileEntity from "./ProfileEntity";
 
 export {
