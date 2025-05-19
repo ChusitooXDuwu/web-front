@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from 'react';
 import styles from './SportsPage.module.scss';
-import { Breadcrumb, Container, Row, Col} from "react-bootstrap";
+import { Breadcrumb, Container, Row, Col } from "react-bootstrap";
 import SportCard from "../../components/SportCard/SportCard";
-import SportEntity from "../../entities/SportEntity";
+import SportEntity from "../../entities/SportInterface";
 import { Link } from "react-router-dom";
 
 import { FormattedMessage } from 'react-intl';
@@ -22,7 +22,7 @@ const mockData: SportEntity = {
 
 };
 
-interface SportsPageProps {}
+interface SportsPageProps { }
 
 const SportsPage: FC<SportsPageProps> = () => {
   const [sports, setSports] = useState<SportEntity[]>([]);
@@ -30,17 +30,17 @@ const SportsPage: FC<SportsPageProps> = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const intl = useIntl();
 
-  useEffect(()=>{
-    async function fetchSports(){
+  useEffect(() => {
+    async function fetchSports() {
       try {
-        const {data} = await getSports();
+        const { data } = await getSports();
         setSports(data)
-      }catch(error){
-        console.error("Error fetching sports",error);
+      } catch (error) {
+        console.error("Error fetching sports", error);
       }
     }
     fetchSports()
-  },[]);
+  }, []);
 
   const { formatMessage } = intl;
   return (
@@ -57,15 +57,15 @@ const SportsPage: FC<SportsPageProps> = () => {
             <FormattedMessage id="pages.sports" />
           </Breadcrumb.Item>
         </Breadcrumb>
-        <h1 className={`display-5 ${styles.page_header}`}>  <FormattedMessage id="sportsPage.title"/>  </h1>
+        <h1 className={`display-5 ${styles.page_header}`}>  <FormattedMessage id="sportsPage.title" />  </h1>
       </Row>
 
       <Row lg={3} md={3} sm={2} xs={1} className="gy-3 justify-content-center">
-      {sports.map((item, index) => (
+        {sports.map((item, index) => (
           <Col key={index} className="d-flex justify-content-center">
             <SportCard sport={item} />
           </Col>
-      ))}
+        ))}
       </Row>
     </Container>
   );

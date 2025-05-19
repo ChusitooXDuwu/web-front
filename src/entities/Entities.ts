@@ -1,6 +1,6 @@
 import BaseEntity from "./BaseEntity";
 import BookedEventEntity from "./BookedEventEntity";
-import SportEntity from "./SportEntity";
+import SportEntity from "./SportInterface";
 import CityEntity from "./CityEntity";
 import FieldEntity from "./FieldEntity";
 import EventEntity from "./EventEntity";

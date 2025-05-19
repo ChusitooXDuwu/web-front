@@ -1,6 +1,6 @@
 import BaseEntity from "./BaseEntity";
 import FieldEntity from "./FieldEntity";
-import SportEntity from "./SportEntity";
+import SportEntity from "./SportInterface";
 
 export default interface EventInterface extends BaseEntity {
   startTime: Date;

@@ -23,7 +23,9 @@ async function createUser(
 }
 
 async function requestLogin(loginData: LoginInfo) {
-  const url = `${API_BASE_URL}/users/login`;
+  console.log("LOG")
+  console.log(API_BASE_URL)
+  const url = `http://localhost:3000/users/login`;
   const response = await axios.post<
     ResponseEntity<{ token: string }>,
     AxiosResponse<ResponseEntity<{ token: string }>>,

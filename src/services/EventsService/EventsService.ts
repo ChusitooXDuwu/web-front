@@ -3,6 +3,7 @@ import baseUrl from "../Config";
 import axios from "axios";
 import { EventEntity } from "../../entities/Entities";
 import StatisticsData from "../../entities/StatisticsEntity";
+import Event from "../../entities/EventEntity";
 
 const baseDefaultUrl = "http://localhost:3000/events"
 const getEventsUrl = baseUrl ? `${baseUrl}/events` : baseDefaultUrl;
@@ -28,28 +29,26 @@ async function getAvailableEvents() {
 
 async function getEventsByUserId(userId: string) {
   const url = getEventsUrl + `/users/${userId}`;
-  const response = await axios.get<OldResponseEntity<Array<any>>>(url);
-  const data = response.data.data["events"];
-  const processedData = data.flatMap((item) => {
-    let result: EventEntity | [];
+  const response = await axios.get<ResponseEntity<Event[]>>(url, { withCredentials: true });
+  const eventsData = response.data.data;
+  const processedData = eventsData.flatMap((item) => {
     try {
-      result = EventEntity.fromApi(item);
-      return [result]
+      return [EventEntity.fromApi(item)];
     } catch (error) {
-      result = [];
+      console.warn("Invalid event item", error);
+      return [];
     }
-    return result;
   });
-  const message = response.data.message;
+
   return {
     data: processedData,
-    message,
+    message: response.data.message,
   };
 }
 
 async function getStatsByUserId(userId: string) {
   const url = getEventsUrl + `/stats/${userId}`;
-  const response = await axios.get<ResponseEntity<StatisticsData>>(url);
+  const response = await axios.get<ResponseEntity<StatisticsData>>(url, { withCredentials: true });
   const data = response.data.data;
   const message = response.data.message;
   return {
