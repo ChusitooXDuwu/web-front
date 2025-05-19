@@ -12,7 +12,8 @@ async function getAllNotificationUser(userId: string) {
   const getNotificationUrlAll = getNotifiactionUrl + `/user/${userId}`;
   console.log(getNotificationUrlAll);
   const response = await axios.get<ResponseEntity<Array<NotificationEntity>>>(
-    getNotificationUrlAll
+    getNotificationUrlAll,
+    { withCredentials: true }
   );
   const data = response.data.data;
   const message = response.data.message;

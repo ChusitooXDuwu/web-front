@@ -10,7 +10,8 @@ const getSportsUrl = baseUrl
 async function getSports() {
   const getSportsUrlCount = getSportsUrl + "/counts";
   const response = await axios.get<ResponseEntity<Array<SportEntity>>>(
-    getSportsUrlCount
+    getSportsUrlCount,
+    { withCredentials: true }
   );
   const data = response.data.data;
   const message = response.data.message;
