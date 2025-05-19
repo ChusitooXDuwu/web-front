@@ -34,7 +34,10 @@ const ProfileContent = () => {
           />
         </Col>
         <Col xs={12} md={8} className="w-full">
-          <AboutMe text={profile.description} since={profile.since} />
+          <AboutMe
+            text={profile.description}
+            since={profile.createdAt || null}
+          />
         </Col>
       </Row>
       <Row className={styles.profile_content}>

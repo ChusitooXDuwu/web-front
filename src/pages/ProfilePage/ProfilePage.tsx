@@ -33,17 +33,15 @@ const ProfilePage: FC<ProfilePageProps> = ({ isOwner }) => {
       style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
     >
       <Row style={{ flex: 1 }}>
-        {/* Texto a emplasar*/}
         <Col md={9} style={{ backgroundColor: "white" }}>
           <Outlet></Outlet>
         </Col>
-        {/* Texto a emplasar*/}
         <Col md={3} className="overflow-y:auto">
           <SideBar
             items={sidebarItems}
             isOwner={isOwner}
             profile={{
-              name: profile?.givenName || "?",
+              name: `${profile?.givenName} ${profile?.lastName}` || "?",
               imageUrl: profile?.imageUrl || "/assets/profile_ex.jpg",
             }}
           />

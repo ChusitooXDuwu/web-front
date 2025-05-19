@@ -1,10 +1,7 @@
 import { createContext, useContext, useState, FC, ReactNode } from "react";
 import UserEntity from "../entities/user/UserEntity";
 import { useQuery } from "@tanstack/react-query";
-import {
-  requestMyProfile,
-  requestUser,
-} from "../services/UserService/UserService";
+import { requestMyProfile } from "../services/UserService/UserService";
 
 // Creamos un contexto vacío con los tipos adecuados
 interface ProfileContextProps {
@@ -27,23 +24,8 @@ export const useProfile = () => {
 
 // Componente Provider para envolver la aplicación
 export const ProfileProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const mockUser: UserEntity = {
-    givenName: "Armandiño",
-    lastName: "Casas",
-    email: "armando@example.com",
-    gender: "M",
-    favoriteSports: "Basketball",
-    phoneNumber: "123-456-7890",
-    imageUrl: "/assets/profile_ex.jpg",
-    description: "Descripción de una persona...",
-    since: "2009",
-    friends: [],
-    favoriteCourts: ["SUBA", "Usaquén"],
-    sports: ["Basketball", "Tennis"],
-    id: "1",
-  };
   // Estado inicial con datos ficticios
-  const [profile, setProfile] = useState<UserEntity>(mockUser);
+  const [profile, setProfile] = useState<UserEntity | null>(null);
 
   const { isSuccess, data: profileData } = useQuery({
     queryKey: ["userProfile"],
