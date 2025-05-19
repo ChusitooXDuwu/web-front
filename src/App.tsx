@@ -56,8 +56,8 @@ function App() {
         locale={localeData.locale}
         messages={{ ...localeData.messages }}
       >
-        <ProfileProvider>
-          <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={queryClient}>
+          <ProfileProvider>
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<MainView />}>
@@ -102,8 +102,8 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </BrowserRouter>
-          </QueryClientProvider>
-        </ProfileProvider>
+          </ProfileProvider>
+        </QueryClientProvider>
       </IntlProvider>
     </LocaleContext.Provider>
   );

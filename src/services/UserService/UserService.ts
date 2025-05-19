@@ -34,5 +34,23 @@ async function requestLogin(loginData: LoginInfo) {
   return { data, message };
 }
 
+async function requestUser(id: string) {
+  const url = `${API_BASE_URL}/users/${id}`;
+  const response = await axios.get<ResponseEntity<UserEntity>>(url, {
+    withCredentials: true,
+  });
+  const { data, message } = response.data;
+  return { data, message };
+}
+
+async function requestMyProfile() {
+  const url = `${API_BASE_URL}/users/profile`;
+  const response = await axios.get<ResponseEntity<UserEntity>>(url, {
+    withCredentials: true,
+  });
+  const { data, message } = response.data;
+  return { data, message };
+}
+
 export default createUser;
-export { requestLogin };
+export { requestLogin, requestUser, requestMyProfile };

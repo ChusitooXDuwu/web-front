@@ -11,8 +11,8 @@ export default interface UserEntity extends BaseEntity {
   imageUrl: string | null;
   description: string;
   since: string;
-  favoriteCourts: string[];
-  sports: string[];
+  favoriteCourts?: string[];
+  sports?: string[];
   // Relationships
-  friends: UserEntity[];
+  friends?: UserEntity[];
 }
