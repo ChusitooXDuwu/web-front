@@ -176,6 +176,11 @@ const en: Translations = {
   // payments
   "pages.eventsall": "Eventos disponibles",
   "pages.price": "Precio: $",
+
+  // friends modal
+  "friends.modal.title": "Agregar amigo",
+  "friends.modal.search-label": "Buscar usuario",
+  "friends.modal.search-placeholders": "Juan Pérez",
 };
 
 export default en;

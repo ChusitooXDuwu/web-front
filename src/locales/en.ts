@@ -180,6 +180,11 @@ const es: Translations = {
   //PaymentMethotd
   "pages.price": "Price: $",
   "pages.eventsall": "All available events",
+
+  // friends modal
+  "friends.modal.title": "Add friend",
+  "friends.modal.search-label": "Search user",
+  "friends.modal.search-placeholders": "John Doe",
 };
 
 export default es;

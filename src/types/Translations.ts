@@ -180,4 +180,9 @@ export interface Translations {
   // Payments
   "pages.price": string;
   "pages.eventsall": string;
+
+  // Friends modal
+  "friends.modal.title": string;
+  "friends.modal.search-label": string;
+  "friends.modal.search-placeholders": string;
 }
