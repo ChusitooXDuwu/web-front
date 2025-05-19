@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Col, Row } from "react-bootstrap";
 
 import styles from "../ProfilePage.module.scss";
@@ -40,7 +39,7 @@ const ProfileContent = () => {
           />
         </Col>
       </Row>
-      <Row className={styles.profile_content}>
+      <Row className={(styles.profile_content, "ps-4")}>
         <Col xs={12} md={4}>
           <FriendsList
             friends={(profile.friends || []).map((friend) => {

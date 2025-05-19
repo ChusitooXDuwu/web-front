@@ -33,7 +33,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ isOwner }) => {
       style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
     >
       <Row style={{ flex: 1 }}>
-        <Col md={9} style={{ backgroundColor: "white" }}>
+        <Col md={9} style={{ backgroundColor: "white" }} className="px-4">
           <Outlet></Outlet>
         </Col>
         <Col md={3} className="overflow-y:auto">
