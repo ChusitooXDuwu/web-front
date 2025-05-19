@@ -7,29 +7,42 @@ import Col from "react-bootstrap/Col";
 import { Link, useNavigate } from "react-router-dom";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-
-interface LoginInfo {
-  email: string;
-  password: string;
-}
+import { useMutation } from "@tanstack/react-query";
+import { LoginInfo } from "../../entities/user/LoginInfo";
+import { requestLogin } from "../../services/UserService/UserService";
 
 function LoginPage() {
   const navigate = useNavigate();
   const intl = useIntl();
   const [loginData, setLoginData] = useState<LoginInfo>({
-    email: "",
+    username: "",
     password: "",
+  });
+  const loginMutation = useMutation({
+    mutationFn: (loginData: LoginInfo) => requestLogin(loginData),
+    onSuccess: (data) => {
+      console.log(data);
+      console.log("Login successfull");
+      navigate("/home");
+    },
+    onError: (error) => {
+      console.error("Error logging in");
+    },
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setLoginData({ ...loginData, [name]: value });
+    let key = name;
+    if (name === "email") {
+      key = "username";
+    }
+    setLoginData({ ...loginData, [key]: value });
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(`Form submitted:`, loginData);
-    navigate("/home");
+    loginMutation.mutate(loginData);
   };
 
   const emailPlaceholder = intl.formatMessage({ id: "emailPlaceholder" });
@@ -78,11 +91,11 @@ function LoginPage() {
             className={styles.login_button}
             variant="primary"
           >
-            <FormattedMessage id="login"/>
+            <FormattedMessage id="login" />
           </Button>
         </Form>
         <p className={styles.register_text}>
-          <FormattedMessage id="newInSporthub"/> {" "}
+          <FormattedMessage id="newInSporthub" />{" "}
           <Link className={styles.register_link} to={"/signup"}>
             <FormattedMessage id="registerHere" />
           </Link>

@@ -56,4 +56,5 @@
   filter: blur(3px) brightness(50%); /* Adjust the filter as needed */
   z-index: 0; /* Ensure the image is behind other content */
   image-rendering: smooth; /* Works in some browsers */
+  pointer-events: none;
 }
