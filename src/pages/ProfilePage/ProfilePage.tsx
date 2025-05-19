@@ -2,12 +2,17 @@ import React, { FC, useState, useEffect } from "react";
 import { useLocation, Outlet } from "react-router-dom";
 import SideBar from "../../components/Profile/SideBar";
 import { GetSidebarItems } from "../../components/Profile/getSidebarItems";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Modal, Button } from "react-bootstrap";
 import { useProfile } from "../../contexts/ProfileContext";
 import { useIntl } from "react-intl";
+import FriendsModal from "./ProfilePage_Components/FriendsModal";
 
 interface ProfilePageProps {
   isOwner: boolean;
+}
+
+interface ProfileOutletContext {
+  handleShow: () => void;
 }
 
 const ProfilePage: FC<ProfilePageProps> = ({ isOwner }) => {
@@ -27,29 +32,39 @@ const ProfilePage: FC<ProfilePageProps> = ({ isOwner }) => {
     setSidebarItems(GetSidebarItems(isOwner, currentPage, formatMessage));
   }, [location.pathname, isOwner, formatMessage]);
 
+  // Handle modal
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const outletContext: ProfileOutletContext = {
+    handleShow,
+  };
   return (
-    <Container
-      fluid
-      style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
-    >
-      <Row style={{ flex: 1 }}>
-        {/* Texto a emplasar*/}
-        <Col md={9} style={{ backgroundColor: "white" }}>
-          <Outlet></Outlet>
-        </Col>
-        {/* Texto a emplasar*/}
-        <Col md={3} className="overflow-y:auto">
-          <SideBar
-            items={sidebarItems}
-            isOwner={isOwner}
-            profile={{
-              name: profile?.givenName || "?",
-              imageUrl: profile?.imageUrl || "/assets/profile_ex.jpg",
-            }}
-          />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Container
+        fluid
+        style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+      >
+        <Row style={{ flex: 1 }}>
+          <Col md={9} style={{ backgroundColor: "white" }} className="px-4">
+            <Outlet context={outletContext}></Outlet>
+          </Col>
+          <Col md={3} className="overflow-y:auto">
+            <SideBar
+              items={sidebarItems}
+              isOwner={isOwner}
+              profile={{
+                name: `${profile?.givenName} ${profile?.lastName}` || "?",
+                imageUrl: profile?.imageUrl || "/assets/profile_ex.jpg",
+              }}
+            />
+          </Col>
+        </Row>
+      </Container>
+      <FriendsModal show={show} handleClose={handleClose}></FriendsModal>
+    </>
   );
 };
 

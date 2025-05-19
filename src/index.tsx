@@ -1,4 +1,4 @@
-import "reflect-metadata"
+import "reflect-metadata";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
@@ -6,7 +6,6 @@ import "./CustomBootstrap.scss";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import "reflect-metadata";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(

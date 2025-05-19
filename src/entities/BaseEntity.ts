@@ -6,7 +6,6 @@ export default interface BaseEntity {
   updatedAt?: Date;
 }
 
-
 export class BaseEntityDto implements BaseEntity {
   id!: string;
   @Type(() => Date)

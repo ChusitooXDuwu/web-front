@@ -38,7 +38,7 @@ const mockPlayer: UserEntity = {
   imageUrl: "/assets/basket_horizontal.jpg",
   lastName: "Perez",
   description: "",
-  since: "",
+  createdAt: new Date(),
   favoriteCourts: [],
   sports: [],
   friends: [],
