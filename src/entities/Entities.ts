@@ -1,4 +1,3 @@
-import BaseEntity from "./BaseEntity";
 import BookedEventEntity from "./BookedEventEntity";
 import SportEntity from "./SportInterface";
 import CityEntity from "./CityEntity";
@@ -10,7 +9,6 @@ import ProfileEntity from "./ProfileEntity";
 export {
   EventEntity,
   EventInterface,
-  BaseEntity,
   BookedEventEntity,
   SportEntity,
   CityEntity,

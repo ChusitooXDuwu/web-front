@@ -4,7 +4,6 @@ import Row from "react-bootstrap/Row";
 import { FC, useState, useContext } from "react";
 import { Card } from "react-bootstrap";
 import styles from "./GameCardComponent.module.scss";
-import { EventInterface } from "../../entities/Entities";
 import { useNavigate } from "react-router-dom";
 
 import { FormattedMessage } from 'react-intl';

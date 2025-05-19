@@ -55,11 +55,11 @@ const HistoryPage: FC<HistoryPageProps> = ({ userId }) => {
 
               <li key={event.id} className={styles.eventCard}>
                 <h3>
-                  {event.sport.name ?? '⚠️'} <FormattedMessage id="profile.history.in" /> {event.field.name ?? '⚠️'}
+                  {event.sport.name ?? '⚠️'} <FormattedMessage id="profile.history.in" /> {event.field.fieldName ?? '⚠️'}
                 </h3>
                 <p>
                   <strong><FormattedMessage id="profile.history.location" />:</strong>{' '}
-                  {event.field.address ?? '-'}, {event.field?.city?.name ?? '-'}
+                  {event.field.fieldName ?? '-'}, {event.field.cityName ?? '-'}
                 </p>
                 <p>
                   <strong><FormattedMessage id="profile.history.date" />:</strong>{' '}

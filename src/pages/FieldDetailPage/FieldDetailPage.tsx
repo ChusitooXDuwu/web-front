@@ -10,6 +10,8 @@ import { useIntl } from 'react-intl';
 import { LocaleContext } from '../../contexts/LocaleContext';
 import { useQuery } from '@tanstack/react-query';
 import { getFieldDetails, getFieldPrice, getFieldEvents, EventType } from '../../services/FieldsServices/FieldsService';
+import { getAvailableEvents } from '../../services/EventsService/EventsService';
+import { EventEntityDto } from '../../entities/EventEntity';
 
 interface FieldDetailPageProps {}
 
@@ -68,7 +70,7 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
   // Fetch available events for this field
   const eventsQuery = useQuery({
     queryKey: ['fieldEvents', actualId],
-    queryFn: () => getFieldEvents(actualId),
+    queryFn: getAvailableEvents,
     enabled: true
   });
 
@@ -232,7 +234,7 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
           </h2>
           <Row lg={3} md={2} sm={2} xs={1} className="gy-2">
             {events.length > 0 ? (
-              events.map((event: EventType, index: number) => (
+              events.map((event: EventEntityDto, index: number) => (
                 <Col key={index} className="d-flex justify-content-center">
                   <GameCardComponent event={event} />
                 </Col>
