@@ -57,5 +57,17 @@ async function requestMyProfile() {
   return { data, message };
 }
 
+async function requestAllUsers(params: { name: string }) {
+  const url = `${API_BASE_URL}/users`;
+  const response = await axios.get<ResponseEntity<object[]>>(url, {
+    params,
+    withCredentials: true,
+  });
+  const { data: plainData, message } = response.data;
+  if (!Array.isArray(plainData)) throw new TypeError("Invalid response");
+  const users = plainData.map((item) => plainToInstance(UserEntityDto, item));
+  return { data: users, message };
+}
+
 export default createUser;
-export { requestLogin, requestUser, requestMyProfile };
+export { requestLogin, requestUser, requestMyProfile, requestAllUsers };
