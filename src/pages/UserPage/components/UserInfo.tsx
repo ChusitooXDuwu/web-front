@@ -7,16 +7,14 @@ import AboutMe from "../../../components/UserInformation/AboutMe";
 import FriendsList from "../../../components/UserInformation/FriendsList";
 import FavoriteCourts from "../../../components/UserInformation/FavouriteCourts";
 import SportsList from "../../../components/UserInformation/SportLists";
-import { useProfile } from "../../../contexts/ProfileContext";
-import { useOutletContext } from "react-router-dom";
+import { FunctionComponent } from "react";
+import { UserEntityDto } from "../../../entities/user/UserEntity";
 
-interface ProfileOutletContext {
-  handleShow: () => void;
+interface UserInfoProps {
+  user: UserEntityDto | null;
 }
 
-const ProfileContent = () => {
-  const { profile } = useProfile(); // Acceder a los datos del perfil
-  const { handleShow } = useOutletContext<ProfileOutletContext>();
+const UserInfo: FunctionComponent<UserInfoProps> = ({ user: profile }) => {
   // Check if profile is null
   if (!profile) {
     return (
@@ -48,7 +46,7 @@ const ProfileContent = () => {
       <Row className={(styles.profile_content, "ps-4")}>
         <Col xs={12} md={4}>
           <FriendsList
-            handleShowFriendsModal={handleShow}
+            handleShowFriendsModal={null}
             friends={profile.friends || []}
           />
         </Col>
@@ -63,4 +61,4 @@ const ProfileContent = () => {
   );
 };
 
-export default ProfileContent;
+export default UserInfo;

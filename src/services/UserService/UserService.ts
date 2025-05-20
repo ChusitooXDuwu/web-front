@@ -37,10 +37,11 @@ async function requestLogin(loginData: LoginInfo) {
 
 async function requestUser(id: string) {
   const url = `${API_BASE_URL}/users/${id}`;
-  const response = await axios.get<ResponseEntity<UserEntity>>(url, {
+  const response = await axios.get<ResponseEntity<object>>(url, {
     withCredentials: true,
   });
-  const { data, message } = response.data;
+  const { data: plainData, message } = response.data;
+  const data = plainToInstance(UserEntityDto, plainData);
   return { data, message };
 }
 

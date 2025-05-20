@@ -17,6 +17,7 @@ const es: Translations = {
   "pages.fields.create": "Create field",
   "pages.sports": "Sports",
   "pages.events": "Events",
+  "pages.users": "Users",
   //Forms
   "form.placeholder.name": "Enter your name",
   "form.placeholder.email": "Enter your email",

@@ -17,6 +17,7 @@ export interface Translations {
   "pages.fields.create": string;
   "pages.sports": string;
   "pages.events": string;
+  "pages.users": string;
 
   // Forms
   "form.placeholder.name": string;

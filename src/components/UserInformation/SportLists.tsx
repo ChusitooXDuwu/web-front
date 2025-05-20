@@ -1,5 +1,5 @@
 import styles from "./ProfileInfo.module.scss";
-import { ReactComponent as Icon } from "../../../icons/sportsIcon.svg";
+import { ReactComponent as Icon } from "../../icons/sportsIcon.svg";
 import { FormattedMessage } from "react-intl";
 
 interface SportsListProps {

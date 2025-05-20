@@ -1,8 +1,8 @@
-import React, { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import { useLocation, Outlet } from "react-router-dom";
 import SideBar from "../../components/Profile/SideBar";
 import { GetSidebarItems } from "../../components/Profile/getSidebarItems";
-import { Container, Col, Row, Modal, Button } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import { useProfile } from "../../contexts/ProfileContext";
 import { useIntl } from "react-intl";
 import FriendsModal from "./ProfilePage_Components/FriendsModal";
