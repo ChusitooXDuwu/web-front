@@ -105,8 +105,6 @@ const FieldsPage: FC<FieldsPageProps> = () => {
               </option>
               {sportsOptions.map((sportName) => (
                 <option key={sportName} value={sportName.toLowerCase()}>
-                  {/* Aquí podrías usar FormattedMessage si tienes los ids, 
-                      o solo mostrar sportName */}
                   {sportName}
                 </option>
               ))}
