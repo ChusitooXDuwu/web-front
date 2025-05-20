@@ -8,7 +8,7 @@ import { getAvailableEvents } from "../../services/EventsService/EventsService";
 import { FormattedMessage } from "react-intl";
 import { EventEntityDto } from "../../entities/EventEntity";
 
-interface EventsPageProps {}
+interface EventsPageProps { }
 
 const EventsPage: FC<EventsPageProps> = () => {
   // Mock data for fallback display
@@ -29,24 +29,41 @@ const EventsPage: FC<EventsPageProps> = () => {
 
   const mockEvent: EventEntityDto = {
     id: "1",
+    createdAt: new Date(),
+    updatedAt: new Date(),
     eventStartDateTime: new Date(),
-    eventEndDateTime: new Date(),
-    currentParticipants: 4,
-    maxParticipants: 5,
+    eventEndDateTime: new Date(Date.now() + 3600000),
+    maxParticipants: 10,
+    currentParticipants: 5,
     sport: {
       id: "1",
-      name: "Baloncesto",
+      name: "Fútbol",
       fields: [],
-      events: [],
+      events: []
     },
     field: {
       id: "1",
-      fieldName: "Mock Field",
-      cityName: "mockCity",
-      sports: mockSports,
-      createdById: "user123",
+      name: "Cancha Principal",
+      fieldName: "Cancha Principal",
+      field_name: "Cancha Principal",
+      cityName: "Bogotá",
+      address: "Calle 123",
+      city: {
+        id: "1",
+        name: "Bogotá"
+      },
+      sports: [],
+      createdById: "1",
+      imageUrl: "/assets/default-field.jpg",
+      image_url: "/assets/default-field.jpg",
+      field_rating: 4.5,
+      phone_number: "1234567890",
+      opening_time: "08:00",
+      isBooking: true,
+      field_type: "Fútbol"
     },
-    image: null,
+    image: "/assets/default-event.jpg",
+    participants: []
   };
 
   // Fetch real events data
@@ -77,19 +94,19 @@ const EventsPage: FC<EventsPageProps> = () => {
         <Row lg={3} md={3} sm={2} xs={1} className="gy-3">
           {eventsSuccess && eventsData?.data
             ? // Display real events when available
-              eventsData.data.map((event, index) => (
-                <Col key={index} className="d-flex justify-content-center">
-                  <GameCardComponent event={event} />
-                </Col>
-              ))
+            eventsData.data.map((event, index) => (
+              <Col key={index} className="d-flex justify-content-center">
+                <GameCardComponent event={event} />
+              </Col>
+            ))
             : // Display 3 mock events as fallback
-              Array(3)
-                .fill(null)
-                .map((_, index) => (
-                  <Col key={index} className="d-flex justify-content-center">
-                    <GameCardComponent event={mockEvent} />
-                  </Col>
-                ))}
+            Array(3)
+              .fill(null)
+              .map((_, index) => (
+                <Col key={index} className="d-flex justify-content-center">
+                  <GameCardComponent event={mockEvent} />
+                </Col>
+              ))}
         </Row>
 
         {eventsSuccess && eventsData?.data?.length === 0 && (

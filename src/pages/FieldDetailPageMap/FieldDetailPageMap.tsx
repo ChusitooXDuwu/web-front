@@ -7,7 +7,7 @@ import FieldDetailEntity from "../../entities/FieldDetailEntity";
 import FieldMapCardComponent from "../../components/FieldMapCardComponent/FieldMapCardComponent";
 import CustomMap from "../../components/MapComponent/MapComponent";
 import { useQuery } from '@tanstack/react-query';
-import { getFieldDetails } from '../../services/FieldsServices/FieldsService';
+import { getFieldById } from '../../services/FieldsServices/FieldsService';
 
 import { FormattedMessage } from 'react-intl';
 import { useIntl } from 'react-intl';
@@ -18,18 +18,18 @@ const FieldDetailPageMap: FC = () => {
   const location = useLocation();
   const { locale } = useContext(LocaleContext);
   const intl = useIntl();
-  
+
   // Extraer ID manualmente de la URL
   const pathParts = location.pathname.split('/');
   const fieldId = pathParts[pathParts.length - 1]; // El último segmento debe ser el ID
-  
+
   console.log('URL path parts:', pathParts);
   console.log('Extracted Field ID:', fieldId);
 
   // Fetch field details
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ['field', fieldId],
-    queryFn: () => getFieldDetails(fieldId),
+    queryFn: () => getFieldById(fieldId),
     enabled: !!fieldId && fieldId !== 'map' // Evitar consulta si el ID no es válido
   });
 
@@ -93,14 +93,14 @@ const FieldDetailPageMap: FC = () => {
               </Alert.Heading>
               <p>
                 {!fieldId || fieldId === 'map' ? (
-                  <FormattedMessage 
-                    id="fieldDetailPageMap.error.missingId" 
-                    defaultMessage="No se ha especificado un ID de campo válido. Por favor, vuelve a la lista de campos." 
+                  <FormattedMessage
+                    id="fieldDetailPageMap.error.missingId"
+                    defaultMessage="No se ha especificado un ID de campo válido. Por favor, vuelve a la lista de campos."
                   />
                 ) : (
-                  <FormattedMessage 
-                    id="fieldDetailPageMap.error.description" 
-                    defaultMessage="Ocurrió un error al cargar la información del campo. Intenta nuevamente más tarde." 
+                  <FormattedMessage
+                    id="fieldDetailPageMap.error.description"
+                    defaultMessage="Ocurrió un error al cargar la información del campo. Intenta nuevamente más tarde."
                   />
                 )}
               </p>
@@ -108,8 +108,8 @@ const FieldDetailPageMap: FC = () => {
                 <Link to="/fields" className="btn btn-outline-primary">
                   <FormattedMessage id="fieldDetailPageMap.backToFields" defaultMessage="Volver a la lista de campos" />
                 </Link>
-                <button 
-                  className="btn btn-outline-danger" 
+                <button
+                  className="btn btn-outline-danger"
                   onClick={() => window.location.reload()}
                 >
                   <FormattedMessage id="fieldDetailPageMap.reload" defaultMessage="Recargar página" />
@@ -146,9 +146,9 @@ const FieldDetailPageMap: FC = () => {
                 <FormattedMessage id="fieldDetailPageMap.notFound.title" defaultMessage="Campo no encontrado" />
               </Alert.Heading>
               <p>
-                <FormattedMessage 
-                  id="fieldDetailPageMap.notFound.description" 
-                  defaultMessage="No se pudo encontrar la información del campo solicitado (ID: {fieldId})." 
+                <FormattedMessage
+                  id="fieldDetailPageMap.notFound.description"
+                  defaultMessage="No se pudo encontrar la información del campo solicitado (ID: {fieldId})."
                   values={{ fieldId }}
                 />
               </p>

@@ -1,64 +1,85 @@
-import { ChangeEvent, FC, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useEffect, useState, useCallback } from "react";
 import styles from "./FieldsPage.module.scss";
-import { Breadcrumb, Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Breadcrumb, Button, Col, Container, Form, Row, Spinner, Alert } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { FieldEntity } from "../../entities/Entities";
 import FieldCardComponent from "./FieldCardComponent/FieldCardComponent";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useQuery } from "@tanstack/react-query";
-import getFields from "../../services/FieldsService/FieldsService";
+import getFields from "../../services/FieldsServices/FieldsService";
+import { useProfile } from "../../contexts/ProfileContext";
 
-interface FieldsPageProps {}
+interface FieldsPageProps { }
 
 const FieldsPage: FC<FieldsPageProps> = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
+  const { profile } = useProfile();
 
-  // Fetch data
-  const { isSuccess, data: fieldsData } = useQuery({
+  // Check if user is authenticated
+  const isAuthenticated = !!profile?.id;
+
+  // Use react-query to fetch fields data
+  const {
+    isLoading,
+    isError,
+    isSuccess,
+    data: fieldsData
+  } = useQuery({
     queryKey: ["fields"],
     queryFn: getFields,
+    staleTime: 5 * 60 * 1000, // Cache data for 5 minutes
+    retry: 1,
+    enabled: true
   });
 
-  // Hooks
-  const [filteredFieldsData, setFilteredFieldsData] = useState<FieldEntity[]>(
-    []
-  );
+  // Local state for filtering
+  const [filteredFieldsData, setFilteredFieldsData] = useState<FieldEntity[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [currentSearchValue, setCurrentSearchValue] = useState<string>("");
   const [selectedSport, setSelectedSport] = useState<string>("");
 
-  useEffect(() => {
-    if (isSuccess) {
-      const { data } = fieldsData;
-      console.log(`fields ${JSON.stringify(data)}`);
-      setFilteredFieldsData(data);
+  // Define filterData as a useCallback to fix the dependency warning
+  const filterData = useCallback(() => {
+    if (!isSuccess || !fieldsData || !fieldsData.data) {
+      console.log("Cannot filter: No data available");
+      return;
     }
-  }, [fieldsData, isSuccess]);
-
-  const filterData = () => {
-    if (!isSuccess) return;
 
     setFilteredFieldsData(
       fieldsData.data.filter((item) => {
-        const name = item.fieldName;
-        const address = item.cityName;
-        const normalizedSearchValue = searchValue.toLowerCase();
-        const concatenatedField = `${name} ${address}`.toLowerCase();
+        // Get field name from either format
+        const name = item.name || item.fieldName || "";
+        // Get city name from either format
+        const cityName = item.city?.name || item.cityName || "";
+        const address = item.address || "";
+        const normalizedSearchValue = currentSearchValue.toLowerCase();
+        const concatenatedField = `${name} ${cityName} ${address}`.toLowerCase();
 
         const matchesSearch = concatenatedField.includes(normalizedSearchValue);
         const matchesSport = selectedSport
           ? item.sports?.some(
-              (sport) =>
-                sport.name.toLowerCase() === selectedSport.toLowerCase()
-            )
+            (sport) =>
+              sport.name.toLowerCase() === selectedSport.toLowerCase()
+          )
           : true;
 
         return matchesSearch && matchesSport;
       })
     );
-  };
+  }, [isSuccess, fieldsData, currentSearchValue, selectedSport]);
 
+  // Update filtered data when API data changes or filters change
+  useEffect(() => {
+    if (isSuccess && fieldsData && fieldsData.data) {
+      console.log("Filtering fields data:", fieldsData.data.length, "fields");
+      filterData();
+    } else {
+      console.log("No field data available for filtering");
+    }
+  }, [isSuccess, fieldsData, selectedSport, currentSearchValue, filterData]);
+
+  // Event handlers
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
@@ -66,13 +87,26 @@ const FieldsPage: FC<FieldsPageProps> = () => {
   const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCurrentSearchValue(searchValue);
-    filterData();
   };
 
   const handleSportChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedSport(e.target.value);
-    filterData();
   };
+
+  // If user is not authenticated, show a message
+  if (!isAuthenticated) {
+    return (
+      <div className="main_content_container pt-2">
+        <Container fluid={"md"}>
+          <Alert variant="warning">
+            <Alert.Heading>Authentication Required</Alert.Heading>
+            <p>You need to be logged in to view fields. Please log in and try again.</p>
+            <Button onClick={() => navigate("/login")}>Go to Login</Button>
+          </Alert>
+        </Container>
+      </div>
+    );
+  }
 
   return (
     <div className="main_content_container pt-2">
@@ -129,20 +163,50 @@ const FieldsPage: FC<FieldsPageProps> = () => {
             </Form>
           </Col>
         </Row>
-        <Row lg={3} md={3} sm={2} xs={1} className="gy-3">
-          {filteredFieldsData.map((item, index) => (
-            <Col key={index}>
-              <FieldCardComponent fieldData={item} />
-            </Col>
-          ))}
-        </Row>
-        {filteredFieldsData.length === 0 && (
-          <p>
-            <FormattedMessage
-              id="fields.dataNotFound"
-              values={{ value: currentSearchValue }}
-            />
-          </p>
+
+        {/* Loading state */}
+        {isLoading && (
+          <div className="text-center my-5">
+            <Spinner animation="border" role="status" variant="primary">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+            <p className="mt-3">Loading fields...</p>
+          </div>
+        )}
+
+        {/* Error state */}
+        {isError && (
+          <Alert variant="info" className="my-3">
+            <Alert.Heading>Using Mock Data</Alert.Heading>
+            <p>
+              We couldn't connect to the fields API at this time. Using sample data instead.
+            </p>
+          </Alert>
+        )}
+
+        {/* Success state - show fields */}
+        {(isSuccess || isError) && fieldsData && (
+          <>
+            <Row lg={3} md={3} sm={2} xs={1} className="gy-3">
+              {(filteredFieldsData.length > 0 ? filteredFieldsData : []).map((item, index) => (
+                <Col key={index}>
+                  <FieldCardComponent fieldData={item} />
+                </Col>
+              ))}
+            </Row>
+
+            {/* No results message */}
+            {filteredFieldsData.length === 0 && (
+              <Alert variant="info" className="my-3">
+                <p>
+                  <FormattedMessage
+                    id="fields.dataNotFound"
+                    values={{ value: currentSearchValue || "all fields" }}
+                  />
+                </p>
+              </Alert>
+            )}
+          </>
         )}
       </Container>
     </div>
