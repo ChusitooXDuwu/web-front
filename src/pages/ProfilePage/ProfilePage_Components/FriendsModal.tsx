@@ -7,6 +7,7 @@ import {
   requestAllUsers,
 } from "../../../services/UserService/UserService";
 import { useProfile } from "../../../contexts/ProfileContext";
+import { Link } from "react-router-dom";
 
 interface FriendsModalProps {
   show: boolean;
@@ -83,13 +84,14 @@ const FriendsModal: FunctionComponent<FriendsModalProps> = ({
                   <p>
                     {item.givenName} {item.lastName}
                   </p>
-                  <Button
-                    style={{ marginLeft: "auto" }}
-                    aria-label="see user detail"
-                    title="see user detail"
-                  >
-                    <i className="bi bi-person"></i>
-                  </Button>
+                  <Link to={`/users/${item.id}`} style={{ marginLeft: "auto" }}>
+                    <Button
+                      aria-label="see user detail"
+                      title="see user detail"
+                    >
+                      <i className="bi bi-person"></i>
+                    </Button>
+                  </Link>
                   <Button
                     title="add friend"
                     aria-label="add friend"
