@@ -173,6 +173,7 @@ const es: Translations = {
   "form.label.gender": "Gender",
   "form.label.isOwner": "Are you the owner of a field?",
   "form.label.description": "Description",
+  "form.gender.select": "Select an option",
   "form.gender.male": "Male",
   "form.gender.female": "Female",
   "form.gender.other": "Other",

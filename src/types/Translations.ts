@@ -40,6 +40,7 @@ export interface Translations {
   "form.label.isOwner": string;
   "form.label.description": string;
 
+  "form.gender.select": string;
   "form.gender.male": string;
   "form.gender.female": string;
   "form.gender.other": string;

@@ -37,6 +37,7 @@ const en: Translations = {
   "form.label.gender": "Género",
   "form.label.isOwner": "¿Es propietario?",
   "form.label.description": "Descripción",
+  "form.gender.select": "Seleccione una opción",
   "form.gender.male": "Masculino",
   "form.gender.female": "Femenino",
   "form.gender.other": "Otro",
