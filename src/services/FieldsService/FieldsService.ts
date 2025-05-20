@@ -97,32 +97,43 @@ export async function createField(fieldData: CreateFieldFormData) {
     // Prepare data for the backend
     const backendData = {
       fieldName: fieldData.name,
-      cityId: fieldData.cityId,
+      cityName: fieldData.cityId, // The cityId is actually the city name
       address: fieldData.address,
       price: fieldData.price || 0,
-      // Add other fields as necessary
+      sportIds: fieldData.sportIds
     };
 
     // Make the POST request with authentication
-    const response = await axios.post(fieldsEndpoint, backendData, {
-      withCredentials: true
-    });
-
-    // If there are sports selected, add them to the field
-    if (fieldData.sportIds && fieldData.sportIds.length > 0 && response.data.id) {
-      for (const sportId of fieldData.sportIds) {
-        await axios.post(
-          `${fieldsEndpoint}/${response.data.id}/sports/${sportId}`,
-          {},
-          { withCredentials: true }
-        );
+    const response = await axios.post<ResponseEntity<FieldEntity>>(
+      fieldsEndpoint,
+      backendData,
+      {
+        withCredentials: true,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
       }
-    }
+    );
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error creating field:", error);
-    throw error;
+
+    // Handle specific error cases
+    if (error.response?.status === 401) {
+      throw new Error("You must be logged in to create a field");
+    } else if (error.response?.status === 403) {
+      throw new Error("You don't have permission to create fields");
+    } else if (error.response?.data?.message) {
+      // If the message is an array, join it into a single string
+      const errorMessage = Array.isArray(error.response.data.message)
+        ? error.response.data.message.join(',')
+        : error.response.data.message;
+      throw new Error(errorMessage);
+    } else {
+      throw new Error("Failed to create field. Please try again later.");
+    }
   }
 }
 

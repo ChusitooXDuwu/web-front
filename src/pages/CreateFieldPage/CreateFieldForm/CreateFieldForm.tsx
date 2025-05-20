@@ -43,7 +43,13 @@ const CreateFieldForm: FunctionComponent<CreateFieldFormProps> = ({
     },
     onError: (error: any) => {
       console.error("Error creating field:", error);
-      setError(error.response?.data?.message || 'Error al crear el campo');
+      // Show the error message from the service
+      setError(error.message || 'Error al crear el campo');
+
+      // If unauthorized, redirect to login
+      if (error.message === "You must be logged in to create a field") {
+        navigate('/login', { state: { from: '/fields/create' } });
+      }
     }
   });
 
@@ -71,7 +77,12 @@ const CreateFieldForm: FunctionComponent<CreateFieldFormProps> = ({
 
     // Validar datos del formulario
     if (!formData.name || !formData.cityId || !formData.address) {
-      setError('Por favor completa todos los campos obligatorios');
+      setError(formatMessage({ id: "field.form.error.required" }));
+      return;
+    }
+
+    if (formData.sportIds.length === 0) {
+      setError(formatMessage({ id: "field.form.error.sports" }));
       return;
     }
 
