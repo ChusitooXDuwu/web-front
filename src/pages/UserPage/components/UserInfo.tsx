@@ -54,7 +54,7 @@ const UserInfo: FunctionComponent<UserInfoProps> = ({ user: profile }) => {
           <FavoriteCourts courts={profile.favoriteCourts || []} />
         </Col>
         <Col xs={12} md={4}>
-          <SportsList sports={profile.sports || []} />
+          <SportsList sports={profile.sports || []} openModal={null} />
         </Col>
       </Row>
     </>

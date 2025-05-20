@@ -12,11 +12,13 @@ import { useOutletContext } from "react-router-dom";
 
 interface ProfileOutletContext {
   handleShow: () => void;
+  handleShowSportsModal: () => void;
 }
 
 const ProfileContent = () => {
   const { profile } = useProfile(); // Acceder a los datos del perfil
-  const { handleShow } = useOutletContext<ProfileOutletContext>();
+  const { handleShow, handleShowSportsModal } =
+    useOutletContext<ProfileOutletContext>();
   // Check if profile is null
   if (!profile) {
     return (
@@ -53,10 +55,17 @@ const ProfileContent = () => {
           />
         </Col>
         <Col xs={12} md={4}>
-          <FavoriteCourts courts={profile.favoriteCourts || []} />
+          <FavoriteCourts
+            courts={profile.favoriteCourts || []}
+            isCurrentUser={true}
+          />
         </Col>
         <Col xs={12} md={4}>
-          <SportsList sports={profile.sports || []} />
+          <SportsList
+            sports={profile.sports || []}
+            isCurrentUser={true}
+            openModal={handleShowSportsModal}
+          />
         </Col>
       </Row>
     </>

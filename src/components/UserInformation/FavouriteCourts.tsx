@@ -5,20 +5,26 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 interface FavoriteCourtsProps {
   courts: string[];
+  isCurrentUser?: boolean;
 }
 
-const FavoriteCourts: React.FC<FavoriteCourtsProps> = ({ courts }) => {
+const FavoriteCourts: React.FC<FavoriteCourtsProps> = ({
+  courts,
+  isCurrentUser,
+}) => {
   return (
     <div>
       <h3 className={`text-lg font-semibold text-yellow-600 ${styles.tittle}`}>
         <FormattedMessage id="profile.content.favoriteCourts" />
       </h3>
-      <Link to={"/fields"}>
-        <Button variant="primary">
-          <i className="bi bi-search me-2"></i>
-          <FormattedMessage id="browse.fields" />
-        </Button>
-      </Link>
+      {isCurrentUser && (
+        <Link to={"/fields"}>
+          <Button variant="primary">
+            <i className="bi bi-search me-2"></i>
+            <FormattedMessage id="browse.fields" />
+          </Button>
+        </Link>
+      )}
       <ul>
         {courts.map((court, index) => (
           <li key={index} className="flex items-center space-x-2">
