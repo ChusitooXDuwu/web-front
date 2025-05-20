@@ -97,6 +97,9 @@ const en: Translations = {
   // Profile Content aboutme
   "profile.content.aboutme": "Sobre mí",
   "profile.content.aboutme.since": "Jugador desde",
+  "profile.content.aboutme.email": "Correo",
+  "profile.content.aboutme.phone": "Teléfono",
+  "profile.content.aboutme.gender": "Género",
   // Profile Notification
   "profile.notifications": "Notificaciones",
   "profile.notifications.none": "No hay notificaciones.",

@@ -43,6 +43,7 @@ const ProfileContent = () => {
           <AboutMe
             text={profile.description}
             since={profile.createdAt || null}
+            profile={profile}
           />
         </Col>
       </Row>

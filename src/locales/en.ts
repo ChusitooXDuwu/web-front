@@ -84,6 +84,9 @@ const es: Translations = {
   //Profile Content aboutme
   "profile.content.aboutme": "About me",
   "profile.content.aboutme.since": "Player Since",
+  "profile.content.aboutme.email": "Email",
+  "profile.content.aboutme.phone": "Phone",
+  "profile.content.aboutme.gender": "Gender",
   //Profile Notification
   "profile.notifications": "Notifications",
   "profile.notifications.none": "There are no notifications",

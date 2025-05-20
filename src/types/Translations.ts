@@ -100,6 +100,9 @@ export interface Translations {
   "profile.content.favoriteCourts": string;
   "profile.content.aboutme": string;
   "profile.content.aboutme.since": string;
+  "profile.content.aboutme.email": string;
+  "profile.content.aboutme.phone": string;
+  "profile.content.aboutme.gender": string;
   "profile.notifications": string;
   "profile.notifications.none": string;
   "profile.history": string;

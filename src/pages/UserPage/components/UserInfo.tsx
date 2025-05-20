@@ -39,6 +39,7 @@ const UserInfo: FunctionComponent<UserInfoProps> = ({ user: profile }) => {
           <AboutMe
             text={profile.description}
             since={profile.createdAt || null}
+            profile={profile}
           />
         </Col>
       </Row>

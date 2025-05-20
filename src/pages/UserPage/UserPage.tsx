@@ -30,10 +30,12 @@ const UserComponent: FunctionComponent<UserComponentProps> = () => {
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
             <FormattedMessage id="pages.home" />
           </Breadcrumb.Item>
-          <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home/users" }}>
+          <Breadcrumb.Item>
             <FormattedMessage id="pages.users" />
           </Breadcrumb.Item>
-          <Breadcrumb.Item active>{"Jhon doe"}</Breadcrumb.Item>
+          <Breadcrumb.Item active>
+            {data?.data.givenName} {data?.data.lastName}
+          </Breadcrumb.Item>
         </Breadcrumb>
         <Row style={{ flex: 1, justifyContent: "center" }}>
           <Col className="px-4">
