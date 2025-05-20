@@ -6,7 +6,6 @@ import { requestMyProfile } from "../services/UserService/UserService";
 // Creamos un contexto vacío con los tipos adecuados
 interface ProfileContextProps {
   profile: UserEntity | null;
-  setProfile: (profile: UserEntity) => void;
   refetch: () => void;
 }
 
@@ -26,13 +25,8 @@ export const useProfile = () => {
 // Componente Provider para envolver la aplicación
 export const ProfileProvider: FC<{ children: ReactNode }> = ({ children }) => {
   // Estado inicial con datos ficticios
-  const [profile, setProfile] = useState<UserEntity | null>(null);
 
-  const {
-    isSuccess,
-    data: profileData,
-    refetch,
-  } = useQuery({
+  const { data: profileData, refetch } = useQuery({
     queryKey: ["userProfile"],
     queryFn: () => requestMyProfile(),
     staleTime: Infinity,
@@ -41,7 +35,7 @@ export const ProfileProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <ProfileContext.Provider
-      value={{ profile: profileData?.data || null, refetch, setProfile }}
+      value={{ profile: profileData?.data || null, refetch }}
     >
       {children}
     </ProfileContext.Provider>

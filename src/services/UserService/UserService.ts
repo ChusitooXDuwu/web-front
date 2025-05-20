@@ -69,5 +69,23 @@ async function requestAllUsers(params: { name: string }) {
   return { data: users, message };
 }
 
+async function requestAddFriend(userId: string, friendId: string) {
+  const url = `${API_BASE_URL}/users/${userId}/friends`;
+  const body = { userId: friendId };
+  const response: AxiosResponse<ResponseEntity<object>> = await axios.post(
+    url,
+    body,
+    { withCredentials: true }
+  );
+  const user = plainToInstance(UserEntityDto, response.data.data);
+  return { data: user, message: response.data.message };
+}
+
 export default createUser;
-export { requestLogin, requestUser, requestMyProfile, requestAllUsers };
+export {
+  requestLogin,
+  requestUser,
+  requestMyProfile,
+  requestAllUsers,
+  requestAddFriend,
+};
