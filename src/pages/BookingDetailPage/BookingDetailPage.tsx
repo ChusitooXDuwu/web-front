@@ -18,7 +18,6 @@ import BookingCard from "../../components/BookingCard/BookingCard";
 import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
 import { EventType } from "../../services/FieldsServices/FieldsService";
 
-import { EventInterface } from "../../entities/Entities";
 
 import UserEntity from "../../entities/user/UserEntity";
 import { ReactComponent as ProfileIcon } from "../../icons/profileIcon.svg";

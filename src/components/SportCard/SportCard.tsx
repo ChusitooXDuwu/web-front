@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import styles from "./SportCard.module.scss"; 
+import styles from "./SportCard.module.scss";
 import { Card, Col, ListGroup, Row } from "react-bootstrap";
-import SportEntity from "../../entities/SportEntity";
+import SportEntity from "../../entities/SportInterface";
 import { ReactComponent as BasketballIcon } from "../../icons/basketballSVG.svg";
 import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
@@ -18,17 +18,17 @@ interface SportCardProps {
 
 
 const SportCard: FC<SportCardProps> = ({ sport }) => {
-  
+
   const navigate = useNavigate();
   const navToFields = () => navigate(`/fields`);
   const { locale } = useContext(LocaleContext);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const intl = useIntl();
   const { formatMessage } = intl;
-  
+
 
   return (
-  
+
     <Card style={{ width: "18rem", backgroundColor: "#60508C" }} onClick={navToFields} className={`${styles.sport_card}`}>
       <Card.Body className={styles.card_body}>
         <div className="d-flex justify-content-center w-100">
@@ -45,7 +45,7 @@ const SportCard: FC<SportCardProps> = ({ sport }) => {
               <Row>
                 <Col className="d-flex justify-content-center">
 
-                  <b>{sport.availableFields} <FormattedMessage id="sportCard.availableFields"/></b>
+                  <b>{sport.availableFields} <FormattedMessage id="sportCard.availableFields" /></b>
 
                 </Col>
               </Row>
@@ -54,7 +54,7 @@ const SportCard: FC<SportCardProps> = ({ sport }) => {
               <Row>
                 <Col className="d-flex justify-content-center">
 
-                  <b>{sport.availableBookings} <FormattedMessage id="sportCard.availableBookings"/></b>
+                  <b>{sport.availableBookings} <FormattedMessage id="sportCard.availableBookings" /></b>
 
                 </Col>
               </Row>

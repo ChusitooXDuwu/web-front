@@ -18,13 +18,13 @@ const FieldCardComponent: FunctionComponent<FieldCardComponentProps> = ({
       onClick={() => navigate(`/fields/2`)}
     >
       <Card.Body className={`${styles.card_body}`}>
-        <Card.Title>{fieldData.name}</Card.Title>
+        <Card.Title>{fieldData.fieldName}</Card.Title>
         <Card.Text>
-          <i className="bi-geo-alt-fill"></i> {fieldData.address}
+          <i className="bi-geo-alt-fill"></i> {fieldData.cityName}
         </Card.Text>
         <Card.Text>
           <i className="bi-dribbble"></i>{" "}
-          {fieldData.sports.map((item) => item.name).join(", ")}
+          {fieldData.sports?.map((item) => item.name).join(", ")}
         </Card.Text>
       </Card.Body>
     </Card>

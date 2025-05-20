@@ -1,7 +1,7 @@
 import FieldCardComponent from "../FieldsPage/FieldCardComponent/FieldCardComponent";
 import FieldEntity from "../../entities/FieldEntity";
 import CityEntity from "../../entities/CityEntity";
-import SportEntity from "../../entities/SportEntity";
+import SportEntity from "../../entities/SportInterface";
 import { Link } from "react-router-dom";
 import FieldDetailEntity from "../../entities/FieldDetailEntity";
 import FieldMapCardComponent from "../../components/FieldMapCardComponent/FieldMapCardComponent";
@@ -40,35 +40,35 @@ function CreateEventPage() {
   });
   return (
     <>
-    <Row className={`${styles.title_row} pt-2 `} md={12}>
-    <Breadcrumb>
-        <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
-        Inicio
-        </Breadcrumb.Item>
-        <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/fields" }}>
-        Canchas
-        </Breadcrumb.Item>
-        <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/fields/${mockData.id}` }}>
-        {mockData.field_name}
-        </Breadcrumb.Item>
-        <Breadcrumb.Item active>{`Mapa de  ${mockData.field_name}`}</Breadcrumb.Item>
-    </Breadcrumb>
-    </Row>
-    <Container fluid className="main_content_container pt-2 d-flex">
-        <Row className= {`mb-3 gy-2 ${styles.main_row} `} >
-            <Col md={4} className={`${styles.left_col}`}>
-                <FieldMapCardComponent field={mockData} />
-            </Col>
-            <Col md={8} className={styles.right_col}>
-                <CreateEventForm sports={sportsData? sportsData.data: []}
+      <Row className={`${styles.title_row} pt-2 `} md={12}>
+        <Breadcrumb>
+          <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
+            Inicio
+          </Breadcrumb.Item>
+          <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/fields" }}>
+            Canchas
+          </Breadcrumb.Item>
+          <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/fields/${mockData.id}` }}>
+            {mockData.field_name}
+          </Breadcrumb.Item>
+          <Breadcrumb.Item active>{`Mapa de  ${mockData.field_name}`}</Breadcrumb.Item>
+        </Breadcrumb>
+      </Row>
+      <Container fluid className="main_content_container pt-2 d-flex">
+        <Row className={`mb-3 gy-2 ${styles.main_row} `} >
+          <Col md={4} className={`${styles.left_col}`}>
+            <FieldMapCardComponent field={mockData} />
+          </Col>
+          <Col md={8} className={styles.right_col}>
+            <CreateEventForm sports={sportsData ? sportsData.data : []}
               cities={citiesData ? citiesData.data : []}></CreateEventForm>
-            </Col>
+          </Col>
         </Row>
-    </Container>
+      </Container>
     </>
-)
+  )
 }
-   
+
 
 
 export default CreateEventPage;

@@ -41,14 +41,14 @@ const FieldsPage: FC<FieldsPageProps> = () => {
 
     setFilteredFieldsData(
       fieldsData.data.filter((item) => {
-        const name = item.name;
-        const address = item.address;
+        const name = item.fieldName;
+        const address = item.cityName;
         const normalizedSearchValue = searchValue.toLowerCase();
         const concatenatedField = `${name} ${address}`.toLowerCase();
 
         const matchesSearch = concatenatedField.includes(normalizedSearchValue);
         const matchesSport = selectedSport
-          ? item.sports.some(
+          ? item.sports?.some(
               (sport) =>
                 sport.name.toLowerCase() === selectedSport.toLowerCase()
             )
