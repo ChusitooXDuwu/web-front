@@ -13,7 +13,7 @@ const COLORS_PLAYER = ["#8e44ad", "#9b59b6", "#c0392b", "#e74c3c"];
 interface StatsPageProps {
   userId?: string
 }
-const defauldId = "84726399-b3eb-41f6-90d8-6c4a875d9d98";
+const defauldId = "71d9df0d-5da4-4b9d-b5da-2ff323c403b8";
 
 const StatisticsPage: React.FC<StatsPageProps> = ({ userId }) => {
   const id = userId ? userId : defauldId;

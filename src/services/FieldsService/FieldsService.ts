@@ -21,7 +21,8 @@ export interface CreateFieldFormData {
 async function getFields(): Promise<{ data: FieldEntity[]; message: string }> {
   try {
     const response = await axios.get<ResponseEntity<FieldEntity[]>>(
-      fieldsEndpoint
+      fieldsEndpoint,
+      { withCredentials: true }
     );
     return {
       data: response.data.data,

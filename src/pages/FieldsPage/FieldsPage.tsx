@@ -1,62 +1,69 @@
 import { ChangeEvent, FC, FormEvent, useEffect, useState } from "react";
 import styles from "./FieldsPage.module.scss";
 import { Breadcrumb, Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { FieldEntity } from "../../entities/Entities";
 import FieldCardComponent from "./FieldCardComponent/FieldCardComponent";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useQuery } from "@tanstack/react-query";
 import getFields from "../../services/FieldsService/FieldsService";
 
-interface FieldsPageProps {}
+interface FieldsPageProps { }
 
 const FieldsPage: FC<FieldsPageProps> = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const initialSportFilter = searchParams.get("sport") || "";
 
-  // Fetch data
   const { isSuccess, data: fieldsData } = useQuery({
     queryKey: ["fields"],
     queryFn: getFields,
   });
 
-  // Hooks
-  const [filteredFieldsData, setFilteredFieldsData] = useState<FieldEntity[]>(
-    []
-  );
+  const [filteredFieldsData, setFilteredFieldsData] = useState<FieldEntity[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [currentSearchValue, setCurrentSearchValue] = useState<string>("");
-  const [selectedSport, setSelectedSport] = useState<string>("");
+  const [selectedSport, setSelectedSport] = useState<string>(initialSportFilter);
+  const [sportsOptions, setSportsOptions] = useState<string[]>([]);
 
   useEffect(() => {
     if (isSuccess) {
       const { data } = fieldsData;
-      console.log(`fields ${JSON.stringify(data)}`);
-      setFilteredFieldsData(data);
+      applyFilters(data);
+    }
+  }, [fieldsData, isSuccess, selectedSport, currentSearchValue]);
+
+  useEffect(() => {
+    if (searchParams.get("sport")) {
+      setSelectedSport(searchParams.get("sport") || "");
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (isSuccess && fieldsData) {
+      const allSports = fieldsData.data.flatMap(field => field.sports?.map(sport => sport.name) ?? []);
+      const uniqueSports = Array.from(new Set(allSports));
+      setSportsOptions(uniqueSports);
     }
   }, [fieldsData, isSuccess]);
+  const applyFilters = (fields: FieldEntity[]) => {
+    const filtered = fields.filter((item) => {
+      const name = item.fieldName;
+      const address = item.cityName;
+      const concatenated = `${name} ${address}`.toLowerCase();
 
-  const filterData = () => {
-    if (!isSuccess) return;
+      const matchesSearch = concatenated.includes(currentSearchValue.toLowerCase());
+      const matchesSport = selectedSport
+        ? item.sports?.some(
+          (sport) => sport.name.toLowerCase() === selectedSport.toLowerCase()
+        )
+        : true;
 
-    setFilteredFieldsData(
-      fieldsData.data.filter((item) => {
-        const name = item.fieldName;
-        const address = item.cityName;
-        const normalizedSearchValue = searchValue.toLowerCase();
-        const concatenatedField = `${name} ${address}`.toLowerCase();
+      return matchesSearch && matchesSport;
+    });
 
-        const matchesSearch = concatenatedField.includes(normalizedSearchValue);
-        const matchesSport = selectedSport
-          ? item.sports?.some(
-              (sport) =>
-                sport.name.toLowerCase() === selectedSport.toLowerCase()
-            )
-          : true;
-
-        return matchesSearch && matchesSport;
-      })
-    );
+    setFilteredFieldsData(filtered);
   };
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -66,12 +73,12 @@ const FieldsPage: FC<FieldsPageProps> = () => {
   const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCurrentSearchValue(searchValue);
-    filterData();
   };
 
   const handleSportChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedSport(e.target.value);
-    filterData();
+    const newSport = e.target.value;
+    setSelectedSport(newSport);
+    navigate(`/fields?sport=${newSport}`);
   };
 
   return (
@@ -96,18 +103,13 @@ const FieldsPage: FC<FieldsPageProps> = () => {
               <option value="">
                 <FormattedMessage id="field.todos" />
               </option>
-              <option value="soccer">
-                <FormattedMessage id="field.soccer" />
-              </option>
-              <option value="basketball">
-                <FormattedMessage id="field.basketball" />
-              </option>
-              <option value="tennis">
-                <FormattedMessage id="field.tennis" />
-              </option>
-              <option value="volleyball">
-                <FormattedMessage id="field.volley" />
-              </option>
+              {sportsOptions.map((sportName) => (
+                <option key={sportName} value={sportName.toLowerCase()}>
+                  {/* Aquí podrías usar FormattedMessage si tienes los ids, 
+                      o solo mostrar sportName */}
+                  {sportName}
+                </option>
+              ))}
             </Form.Select>
           </Col>
           <Col md="auto" className={styles.create_col}>

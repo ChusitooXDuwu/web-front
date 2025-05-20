@@ -39,6 +39,7 @@ async function requestLogin(loginData: LoginInfo) {
 
 async function requestUser(id: string) {
   const url = `${API_BASE_URL}/users/${id}`;
+
   const response = await axios.get<ResponseEntity<UserEntity>>(url, {
     withCredentials: true,
   });
@@ -47,6 +48,7 @@ async function requestUser(id: string) {
 }
 
 async function requestMyProfile() {
+  console.log(API_BASE_URL)
   const url = `${API_BASE_URL}/users/profile`;
   const response = await axios.get<ResponseEntity<object>>(url, {
     withCredentials: true,

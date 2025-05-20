@@ -20,7 +20,7 @@ interface SportCardProps {
 const SportCard: FC<SportCardProps> = ({ sport }) => {
 
   const navigate = useNavigate();
-  const navToFields = () => navigate(`/fields`);
+  const navToFields = () => navigate(`/fields?sport=${sport.name.toLowerCase()}`);
   const { locale } = useContext(LocaleContext);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const intl = useIntl();
