@@ -30,7 +30,6 @@ const FriendsModal: FunctionComponent<FriendsModalProps> = ({
     data,
     isSuccess,
     isLoading,
-    error,
     refetch: refetchUsers,
   } = useQuery({
     queryKey: ["searchUsers", searchTerm],
