@@ -7,6 +7,7 @@ import { requestMyProfile } from "../services/UserService/UserService";
 interface ProfileContextProps {
   profile: UserEntity | null;
   setProfile: (profile: UserEntity) => void;
+  refetch: () => void;
 }
 
 const ProfileContext = createContext<ProfileContextProps | undefined>(
@@ -27,7 +28,11 @@ export const ProfileProvider: FC<{ children: ReactNode }> = ({ children }) => {
   // Estado inicial con datos ficticios
   const [profile, setProfile] = useState<UserEntity | null>(null);
 
-  const { isSuccess, data: profileData } = useQuery({
+  const {
+    isSuccess,
+    data: profileData,
+    refetch,
+  } = useQuery({
     queryKey: ["userProfile"],
     queryFn: () => requestMyProfile(),
     staleTime: Infinity,
@@ -36,7 +41,7 @@ export const ProfileProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <ProfileContext.Provider
-      value={{ profile: profileData?.data || null, setProfile }}
+      value={{ profile: profileData?.data || null, refetch, setProfile }}
     >
       {children}
     </ProfileContext.Provider>

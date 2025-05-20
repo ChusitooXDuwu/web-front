@@ -10,9 +10,11 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { useMutation } from "@tanstack/react-query";
 import { LoginInfo } from "../../entities/user/LoginInfo";
 import { requestLogin } from "../../services/UserService/UserService";
+import { useProfile } from "../../contexts/ProfileContext";
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { refetch } = useProfile();
   const intl = useIntl();
   const [loginData, setLoginData] = useState<LoginInfo>({
     username: "",
@@ -23,6 +25,7 @@ function LoginPage() {
     onSuccess: (data) => {
       console.log(data);
       console.log("Login successfull");
+      refetch();
       navigate("/home");
     },
     onError: (error) => {
