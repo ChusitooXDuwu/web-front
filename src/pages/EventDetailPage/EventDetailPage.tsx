@@ -39,7 +39,7 @@ const mockPlayer: UserEntity = {
   lastName: "Perez",
   description: "",
   createdAt: new Date(),
-  favoriteCourts: [],
+  favoriteFields: [],
   sports: [],
   friends: [],
 };
@@ -69,7 +69,7 @@ const mockEvent: EventType = {
   image: null,
 };
 
-interface EventDetailPageProps { }
+interface EventDetailPageProps {}
 
 const EventDetailPage: FC<EventDetailPageProps> = () => {
   const { eventId } = useParams();

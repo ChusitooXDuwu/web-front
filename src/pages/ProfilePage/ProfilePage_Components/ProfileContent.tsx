@@ -57,7 +57,7 @@ const ProfileContent = () => {
         </Col>
         <Col xs={12} md={4}>
           <FavoriteCourts
-            courts={profile.favoriteCourts || []}
+            courts={profile.favoriteFields || []}
             isCurrentUser={true}
           />
         </Col>

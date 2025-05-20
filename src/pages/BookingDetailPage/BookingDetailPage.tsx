@@ -18,7 +18,6 @@ import BookingCard from "../../components/BookingCard/BookingCard";
 import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
 import { EventType } from "../../services/FieldsServices/FieldsService";
 
-
 import UserEntity from "../../entities/user/UserEntity";
 import { ReactComponent as ProfileIcon } from "../../icons/profileIcon.svg";
 import { useQuery } from "@tanstack/react-query";
@@ -43,7 +42,7 @@ const mockPlayer: UserEntity = {
   lastName: "",
   description: "",
   createdAt: new Date(),
-  favoriteCourts: [],
+  favoriteFields: [],
   sports: [],
   friends: [],
 };
@@ -73,7 +72,7 @@ const mockEvent: EventType = {
   image: null,
 };
 
-interface BookingDetailPageProps { }
+interface BookingDetailPageProps {}
 
 const BookingDetailPage: FC<BookingDetailPageProps> = () => {
   const { bookingId } = useParams();

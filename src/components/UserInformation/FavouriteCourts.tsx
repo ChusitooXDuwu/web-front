@@ -3,8 +3,9 @@ import { ReactComponent as Icon } from "../../icons/courtIcon.svg";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { UserFieldInterface } from "../../entities/user/UserFieldEntity";
 interface FavoriteCourtsProps {
-  courts: string[];
+  courts: UserFieldInterface[];
   isCurrentUser?: boolean;
 }
 
@@ -29,11 +30,11 @@ const FavoriteCourts: React.FC<FavoriteCourtsProps> = ({
         {courts.map((court, index) => (
           <li key={index} className="flex items-center space-x-2">
             <Icon
-              className={styles.image}
+              className={[styles.image, "my-2 me-2"].join(" ")}
               style={{ fill: "#E99E14" }}
               fill={"#E99E14"}
             />
-            <span className={styles.text}>{court}</span>
+            <span className={styles.text}>{court.fieldName}</span>
           </li>
         ))}
       </ul>

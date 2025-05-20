@@ -1,6 +1,6 @@
-import { Type } from "class-transformer";
 import BaseEntity, { BaseEntityDto } from "../BaseEntity";
 import { SportEntityDto } from "../SportEntity";
+import { UserFieldInterface } from "./UserFieldEntity";
 
 export default interface UserEntity extends BaseEntity {
   // Plain attributes
@@ -12,7 +12,7 @@ export default interface UserEntity extends BaseEntity {
   phoneNumber: string;
   imageUrl: string | null;
   description: string;
-  favoriteCourts?: string[];
+  favoriteFields?: UserFieldInterface[];
   sports?: string[];
   // Relationships
   friends?: UserEntity[];
@@ -27,7 +27,7 @@ export class UserEntityDto extends BaseEntityDto implements UserEntity {
   phoneNumber!: string;
   imageUrl!: string | null;
   description!: string;
-  favoriteCourts?: string[] | undefined;
+  favoriteFields?: UserFieldInterface[] | undefined;
   sports?: string[] | undefined;
   friends?: UserEntityDto[] | undefined;
 }
