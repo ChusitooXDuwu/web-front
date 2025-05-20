@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FunctionComponent, useState, useContext } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import  SportEntity from "../../entities/SportEntity";
+import SportEntity from "../../entities/SportInterface";
 import CityEntity from "../../entities/CityEntity";
 import styles from "./EventForm.module.scss";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -54,9 +54,9 @@ const CreateEventForm: FunctionComponent<CreateFieldFormProps> = ({
     alert(intl.formatMessage({ id: "event.alert" }));
   };
 
-    const { locale } = useContext(LocaleContext);
-    const [showOffcanvas, setShowOffcanvas] = useState(false);
-    const intl = useIntl();
+  const { locale } = useContext(LocaleContext);
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const intl = useIntl();
 
   return (
     <Form onSubmit={handleSubmit} className={styles.form_esp}>
@@ -75,7 +75,7 @@ const CreateEventForm: FunctionComponent<CreateFieldFormProps> = ({
         <Form.Label>
           <FormattedMessage id="field.form.label.sports" />
         </Form.Label>
-        <Row style={{color: "white"}}>
+        <Row style={{ color: "white" }}>
           {sports.map((item, index) => (
             <Col key={index} className={styles.check_col}>
               <Form.Check
@@ -101,7 +101,7 @@ const CreateEventForm: FunctionComponent<CreateFieldFormProps> = ({
       </Form.Group>
       <div className="d-flex justify-content-center">
         <Button type="submit" className={styles.button_esp}>
-          <FormattedMessage id="event.form.submit"/>
+          <FormattedMessage id="event.form.submit" />
         </Button>
       </div>
     </Form>

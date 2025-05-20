@@ -1,29 +1,54 @@
-import OldResponseEntity from "../ResponseEntity";
+import OldResponseEntity, { ResponseEntity } from "../ResponseEntity";
 import baseUrl from "../Config";
 import axios from "axios";
-import EventEntity from "../../entities/EventEntity";
+import { EventEntity } from "../../entities/Entities";
+import StatisticsData from "../../entities/StatisticsEntity";
+import Event, { EventEntityDto } from "../../entities/EventEntity";
+import {plainToInstance} from "class-transformer"
 
-const mockGetEventsUrl =
-  "https://gist.githubusercontent.com/Danielfts/a9ae422facf38bcb10e156ae2442d0d1/raw/cf7076d1e5c5802dbd0b0655b81d66031779d9d1/SH-Events.json";
-const getEventsUrl = baseUrl ? `${baseUrl}/bookings` : mockGetEventsUrl;
+const baseDefaultUrl = "http://localhost:3000/events"
+const getEventsUrl = baseUrl ? `${baseUrl}/events` : baseDefaultUrl;
 
 async function getAvailableEvents() {
-  const response = await axios.get<OldResponseEntity<Array<any>>>(getEventsUrl);
-  const data = response.data.data["events"];
-  const processedData = data.flatMap((item) => {
-    let result: EventEntity | [];
-    try {
-      result = EventEntity.fromApi(item);
-    } catch (error) {
-      result = [];
-    }
-    return result;
+  const response = await axios.get<ResponseEntity<object[]>>(getEventsUrl, { withCredentials: true });
+  const { data: plainData, message } = response.data;
+  const data = plainToInstance(EventEntityDto, plainData, {
+      enableImplicitConversion: true,
   });
-  const message = response.data.message;
+    console.log(data);
+    return { data, message };
+}
+
+async function getEventsByUserId(userId: string) {
+  const url = getEventsUrl + `/users/${userId}`;
+  const response = await axios.get<ResponseEntity<Event[]>>(url, { withCredentials: true });
+  const eventsData = response.data.data;
+  const processedData = eventsData.flatMap((item) => {
+    try {
+      return [EventEntity.fromApi(item)];
+    } catch (error) {
+      console.warn("Invalid event item", error);
+      return [];
+    }
+  });
+
   return {
     data: processedData,
+    message: response.data.message,
+  };
+}
+
+async function getStatsByUserId(userId: string) {
+  const url = getEventsUrl + `/stats/${userId}`;
+  const response = await axios.get<ResponseEntity<StatisticsData>>(url, { withCredentials: true });
+  const data = response.data.data;
+  const message = response.data.message;
+  return {
+    data,
     message,
   };
 }
 
-export { getAvailableEvents };
+
+
+export { getAvailableEvents, getEventsByUserId, getStatsByUserId };

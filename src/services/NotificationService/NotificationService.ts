@@ -12,7 +12,8 @@ async function getAllNotificationUser(userId: string) {
   const getNotificationUrlAll = getNotifiactionUrl + `/user/${userId}`;
   console.log(getNotificationUrlAll);
   const response = await axios.get<ResponseEntity<Array<NotificationEntity>>>(
-    getNotificationUrlAll
+    getNotificationUrlAll,
+    { withCredentials: true }
   );
   const data = response.data.data;
   const message = response.data.message;
@@ -25,7 +26,8 @@ async function getAllNotificationUser(userId: string) {
 async function markAsReadOne(id: string) {
   const markAsReadOne = getNotifiactionUrl + `/read/${id}`;
   const response = await axios.patch<ResponseEntity<NotificationEntity>>(
-    markAsReadOne
+    markAsReadOne,
+    { withCredentials: true }
   );
   const data = response.data.data;
   const message = response.data.message;
@@ -37,7 +39,8 @@ async function markAsReadOne(id: string) {
 async function markAllUserAsRead(userId: string) {
   const markAllUserAsRead = getNotifiactionUrl + `/read/user/${userId}`;
   const response = await axios.patch<ResponseEntity<NotificationEntity>>(
-    markAllUserAsRead
+    markAllUserAsRead,
+    { withCredentials: true }
   );
   const data = response.data.data;
   const message = response.data.message;

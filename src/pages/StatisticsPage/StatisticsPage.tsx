@@ -5,57 +5,38 @@ import style from "./StatisticsPage.module.scss";
 import { FormattedMessage } from "react-intl";
 import { ReactComponent as StatisticsIcon } from "../../icons/statistics.svg";
 import Spinner from 'react-bootstrap/Spinner';
-interface StatisticsData {
-  courts: { name: string; count: number }[];
-  players: { name: string; count: number }[];
-  totalGames: number;
-}
+import StatisticsData from "../../entities/StatisticsEntity";
+import { getStatsByUserId } from "../../services/EventsService/EventsService";
 
-const mockData: StatisticsData = {
-  totalGames: 123,
-  courts: [
-    { name: "Cancha A", count: 45 },
-    { name: "Cancha B", count: 30 },
-  ],
-  players: [
-    { name: "Juan Pérez", count: 50 },
-    { name: "María López", count: 40 },
-  ],
-};
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 const COLORS_PLAYER = ["#8e44ad", "#9b59b6", "#c0392b", "#e74c3c"];
+interface StatsPageProps {
+  userId?: string
+}
+const defauldId = "84726399-b3eb-41f6-90d8-6c4a875d9d98";
 
-const StatisticsPage: React.FC = () => {
+const StatisticsPage: React.FC<StatsPageProps> = ({ userId }) => {
+  const id = userId ? userId : defauldId;
   const [stats, setStats] = useState<StatisticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios
-      .get("https://my.api.mockaroo.com/conteos_sport_hub_stats.json?key=d49a1240")
-      .then((response) => {
-        const rawData = response.data; // Datos en el formato [{name: "...", count: ...}, ...]
-        
-        // Dividimos los datos: mitad para `courts`, mitad para `players`
-        const middleIndex = Math.floor(rawData.length / 2);
-        const courts = rawData.slice(0, middleIndex);
-        const players = rawData.slice(middleIndex);
-
-        // Generamos un número aleatorio para totalGames
-        const totalGames = Math.floor(Math.random() * 200) + 50;
-
-        setStats({ courts, players, totalGames });
-      })
-      .catch(() => {
-        setError("No se pudieron cargar las estadísticas");
-      })
-      .finally(() => {
+    async function getStats() {
+      try {
+        const { data } = await getStatsByUserId(id);
+        setStats(data);
+      }
+      catch (error) {
+        console.error("Error fetching stats", error);
+      } finally {
         setLoading(false);
-      });
-  }, []);
+      }
+    }
+    getStats()
+  }, [])
 
- 
- 
+
 
   return (
     <div className={style.statisticsContainer}>
@@ -83,14 +64,14 @@ const StatisticsPage: React.FC = () => {
             />
             <FormattedMessage id="profile.statistics" />
           </h2>
-  
+
           <div className={style.section}>
             <h3 className={style.subtitle}>
               <FormattedMessage id="profile.statistics.total" />:{" "}
               {stats?.totalGames ?? "0"}
             </h3>
           </div>
-  
+
           <div className={style.chartsContainer}>
             <div className={style.chartBox}>
               <h3 className={style.chartTitle}>
@@ -118,7 +99,7 @@ const StatisticsPage: React.FC = () => {
                 <Legend />
               </PieChart>
             </div>
-  
+
             <div className={style.chartBox}>
               <h3 className={style.chartTitle}>
                 <FormattedMessage id="profile.statistics.player" />
