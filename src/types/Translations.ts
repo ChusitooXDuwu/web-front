@@ -187,4 +187,8 @@ export interface Translations {
   "friends.modal.title": string;
   "friends.modal.search-label": string;
   "friends.modal.search-placeholders": string;
+
+  // Browse link buttons
+  "browse.fields": string;
+  "browse.sports": string;
 }
