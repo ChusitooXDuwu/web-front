@@ -2,9 +2,10 @@ import styles from "./ProfileInfo.module.scss";
 import { ReactComponent as Icon } from "../../icons/sportsIcon.svg";
 import { FormattedMessage } from "react-intl";
 import { Button } from "react-bootstrap";
+import { SportEntityDto } from "../../entities/SportEntity";
 
 interface SportsListProps {
-  sports: string[];
+  sports: SportEntityDto[];
   isCurrentUser?: boolean;
   openModal: (() => void) | null;
 }
@@ -25,15 +26,15 @@ const SportsList: React.FC<SportsListProps> = ({
           <FormattedMessage id="browse.sports" />
         </Button>
       )}
-      <ul className={"flex items-center space-x-2"}>
+      <ul className={"flex items-center space-x-2 "}>
         {sports.map((sport, index) => (
-          <li key={index}>
+          <li key={index} className="my-2">
             <Icon
-              className={styles.image}
+              className={[styles.image, "me-2"].join(" ")}
               style={{ fill: "#E99E14" }}
               fill={"#E99E14"}
             />
-            <span className={styles.text}>{sport}</span>
+            <span className={styles.text}>{sport.name}</span>
           </li>
         ))}
       </ul>

@@ -187,7 +187,8 @@ const es: Translations = {
   "friends.modal.title": "Add friend",
   "friends.modal.search-label": "Search user",
   "friends.modal.search-placeholders": "John Doe",
-
+  // sports modal
+  "sports.modal.title": "Add a favourite sport",
   // browse
   "browse.fields": "Browse Fields",
   "browse.sports": "Browse Sports",

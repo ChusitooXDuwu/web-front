@@ -82,6 +82,19 @@ async function requestAddFriend(userId: string, friendId: string) {
   return { data: user, message: response.data.message };
 }
 
+async function requestAddSport(userId: string, sportId: string) {
+  const url = `${API_BASE_URL}/users/${userId}/sports`;
+  const body = { sportId };
+  const response: AxiosResponse<ResponseEntity<object>> = await axios.post(
+    url,
+    body,
+    { withCredentials: true }
+  );
+  const { data: plainData, message } = response.data;
+  const user = plainToInstance(UserEntityDto, plainData);
+  return { data: user, message };
+}
+
 export default createUser;
 export {
   requestLogin,
@@ -89,4 +102,5 @@ export {
   requestMyProfile,
   requestAllUsers,
   requestAddFriend,
+  requestAddSport,
 };

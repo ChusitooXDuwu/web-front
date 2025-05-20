@@ -1,19 +1,20 @@
-import OldResponseEntity, { ResponseEntity } from "../ResponseEntity";
+import { ResponseEntity } from "../ResponseEntity";
 import baseUrl from "../Config";
 import axios from "axios";
-import SportEntity from "../../entities/SportEntity";
-const getSportsbaseUrl = "http://localhost:3000";
-const getSportsUrl = baseUrl
-  ? `${baseUrl}/sport`
-  : `${getSportsbaseUrl}/sport`;
+import { SportEntityDto } from "../../entities/SportEntity";
+import { plainToInstance } from "class-transformer";
+import API_BASE_URL from "../Config";
+
+const getSportsUrl = baseUrl ? `${baseUrl}/sport` : `${API_BASE_URL}/sport`;
 
 async function getSports() {
   const getSportsUrlCount = getSportsUrl + "/counts";
-  const response = await axios.get<ResponseEntity<Array<SportEntity>>>(
-    getSportsUrlCount
+  const response = await axios.get<ResponseEntity<Array<object>>>(
+    getSportsUrlCount,
+    { withCredentials: true }
   );
-  const data = response.data.data;
-  const message = response.data.message;
+  const { data: plainData, message } = response.data;
+  const data = plainData.map((item) => plainToInstance(SportEntityDto, item));
   return {
     data,
     message,

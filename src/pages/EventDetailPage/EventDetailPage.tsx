@@ -33,7 +33,7 @@ const mockPlayer: UserEntity = {
   givenName: "Juan",
   email: "j.name@uniandes.edu.co",
   gender: "Masculino",
-  favoriteSports: "Baloncesto",
+  favoriteSports: [],
   phoneNumber: "123456789",
   imageUrl: "/assets/basket_horizontal.jpg",
   lastName: "Perez",

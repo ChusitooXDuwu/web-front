@@ -183,6 +183,8 @@ const en: Translations = {
   "friends.modal.title": "Agregar amigo",
   "friends.modal.search-label": "Buscar usuario",
   "friends.modal.search-placeholders": "Juan Pérez",
+  // sports modal
+  "sports.modal.title": "Agregar un deporte favorito",
 
   // browse
   "browse.fields": "Buscar canchas",

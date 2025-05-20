@@ -62,7 +62,7 @@ const ProfileContent = () => {
         </Col>
         <Col xs={12} md={4}>
           <SportsList
-            sports={profile.sports || []}
+            sports={profile.favoriteSports || []}
             isCurrentUser={true}
             openModal={handleShowSportsModal}
           />
