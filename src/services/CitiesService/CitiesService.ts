@@ -9,26 +9,26 @@ const mockCities: CityEntity[] = [
     id: "1",
     name: "Bogotá",
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
   },
   {
     id: "2",
     name: "Medellín",
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
   },
   {
     id: "3",
     name: "Cali",
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
   },
   {
     id: "4",
     name: "Barranquilla",
     createdAt: new Date(),
-    updatedAt: new Date()
-  }
+    updatedAt: new Date(),
+  },
 ];
 
 const apiBaseUrl = baseUrl || "http://localhost:3000";
@@ -41,10 +41,6 @@ async function getCities() {
       citiesEndpoint,
       {
         withCredentials: true,
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
       }
     );
 

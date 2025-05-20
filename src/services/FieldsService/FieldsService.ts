@@ -48,7 +48,9 @@ async function getFields(): Promise<{ data: FieldEntity[]; message: string }> {
         message: response.data.message,
       };
     } catch (authError) {
-      console.warn("Authentication failed or API unavailable, using mock data instead");
+      console.warn(
+        "Authentication failed or API unavailable, using mock data instead"
+      );
 
       // Fallback to mock data if authentication fails
       const mockResponse = await axios.get<ResponseEntity<MockDataResponse>>(
@@ -66,7 +68,7 @@ async function getFields(): Promise<{ data: FieldEntity[]; message: string }> {
           address: field.address,
           city: {
             id: "1",
-            name: field.city?.name || "Unknown City"
+            name: field.city?.name || "Unknown City",
           },
           sports: field.sports || [],
           createdById: field.createdById || "1",
@@ -76,7 +78,7 @@ async function getFields(): Promise<{ data: FieldEntity[]; message: string }> {
           phone_number: "123-456-7890",
           opening_time: "8:00 - 22:00",
           isBooking: false,
-          field_type: "field"
+          field_type: "field",
         };
       });
 
@@ -100,7 +102,7 @@ export async function createField(fieldData: CreateFieldFormData) {
       cityName: fieldData.cityId, // The cityId is actually the city name
       address: fieldData.address,
       price: fieldData.price || 0,
-      sportIds: fieldData.sportIds
+      sportIds: fieldData.sportIds,
     };
 
     // Make the POST request with authentication
@@ -110,9 +112,9 @@ export async function createField(fieldData: CreateFieldFormData) {
       {
         withCredentials: true,
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
       }
     );
 
@@ -128,7 +130,7 @@ export async function createField(fieldData: CreateFieldFormData) {
     } else if (error.response?.data?.message) {
       // If the message is an array, join it into a single string
       const errorMessage = Array.isArray(error.response.data.message)
-        ? error.response.data.message.join(',')
+        ? error.response.data.message.join(",")
         : error.response.data.message;
       throw new Error(errorMessage);
     } else {
@@ -140,9 +142,12 @@ export async function createField(fieldData: CreateFieldFormData) {
 // Function to get a specific field by ID
 export async function getFieldById(fieldId: string) {
   try {
-    const response = await axios.get<ResponseEntity<FieldEntity>>(`${fieldsEndpoint}/${fieldId}`, {
-      withCredentials: true
-    });
+    const response = await axios.get<ResponseEntity<FieldEntity>>(
+      `${fieldsEndpoint}/${fieldId}`,
+      {
+        withCredentials: true,
+      }
+    );
 
     return {
       data: response.data.data,

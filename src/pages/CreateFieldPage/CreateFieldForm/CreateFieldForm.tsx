@@ -3,7 +3,10 @@ import { Button, Col, Form, Row, Alert } from "react-bootstrap";
 import { SportEntity, CityEntity } from "../../../entities/Entities";
 import styles from "./CreateFieldFrom.module.scss";
 import { FormattedMessage, useIntl } from "react-intl";
-import { createField, CreateFieldFormData } from "../../../services/FieldsService/FieldsService";
+import {
+  createField,
+  CreateFieldFormData,
+} from "../../../services/FieldsService/FieldsService";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
@@ -37,25 +40,27 @@ const CreateFieldForm: FunctionComponent<CreateFieldFormProps> = ({
     mutationFn: createField,
     onSuccess: () => {
       // Invalidar la caché para que se actualice la lista de campos
-      queryClient.invalidateQueries({ queryKey: ['fields'] });
+      queryClient.invalidateQueries({ queryKey: ["fields"] });
       // Redirigir a la lista de campos
-      navigate('/fields');
+      navigate("/fields");
     },
     onError: (error: any) => {
       console.error("Error creating field:", error);
       // Show the error message from the service
-      setError(error.message || 'Error al crear el campo');
+      setError(error.message || "Error al crear el campo");
 
       // If unauthorized, redirect to login
       if (error.message === "You must be logged in to create a field") {
-        navigate('/login', { state: { from: '/fields/create' } });
+        navigate("/login", { state: { from: "/fields/create" } });
       }
-    }
+    },
   });
 
   // Función para manejar los cambios en los inputs
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -91,7 +96,7 @@ const CreateFieldForm: FunctionComponent<CreateFieldFormProps> = ({
   };
 
   // Verificar si la mutación está en curso
-  const isMutating = createFieldMutation.status === 'pending';
+  const isMutating = createFieldMutation.status === "pending";
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -134,7 +139,7 @@ const CreateFieldForm: FunctionComponent<CreateFieldFormProps> = ({
             <FormattedMessage id="field.form.choice" />
           </option>
           {cities.map((item, index) => (
-            <option key={index} value={item.id}>
+            <option key={index} value={item.name}>
               {item.name}
             </option>
           ))}
@@ -199,11 +204,7 @@ const CreateFieldForm: FunctionComponent<CreateFieldFormProps> = ({
       </Form.Group>
 
       <div className="d-flex justify-content-center">
-        <Button
-          type="submit"
-          className="mt-3"
-          disabled={isMutating}
-        >
+        <Button type="submit" className="mt-3" disabled={isMutating}>
           <FormattedMessage id="field.form.submit" />
         </Button>
       </div>
