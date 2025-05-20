@@ -44,13 +44,12 @@ const ProfileContent = () => {
           />
         </Col>
       </Row>
+      <hr />
       <Row className={(styles.profile_content, "ps-4")}>
         <Col xs={12} md={4}>
           <FriendsList
             handleShowFriendsModal={handleShow}
-            friends={(profile.friends || []).map((friend) => {
-              return friend.givenName;
-            })}
+            friends={profile.friends || []}
           />
         </Col>
         <Col xs={12} md={4}>
