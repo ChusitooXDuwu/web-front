@@ -8,7 +8,7 @@ interface HistoryPageProps {
   userId?: string
 }
 
-const defaultId = "8016d59a-dc9d-4a4d-bd39-201aa2a34f19";
+const defaultId = "84726399-b3eb-41f6-90d8-6c4a875d9d98";
 
 const HistoryPage: FC<HistoryPageProps> = ({ userId }) => {
   const id = userId ?? defaultId;

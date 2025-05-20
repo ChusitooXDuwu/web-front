@@ -17,7 +17,6 @@ async function getAvailableEvents() {
   });
     console.log(data);
     return { data, message };
-
 }
 
 async function getEventsByUserId(userId: string) {

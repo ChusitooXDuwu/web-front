@@ -14,7 +14,7 @@ dayjs.extend(relativeTime);
 
 
 
-const defaultId = "71d9df0d-5da4-4b9d-b5da-2ff323c403b8";
+const defaultId = "84726399-b3eb-41f6-90d8-6c4a875d9d98";
 
 const NotificationsPage: FC<{ userId?: string }> = ({ userId }) => {
   const id = userId ? userId : defaultId;
