@@ -17,6 +17,7 @@ export interface Translations {
   "pages.fields.create": string;
   "pages.sports": string;
   "pages.events": string;
+  "pages.users": string;
 
   // Forms
   "form.placeholder.name": string;
@@ -40,6 +41,7 @@ export interface Translations {
   "form.label.isOwner": string;
   "form.label.description": string;
 
+  "form.gender.select": string;
   "form.gender.male": string;
   "form.gender.female": string;
   "form.gender.other": string;
@@ -185,4 +187,11 @@ export interface Translations {
   "friends.modal.title": string;
   "friends.modal.search-label": string;
   "friends.modal.search-placeholders": string;
+
+  // Sports modal
+  "sports.modal.title": string;
+
+  // Browse link buttons
+  "browse.fields": string;
+  "browse.sports": string;
 }

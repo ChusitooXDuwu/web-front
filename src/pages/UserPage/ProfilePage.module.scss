@@ -1,0 +1,55 @@
+@use "../../variables" as v;
+
+.container_fluid {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.profile_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+@media (min-width: 768px) {
+    .profile-container {
+      flex-direction: row;
+      gap: 16px; /* Espacio entre imagen y texto */
+    }
+  }
+.profile_content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+}
+
+.sidebar_container {
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background: #5D4E8E;  /* Color morado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y:auto;
+}
+
+/* Ajuste del tamaño del profile picture en la Sidebar */
+.sidebar_container img {
+    width: 80px;   /* Tamaño ajustable */
+    height: auto;
+    border-radius: 50%;
+    }
+
+.sidebar_container h3 {
+
+    font-size: 16px;
+
+}
+
+
+  

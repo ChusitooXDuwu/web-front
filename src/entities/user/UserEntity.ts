@@ -1,5 +1,6 @@
 import { Type } from "class-transformer";
 import BaseEntity, { BaseEntityDto } from "../BaseEntity";
+import { SportEntityDto } from "../SportEntity";
 
 export default interface UserEntity extends BaseEntity {
   // Plain attributes
@@ -7,7 +8,7 @@ export default interface UserEntity extends BaseEntity {
   lastName: string;
   email: string;
   gender: string;
-  favoriteSports: string;
+  favoriteSports: SportEntityDto[];
   phoneNumber: string;
   imageUrl: string | null;
   description: string;
@@ -22,7 +23,7 @@ export class UserEntityDto extends BaseEntityDto implements UserEntity {
   lastName!: string;
   email!: string;
   gender!: string;
-  favoriteSports!: string;
+  favoriteSports!: SportEntityDto[];
   phoneNumber!: string;
   imageUrl!: string | null;
   description!: string;

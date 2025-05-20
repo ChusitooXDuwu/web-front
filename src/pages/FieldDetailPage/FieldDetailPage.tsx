@@ -9,17 +9,17 @@ import { FormattedMessage } from 'react-intl';
 import { useIntl } from 'react-intl';
 import { LocaleContext } from '../../contexts/LocaleContext';
 import { useQuery } from '@tanstack/react-query';
-import { getFieldDetails, getFieldPrice, getFieldEvents, EventType } from '../../services/FieldsServices/FieldsService';
+import { getFieldById, getFieldPrice, getFieldEvents, EventType } from '../../services/FieldsServices/FieldsService';
 import { getAvailableEvents } from '../../services/EventsService/EventsService';
 import { EventEntityDto } from '../../entities/EventEntity';
 
-interface FieldDetailPageProps {}
+interface FieldDetailPageProps { }
 
 const FieldDetailPage: FC<FieldDetailPageProps> = () => {
   // Métodos alternativos para obtener el ID
 
-  
-  
+
+
   const params = useParams();
   const location = useLocation();
 
@@ -27,23 +27,23 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
   console.log('Params type:', typeof params);
   console.log('Params keys:', Object.keys(params));
   console.log('Raw URL:', window.location.pathname)
-  
+
   // Extraer fieldId de diferentes formas posibles
   let fieldId: string | undefined;
-  
+
   // Método 1: directo de useParams
   fieldId = params.fieldId;
-  
+
   // Método 2: analizando la URL manualmente si el método 1 falla
   if (!fieldId) {
     const pathParts = location.pathname.split('/');
     fieldId = pathParts[pathParts.length - 1];
     if (fieldId === 'fields') fieldId = undefined;
   }
-  
+
   // Método 3: usar un ID por defecto para pruebas si todo lo demás falla
   const actualId = fieldId || '1';
-  
+
   console.log('Debug info:');
   console.log('- Raw params:', params);
   console.log('- Path:', location.pathname);
@@ -56,7 +56,7 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
   // Fetch field details
   const fieldQuery = useQuery({
     queryKey: ['field', actualId],
-    queryFn: () => getFieldDetails(actualId),
+    queryFn: () => getFieldById(actualId),
     enabled: true // Siempre habilitado con el ID actual (o por defecto)
   });
 
@@ -76,7 +76,7 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
 
   const isLoading = fieldQuery.isLoading || priceQuery.isLoading || eventsQuery.isLoading;
   const isError = fieldQuery.isError || priceQuery.isError || eventsQuery.isError;
-  
+
   const fieldData = fieldQuery.data;
   const field = fieldData?.data;
   const price = priceQuery.data?.data || 0;
@@ -106,14 +106,14 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
                 <FormattedMessage id="fieldDetailPage.error.title" defaultMessage="Error al cargar los datos" />
               </Alert.Heading>
               <p>
-                <FormattedMessage 
-                  id="fieldDetailPage.error.description" 
-                  defaultMessage="Ocurrió un error al cargar la información del campo. Intenta nuevamente más tarde." 
+                <FormattedMessage
+                  id="fieldDetailPage.error.description"
+                  defaultMessage="Ocurrió un error al cargar la información del campo. Intenta nuevamente más tarde."
                 />
               </p>
               <div className="d-flex justify-content-end">
-                <button 
-                  className="btn btn-outline-danger" 
+                <button
+                  className="btn btn-outline-danger"
                   onClick={() => window.location.reload()}
                 >
                   <FormattedMessage id="fieldDetailPage.reload" defaultMessage="Recargar página" />
@@ -143,7 +143,7 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
             </Breadcrumb.Item>
           </Breadcrumb>
         </Row>
-        
+
         <Row className="justify-content-center my-5">
           <Col className="text-center">
             <Spinner animation="border" role="status" variant="primary">
@@ -184,9 +184,9 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
                 <FormattedMessage id="fieldDetailPage.notFound.title" defaultMessage="Campo no encontrado" />
               </Alert.Heading>
               <p>
-                <FormattedMessage 
-                  id="fieldDetailPage.notFound.description" 
-                  defaultMessage="No se pudo encontrar la información del campo con el ID: {fieldId}" 
+                <FormattedMessage
+                  id="fieldDetailPage.notFound.description"
+                  defaultMessage="No se pudo encontrar la información del campo con el ID: {fieldId}"
                   values={{ fieldId: fieldId || 'no especificado' }}
                 />
               </p>
@@ -219,17 +219,17 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
           <Breadcrumb.Item active>{field.field_name}</Breadcrumb.Item>
         </Breadcrumb>
       </Row>
-      
+
       <Row lg={3} md={3} sm={2} xs={1} className="gy-3 justify-content-center">
         <FieldDetailCardComponent field={field} price={price} />
       </Row>
-      
+
       <Row className="justify-content-center mt-4">
         <div className={styles.alignedSection}>
           <h2>
-            <FormattedMessage 
-              id="fieldDetailCard.details.availableBookings" 
-              defaultMessage="Reservas disponibles" 
+            <FormattedMessage
+              id="fieldDetailCard.details.availableBookings"
+              defaultMessage="Reservas disponibles"
             />
           </h2>
           <Row lg={3} md={2} sm={2} xs={1} className="gy-2">
@@ -242,9 +242,9 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
             ) : (
               <Col className="text-center">
                 <p>
-                  <FormattedMessage 
-                    id="fieldDetailCard.details.noEvents" 
-                    defaultMessage="No hay eventos disponibles para este campo" 
+                  <FormattedMessage
+                    id="fieldDetailCard.details.noEvents"
+                    defaultMessage="No hay eventos disponibles para este campo"
                   />
                 </p>
               </Col>

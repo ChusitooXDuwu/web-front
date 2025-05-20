@@ -1,11 +1,12 @@
-import React, { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import { useLocation, Outlet } from "react-router-dom";
 import SideBar from "../../components/Profile/SideBar";
 import { GetSidebarItems } from "../../components/Profile/getSidebarItems";
-import { Container, Col, Row, Modal, Button } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import { useProfile } from "../../contexts/ProfileContext";
 import { useIntl } from "react-intl";
 import FriendsModal from "./ProfilePage_Components/FriendsModal";
+import SportsModal from "./ProfilePage_Components/SportsModal";
 
 interface ProfilePageProps {
   isOwner: boolean;
@@ -13,6 +14,7 @@ interface ProfilePageProps {
 
 interface ProfileOutletContext {
   handleShow: () => void;
+  handleShowSportsModal: () => void;
 }
 
 const ProfilePage: FC<ProfilePageProps> = ({ isOwner }) => {
@@ -37,9 +39,15 @@ const ProfilePage: FC<ProfilePageProps> = ({ isOwner }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  // handle sports modal
+  const [showSports, setShowSports] = useState(false);
+
+  const handleCloseSports = () => setShowSports(false);
+  const handleShowSports = () => setShowSports(true);
 
   const outletContext: ProfileOutletContext = {
     handleShow,
+    handleShowSportsModal: handleShowSports,
   };
   return (
     <>
@@ -64,6 +72,10 @@ const ProfilePage: FC<ProfilePageProps> = ({ isOwner }) => {
         </Row>
       </Container>
       <FriendsModal show={show} handleClose={handleClose}></FriendsModal>
+      <SportsModal
+        show={showSports}
+        handleClose={handleCloseSports}
+      ></SportsModal>
     </>
   );
 };

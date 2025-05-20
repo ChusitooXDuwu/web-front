@@ -1,0 +1,33 @@
+@use "../../variables" as v;
+
+.button{
+
+    color: v.$sporthub-purple;
+    background-color: v.$sporthub-cream-yellow;
+    border-radius: 40px;
+    transition: ease-in-out 0.3s;
+}
+.button:hover{
+
+    background-color: v.$sporthub-purple;
+    color: v.$sporthub-cream-yellow;
+    transition: ease-in-out 0.3s;
+}
+
+.text{
+   color:v.$sporthub-text-gold 
+}
+.tittle{
+    color:v.$sporthub-purple;
+}
+
+.image{
+   width: 25px;
+   height: 25px; 
+   fill: v.$sporthub-text-gold;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }

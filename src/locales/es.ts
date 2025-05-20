@@ -17,6 +17,7 @@ const en: Translations = {
   "pages.fields.create": "Crear Cancha",
   "pages.sports": "Deportes",
   "pages.events": "Eventos",
+  "pages.users": "Usuarios",
   // Forms
   "form.placeholder.name": "Ingrese su nombre",
   "form.placeholder.email": "Ingrese su correo",
@@ -37,6 +38,7 @@ const en: Translations = {
   "form.label.gender": "Género",
   "form.label.isOwner": "¿Es propietario?",
   "form.label.description": "Descripción",
+  "form.gender.select": "Seleccione una opción",
   "form.gender.male": "Masculino",
   "form.gender.female": "Femenino",
   "form.gender.other": "Otro",
@@ -181,6 +183,12 @@ const en: Translations = {
   "friends.modal.title": "Agregar amigo",
   "friends.modal.search-label": "Buscar usuario",
   "friends.modal.search-placeholders": "Juan Pérez",
+  // sports modal
+  "sports.modal.title": "Agregar un deporte favorito",
+
+  // browse
+  "browse.fields": "Buscar canchas",
+  "browse.sports": "Buscar deportes",
 };
 
 export default en;

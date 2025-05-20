@@ -24,9 +24,7 @@ async function createUser(
 }
 
 async function requestLogin(loginData: LoginInfo) {
-  console.log("LOG")
-  console.log(API_BASE_URL)
-  const url = `http://localhost:3000/users/login`;
+  const url = `${API_BASE_URL}/users/login`;
   const response = await axios.post<
     ResponseEntity<{ token: string }>,
     AxiosResponse<ResponseEntity<{ token: string }>>,
@@ -39,11 +37,11 @@ async function requestLogin(loginData: LoginInfo) {
 
 async function requestUser(id: string) {
   const url = `${API_BASE_URL}/users/${id}`;
-
-  const response = await axios.get<ResponseEntity<UserEntity>>(url, {
+  const response = await axios.get<ResponseEntity<object>>(url, {
     withCredentials: true,
   });
-  const { data, message } = response.data;
+  const { data: plainData, message } = response.data;
+  const data = plainToInstance(UserEntityDto, plainData);
   return { data, message };
 }
 
@@ -73,5 +71,37 @@ async function requestAllUsers(params: { name: string }) {
   return { data: users, message };
 }
 
+async function requestAddFriend(userId: string, friendId: string) {
+  const url = `${API_BASE_URL}/users/${userId}/friends`;
+  const body = { userId: friendId };
+  const response: AxiosResponse<ResponseEntity<object>> = await axios.post(
+    url,
+    body,
+    { withCredentials: true }
+  );
+  const user = plainToInstance(UserEntityDto, response.data.data);
+  return { data: user, message: response.data.message };
+}
+
+async function requestAddSport(userId: string, sportId: string) {
+  const url = `${API_BASE_URL}/users/${userId}/sports`;
+  const body = { sportId };
+  const response: AxiosResponse<ResponseEntity<object>> = await axios.post(
+    url,
+    body,
+    { withCredentials: true }
+  );
+  const { data: plainData, message } = response.data;
+  const user = plainToInstance(UserEntityDto, plainData);
+  return { data: user, message };
+}
+
 export default createUser;
-export { requestLogin, requestUser, requestMyProfile, requestAllUsers };
+export {
+  requestLogin,
+  requestUser,
+  requestMyProfile,
+  requestAllUsers,
+  requestAddFriend,
+  requestAddSport,
+};

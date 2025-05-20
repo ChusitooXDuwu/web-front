@@ -1,4 +1,6 @@
-import BaseEntity, { BaseEntityDto } from "./BaseEntity";
+import { BaseEntityDto } from "./BaseEntity";
+import { EventEntity } from "./Entities";
+import FieldEntity from "./FieldEntity";
 import SportInterface from "./SportInterface";
 
 export default class Sport implements SportInterface {
@@ -9,7 +11,7 @@ export default class Sport implements SportInterface {
     public name: string,
     public availableFields?: number,
     public availableBookings?: number
-  ) { }
+  ) {}
 
   static fromApi(data: any): Sport {
     return new Sport(
@@ -23,6 +25,10 @@ export default class Sport implements SportInterface {
   }
 }
 
-export class SportEntityDto extends BaseEntityDto {
+export class SportEntityDto extends BaseEntityDto implements SportInterface {
   name!: string;
+  fields!: FieldEntity[];
+  events!: EventEntity[];
+  availableFields?: number | undefined;
+  availableBookings?: number | undefined;
 }

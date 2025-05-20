@@ -17,6 +17,7 @@ const es: Translations = {
   "pages.fields.create": "Create field",
   "pages.sports": "Sports",
   "pages.events": "Events",
+  "pages.users": "Users",
   //Forms
   "form.placeholder.name": "Enter your name",
   "form.placeholder.email": "Enter your email",
@@ -173,6 +174,7 @@ const es: Translations = {
   "form.label.gender": "Gender",
   "form.label.isOwner": "Are you the owner of a field?",
   "form.label.description": "Description",
+  "form.gender.select": "Select an option",
   "form.gender.male": "Male",
   "form.gender.female": "Female",
   "form.gender.other": "Other",
@@ -185,6 +187,11 @@ const es: Translations = {
   "friends.modal.title": "Add friend",
   "friends.modal.search-label": "Search user",
   "friends.modal.search-placeholders": "John Doe",
+  // sports modal
+  "sports.modal.title": "Add a favourite sport",
+  // browse
+  "browse.fields": "Browse Fields",
+  "browse.sports": "Browse Sports",
 };
 
 export default es;

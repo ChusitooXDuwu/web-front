@@ -34,6 +34,7 @@ import {
 import { ProfileProvider } from "./contexts/ProfileContext";
 import ProfileContent from "./pages/ProfilePage/ProfilePage_Components/ProfileContent";
 import { Translations } from "./types/Translations";
+import UserComponent from "./pages/UserPage/UserPage";
 const queryClient = new QueryClient();
 interface LocaleData {
   locale: SupportedLocale;
@@ -67,6 +68,7 @@ function App() {
                   <Route path="fields" element={<FieldsPage />} />
                   <Route path="sports" element={<SportsPage />} />
                   <Route path="events" element={<EventsPage />} />
+                  <Route path="users/:id" element={<UserComponent />} />
                   <Route
                     path="profile/*"
                     element={<ProfilePage isOwner={true} />}

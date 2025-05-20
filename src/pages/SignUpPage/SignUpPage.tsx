@@ -238,6 +238,9 @@ const SignUpPage: FunctionComponent<SignUpPageProps> = () => {
                   onChange={handleChange}
                   value={signUpData.gender || ""}
                 >
+                  <option value="" disabled>
+                    <FormattedMessage id="form.gender.select" />
+                  </option>
                   <option value={Gender.MALE}>
                     <FormattedMessage id="form.gender.male" />
                   </option>

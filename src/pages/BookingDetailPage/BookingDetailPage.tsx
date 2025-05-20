@@ -23,7 +23,7 @@ import UserEntity from "../../entities/user/UserEntity";
 import { ReactComponent as ProfileIcon } from "../../icons/profileIcon.svg";
 import { useQuery } from "@tanstack/react-query";
 import {
-  getFieldDetails,
+  getFieldById,
   getFieldPrice,
 } from "../../services/FieldsServices/FieldsService";
 
@@ -37,7 +37,7 @@ const mockPlayer: UserEntity = {
   givenName: "Juan",
   email: "j.name@uniandes.edu.co",
   gender: "Masculino",
-  favoriteSports: "Baloncesto",
+  favoriteSports: [],
   phoneNumber: "123456789",
   imageUrl: "/assets/basket_horizontal.jpg",
   lastName: "",
@@ -73,7 +73,7 @@ const mockEvent: EventType = {
   image: null,
 };
 
-interface BookingDetailPageProps {}
+interface BookingDetailPageProps { }
 
 const BookingDetailPage: FC<BookingDetailPageProps> = () => {
   const { bookingId } = useParams();
@@ -92,7 +92,7 @@ const BookingDetailPage: FC<BookingDetailPageProps> = () => {
   // Fetch field details
   const fieldQuery = useQuery({
     queryKey: ["field", fieldId],
-    queryFn: () => getFieldDetails(fieldId),
+    queryFn: () => getFieldById(fieldId),
     enabled: !!fieldId,
   });
 
