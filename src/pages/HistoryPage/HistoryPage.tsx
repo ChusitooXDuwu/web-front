@@ -3,15 +3,17 @@ import styles from './HistoryPage.module.scss';
 import { EventEntity } from "../../entities/Entities";
 import { FormattedMessage } from 'react-intl';
 import { getEventsByUserId } from '../../services/EventsService/EventsService';
+import { useProfile } from '../../contexts/ProfileContext';
 
 interface HistoryPageProps {
   userId?: string
 }
 
-const defaultId = "71d9df0d-5da4-4b9d-b5da-2ff323c403b8";
+const defaultId = "";
 
-const HistoryPage: FC<HistoryPageProps> = ({ userId }) => {
-  const id = userId ?? defaultId;
+const HistoryPage: FC<HistoryPageProps> = () => {
+  const user = useProfile()
+  const id = user.profile!.id;
   const [events, setEvents] = useState<EventEntity[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);

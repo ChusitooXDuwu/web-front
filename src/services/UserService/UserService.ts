@@ -35,6 +35,23 @@ async function requestLogin(loginData: LoginInfo) {
   return { data, message };
 }
 
+async function requestLogout() {
+  const url = `${API_BASE_URL}/users/logout`;
+  try {
+    await axios.post(url, {}, { withCredentials: true });
+
+    // Limpia cualquier estado de sesión en el frontend
+    localStorage.clear();
+    sessionStorage.clear();
+
+    // Redirige al login
+    window.location.href = "/login";
+  } catch (error) {
+    console.error("Error al cerrar sesión:", error);
+    // Opcional: mostrar un mensaje al usuario
+  }
+}
+
 async function requestUser(id: string) {
   const url = `${API_BASE_URL}/users/${id}`;
   const response = await axios.get<ResponseEntity<object>>(url, {
@@ -104,4 +121,5 @@ export {
   requestAllUsers,
   requestAddFriend,
   requestAddSport,
+  requestLogout,
 };

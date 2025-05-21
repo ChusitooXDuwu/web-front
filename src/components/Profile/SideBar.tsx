@@ -4,6 +4,7 @@ import styles from "./SideBar.module.scss";
 import ProfileCard from "./ProfileCard";
 
 import { useIntl } from "react-intl";
+import { requestLogout } from "../../services/UserService/UserService";
 interface SidebarProps {
   items: { label: string; path: string; enabled: boolean }[];
   isOwner: boolean;
@@ -15,6 +16,13 @@ interface ProfileCardProps {
 }
 const Sidebar: React.FC<SidebarProps> = ({ items, isOwner, profile }) => {
   const { formatMessage } = useIntl();
+  const handleLogout = async () => {
+    try {
+      requestLogout()
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
   return (
     <div className={styles.sidebar}>
       <ProfileCard {...profile} />
@@ -32,11 +40,9 @@ const Sidebar: React.FC<SidebarProps> = ({ items, isOwner, profile }) => {
           </span>
         )
       )}
-      <Link to={isOwner ? "/login" : "/"} className={styles.session}>
-        {isOwner
-          ? formatMessage({ id: "profile.sidebar.logout" })
-          : formatMessage({ id: "profile.sidebar.goback" })}
-      </Link>
+      <button onClick={handleLogout} className={styles.session}>
+        {formatMessage({ id: "profile.sidebar.logout" })}
+      </button>
     </div>
   );
 };
