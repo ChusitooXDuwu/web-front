@@ -19,6 +19,28 @@ async function getAvailableEvents() {
     return { data, message };
 }
 
+async function addUserToEvent(eventId: string, userId: string) {
+    const url = getEventsUrl + `/${eventId}/users/${userId}`;
+    const response = await axios.post<ResponseEntity<object>>(url, {}, { withCredentials: true });
+    const { data: plainData, message } = response.data;
+    const data = plainToInstance(EventEntityDto, plainData, {
+        enableImplicitConversion: true,
+    });
+        console.log(data);
+        return { data, message };
+    }
+
+async function getEventById(eventId: string) {
+  const url = getEventsUrl + `/${eventId}`;
+  const response = await axios.get<ResponseEntity<object>>(url, { withCredentials: true });
+  const { data: plainData, message } = response.data;
+  const data = plainToInstance(EventEntityDto, plainData, {
+      enableImplicitConversion: true,
+  });
+    console.log(data);
+    return { data, message };
+}
+
 async function getEventsByUserId(userId: string) {
   const url = getEventsUrl + `/users/${userId}`;
   const response = await axios.get<ResponseEntity<Event[]>>(url, { withCredentials: true });
@@ -51,4 +73,4 @@ async function getStatsByUserId(userId: string) {
 
 
 
-export { getAvailableEvents, getEventsByUserId, getStatsByUserId };
+export { getAvailableEvents, getEventsByUserId, getStatsByUserId, getEventById, addUserToEvent };

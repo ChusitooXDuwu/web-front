@@ -1,5 +1,5 @@
-import React, { FC, useState, useContext } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import React, { FC } from "react";
+import { useParams, useLocation, Link } from "react-router-dom";
 import styles from "./EventDetailPage.module.scss";
 import {
   Breadcrumb,
@@ -10,111 +10,48 @@ import {
   Alert,
 } from "react-bootstrap";
 import FieldDetailCardComponent from "../../components/FieldDetailCardComponent/FieldDetailCardComponent";
-import { Link } from "react-router-dom";
-import FieldDetailEntity from "../../entities/FieldDetailEntity";
-
-import { EventType } from "../../services/FieldsServices/FieldsService";
-
-import { ReactComponent as ProfileIcon } from "../../icons/profileIcon.svg";
-import UserEntity from "../../entities/user/UserEntity";
 import { useQuery } from "@tanstack/react-query";
 import {
-  getFieldById,
   getFieldPrice,
 } from "../../services/FieldsServices/FieldsService";
-
-import { FormattedMessage } from "react-intl";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { LocaleContext } from "../../contexts/LocaleContext";
+import { getEventById } from "../../services/EventsService/EventsService";
+import { ReactComponent as ProfileIcon } from "../../icons/profileIcon.svg";
+import EventDetailCard from "../../components/FieldDetailCardComponent/EventDetailCardComponent";
 
-// Datos mockeados para los jugadores y eventos (estos podrían venir de otra API)
-const mockPlayer: UserEntity = {
-  id: "1",
-  givenName: "Juan",
-  email: "j.name@uniandes.edu.co",
-  gender: "Masculino",
-  favoriteSports: [],
-  phoneNumber: "123456789",
-  imageUrl: "/assets/basket_horizontal.jpg",
-  lastName: "Perez",
-  description: "",
-  createdAt: new Date(),
-  favoriteFields: [],
-  sports: [],
-  friends: [],
-};
-
-const mockEvent: EventType = {
-  id: "1",
-  startTime: new Date(),
-  endTime: new Date(),
-  currentPlayers: 4,
-  maxPlayers: 5,
-  sport: {
-    id: "1",
-    name: "Baloncesto",
-    availableFields: 2,
-    availableBookings: 5,
-  },
-  field: {
-    id: "3", // ID del Complejo Deportivo El Salitre (type: event) en nuestro Gist
-    name: "Cancha de baloncesto",
-    address: "Calle 123",
-    city: { id: "1", name: "Medellín" },
-    sports: [
-      { id: "1", name: "Baloncesto", availableFields: 2, availableBookings: 5 },
-    ],
-    createdById: "1",
-  },
-  image: null,
-};
-
-interface EventDetailPageProps {}
-
-const EventDetailPage: FC<EventDetailPageProps> = () => {
-  const { eventId } = useParams();
+const EventDetailPage: FC = () => {
+  const { id } = useParams<{ id: string }>();
   const location = useLocation();
-  const { locale } = useContext(LocaleContext);
   const intl = useIntl();
 
-  // Para depuración
-  console.log("Event ID from params:", eventId);
-  console.log("Path:", location.pathname);
-
-  // Obtener el ID del campo desde el evento mockeado
-  // En una implementación real, esto vendría de la API de eventos
-  const fieldId = mockEvent.field.id;
-
-  // Fetch field details
-  const fieldQuery = useQuery({
-    queryKey: ["field", fieldId],
-    queryFn: () => getFieldById(fieldId),
-    enabled: !!fieldId,
+  // Fetch event data using the ID from URL params
+  const eventQuery = useQuery({
+    queryKey: ["event", id],
+    queryFn: () => getEventById(id as string),
+    enabled: !!id, // Only run if ID exists
   });
 
-  // Fetch field price
+  // Get field data from the event response when available
+  const event = eventQuery.data?.data;
+  console.log(event)
+  const fieldId = event?.id;
+
+  // Fetch field price when we have the fieldId
   const priceQuery = useQuery({
     queryKey: ["fieldPrice", fieldId],
-    queryFn: () => getFieldPrice(fieldId),
+    queryFn: () => getFieldPrice(fieldId as string),
     enabled: !!fieldId,
   });
 
-  const isLoading = fieldQuery.isLoading || priceQuery.isLoading;
-  const isError = fieldQuery.isError || priceQuery.isError;
+  const isLoading = eventQuery.isLoading || priceQuery.isLoading;
+  const isError = eventQuery.isError || priceQuery.isError;
+  const price = priceQuery.data?.data || 100; // Default price if not fetched
 
-  const field = fieldQuery.data?.data;
-  const price = priceQuery.data?.data || 100; // Valor por defecto si no se obtiene el precio
-
-  // Generar array de participantes según el número actual
-  const participantsArray = Array(mockEvent.currentPlayers).fill(mockPlayer);
-
-  // Si está cargando, muestra un spinner
+  // If loading, show spinner
   if (isLoading) {
     return (
-      <Container
-        fluid
-        className={`main_content_container ${styles.main_content}`}
-      >
+      <Container fluid className={`main_content_container ${styles.main_content}`}>
         <Row className={`pt-2 ${styles.title_row}`}>
           <Breadcrumb>
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
@@ -124,10 +61,7 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
               <FormattedMessage id="pages.events" defaultMessage="Eventos" />
             </Breadcrumb.Item>
             <Breadcrumb.Item active>
-              <FormattedMessage
-                id="bookingDetailPage.loading"
-                defaultMessage="Cargando..."
-              />
+              <FormattedMessage id="bookingDetailPage.loading" defaultMessage="Cargando..." />
             </Breadcrumb.Item>
           </Breadcrumb>
         </Row>
@@ -135,17 +69,11 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
           <Col className="text-center">
             <Spinner animation="border" role="status" variant="primary">
               <span className="visually-hidden">
-                <FormattedMessage
-                  id="bookingDetailPage.loading"
-                  defaultMessage="Cargando..."
-                />
+                <FormattedMessage id="bookingDetailPage.loading" defaultMessage="Cargando..." />
               </span>
             </Spinner>
             <p className="mt-3">
-              <FormattedMessage
-                id="eventDetailPage.loading.details"
-                defaultMessage="Cargando detalles del evento..."
-              />
+              <FormattedMessage id="eventDetailPage.loading.details" defaultMessage="Cargando detalles del evento..." />
             </p>
           </Col>
         </Row>
@@ -153,13 +81,10 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
     );
   }
 
-  // Si hay un error, muestra un mensaje de error
+  // If error, show error message
   if (isError) {
     return (
-      <Container
-        fluid
-        className={`main_content_container ${styles.main_content}`}
-      >
+      <Container fluid className={`main_content_container ${styles.main_content}`}>
         <Row className={`pt-2 ${styles.title_row}`}>
           <Breadcrumb>
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
@@ -169,10 +94,7 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
               <FormattedMessage id="pages.events" defaultMessage="Eventos" />
             </Breadcrumb.Item>
             <Breadcrumb.Item active>
-              <FormattedMessage
-                id="eventDetailPage.error"
-                defaultMessage="Error"
-              />
+              <FormattedMessage id="eventDetailPage.error" defaultMessage="Error" />
             </Breadcrumb.Item>
           </Breadcrumb>
         </Row>
@@ -180,26 +102,14 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
           <Col md={8}>
             <Alert variant="danger">
               <Alert.Heading>
-                <FormattedMessage
-                  id="eventDetailPage.error.title"
-                  defaultMessage="Error al cargar los datos"
-                />
+                <FormattedMessage id="eventDetailPage.error.title" defaultMessage="Error al cargar los datos" />
               </Alert.Heading>
               <p>
-                <FormattedMessage
-                  id="eventDetailPage.error.description"
-                  defaultMessage="Ocurrió un error al cargar la información del evento. Intenta nuevamente más tarde."
-                />
+                <FormattedMessage id="eventDetailPage.error.description" defaultMessage="Ocurrió un error al cargar la información del evento. Intenta nuevamente más tarde." />
               </p>
               <div className="d-flex justify-content-end">
-                <button
-                  className="btn btn-outline-danger"
-                  onClick={() => window.location.reload()}
-                >
-                  <FormattedMessage
-                    id="eventDetailPage.reload"
-                    defaultMessage="Recargar página"
-                  />
+                <button className="btn btn-outline-danger" onClick={() => window.location.reload()}>
+                  <FormattedMessage id="eventDetailPage.reload" defaultMessage="Recargar página" />
                 </button>
               </div>
             </Alert>
@@ -209,13 +119,10 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
     );
   }
 
-  // Si no hay datos del campo, muestra un mensaje
-  if (!field) {
+  // If no event data, show not found message
+  if (!event) {
     return (
-      <Container
-        fluid
-        className={`main_content_container ${styles.main_content}`}
-      >
+      <Container fluid className={`main_content_container ${styles.main_content}`}>
         <Row className={`pt-2 ${styles.title_row}`}>
           <Breadcrumb>
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
@@ -225,10 +132,7 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
               <FormattedMessage id="pages.events" defaultMessage="Eventos" />
             </Breadcrumb.Item>
             <Breadcrumb.Item active>
-              <FormattedMessage
-                id="eventDetailPage.notFound"
-                defaultMessage="Evento no encontrado"
-              />
+              <FormattedMessage id="eventDetailPage.notFound" defaultMessage="Evento no encontrado" />
             </Breadcrumb.Item>
           </Breadcrumb>
         </Row>
@@ -236,23 +140,14 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
           <Col md={8}>
             <Alert variant="warning">
               <Alert.Heading>
-                <FormattedMessage
-                  id="eventDetailPage.notFound.title"
-                  defaultMessage="Campo no encontrado"
-                />
+                <FormattedMessage id="eventDetailPage.notFound.title" defaultMessage="Evento no encontrado" />
               </Alert.Heading>
               <p>
-                <FormattedMessage
-                  id="eventDetailPage.notFound.description"
-                  defaultMessage="No se pudo encontrar la información del campo asociado a este evento."
-                />
+                <FormattedMessage id="eventDetailPage.notFound.description" defaultMessage="No se pudo encontrar la información del evento solicitado." />
               </p>
               <div className="d-flex justify-content-between">
                 <Link to="/events" className="btn btn-outline-primary">
-                  <FormattedMessage
-                    id="eventDetailPage.backToEvents"
-                    defaultMessage="Volver a los eventos"
-                  />
+                  <FormattedMessage id="eventDetailPage.backToEvents" defaultMessage="Volver a los eventos" />
                 </Link>
               </div>
             </Alert>
@@ -262,12 +157,9 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
     );
   }
 
-  // Renderizado normal cuando todos los datos están disponibles
+  // Render normal view when all data is available
   return (
-    <Container
-      fluid
-      className={`main_content_container ${styles.main_content}`}
-    >
+    <Container fluid className={`main_content_container ${styles.main_content}`}>
       <Row className={`pt-2 ${styles.title_row}`}>
         <Breadcrumb>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
@@ -276,37 +168,46 @@ const EventDetailPage: FC<EventDetailPageProps> = () => {
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/events" }}>
             <FormattedMessage id="pages.events" defaultMessage="Eventos" />
           </Breadcrumb.Item>
-          <Breadcrumb.Item active>{field.field_name}</Breadcrumb.Item>
+          <Breadcrumb.Item active>{event.field?.fieldName || event.field?.name}</Breadcrumb.Item>
         </Breadcrumb>
       </Row>
 
       <Row lg={3} md={3} sm={2} xs={1} className="gy-3 justify-content-center">
-        {/* Pasamos los datos del campo y el precio de la API al componente */}
-        <FieldDetailCardComponent field={field} price={price} />
+        {event.field ? (
+    // Only render the component if field exists
+    <EventDetailCard evento={event} price={price} />
+  ) : (
+    <Col className="text-center">
+      <Alert variant="warning">
+        <FormattedMessage 
+          id="eventDetailPage.noFieldData" 
+          defaultMessage="La información del campo no está disponible" 
+        />
+      </Alert>
+    </Col>
+  )}
       </Row>
 
       <Row className="justify-content-center">
         <div className={styles.alignedSection}>
           <h2 className={styles.participantTitle}>
-            <FormattedMessage
-              id="eventDetailPage.participants"
-              defaultMessage="Participantes"
-            />
-            ({mockEvent.currentPlayers}/{mockEvent.maxPlayers}):
+            <FormattedMessage id="eventDetailPage.participants" defaultMessage="Participantes" />
+            ({event.currentParticipants}/{event.maxParticipants}):
           </h2>
           <Col lg={3} md={2} sm={2} xs={1}>
-            {participantsArray.map((player, index) => (
+            {event.participants && event.participants.map((participant, index) => (
               <Col key={index} className={`d-flex ${styles.participantRow}`}>
                 <div className={styles.iconContainer}>
-                  <ProfileIcon
-                    width="35"
-                    height="45"
-                    style={{ fill: "#E99E14" }}
-                  />
+                  <ProfileIcon width="35" height="45" style={{ fill: "#E99E14" }} />
                 </div>
-                <h3 className={styles.participantName}>{player.name}</h3>
+                <h3 className={styles.participantName}>
+                  {participant.givenName} {participant.lastName}
+                </h3>
               </Col>
             ))}
+            {(!event.participants || event.participants.length === 0) && (
+              <p><FormattedMessage id="eventDetailPage.noParticipants" defaultMessage="No hay participantes registrados aún" /></p>
+            )}
           </Col>
         </div>
       </Row>

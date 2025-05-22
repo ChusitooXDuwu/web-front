@@ -130,9 +130,11 @@ const en: Translations = {
   "sportsPage.title": "Deportes",
   // DetailsPage
   "eventDetailPage.participants": "Participantes",
+  "eventDetailPage.sport": "Deporte",
   "eventDetailPage.loading.details": "Cargando detalles de la reserva...",
   "eventDetailPage.events": "Eventos disponibles",
   // FieldDetailCard
+  "fieldDetailCard.event_title": "Evento en la cancha : ",
   "fieldDetailCard.setOccupied.notOccupied": "No ocupada 😀",
   "fieldDetailCard.setOccupied.Occupied": "Ocupada 🥲",
   "fieldDetailCard.details": "Detalles de la cancha",

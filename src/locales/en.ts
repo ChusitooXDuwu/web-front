@@ -117,9 +117,11 @@ const es: Translations = {
   "sportsPage.title": "Sports",
   // eventDetailsPage
   "eventDetailPage.participants": "Participants",
+  "eventDetailPage.sport": "Sport",
   "eventDetailPage.loading.details": "Loading event details... ",
   "eventDetailPage.events": "All available events",
   // FieldDetailCard
+  "fieldDetailCard.event_title": "Event in the field: ",
   "fieldDetailCard.setOccupied.notOccupied": "Not occupied 😀",
   "fieldDetailCard.setOccupied.Occupied": "Occupied 🥲",
   "fieldDetailCard.details": "Field details",

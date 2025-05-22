@@ -132,6 +132,7 @@ export interface Translations {
 
   // Events
   "eventDetailPage.participants": string;
+  "eventDetailPage.sport": string;
   "eventDetailPage.loading.details": string;
   "eventDetailPage.events": string;
   "fieldDetailPage.loading.details": string;
@@ -142,6 +143,7 @@ export interface Translations {
   // Field Details
   "fieldDetailCard.setOccupied.notOccupied": string;
   "fieldDetailCard.setOccupied.Occupied": string;
+  "fieldDetailCard.event_title": string;
   "fieldDetailCard.details": string;
   "fieldDetailCard.details.seeInMap": string;
   "fieldDetailCard.details.openingHours": string;
