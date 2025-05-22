@@ -1,24 +1,27 @@
 import React, { FC, useState, useContext, useEffect } from "react";
 import styles from "./FieldDetailCardComponent.module.scss";
-import { Button, Col, Row, Form } from "react-bootstrap";
+import { Button, Col, Row, Form, Spinner, Alert } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import { useNavigate } from "react-router-dom";
-import { FormattedMessage } from 'react-intl';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { LocaleContext } from '../../contexts/LocaleContext';
 import { EventEntityDto } from "../../entities/EventEntity";
 import { addUserToEvent } from "../../services/EventsService/EventsService";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 interface FieldDetailCardProps {
-  evento: EventEntityDto
-  price: number
+  evento: EventEntityDto;
+  price: number;
 }
 
 const EventDetailCard: FC<FieldDetailCardProps> = ({ evento, price }) => {
   const navigate = useNavigate();
   const intl = useIntl();
   const { locale } = useContext(LocaleContext);
+  const queryClient = useQueryClient();
   
+  // Mock user ID for demonstration - replace with actual user ID from auth context
+  const currentUserId = "73243c1f-8826-479a-9a32-c7c4daef394b"; // Replace with your auth context
   
   // Calculate if event is occupied based on participants
   const isOccupied = evento.currentParticipants >= evento.maxParticipants;
@@ -33,6 +36,26 @@ const EventDetailCard: FC<FieldDetailCardProps> = ({ evento, price }) => {
   // State for comment form visibility and input value
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [comment, setComment] = useState("");
+  const [joinError, setJoinError] = useState<string | null>(null);
+
+  // Create a mutation for joining the event
+  const joinEventMutation = useMutation({
+    mutationFn: () => {
+      return addUserToEvent(evento.id, currentUserId);
+    },
+    onSuccess: () => {
+      // Invalidate and refetch the event to update the UI
+      queryClient.invalidateQueries({ queryKey: ["event", evento.id] });
+      setJoinError(null);
+    },
+    onError: (error: any) => {
+      console.error("Error joining event:", error);
+      setJoinError(
+        error.response?.data?.message || 
+        intl.formatMessage({ id: "fieldDetailCard.joinError", defaultMessage: "Error al unirse al evento" })
+      );
+    }
+  });
 
   // Update occupied status if evento props change
   useEffect(() => {
@@ -46,13 +69,15 @@ const EventDetailCard: FC<FieldDetailCardProps> = ({ evento, price }) => {
   
   // Function to handle joining the event
   const handleJoinEvent = () => {
-    if (!isOccupied) {
-      // Only allow joining if not occupied
-      navigate("/events/join/" + evento.id);
-    } else {
-      // Could show a message that the event is full
-      alert(intl.formatMessage({ id: "fieldDetailCard.eventFull" }));
+    setJoinError(null);
+    
+    if (isOccupied) {
+      setJoinError(intl.formatMessage({ id: "fieldDetailCard.eventFull" }));
+      return;
     }
+    
+    // Call the mutation to join the event
+    joinEventMutation.mutate();
   };
 
   // Function to toggle comment form
@@ -88,7 +113,7 @@ const EventDetailCard: FC<FieldDetailCardProps> = ({ evento, price }) => {
 
           {/* Right column - Details */}
           <Col xs={12} md={7} className={styles.detailsColumn}>
-            <h2 className={styles.fieldTitle}><FormattedMessage id="fieldDetailCard.event_title"/>{`${evento.field?.fieldName}`}</h2>
+            <h2 className={styles.fieldTitle}><FormattedMessage id="fieldDetailCard.event_title"/>{` ${evento.field?.fieldName}`}</h2>
 
             <hr className={styles.divider} />
 
@@ -127,19 +152,36 @@ const EventDetailCard: FC<FieldDetailCardProps> = ({ evento, price }) => {
                   <FormattedMessage id="fieldDetailCard.details.isOcuppiedQuestion"/> {occupied}
                 </span>
               </div>
-
-
             </div>
 
             <hr className={styles.divider} />
+
+            {joinError && (
+              <Alert variant="danger" className="mb-3">
+                {joinError}
+              </Alert>
+            )}
+            
+            {joinEventMutation.isSuccess && (
+              <Alert variant="success" className="mb-3">
+                <FormattedMessage id="fieldDetailCard.joinSuccess" defaultMessage="¡Te has unido al evento exitosamente!" />
+              </Alert>
+            )}
 
             <div className={styles.actionButtonContainer}>
               <Button 
                 className={styles.bookButton} 
                 onClick={handleJoinEvent}
-                disabled={isOccupied}
+                disabled={isOccupied || joinEventMutation.isPending}
               >
-                <FormattedMessage id="fieldDetailButtons.join"/>
+                {joinEventMutation.isPending ? (
+                  <>
+                    <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" className="me-2" />
+                    <FormattedMessage id="fieldDetailButtons.joining" defaultMessage="Uniéndose..." />
+                  </>
+                ) : (
+                  <FormattedMessage id="fieldDetailButtons.join" />
+                )}
               </Button>
 
               {/* Button to show/hide comment form */}
