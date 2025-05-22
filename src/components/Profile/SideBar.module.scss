@@ -3,7 +3,7 @@
 .sidebar {
   background-color: v.$sporthub-purple;
   //width: 250px;
-  height:cover;
+  height: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,25 +12,34 @@
 
 
 .sidebar_item {
-    color: white; // Texto blanco
-    font-size: 24px;
-    text-decoration: none; // Quita el subrayado
-    transition: color 0.3s ease;
-    padding: 10px 0;
-  }
+  color: white; // Texto blanco
+  font-size: 24px;
+  text-decoration: none; // Quita el subrayado
+  transition: color 0.3s ease;
+  padding: 10px 0;
+}
 
-.sidebar_item:hover{ 
-      color: v.$sporthub-text-gold; // Cambia de color en hover
-    }
-.session{
-    color: v.$sporthub-text-gold;
-    font-size:30px;
-    transition: color 0.3s ease;
-    text-decoration: none; // Quita el subrayado
-  
-  }
+.sidebar_item:hover {
+  color: v.$sporthub-text-gold; // Cambia de color en hover
+}
+
+.session {
+  color: v.$sporthub-text-gold;
+  font-size: 30px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 .session:hover {
-      color: v.$sporthub-cream-yellow}
+  color: v.$sporthub-cream-yellow;
+  background-color: rgba(255, 255, 255, 0.1); // o usa otro color de fondo
+}
 
 .disabled {
   color: gray;

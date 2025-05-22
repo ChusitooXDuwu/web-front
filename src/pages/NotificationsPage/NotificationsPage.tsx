@@ -10,15 +10,28 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/es';
 import 'dayjs/locale/en';
+import { useProfile } from '../../contexts/ProfileContext';
 dayjs.extend(relativeTime);
 
 
 
-const defaultId = "71d9df0d-5da4-4b9d-b5da-2ff323c403b8";
+const defaultId = "";
 
-const NotificationsPage: FC<{ userId?: string }> = ({ userId }) => {
-  const id = userId ? userId : defaultId;
+const NotificationsPage: FC<{ userId?: string }> = () => {
+  const user = useProfile()
+  const [id, setId] = useState<string>(defaultId)
+
   const { locale } = useContext(LocaleContext);
+  useEffect(() => {
+    user.refetch()
+  }, [])
+  useEffect(() => {
+    if (user.profile?.id) {
+      setId(user.profile.id);
+      console.log("ID:", user.profile.id)
+    }
+  }, [user.profile])
+
   useEffect(() => {
     dayjs.locale(locale || 'es'); // cambia el idioma dinámicamente
   }, [locale]);
@@ -26,6 +39,7 @@ const NotificationsPage: FC<{ userId?: string }> = ({ userId }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchNotifications = async () => {
+      setLoading(true)
       try {
         const { data } = await getAllNotificationUser(id);
         setNotifications(data);
@@ -35,8 +49,8 @@ const NotificationsPage: FC<{ userId?: string }> = ({ userId }) => {
         setLoading(false);
       }
     };
-    fetchNotifications();
-  }, []);
+    if (id) { fetchNotifications(); }
+  }, [id]);
   return (
     <div className={styles.notificationsPage}>
       <h2 className={styles.text_t}><FormattedMessage id="profile.notifications" /></h2>

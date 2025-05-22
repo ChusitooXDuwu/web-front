@@ -7,16 +7,18 @@ import { ReactComponent as StatisticsIcon } from "../../icons/statistics.svg";
 import Spinner from 'react-bootstrap/Spinner';
 import StatisticsData from "../../entities/StatisticsEntity";
 import { getStatsByUserId } from "../../services/EventsService/EventsService";
+import { useProfile } from "../../contexts/ProfileContext";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 const COLORS_PLAYER = ["#8e44ad", "#9b59b6", "#c0392b", "#e74c3c"];
 interface StatsPageProps {
   userId?: string
 }
-const defauldId = "71d9df0d-5da4-4b9d-b5da-2ff323c403b8";
+const defauldId = "";
 
-const StatisticsPage: React.FC<StatsPageProps> = ({ userId }) => {
-  const id = userId ? userId : defauldId;
+const StatisticsPage: React.FC<StatsPageProps> = () => {
+  const user = useProfile()
+  const id = user.profile!.id;
   const [stats, setStats] = useState<StatisticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
