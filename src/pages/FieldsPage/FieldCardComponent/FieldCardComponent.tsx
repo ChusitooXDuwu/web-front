@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import styles from "./FieldCardComponent.module.scss";
 import { FieldEntity } from "../../../entities/Entities";
 import { useNavigate } from "react-router-dom";
@@ -29,9 +29,10 @@ const FieldCardComponent: FunctionComponent<FieldCardComponentProps> = ({
   };
 
   // Determine what sports are available
-  const sportsList = fieldData.sports && fieldData.sports.length > 0
-    ? fieldData.sports.map(item => item.name).join(", ")
-    : "No sports specified";
+  const sportsList =
+    fieldData.sports && fieldData.sports.length > 0
+      ? fieldData.sports.map((item) => item.name).join(", ")
+      : "No sports specified";
 
   return (
     <Card
@@ -40,12 +41,24 @@ const FieldCardComponent: FunctionComponent<FieldCardComponentProps> = ({
     >
       <Card.Body className={`${styles.card_body}`}>
         <Card.Title>{getFieldName()}</Card.Title>
-        <Card.Text>
-          <i className="bi-geo-alt-fill"></i> {getCityName()}
-        </Card.Text>
-        <Card.Text>
-          <i className="bi-dribbble"></i> {sportsList}
-        </Card.Text>
+        <Row>
+          <Col xs="10">
+            <Card.Text>
+              <i className="bi-geo-alt-fill"></i> {getCityName()}
+            </Card.Text>
+            <Card.Text>
+              <i className="bi-dribbble"></i> {sportsList}
+            </Card.Text>
+          </Col>
+          <Col
+            xs="2"
+            className="ps-0 pe-2 d-flex justify-content-end align-items-end"
+          >
+            <Button>
+              <i className="bi bi-heart"></i>
+            </Button>
+          </Col>
+        </Row>
       </Card.Body>
     </Card>
   );
