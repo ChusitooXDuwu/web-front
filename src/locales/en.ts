@@ -43,6 +43,7 @@ const es: Translations = {
   "home.prompt.searchEvent": "search an event",
   // Bookings
   "bookings.title": "My Bookings",
+  "bookings.nodata": "You haven't made reservations",
   // Booking detail
   "booking.untilTime": "Until {time}",
   "booking.place": "Location",
@@ -134,7 +135,6 @@ const es: Translations = {
   "fieldDetailCard.details.availableBookings":
     "Available bookings in this field:",
 
-
   "fieldDetailPage.loading.details": "Loading field details... ",
   "fieldDetailPage.price": "Price: $",
   "fieldDetailPage.divide": "Divide payment amongst participants",
@@ -200,7 +200,6 @@ const es: Translations = {
   // browse
   "browse.fields": "Browse Fields",
   "browse.sports": "Browse Sports",
-
 };
 
 export default es;

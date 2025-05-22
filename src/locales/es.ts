@@ -10,7 +10,8 @@ const en: Translations = {
   newInSporthub: "¿Nuevo en Sporthub?",
   registerHere: "Regístrese Aquí",
   areYouAMember: "¿Eres miembro de Sporthub?",
-  "login.error.credentials": "Correo o contraseña inválidos. Por favor intente nuevamente.",
+  "login.error.credentials":
+    "Correo o contraseña inválidos. Por favor intente nuevamente.",
   // Pages
   "pages.home": "Inicio",
   "pages.bookings": "Reservas",
@@ -55,6 +56,7 @@ const en: Translations = {
   "home.prompt.searchEvent": "buscar un partido",
   // Bookings
   "bookings.title": "Mis Reservas",
+  "bookings.nodata": "No has realizado reservas",
   // Booking detail
   "booking.untilTime": "Hasta las {time}",
   "booking.place": "Lugar",

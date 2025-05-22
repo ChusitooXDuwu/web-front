@@ -1,12 +1,9 @@
 import { FC } from "react";
-import styles from "./BookingsPage.module.scss";
 import { Breadcrumb, Container, Row, Col } from "react-bootstrap";
-import BookingCard from "../../components/BookingCard/BookingCard";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { getMyBookings } from "../../services/BookingsService/BookingsService";
 import { FormattedMessage } from "react-intl";
-import { getEventsByUserId, getEventsFromUser } from "../../services/EventsService/EventsService";
+import { getEventsFromUser } from "../../services/EventsService/EventsService";
 import { useProfile } from "../../contexts/ProfileContext";
 import GameCardComponent from "../../components/GameCardComponent/GameCardComponents";
 import { SportEntity } from "../../entities/Entities";
@@ -15,66 +12,64 @@ import { EventEntityDto } from "../../entities/EventEntity";
 interface BookingsPageProps {}
 
 const BookingsPage: FC<BookingsPageProps> = () => {
-
-    const mockSports: SportEntity[] = [
-      {
-        id: "1",
-        name: "Soccer",
-        availableFields: 2,
-        availableBookings: 5,
-      },
-      {
-        id: "2",
-        name: "Basketball",
-        availableFields: 2,
-        availableBookings: 2,
-      },
-    ];
-  
-    const mockEvent: EventEntityDto = {
+  const mockSports: SportEntity[] = [
+    {
       id: "1",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      eventStartDateTime: new Date(),
-      eventEndDateTime: new Date(Date.now() + 3600000),
-      maxParticipants: 10,
-      currentParticipants: 5,
-      sport: {
-        id: "1",
-        name: "Fútbol",
-        fields: [],
-        events: []
-      },
-      field: {
-        id: "1",
-        name: "Cancha Principal",
-        fieldName: "Cancha Principal",
-        field_name: "Cancha Principal",
-        cityName: "Bogotá",
-        address: "Calle 123",
-        city: {
-          id: "1",
-          name: "Bogotá"
-        },
-        sports: [],
-        createdById: "1",
-        imageUrl: "/assets/default-field.jpg",
-        image_url: "/assets/default-field.jpg",
-        field_rating: 4.5,
-        phone_number: "1234567890",
-        opening_time: "08:00",
-        isBooking: true,
-        field_type: "Fútbol"
-      },
-      image: "/assets/default-event.jpg",
-      participants: []
-    };
+      name: "Soccer",
+      availableFields: 2,
+      availableBookings: 5,
+    },
+    {
+      id: "2",
+      name: "Basketball",
+      availableFields: 2,
+      availableBookings: 2,
+    },
+  ];
 
-  const user = useProfile()
-  console.log(user)
+  const mockEvent: EventEntityDto = {
+    id: "1",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    eventStartDateTime: new Date(),
+    eventEndDateTime: new Date(Date.now() + 3600000),
+    maxParticipants: 10,
+    currentParticipants: 5,
+    sport: {
+      id: "1",
+      name: "Fútbol",
+      fields: [],
+      events: [],
+    },
+    field: {
+      id: "1",
+      name: "Cancha Principal",
+      fieldName: "Cancha Principal",
+      field_name: "Cancha Principal",
+      cityName: "Bogotá",
+      address: "Calle 123",
+      city: {
+        id: "1",
+        name: "Bogotá",
+      },
+      sports: [],
+      createdById: "1",
+      imageUrl: "/assets/default-field.jpg",
+      image_url: "/assets/default-field.jpg",
+      field_rating: 4.5,
+      phone_number: "1234567890",
+      opening_time: "08:00",
+      isBooking: true,
+      field_type: "Fútbol",
+    },
+    image: "/assets/default-event.jpg",
+    participants: [],
+  };
+
+  const user = useProfile();
+  console.log(user);
   const id = "c321d3af-ad0e-49da-9d43-7ddc82a3321e";
-  console.log(id)
-
+  console.log(id);
 
   const { isSuccess: eventsSuccess, data: eventsData } = useQuery({
     queryKey: ["events", id], // Include id in the query key for proper caching
@@ -83,7 +78,7 @@ const BookingsPage: FC<BookingsPageProps> = () => {
   });
 
   const event = eventsData?.data;
-  console.log(event)
+  console.log(event);
   return (
     <div className="main_content_container pt-2">
       <Container fluid={"md"}>
@@ -104,15 +99,19 @@ const BookingsPage: FC<BookingsPageProps> = () => {
         </Row>
 
         <Row lg={3} md={3} sm={2} xs={1} className="gy-3">
-          {eventsSuccess && eventsData?.data
-            ? // Display real events when available
+          {eventsSuccess && eventsData?.data ? (
+            // Display real events when available
             eventsData.data.map((event, index) => (
               <Col key={index} className="d-flex justify-content-center">
                 <GameCardComponent event={event} />
               </Col>
             ))
-            : // Display 3 mock events as fallback
-            <h1>No evetns</h1>}
+          ) : (
+            // Display 3 mock events as fallback
+            <h1>
+              <FormattedMessage id="bookings.nodata"></FormattedMessage>
+            </h1>
+          )}
         </Row>
 
         {eventsSuccess && eventsData?.data?.length === 0 && (

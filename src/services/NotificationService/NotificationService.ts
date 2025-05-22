@@ -27,6 +27,7 @@ async function markAsReadOne(id: string) {
   const markAsReadOne = getNotifiactionUrl + `/read/${id}`;
   const response = await axios.patch<ResponseEntity<NotificationEntity>>(
     markAsReadOne,
+    undefined,
     { withCredentials: true }
   );
   const data = response.data.data;
@@ -40,6 +41,7 @@ async function markAllUserAsRead(userId: string) {
   const markAllUserAsRead = getNotifiactionUrl + `/read/user/${userId}`;
   const response = await axios.patch<ResponseEntity<NotificationEntity>>(
     markAllUserAsRead,
+    undefined,
     { withCredentials: true }
   );
   const data = response.data.data;

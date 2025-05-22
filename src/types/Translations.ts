@@ -63,6 +63,7 @@ export interface Translations {
   "booking.untilTime": string;
   "booking.place": string;
   "booking.seeDetail": string;
+  "bookings.nodata": string;
 
   // Booking detail
   "bookingDetailPage.loading": string;
