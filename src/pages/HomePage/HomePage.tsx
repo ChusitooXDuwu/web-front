@@ -8,7 +8,8 @@ import { getMyBookings } from "../../services/BookingsService/BookingsService";
 import styles from "./HomePage.module.scss";
 import { Link } from "react-router-dom";
 import { FormattedMessage, useIntl } from "react-intl";
-import { getAvailableEvents } from "../../services/EventsService/EventsService";
+import { getAvailableEvents, getEventsFromUser } from "../../services/EventsService/EventsService";
+import { useProfile } from "../../contexts/ProfileContext";
 
 interface noDataCardProps {
   dataName: string;
@@ -36,15 +37,22 @@ interface HomePageProps {}
 const HomePage: FC<HomePageProps> = () => {
   const { formatMessage } = useIntl();
 
-  const { isSuccess, data } = useQuery({
-    queryKey: ["bookings"],
-    queryFn: getMyBookings,
+  const user = useProfile()
+  console.log(user)
+  const id = "c321d3af-ad0e-49da-9d43-7ddc82a3321e";
+
+  const { isSuccess: bookingSuccess, data: bookingData } = useQuery({
+    queryKey: ["events", id], // Include id in the query key for proper caching
+    queryFn: () => getEventsFromUser(id as string), // This is a function that RETURNS a Promise
+    enabled: !!id, // Only run the query if id exists
   });
-  let upcomingEvents = isSuccess
-    ? data.data.sort((a, b) => {
-        return a.startDateTime.getTime() - b.startDateTime.getTime();
-      })
-    : [];
+
+  let upcomingEvents = bookingSuccess
+  ? bookingData.data.sort((a, b) => {
+      return a.eventStartDateTime.getTime() - b.eventStartDateTime.getTime();
+    })
+  : [];
+
   const {isSuccess: eventsSuccess, data: eventsData} = useQuery({
     queryKey: ["events"],
     queryFn: getAvailableEvents,
@@ -67,7 +75,7 @@ const HomePage: FC<HomePageProps> = () => {
     <>
       {topUpcomingEvents.map((event, index) => (
         <Col key={index} className="d-flex justify-content-center">
-          <BookingCard bookedEvent={event!} />
+          <GameCardComponent event={event} />
         </Col>
       ))}
     </>
