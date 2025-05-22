@@ -5,6 +5,7 @@ import API_BASE_URL from "../Config";
 import { CreateUserDto } from "../../entities/user/UserCreateEntity";
 import { LoginInfo } from "../../entities/user/LoginInfo";
 import { plainToInstance } from "class-transformer";
+import { UserFieldInterface } from "../../entities/user/UserFieldEntity";
 
 async function createUser(
   userData: CreateUserDto
@@ -63,7 +64,7 @@ async function requestUser(id: string) {
 }
 
 async function requestMyProfile() {
-  console.log(API_BASE_URL)
+  console.log(API_BASE_URL);
   const url = `${API_BASE_URL}/users/profile`;
   const response = await axios.get<ResponseEntity<object>>(url, {
     withCredentials: true,
@@ -113,6 +114,15 @@ async function requestAddSport(userId: string, sportId: string) {
   return { data: user, message };
 }
 
+async function requestAddField(userId: string, fieldId: string) {
+  const url = `${API_BASE_URL}/users/${userId}/favorite-fields`;
+  const body = { fieldId };
+  const response: AxiosResponse<ResponseEntity<UserFieldInterface>> =
+    await axios.post(url, body, { withCredentials: true });
+  const { data, message } = response.data;
+  return { data, message };
+}
+
 export default createUser;
 export {
   requestLogin,
@@ -122,4 +132,5 @@ export {
   requestAddFriend,
   requestAddSport,
   requestLogout,
+  requestAddField,
 };

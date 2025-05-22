@@ -4,6 +4,8 @@ import styles from "./FieldCardComponent.module.scss";
 import { FieldEntity } from "../../../entities/Entities";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../../../contexts/ProfileContext";
+import { useMutation } from "@tanstack/react-query";
+import { requestAddField } from "../../../services/UserService/UserService";
 
 interface FieldCardComponentProps {
   fieldData: FieldEntity;
@@ -13,11 +15,22 @@ const FieldCardComponent: FunctionComponent<FieldCardComponentProps> = ({
   fieldData,
 }) => {
   const navigate = useNavigate();
-  const { profile } = useProfile();
+  const { profile, refetch: refetchProfile } = useProfile();
   const favouriteFields = profile?.favoriteFields || [];
   const favouriteFieldIds = favouriteFields.map((item) => item.id);
   const filledHeartClass = "bi-heart-fill";
   const outlineHeartClass = "bi-heart";
+
+  const addFieldMutation = useMutation({
+    mutationFn: (params: { userId: string; fieldId: string }) =>
+      requestAddField(params.userId, params.fieldId),
+    onSuccess: () => {
+      refetchProfile();
+    },
+    onError: (error) => {
+      console.error(error);
+    },
+  });
 
   // Navigate to the field detail page with the actual field ID
   const handleCardClick = () => {
@@ -27,6 +40,9 @@ const FieldCardComponent: FunctionComponent<FieldCardComponentProps> = ({
   const handleFavButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
+    if (profile) {
+      addFieldMutation.mutate({ userId: profile?.id, fieldId: fieldData.id });
+    }
   };
 
   // Get field name from either format
