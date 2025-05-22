@@ -6,11 +6,24 @@ import StatisticsData from "../../entities/StatisticsEntity";
 import Event, { EventEntityDto } from "../../entities/EventEntity";
 import {plainToInstance} from "class-transformer"
 
+
 const baseDefaultUrl = "http://localhost:3000/events"
 const getEventsUrl = baseUrl ? `${baseUrl}/events` : baseDefaultUrl;
 
 async function getAvailableEvents() {
   const response = await axios.get<ResponseEntity<object[]>>(getEventsUrl, { withCredentials: true });
+  const { data: plainData, message } = response.data;
+  const data = plainToInstance(EventEntityDto, plainData, {
+      enableImplicitConversion: true,
+  });
+    console.log(data);
+    return { data, message };
+}
+
+async function getEventsFromUser(userId: string) {
+  const UserUrl = `http://localhost:3000/users/${userId}/events`;
+  console.log(UserUrl);
+  const response = await axios.get<ResponseEntity<object[]>>(UserUrl, { withCredentials: true });
   const { data: plainData, message } = response.data;
   const data = plainToInstance(EventEntityDto, plainData, {
       enableImplicitConversion: true,
@@ -73,4 +86,4 @@ async function getStatsByUserId(userId: string) {
 
 
 
-export { getAvailableEvents, getEventsByUserId, getStatsByUserId, getEventById, addUserToEvent };
+export { getAvailableEvents, getEventsByUserId, getStatsByUserId, getEventById, addUserToEvent, getEventsFromUser };
