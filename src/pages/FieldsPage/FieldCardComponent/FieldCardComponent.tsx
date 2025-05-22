@@ -3,6 +3,7 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import styles from "./FieldCardComponent.module.scss";
 import { FieldEntity } from "../../../entities/Entities";
 import { useNavigate } from "react-router-dom";
+import { useProfile } from "../../../contexts/ProfileContext";
 
 interface FieldCardComponentProps {
   fieldData: FieldEntity;
@@ -12,10 +13,20 @@ const FieldCardComponent: FunctionComponent<FieldCardComponentProps> = ({
   fieldData,
 }) => {
   const navigate = useNavigate();
+  const { profile } = useProfile();
+  const favouriteFields = profile?.favoriteFields || [];
+  const favouriteFieldIds = favouriteFields.map((item) => item.id);
+  const filledHeartClass = "bi-heart-fill";
+  const outlineHeartClass = "bi-heart";
 
   // Navigate to the field detail page with the actual field ID
   const handleCardClick = () => {
     navigate(`/fields/${fieldData.id}`);
+  };
+
+  const handleFavButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
   };
 
   // Get field name from either format
@@ -54,8 +65,15 @@ const FieldCardComponent: FunctionComponent<FieldCardComponentProps> = ({
             xs="2"
             className="ps-0 pe-2 d-flex justify-content-end align-items-end"
           >
-            <Button>
-              <i className="bi bi-heart"></i>
+            <Button onClick={handleFavButtonClick}>
+              <i
+                className={[
+                  "bi",
+                  favouriteFieldIds.includes(fieldData.id)
+                    ? filledHeartClass
+                    : outlineHeartClass,
+                ].join(" ")}
+              ></i>
             </Button>
           </Col>
         </Row>
