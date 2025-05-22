@@ -117,14 +117,6 @@ const GameCardComponent: FC<GameCardComponentProps> = ({ event }) => {
               </p>
             </div>
           </div>
-          <Button
-            variant="light"
-            onClick={handleCupos}
-            disabled={cupos >= event.maxParticipants}
-            className="w-100 text-dark mt-2"
-          >
-            {cupos >= event.maxParticipants ? intl.formatMessage({ id: "game.lleno" }) : intl.formatMessage({ id: "game.sub" })}
-          </Button>
         </Col>
       </Row>
     </Card>
