@@ -21,7 +21,7 @@ interface MockDataResponse {
 // Fallback for when no backend is available - use mockData
 const mockGetFieldsUrl =
   "https://gist.githubusercontent.com/Danielfts/6131ba1bdb8a625c8852844aa4d20703/raw/641af36309c81c58c24f621af99121cf3161a71a/SH-Fields.json";
-const apiBaseUrl = baseUrl || "http://localhost:3000"; // Use Config.ts or default to localhost
+const apiBaseUrl = baseUrl || "http://localhost:3001"; // Use Config.ts or default to localhost
 const fieldsEndpoint = `${apiBaseUrl}/fields`;
 
 // Interface for the field creation form data

@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from 'react';
+import React, { FC, useContext } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import styles from './FieldDetailPage.module.scss';
 import { Breadcrumb, Container, Row, Col, Spinner, Alert } from "react-bootstrap";
@@ -9,80 +9,61 @@ import { FormattedMessage } from 'react-intl';
 import { useIntl } from 'react-intl';
 import { LocaleContext } from '../../contexts/LocaleContext';
 import { useQuery } from '@tanstack/react-query';
-import { getFieldById, getFieldPrice, getFieldEvents, EventType } from '../../services/FieldsServices/FieldsService';
+import { getFieldById, getFieldPrice } from '../../services/FieldsServices/FieldsService';
 import { getAvailableEvents } from '../../services/EventsService/EventsService';
 import { EventEntityDto } from '../../entities/EventEntity';
 
 interface FieldDetailPageProps { }
 
 const FieldDetailPage: FC<FieldDetailPageProps> = () => {
-  // Métodos alternativos para obtener el ID
-
-
-
   const params = useParams();
   const location = useLocation();
-
-  console.log('ALL PARAMS:', params);
-  console.log('Params type:', typeof params);
-  console.log('Params keys:', Object.keys(params));
-  console.log('Raw URL:', window.location.pathname)
-
-  // Extraer fieldId de diferentes formas posibles
-  let fieldId: string | undefined;
-
-  // Método 1: directo de useParams
-  fieldId = params.fieldId;
-
-  // Método 2: analizando la URL manualmente si el método 1 falla
-  if (!fieldId) {
-    const pathParts = location.pathname.split('/');
-    fieldId = pathParts[pathParts.length - 1];
-    if (fieldId === 'fields') fieldId = undefined;
-  }
-
-  // Método 3: usar un ID por defecto para pruebas si todo lo demás falla
-  const actualId = fieldId || '1';
-
-  console.log('Debug info:');
-  console.log('- Raw params:', params);
-  console.log('- Path:', location.pathname);
-  console.log('- Extracted fieldId:', fieldId);
-  console.log('- Using ID:', actualId);
-
   const { locale } = useContext(LocaleContext);
   const intl = useIntl();
 
+  // Extract fieldId from URL params
+  const fieldId = params.id;
+
   // Fetch field details
   const fieldQuery = useQuery({
-    queryKey: ['field', actualId],
-    queryFn: () => getFieldById(actualId),
-    enabled: true // Siempre habilitado con el ID actual (o por defecto)
+    queryKey: ['field', fieldId],
+    queryFn: () => getFieldById(fieldId || ''),
+    enabled: !!fieldId,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
   });
 
   // Fetch field price
   const priceQuery = useQuery({
-    queryKey: ['fieldPrice', actualId],
-    queryFn: () => getFieldPrice(actualId),
-    enabled: true
+    queryKey: ['fieldPrice', fieldId],
+    queryFn: () => getFieldPrice(fieldId || ''),
+    enabled: !!fieldId,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
   });
 
-  // Fetch available events for this field
+  // Fetch all available events
   const eventsQuery = useQuery({
-    queryKey: ['fieldEvents', actualId],
+    queryKey: ['events'],
     queryFn: getAvailableEvents,
-    enabled: true
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
   });
 
   const isLoading = fieldQuery.isLoading || priceQuery.isLoading || eventsQuery.isLoading;
   const isError = fieldQuery.isError || priceQuery.isError || eventsQuery.isError;
+  const error = fieldQuery.error || priceQuery.error || eventsQuery.error;
 
   const fieldData = fieldQuery.data;
   const field = fieldData?.data;
   const price = priceQuery.data?.data || 0;
-  const events = eventsQuery.data?.data || [];
 
-  // Si hay un error, muestra un mensaje de error
+  // Filter events for this specific field
+  const fieldEvents = eventsQuery.data?.data?.filter(
+    (event: EventEntityDto) => event.field?.id === fieldId
+  ) || [];
+
+  // Handle error state
   if (isError) {
     return (
       <Container fluid className={`main_content_container ${styles.main_content}`}>
@@ -106,15 +87,22 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
                 <FormattedMessage id="fieldDetailPage.error.title" defaultMessage="Error al cargar los datos" />
               </Alert.Heading>
               <p>
-                <FormattedMessage
-                  id="fieldDetailPage.error.description"
-                  defaultMessage="Ocurrió un error al cargar la información del campo. Intenta nuevamente más tarde."
-                />
+                {error instanceof Error
+                  ? error.message
+                  : <FormattedMessage
+                    id="fieldDetailPage.error.description"
+                    defaultMessage="Ocurrió un error al cargar la información del campo. Intenta nuevamente más tarde."
+                  />
+                }
               </p>
               <div className="d-flex justify-content-end">
                 <button
                   className="btn btn-outline-danger"
-                  onClick={() => window.location.reload()}
+                  onClick={() => {
+                    fieldQuery.refetch();
+                    priceQuery.refetch();
+                    eventsQuery.refetch();
+                  }}
                 >
                   <FormattedMessage id="fieldDetailPage.reload" defaultMessage="Recargar página" />
                 </button>
@@ -126,7 +114,7 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
     );
   }
 
-  // Si está cargando, muestra un spinner
+  // Handle loading state
   if (isLoading) {
     return (
       <Container fluid className={`main_content_container ${styles.main_content}`}>
@@ -160,7 +148,7 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
     );
   }
 
-  // Si no hay datos, muestra un mensaje
+  // Handle no data state
   if (!field) {
     return (
       <Container fluid className={`main_content_container ${styles.main_content}`}>
@@ -202,12 +190,9 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
     );
   }
 
-  // Renderiza el contenido normal cuando los datos están disponibles
+  // Render the field details when data is available
   return (
-    <Container
-      fluid
-      className={`main_content_container ${styles.main_content}`}
-    >
+    <Container fluid className={`main_content_container ${styles.main_content}`}>
       <Row className={`pt-2 ${styles.title_row}`}>
         <Breadcrumb>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
@@ -233,9 +218,26 @@ const FieldDetailPage: FC<FieldDetailPageProps> = () => {
             />
           </h2>
           <Row lg={3} md={2} sm={2} xs={1} className="gy-2">
-            {events.length > 0 ? (
-              events.map((event: EventEntityDto, index: number) => (
-                <Col key={index} className="d-flex justify-content-center">
+            {eventsQuery.isLoading ? (
+              <Col className="text-center">
+                <Spinner animation="border" role="status" variant="primary">
+                  <span className="visually-hidden">
+                    <FormattedMessage id="fieldDetailPage.loading.events" defaultMessage="Cargando eventos..." />
+                  </span>
+                </Spinner>
+              </Col>
+            ) : eventsQuery.isError ? (
+              <Col className="text-center">
+                <Alert variant="danger">
+                  <FormattedMessage
+                    id="fieldDetailPage.error.events"
+                    defaultMessage="Error al cargar los eventos"
+                  />
+                </Alert>
+              </Col>
+            ) : fieldEvents.length > 0 ? (
+              fieldEvents.map((event: EventEntityDto) => (
+                <Col key={event.id} className="d-flex justify-content-center">
                   <GameCardComponent event={event} />
                 </Col>
               ))

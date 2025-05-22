@@ -16,6 +16,7 @@ const FieldsPage: FC<FieldsPageProps> = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const initialSportFilter = searchParams.get("sport") || "";
+  const initialSearchValue = searchParams.get("search") || "";
   const { profile } = useProfile();
 
   // Check if user is authenticated
@@ -37,13 +38,18 @@ const FieldsPage: FC<FieldsPageProps> = () => {
 
   // Local state for filtering
   const [filteredFieldsData, setFilteredFieldsData] = useState<FieldEntity[]>([]);
-  const [searchValue, setSearchValue] = useState<string>("");
-  const [currentSearchValue, setCurrentSearchValue] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>(initialSearchValue);
+  const [currentSearchValue, setCurrentSearchValue] = useState<string>(initialSearchValue);
   const [selectedSport, setSelectedSport] = useState<string>(initialSportFilter);
   const [sportsOptions, setSportsOptions] = useState<string[]>([]);
+
   useEffect(() => {
     if (searchParams.get("sport")) {
       setSelectedSport(searchParams.get("sport") || "");
+    }
+    if (searchParams.get("search")) {
+      setSearchValue(searchParams.get("search") || "");
+      setCurrentSearchValue(searchParams.get("search") || "");
     }
   }, [searchParams]);
 

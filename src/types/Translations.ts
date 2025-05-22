@@ -9,6 +9,7 @@ export interface Translations {
   newInSporthub: string;
   registerHere: string;
   areYouAMember: string;
+  "login.error.credentials": string;
 
   // Pages
   "pages.home": string;
@@ -154,6 +155,7 @@ export interface Translations {
   "fieldDetailButtons.book": string;
   "fieldDetailButtons.cancel": string;
   "fieldDetailButtons.join": string;
+  "fieldDetailButtons.createEvent": string;
   "cancelAndCommentsButton.cancel": string;
   "cancelAndCommentsButton.addComment": string;
   "fieldDetailCard.commentForm.writeComment": string;

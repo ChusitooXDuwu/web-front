@@ -10,6 +10,7 @@ const es: Translations = {
   newInSporthub: "New to sporthub?",
   registerHere: "Register Here",
   areYouAMember: "Are you a sporthub member?",
+  "login.error.credentials": "Invalid email or password. Please try again.",
   //Pages
   "pages.home": "Home",
   "pages.bookings": "Bookings",
@@ -133,6 +134,7 @@ const es: Translations = {
   "fieldDetailCard.details.availableBookings":
     "Available bookings in this field:",
 
+
   "fieldDetailPage.loading.details": "Loading field details... ",
   "fieldDetailPage.price": "Price: $",
   "fieldDetailPage.divide": "Divide payment amongst participants",
@@ -141,6 +143,7 @@ const es: Translations = {
   "fieldDetailButtons.book": "Create a booking",
   "fieldDetailButtons.cancel": "Cancel booking",
   "fieldDetailButtons.join": "Join booking",
+  "fieldDetailButtons.createEvent": "Create Event",
   // Cancel&CommentsButton
   "cancelAndCommentsButton.cancel": "Cancel",
   "cancelAndCommentsButton.addComment": "Add comment",
@@ -197,6 +200,7 @@ const es: Translations = {
   // browse
   "browse.fields": "Browse Fields",
   "browse.sports": "Browse Sports",
+
 };
 
 export default es;

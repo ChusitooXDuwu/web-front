@@ -1,41 +1,35 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import React, { FC, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import styles from "./FieldDetailPageMap.module.scss";
 import { Breadcrumb, Container, Row, Col, Spinner, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import FieldDetailEntity from "../../entities/FieldDetailEntity";
 import FieldMapCardComponent from "../../components/FieldMapCardComponent/FieldMapCardComponent";
 import CustomMap from "../../components/MapComponent/MapComponent";
 import { useQuery } from '@tanstack/react-query';
 import { getFieldById } from '../../services/FieldsServices/FieldsService';
 
 import { FormattedMessage } from 'react-intl';
-import { useIntl } from 'react-intl';
 import { LocaleContext } from '../../contexts/LocaleContext';
 
 const FieldDetailPageMap: FC = () => {
   const params = useParams();
-  const location = useLocation();
   const { locale } = useContext(LocaleContext);
-  const intl = useIntl();
 
-  // Extraer ID manualmente de la URL
-  const pathParts = location.pathname.split('/');
-  const fieldId = pathParts[pathParts.length - 1]; // El último segmento debe ser el ID
-
-  console.log('URL path parts:', pathParts);
-  console.log('Extracted Field ID:', fieldId);
+  // Get fieldId from URL params
+  const fieldId = params.id;
 
   // Fetch field details
-  const { isLoading, isError, data, error } = useQuery({
+  const { isLoading, isError, data } = useQuery({
     queryKey: ['field', fieldId],
-    queryFn: () => getFieldById(fieldId),
-    enabled: !!fieldId && fieldId !== 'map' // Evitar consulta si el ID no es válido
+    queryFn: () => getFieldById(fieldId || ''),
+    enabled: !!fieldId,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
   });
 
   const field = data?.data;
 
-  // Si está cargando, muestra un spinner
+  // Handle loading state
   if (isLoading) {
     return (
       <Container fluid className="main_content_container">
@@ -68,8 +62,8 @@ const FieldDetailPageMap: FC = () => {
     );
   }
 
-  // Si hay un error, muestra un mensaje de error
-  if (isError || !fieldId || fieldId === 'map') {
+  // Handle error state
+  if (isError || !fieldId) {
     return (
       <Container fluid className="main_content_container">
         <Row className={`${styles.title_row} pt-2`}>
@@ -92,7 +86,7 @@ const FieldDetailPageMap: FC = () => {
                 <FormattedMessage id="fieldDetailPageMap.error.title" defaultMessage="Error al cargar los datos" />
               </Alert.Heading>
               <p>
-                {!fieldId || fieldId === 'map' ? (
+                {!fieldId ? (
                   <FormattedMessage
                     id="fieldDetailPageMap.error.missingId"
                     defaultMessage="No se ha especificado un ID de campo válido. Por favor, vuelve a la lista de campos."
@@ -122,7 +116,7 @@ const FieldDetailPageMap: FC = () => {
     );
   }
 
-  // Si no hay datos del campo, muestra un mensaje
+  // Handle no data state
   if (!field) {
     return (
       <Container fluid className="main_content_container">
@@ -164,10 +158,10 @@ const FieldDetailPageMap: FC = () => {
     );
   }
 
-  // Renderizado normal cuando los datos están disponibles
+  // Render the map view when data is available
   return (
-    <>
-      <Row className={`${styles.title_row} pt-2`} md={12}>
+    <Container fluid className="main_content_container">
+      <Row className={`${styles.title_row} pt-2`}>
         <Breadcrumb>
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/home" }}>
             <FormattedMessage id="pages.home" defaultMessage="Inicio" />
@@ -183,17 +177,16 @@ const FieldDetailPageMap: FC = () => {
           </Breadcrumb.Item>
         </Breadcrumb>
       </Row>
-      <Container fluid className="main_content_container pt-2 d-flex">
-        <Row className={`mb-3 gy-2 ${styles.main_row}`}>
-          <Col md={4} className={`${styles.left_col}`}>
-            <FieldMapCardComponent field={field} />
-          </Col>
-          <Col md={8} className={styles.right_col}>
-            <CustomMap />
-          </Col>
-        </Row>
-      </Container>
-    </>
+
+      <Row className={`mb-3 gy-2 ${styles.main_row}`}>
+        <Col md={4} className={`${styles.left_col}`}>
+          <FieldMapCardComponent field={field} />
+        </Col>
+        <Col md={8} className={styles.right_col}>
+          <CustomMap address={field.address} />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

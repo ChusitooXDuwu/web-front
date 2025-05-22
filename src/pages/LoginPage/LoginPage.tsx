@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
+import Alert from "react-bootstrap/Alert";
 import { Link, useNavigate } from "react-router-dom";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -20,16 +21,20 @@ function LoginPage() {
     username: "",
     password: "",
   });
+  const [showError, setShowError] = useState(false);
+
   const loginMutation = useMutation({
     mutationFn: (loginData: LoginInfo) => requestLogin(loginData),
     onSuccess: (data) => {
       console.log(data);
-      console.log("Login successfull");
+      console.log("Login successful");
+      setShowError(false);
       refetch();
       navigate("/home");
     },
     onError: (error) => {
       console.error("Error logging in");
+      setShowError(true);
     },
   });
 
@@ -40,6 +45,10 @@ function LoginPage() {
       key = "username";
     }
     setLoginData({ ...loginData, [key]: value });
+    // Clear error when user starts typing
+    if (showError) {
+      setShowError(false);
+    }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -63,6 +72,11 @@ function LoginPage() {
         <Form onSubmit={handleSubmit} className={styles.login_form}>
           <Card className={styles.login_card}>
             <Card.Body>
+              {showError && (
+                <Alert variant="danger" className="mb-3">
+                  <FormattedMessage id="login.error.credentials" />
+                </Alert>
+              )}
               <Form.Group>
                 <Form.Label>
                   <FormattedMessage id="email" />

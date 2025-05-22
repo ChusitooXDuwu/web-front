@@ -15,15 +15,27 @@ import getSports from "../../services/SportsService/SportsService";
 
 
 
-const mockData: FieldDetailEntity = {
-  id: "abc",
-  field_name: "Campo de Futbol",
-  field_rating: 3,
-  phone_number: "123456789",
+const mockData: FieldEntity = {
+  id: "1",
+  name: "Cancha Principal",
+  fieldName: "Cancha Principal",
+  field_name: "Cancha Principal",
+  cityName: "Bogotá",
   address: "Calle 123",
-  opening_time: "8:00 - 20:00",
-  image_url: "/assets/basket_horizontal.jpg",
-  isBooking: false,
+  city: {
+    id: "1",
+    name: "Bogotá",
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  sports: [],
+  createdById: "1",
+  imageUrl: "/assets/default-field.jpg",
+  image_url: "/assets/default-field.jpg",
+  field_rating: 4.5,
+  phone_number: "1234567890",
+  opening_time: "08:00",
+  isBooking: true,
   field_type: "field"
 };
 

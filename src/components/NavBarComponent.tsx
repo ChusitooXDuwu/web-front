@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Navbar,
   Container,
@@ -17,8 +17,7 @@ import { ReactComponent as CourtIcon } from "../icons/courtIcon.svg";
 import { ReactComponent as SportsIcon } from "../icons/sportsIcon.svg";
 import { ReactComponent as JoinIcon } from "../icons/joinIcon.svg";
 import { ReactComponent as ProfileIcon } from "../icons/profileIcon.svg";
-import { Link } from "react-router-dom";
-import { useContext } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 
 import { FormattedMessage } from 'react-intl';
 import { useIntl } from 'react-intl';
@@ -28,12 +27,25 @@ function NavBar() {
   // State to control the offcanvas visibility
   const { locale } = useContext(LocaleContext);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const intl = useIntl();
   const { formatMessage } = intl;
+  const navigate = useNavigate();
 
   // Functions to open and close the offcanvas
   const handleClose = () => setShowOffcanvas(false);
   const handleShow = () => setShowOffcanvas(true);
+
+  // Handle search submission
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/fields?search=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery(""); // Clear search after navigation
+    } else {
+      navigate('/fields'); // If no search query, just go to fields page
+    }
+  };
 
   return (
     <>
@@ -56,7 +68,7 @@ function NavBar() {
                 </Navbar.Brand>
               </Link>
             </Col>
-            
+
             <Col xs={6} className="d-md-none pe-0">
               {/* 2. Profile Icon - Second on mobile */}
               <div className="d-flex justify-content-end">
@@ -78,14 +90,13 @@ function NavBar() {
                         }}
                       >
                         <FormattedMessage id="navbar.profile" />
-                        
                       </p>
                     </div>
                   </Nav.Item>
                 </Link>
               </div>
             </Col>
-            
+
             {/* Desktop Logo */}
             <Col md="auto" className="d-none d-md-block">
               <Link to="/home">
@@ -100,60 +111,65 @@ function NavBar() {
                 </Navbar.Brand>
               </Link>
             </Col>
-            
+
             {/* Second row in mobile - Search and Hamburger */}
             <Col xs={9} className="d-md-none mt-3 ps-0">
               {/* 3. Compact Search Bar for Mobile */}
-              <Form className="d-flex">
+              <Form className="d-flex" onSubmit={handleSearch}>
                 <Form.Control
                   type="search"
-                  placeholder={formatMessage({id: "navbar.searchPlaceholder"})}
+                  placeholder={formatMessage({ id: "navbar.searchPlaceholder" })}
                   className="me-1"
                   aria-label="Search"
                   style={{ height: '40px' }}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <Button
+                  type="submit"
                   className="custom-outline-btn"
                   style={{ height: "40px", color: "#FFFFFF", padding: '0 10px' }}
                 >
                   <span className="d-none d-sm-inline">
-                    
                     <FormattedMessage id="navbar.searchButton" />
                   </span>
                   <span className="d-inline d-sm-none">🔍</span>
                 </Button>
               </Form>
             </Col>
-            
+
             <Col xs={3} className="d-md-none mt-3 pe-0">
               {/* 4. Hamburger button - now uses the state */}
               <div className="d-flex justify-content-end">
-                <Navbar.Toggle 
+                <Navbar.Toggle
                   aria-controls="mobile-navbar-offcanvas"
                   onClick={handleShow}
                 />
               </div>
             </Col>
-            
+
             {/* Desktop Search Bar */}
             <Col md className="d-none d-md-block">
-              <Form className="d-flex flex-grow-1 mx-4">
+              <Form className="d-flex flex-grow-1 mx-4" onSubmit={handleSearch}>
                 <Form.Control
                   type="search"
-                  placeholder={formatMessage({id: "navbar.searchPlaceholder"})}
+                  placeholder={formatMessage({ id: "navbar.searchPlaceholder" })}
                   className="me-2 flex-grow-1"
                   aria-label="Search"
                   style={{ height: '40px' }}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <Button
+                  type="submit"
                   className="custom-outline-btn"
                   style={{ height: "40px", color: "#FFFFFF" }}
                 >
-                    <FormattedMessage id="navbar.searchButton" />
+                  <FormattedMessage id="navbar.searchButton" />
                 </Button>
               </Form>
             </Col>
-            
+
             {/* Desktop Profile Icon */}
             <Col md="auto" className="d-none d-md-block">
               <Link to="/profile">
@@ -180,12 +196,12 @@ function NavBar() {
               </Link>
             </Col>
           </Row>
-          
+
           {/* Mobile menu offcanvas - now controlled by state */}
-          <Offcanvas 
-            show={showOffcanvas} 
-            onHide={handleClose} 
-            placement="end" 
+          <Offcanvas
+            show={showOffcanvas}
+            onHide={handleClose}
+            placement="end"
             className="d-md-none"
           >
             <Offcanvas.Header closeButton>
@@ -215,7 +231,7 @@ function NavBar() {
                       style={{ fill: "#E99E14" }}
                     />
                     <span className="ms-3 fw-bold" style={{ color: "#E99E14" }}>
-                        <FormattedMessage id="navbar.fields" />
+                      <FormattedMessage id="navbar.fields" />
                     </span>
                   </div>
                 </Link>
@@ -227,7 +243,7 @@ function NavBar() {
                       style={{ fill: "#E99E14" }}
                     />
                     <span className="ms-3 fw-bold" style={{ color: "#E99E14" }}>
-                        <FormattedMessage id="navbar.sports" />
+                      <FormattedMessage id="navbar.sports" />
                     </span>
                   </div>
                 </Link>
@@ -239,7 +255,7 @@ function NavBar() {
                       style={{ fill: "#E99E14" }}
                     />
                     <span className="ms-3 fw-bold" style={{ color: "#E99E14" }}>
-                        <FormattedMessage id="navbar.events" />
+                      <FormattedMessage id="navbar.events" />
                     </span>
                   </div>
                 </Link>

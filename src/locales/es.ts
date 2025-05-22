@@ -10,6 +10,7 @@ const en: Translations = {
   newInSporthub: "¿Nuevo en Sporthub?",
   registerHere: "Regístrese Aquí",
   areYouAMember: "¿Eres miembro de Sporthub?",
+  "login.error.credentials": "Correo o contraseña inválidos. Por favor intente nuevamente.",
   // Pages
   "pages.home": "Inicio",
   "pages.bookings": "Reservas",
@@ -154,6 +155,7 @@ const en: Translations = {
   "fieldDetailButtons.book": "Crear una reserva",
   "fieldDetailButtons.cancel": "Cancelar reserva",
   "fieldDetailButtons.join": "Unirse a la reserva",
+  "fieldDetailButtons.createEvent": "Crear Evento",
   // Cancel&CommentsButton
   "cancelAndCommentsButton.cancel": "Cancelar",
   "cancelAndCommentsButton.addComment": "Agregar comentario",
