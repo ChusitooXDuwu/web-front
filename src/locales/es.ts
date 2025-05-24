@@ -68,6 +68,7 @@ const en: Translations = {
   "fields.createButton": "Crear cancha",
   "fields.dataNotFound": "No se encontraron datos para la búsqueda ' {value} '",
   "fieldDetailPageMap.loading.details": "Cargando mapa del campo...",
+  "fieldDetailCard.details.sports": "Deportes:",
   // Create Field
   "fields.create.title": "Crear una nueva cancha",
   "field.form.label.name": "Nombre",

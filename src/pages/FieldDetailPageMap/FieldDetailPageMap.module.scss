@@ -1,11 +1,13 @@
 .main_row {
     flex-grow: 1;
+    min-height: calc(100vh - 200px); // Ensure minimum height for the content
 }
 
 .left_col {
     display: flex;
     flex-direction: column;
     justify-content: center; //applied to the main direction, in this case vertical!
+    height: 100%;
 }
 
 .title_row {
@@ -19,4 +21,8 @@
     height: 100%; /* Ensures the container takes full height */
     flex-direction: column;
     display: flex;
-  }
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

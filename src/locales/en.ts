@@ -50,6 +50,8 @@ const es: Translations = {
   "booking.seeDetail": "See detail",
   "bookingDetailPage.loading": "Loading ...",
   "bookingDetailPage.loading.details": "Loading booking details...",
+  "fieldDetailCard.details.sports": "Sports:",
+
   // Fields
   "fields.title": "Available fields",
   "fields.createButton": "Create field",

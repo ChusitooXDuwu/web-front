@@ -4,7 +4,7 @@ import styles from "./FieldDetailPageMap.module.scss";
 import { Breadcrumb, Container, Row, Col, Spinner, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import FieldMapCardComponent from "../../components/FieldMapCardComponent/FieldMapCardComponent";
-import CustomMap from "../../components/MapComponent/MapComponent";
+import CustomMap from "../../components/MapComponent/MapComponent"; // Make sure this import is correct
 import { useQuery } from '@tanstack/react-query';
 import { getFieldById } from '../../services/FieldsServices/FieldsService';
 

@@ -153,6 +153,7 @@ export interface Translations {
   "fieldDetailCard.details.isOcuppiedQuestion": string;
   "fieldDetailCard.details.price": string;
   "fieldDetailCard.details.availableBookings": string;
+  "fieldDetailCard.details.sports": string;
   "fieldDetailButtons.book": string;
   "fieldDetailButtons.cancel": string;
   "fieldDetailButtons.join": string;

@@ -30,10 +30,17 @@ const CustomMap: React.FC<CustomMapProps> = ({ address }) => {
                 lat: location.lat(),
                 lng: location.lng()
               });
+              console.log(`Successfully geocoded "${address}" to:`, {
+                lat: location.lat(),
+                lng: location.lng()
+              });
             } else {
               console.error('Geocoding failed:', status);
+              console.log('Using default Bogotá location');
             }
           });
+        } else {
+          console.log('No address provided, using default Bogotá location');
         }
       }
     }, 100);
@@ -43,17 +50,42 @@ const CustomMap: React.FC<CustomMapProps> = ({ address }) => {
 
   return (
     <div className={styles.map_container1}>
-      <APIProvider apiKey="AIzaSyAVHaRVEyP9_fa9x8nbzAQEGNFlAmzgnIA">
-        <Map
-          className={styles.map_container}
-          defaultZoom={15}
-          defaultCenter={markerLocation}
-          gestureHandling={"greedy"}
-          disableDefaultUI={false}
-        >
-          <Marker position={markerLocation} />
-        </Map>
+      <APIProvider 
+        apiKey="AIzaSyAVHaRVEyP9_fa9x8nbzAQEGNFlAmzgnIA"
+        version="weekly"
+      >
+        <div style={{ width: '100%', height: '400px' }}>
+          <Map
+            style={{ width: '100%', height: '100%' }}
+            defaultZoom={15}
+            center={markerLocation}
+            gestureHandling={"greedy"}
+            disableDefaultUI={false}
+            mapId="DEMO_MAP_ID"
+          >
+            <Marker position={markerLocation} />
+          </Map>
+        </div>
       </APIProvider>
+      
+      {/* Simple debug info */}
+      {process.env.NODE_ENV === 'development' && (
+        <div style={{
+          position: 'absolute',
+          top: 10,
+          left: 10,
+          background: 'rgba(0,0,0,0.8)',
+          color: 'white',
+          padding: '5px',
+          fontSize: '10px',
+          borderRadius: '3px',
+          zIndex: 1000
+        }}>
+          <div>Address: {address || 'Default'}</div>
+          <div>Lat: {markerLocation.lat.toFixed(4)}</div>
+          <div>Lng: {markerLocation.lng.toFixed(4)}</div>
+        </div>
+      )}
     </div>
   );
 }
